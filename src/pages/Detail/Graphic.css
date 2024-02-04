@@ -1,0 +1,25 @@
+/* App.css */
+.button-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh; /* 화면의 전체 높이를 차지하도록 설정합니다. */
+    align-items: stretch; /* 수직 방향으로 버튼들을 늘립니다. */
+  }
+  
+  button {
+    background: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 5px;
+    color: #000;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+    flex-grow: 1; /* 버튼들이 수직 방향으로 동일한 높이로 늘어납니다. */
+  }
+  
+  .selected {
+    background: #8884d8;
+  }
+    
