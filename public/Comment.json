@@ -1,69 +1,34 @@
 {
     "List":[
         {
-            "cNum" : "01",
-            "pNum" : "01",
-            "doctorNum" : "0561",
-            "date" : "2024-01-26 16:45",
-            "content" : "Back의 봄이 찾아옴",
-            "screen" : false
+            "commentnum" : "c01",
+            "patinum" : "P01",
+            "membernum" : "0561",
+            "inputdate" : "2024-01-24 15:30",
+            "contents" : "환자 상태 좋음"
         },
         {
-            "cNum" : "01",
-            "pNum" : "01",
-            "doctorNum" : "0561",
-            "date" : "2024-01-26 16:45",
-            "content" : "Back의 봄이 찾아옴",
-            "screen" : false
+            "commentnum" : "c02",
+            "patinum" : "P02",
+            "membernum" : "0561",
+            "inputdate" : "2024-01-26 16:45",
+            "contents" : "환자 위급 상황"
         },
         {
-            "cNum" : "01",
-            "pNum" : "01",
-            "doctorNum" : "0561",
-            "date" : "2024-01-26 16:45",
-            "content" : "Back의 봄이 찾아옴",
-            "screen" : false
+            "commentnum" : "c03",
+            "patinum" : "P03",
+            "membernum" : "0561",
+            "inputdate" : "2024-01-26 16:45",
+            "contents" : "오류 있었음"
         },
         {
-            "cNum" : "01",
-            "pNum" : "01",
-            "doctorNum" : "0561",
-            "date" : "2024-01-26 16:45",
-            "content" : "Back의 봄이 찾아옴",
-            "screen" : false
-        },
-        {
-            "cNum" : "01",
-            "pNum" : "01",
-            "doctorNum" : "0561",
-            "date" : "2024-01-26 16:45",
-            "content" : "Back의 봄이 찾아옴",
-            "screen" : false
-        },
-        {
-            "cNum" : "01",
-            "pNum" : "01",
-            "doctorNum" : "0561",
-            "date" : "2024-01-26 16:45",
-            "content" : "Back의 봄이 찾아옴",
-            "screen" : false
-        },
-        {
-            "cNum" : "01",
-            "pNum" : "01",
-            "doctorNum" : "0561",
-            "date" : "2024-01-26 16:45",
-            "content" : "Back의 봄이 찾아옴",
-            "screen" : false
-        },
-        {
-            "cNum" : "01",
-            "pNum" : "01",
-            "doctorNum" : "0561",
-            "date" : "2024-01-26 16:45",
-            "content" : "Back의 봄이 찾아옴",
-            "screen" : false
+            "commentnum" : "c04",
+            "patinum" : "P04",
+            "membernum" : "0561",
+            "inputdate" : "2024-01-26 16:45",
+            "contents" : "환자 상태 좋음"
         }
+       
         
     ]
 }

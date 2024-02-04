@@ -17,10 +17,7 @@ const View = () => {
     axios.get('http://localhost:3000/Comment.json')
     .then(res => setComment(res.data.List[0]))
   },[])
-    // useEffect(() => {
-    //     axios.get('http://localhost:3000/player.json')
-    //         .then(res => setPlayerList(res.data.list))
-    // }, [])
+    
   return (
     <div>
       <h1>View</h1>
