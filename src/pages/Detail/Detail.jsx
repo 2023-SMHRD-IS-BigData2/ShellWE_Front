@@ -5,6 +5,7 @@ import Graphic from './Graphic'
 import Chart from './Chart'
 import DetailHeader from './DetailHeader'
 
+
 const Detail = () => {
   return (
     <div>
