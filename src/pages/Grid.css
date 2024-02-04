@@ -1,0 +1,38 @@
+/* Grid.css */
+.table-auto {
+    border-collapse: separate;
+    border-spacing: 100px; /* 원하는 간격 값으로 조절하세요 */
+  }
+
+.grid-container {
+    border-collapse: collapse;
+  }
+  
+  .grid-cell {
+    width: 100px;
+    /* height: 100px; */
+    border: 1px solid #E5E7EB; /* light gray border */
+  }
+  
+  .grid-header {
+    font-weight: 600;
+    background-color: #F9FAFB; /* light gray background */
+  }
+  
+  .grid-row {
+    display: flex;
+  }
+  
+  .grid-container table {
+    border-collapse: collapse;
+  }
+  
+  .grid-container th,
+  .grid-container td {
+    border: 1px solid #E5E7EB;
+    padding: 8px;
+  }
+  .grid-cell grid-content-red{
+   color: red;
+  }
+  
