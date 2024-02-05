@@ -2,7 +2,6 @@ import React, { useContext, useEffect } from 'react'
 import Detail from '../Detail/Detail'
 import Main from '../Main/Main'
 import Admin from '../Admin/Admin'
-import Header from './Header'
 import { Route, Routes } from "react-router-dom";
 import axios from 'axios'
 import { PatientContext } from '../../context/PatientContext'
@@ -20,8 +19,6 @@ const View = () => {
     
   return (
     <div>
-      <h1>View</h1>
-      <Header />
       <Routes>
         <Route path='/detail' element={ <Detail />} />
         <Route path='/main' element={ <Main />} />
