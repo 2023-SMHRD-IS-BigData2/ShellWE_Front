@@ -102,17 +102,17 @@ export default class Example extends PureComponent {
                         <LineChart width="100%" height="100%" data={data} margin={{bottom:5, right: 30, left: 20 }}>
                             <CartesianGrid strokeDasharray="3" />
                             {/* 각각의 Y축 설정 */}
-                            <XAxis dataKey="name" />
+                            <XAxis dataKey="time" />
                             <YAxis yAxisId="Smart" dataKey="Smart" domain={[0, 100]} hide />
-                            <YAxis yAxisId="O2Sat" dataKey="O2Sat" domain={[0, 110]} hide />
+                            <YAxis yAxisId="O2Sat" dataKey="O2Sat" domain={[0, 100]} hide />
                             <YAxis yAxisId="MAP" dataKey="MAP" domain={[0, 100]} hide />
-                            <YAxis yAxisId="Temp" dataKey="Temp" domain={[0, 160]} hide />
-                            <YAxis yAxisId="EtCO2" dataKey="EtCO2" domain={[0, 160]} hide />
+                            <YAxis yAxisId="Temp" dataKey="Temp" domain={[31, 90]} hide />
+                            <YAxis yAxisId="EtCO2" dataKey="EtCO2" domain={[0, 80]} hide />
                             <YAxis yAxisId="HR" dataKey="HR" domain={[0, 100]} hide />
                             <Tooltip />
                             {lines}
                             <Brush
-                                dataKey="name" // 이름기준?
+                                dataKey="time" // 이름기준?
                                 height={21} // 높이 설정
                                 stroke="#EB9DA2" //색깔 설정
                                 startIndex={0} //어디서부터 시작할지
