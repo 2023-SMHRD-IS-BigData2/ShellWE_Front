@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip, ResponsiveContainer, Brush } from "recharts";
 
 import "./Graphic.css";
@@ -6,6 +6,7 @@ import "./Graphic.css";
 export default function Example({ data }) {
     const [selectedKeys, setSelectedKeys] = useState(["Smart"]);
 
+    
     const handleButtonClick = (value) => {
         setSelectedKeys((prevSelectedKeys) => {
             if (prevSelectedKeys.includes(value)) {
