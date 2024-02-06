@@ -4,7 +4,7 @@ import { faLandMineOn } from '@fortawesome/free-solid-svg-icons';
 import { faCircleExclamation } from '@fortawesome/free-solid-svg-icons';
 import { faShieldHeart } from '@fortawesome/free-solid-svg-icons';
 import '../Grid.css'; // Import your external CSS file
-import data from  '../data.json';
+import data from '../data.json';
 
 const Grid = () => {
   const [isToggleVisible, setToggleVisible] = useState(false);
@@ -31,6 +31,7 @@ const handleColumnSelection = (columnName) => {
   const isColumnSelected = (column) => selectedColumns.includes(column);
 
   return (
+
     <div className="grid-container mx-auto my-8 text-center" style={{width:'1900px'}}>
       <div style={{ position: 'relative'}} >
         <button style={{marginLeft: '1670px' }} onClick={handleToggleClick}>
@@ -327,6 +328,7 @@ const handleColumnSelection = (columnName) => {
             <th className="grid-cell grid-header" style={{width:'190px'}}>2024- 01-10 11:44</th>
             <th className="grid-cell grid-header" style={{width:'190px'}}>2024- 01-11 11:44</th>
             <th className="grid-cell grid-header" style={{width:'190px'}}>2024- 01-11 11:44</th>
+
           </tr>
         </thead>
         <tbody>
@@ -351,9 +353,10 @@ const handleColumnSelection = (columnName) => {
             <td className="grid-cell grid-content text-center" style={{color:"red", textAlign:"center", fontWeight: 'bold',width:'190px' }}>93</td>
             <td className="grid-cell grid-content text-center" style={{color:"red", textAlign:"center", fontWeight: 'bold',width:'190px' }}>87</td>
             <td className="grid-cell grid-content text-center" style={{color:"red", textAlign:"center", fontWeight: 'bold',width:'190px' }}>87</td>
+
           </tr>
-          {/* Additional rows can be added following the same pattern */}
           <tr className="grid-row">
+
             <td className="grid-cell grid-content text-center" style={{ backgroundColor: "#3e4956", color: "white", fontWeight: 'bold', textAlign:"center",width:'190px' }}>HR</td>
             <td className="grid-cell grid-content text-center" style={{textAlign:"center", fontWeight: 'bold',width:'190px' }}>118</td>
             <td className="grid-cell grid-content text-center" style={{textAlign:"center", fontWeight: 'bold',width:'190px' }}>125</td>
@@ -726,7 +729,9 @@ const handleColumnSelection = (columnName) => {
             <td className="grid-cell grid-content text-center" style={{textAlign:"center", fontWeight: 'bold',width:'190PX' }}>35.7</td>
             <td className="grid-cell grid-content text-center" style={{textAlign:"center", fontWeight: 'bold',width:'190px' }}>35.9</td>
             <td className="grid-cell grid-content text-center" style={{textAlign:"center", fontWeight: 'bold',width:'190PX' }}>36.6</td>
+
           </tr>
+
         </tbody>
       </table>
     </div>
