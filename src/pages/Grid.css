@@ -1,7 +1,7 @@
 /* Grid.css */
 .table-auto {
     border-collapse: separate;
-    border-spacing: 100px; /* 원하는 간격 값으로 조절하세요 */
+    border-spacing: 100%; /* 원하는 간격 값으로 조절하세요 */
   }
 
 .grid-container {
