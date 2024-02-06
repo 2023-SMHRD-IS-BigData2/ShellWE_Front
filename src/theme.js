@@ -193,14 +193,16 @@ export const themeSettings = (mode) => {
   };
 };
 
-// context for color mode
+/**색상 변경 함수 context for color mode */
 export const ColorModeContext = createContext({
   toggleColorMode: () => {},
 });
 
+/**색상 설정하는 함수 */
 export const useMode = () => {
   const [mode, setMode] = useState("dark");
 
+  /** 다크 or 라이트 */
   const colorMode = useMemo(
     () => ({
       toggleColorMode: () =>

@@ -6,11 +6,11 @@ import data from "./jsondata.json";
 
 
 const Detail = () => {
-  
+  console.log(data);
   return (
     <div>
       <DetailHeader />
-      <Graphic data={data} />
+      {/* <Graphic data={data} /> */}
       <Chart />
     </div>
   )
