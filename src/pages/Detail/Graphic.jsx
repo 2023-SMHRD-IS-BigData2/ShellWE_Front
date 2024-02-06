@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, {  useState } from "react";
 import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip, ResponsiveContainer, Brush } from "recharts";
 import "./Graphic.css";
 
@@ -116,7 +116,7 @@ export default function Example({ data }) {
                             height={21}
                             stroke="#EB9DA2"
                             startIndex={0}
-                            endIndex={Math.min(7, data.length - 1)}
+                            endIndex={Math.min(7, data - 1)}
                         />
                     </LineChart>
                 </ResponsiveContainer>

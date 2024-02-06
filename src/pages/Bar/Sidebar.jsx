@@ -60,9 +60,10 @@ const Sidebar = () => {
                     color: "#6870fa !important",
                 },
             }}
+            
         >
-            <ProSidebar collapsed={isCollapsed}>
-                <Menu iconShape="square">
+            <ProSidebar collapsed={isCollapsed}  style={{borderTopRightRadius:"30px"}}>
+                <Menu iconShape="square" style={{borderTopRightRadius:"30px"}}>
                     {/* LOGO AND MENU ICON */}
                     <MenuItem
                         onClick={() => setIsCollapsed(!isCollapsed)}
@@ -80,7 +81,7 @@ const Sidebar = () => {
                                 ml="15px"
                             >
                                 <Typography variant="h3" color={colors.grey[100]}>
-                                    ShellWE SMART
+                                    ShellWE
                                 </Typography>
                                 <IconButton onClick={() => setIsCollapsed(!isCollapsed)}>
                                     <MenuOutlinedIcon />
