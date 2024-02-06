@@ -12,18 +12,20 @@ const ShellWE = () => {
   const [comment, setComment] = useState([]);
 
   return (
-      <PatientContext.Provider value={{setPatient, patient, comment, setComment}}>
-    <div>
+    <PatientContext.Provider value={{ setPatient, patient, comment, setComment }}>
+      <div>
 
         <h1>ShellWE</h1>
         <Routes>
-            <Route path='/login' element={<Login />} />
-            <Route path='/*' element={<View patient={patient} setPatient={setPatient}/>} />
+          {/* 로그인 페이지 */}
+          <Route path='/login' element={<Login />} />
+          {/* 로그인 된 페이지 */}
+          <Route path='/*' element={<View patient={patient} setPatient={setPatient} />} />
         </Routes>
-            
 
-    </div>
-      </PatientContext.Provider>
+
+      </div>
+    </PatientContext.Provider>
   )
 }
 

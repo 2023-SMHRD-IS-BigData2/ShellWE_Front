@@ -11,8 +11,6 @@ const View = () => {
   useEffect(()=>{
     axios.get('http://localhost:3000/PatientList.json')
     .then(res => setPatient(res.data.List[0]))
-  },[])
-  useEffect(()=>{
     axios.get('http://localhost:3000/Comment.json')
     .then(res => setComment(res.data.List[0]))
   },[])
@@ -20,8 +18,11 @@ const View = () => {
   return (
     <div>
       <Routes>
+        {/* 디테일 페이지 */}
         <Route path='/detail' element={ <Detail />} />
+        {/* 메인 페이지 */}
         <Route path='/main' element={ <Main />} />
+        {/* 관리자 페이지 */}
         <Route path='/admin' element={ <Admin />} />
       </Routes>
       
