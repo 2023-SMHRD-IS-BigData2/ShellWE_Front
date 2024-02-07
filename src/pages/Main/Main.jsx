@@ -10,45 +10,40 @@ const Contacts = () => {
   const colors = tokens(theme.palette.mode);
 
   const columns = [
-    { field: "id", headerName: "ID", flex: 0.5 },
-    { field: "registrarId", headerName: "Registrar ID" },
-    {
-      field: "name",
-      headerName: "Name",
-      flex: 1,
-      cellClassName: "name-column--cell",
-    },
+    { field: "patinum", headerName: "patinum",},
+    { field: "name", headerName: "name" },
     {
       field: "age",
-      headerName: "Age",
-      type: "number",
-      headerAlign: "left",
-      align: "left",
+      headerName: "age",
+      cellClassName: "age-column--cell",
     },
     {
-      field: "phone",
-      headerName: "Phone Number",
-      flex: 1,
+      field: "bloodtype",
+      headerName: "bloodtype ",
     },
     {
-      field: "email",
-      headerName: "Email",
-      flex: 1,
+      field: "gender",
+      headerName: "gender",
     },
     {
-      field: "address",
-      headerName: "Address",
-      flex: 1,
+      field: "hpdate",
+      headerName: "hpdate",
     },
     {
-      field: "city",
-      headerName: "City",
-      flex: 1,
+      field: "physician",
+      headerName: "physician",
     },
     {
-      field: "zipCode",
-      headerName: "Zip Code",
-      flex: 1,
+      field: "sepsisscore",
+      headerName: "sepsisscore",
+    },
+    {
+      field: "sepsisslevel",
+      headerName: "sepsisslevel",
+    },
+    {
+      field: "ward",
+      headerName: "ward",
     },
   ];
 
