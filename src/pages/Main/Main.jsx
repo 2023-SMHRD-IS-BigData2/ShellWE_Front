@@ -11,11 +11,11 @@ const Contacts = () => {
 
   const columns = [
 
-    { field: "id", headerName: "patinum", },
-    { field: "name", headerName: "name" },
+    { field: "id", headerName: "순번", },
+    { field: "name", headerName: "환자명" },
     {
       field: "age",
-      headerName: "age",
+      headerName: "나이",
       cellClassName: "age-column--cell",
       type: "number",
       headerAlign: "left",
@@ -24,31 +24,31 @@ const Contacts = () => {
     {
 
       field: "bloodtype",
-      headerName: "bloodtype ",
+      headerName: "혈액형",
     },
     {
       field: "gender",
-      headerName: "gender",
+      headerName: "성별",
     },
     {
       field: "hpdate",
-      headerName: "hpdate",
+      headerName: "입원일자",
     },
     {
       field: "physician",
-      headerName: "physician",
+      headerName: "담당 의료진",
     },
     {
       field: "sepsisscore",
-      headerName: "sepsisscore",
+      headerName: "SMART",
     },
     {
       field: "sepsisslevel",
-      headerName: "sepsisslevel",
+      headerName: "패혈증 상태",
     },
     {
       field: "ward",
-      headerName: "ward",
+      headerName: "병동",
     },
   ];
 
