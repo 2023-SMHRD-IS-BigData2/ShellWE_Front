@@ -10,6 +10,7 @@ const Contacts = () => {
   const colors = tokens(theme.palette.mode);
 
   const columns = [
+
     { field: "id", headerName: "patinum", },
     { field: "name", headerName: "name" },
     {
@@ -21,6 +22,7 @@ const Contacts = () => {
       align: "left",
     },
     {
+
       field: "bloodtype",
       headerName: "bloodtype ",
     },
