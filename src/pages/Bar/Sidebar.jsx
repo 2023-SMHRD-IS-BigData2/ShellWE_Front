@@ -116,7 +116,7 @@ const Sidebar = () => {
                     <Box paddingLeft={isCollapsed ? undefined : "10%"}>
                         <Item
                             title="Dashboard"
-                            to="/"
+                            to="/main"
                             icon={<HomeOutlinedIcon />}
                             selected={selected}
                             setSelected={setSelected}
@@ -131,7 +131,7 @@ const Sidebar = () => {
                         </Typography>
                         <Item
                             title="Manage Team"
-                            to="/main"
+                            to="/main/list"
                             icon={<PeopleOutlinedIcon />}
                             selected={selected}
                             setSelected={setSelected}
@@ -154,14 +154,14 @@ const Sidebar = () => {
                         />
                         <Item
                             title="Calendar"
-                            to="/main"
+                            to="/main/list"
                             icon={<CalendarTodayOutlinedIcon />}
                             selected={selected}
                             setSelected={setSelected}
                         />
                         <Item
                             title="문의 사항"
-                            to="/main"
+                            to="/main/list"
                             icon={<HelpOutlineOutlinedIcon />}
                             selected={selected}
                             setSelected={setSelected}

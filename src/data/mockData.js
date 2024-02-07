@@ -77,7 +77,6 @@ export const mockDataTeam = [
 
 export const mockDataContacts = [
   {
-
     id:1,
     name: "김민지",
     age: 35,
@@ -141,7 +140,7 @@ export const mockDataContacts = [
     id:6,
     name: "김채원",
     age: 22,
-    bloodtype : "형",
+    bloodtype : "AB형",
     gender : "여성",
     hpdate: 2023-11-12,
     physician: "장준휴",
@@ -221,6 +220,8 @@ export const mockDataContacts = [
     sepsisslevel: "none",
     ward: "A병동"
   },
+  
+ 
 ];
 
 export const mockDataInvoices = [

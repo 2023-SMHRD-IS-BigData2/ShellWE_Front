@@ -11,7 +11,7 @@ const Detail = () => {
     <div>
       <DetailHeader />
       {/* <Graphic data={data} /> */}
-      <Chart />
+      {/* /*<Chart /> */}
     </div>
   )
 }

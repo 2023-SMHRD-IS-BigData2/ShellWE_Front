@@ -2,6 +2,7 @@ import React, { useEffect, useState, useContext } from 'react'
 import { Route, Routes } from "react-router-dom";
 import Detail from '../Detail/Detail'
 import Main from '../Main/Main'
+import Home from '../home/Main'
 import Admin from '../Admin/Admin'
 import { PatientContext } from '../../context/PatientContext'
 import { ColorModeContext, useMode } from '../../theme';
@@ -31,7 +32,8 @@ const View = () => {
           <main className="content" >
             <Topbar setIsSidebar={setIsSidebar} />
             <Routes>
-              <Route path='/' element={<Main />} />
+              <Route path='/' element={<Home />} />
+              <Route path='/list' element={<Main />} />
               <Route path='/detail' element={<Detail />} />
               <Route path='/admin' element={<Admin />} />
             </Routes>
