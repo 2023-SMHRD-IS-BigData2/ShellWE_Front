@@ -14,7 +14,8 @@ const Grid = () => {
   // 예시 handleColumnSelection 함수
   const handleColumnSelection = (columnName) => {
     // 선택한 열이 이미 선택되어 있는지 확인
-    const isColumnAlreadySelected = selectedColumns.includes(columnName)
+    const isColumnAlreadySelected = selectedColumns.includes(columnName);
+
     // 선택한 열이 이미 선택되어 있다면 제거, 아니면 추가
     if (isColumnAlreadySelected) {
       setSelectedColumns(selectedColumns.filter(col => col !== columnName));
@@ -29,16 +30,291 @@ const Grid = () => {
   return (
 
     <div className="grid-container mx-auto my-8 text-center" style={{ width: '1900px' }}>
-      
-      <thead>
-          <tr className="grid-row" style={{ width: '1900px' }}>
-            <th className="grid-cell grid-header" style={{ backgroundColor: "#283443", color: "white", fontWeight: 'bold', width: '190px' }}>HR</th>
-            <th className="grid-cell grid-header" style={{ width: '190px', backgroundColor: "#283443" }}>정상</th>
-            <th className="grid-cell grid-header" style={{ width: '190px', backgroundColor: "#283443"  }}>확인하기</th>
+      <div style={{ position: 'relative' }} >
+        <button style={{ marginLeft: '1670px' }} onClick={handleToggleClick}>
+          원하시는 컬럼을 선택해주세요
+        </button>
 
-          </tr>
-        </thead>
+        {/* 토글 부분 */}
+        {isToggleVisible && (
+          <div style={{ position: 'absolute', top: '40px', left: '1360px', width: '500px', backgroundColor: '#fff', border: '1px solid #ccc', padding: '5px', zIndex: 1 }}>
+            <table border="1">
+              <thead>
+                <tr>
+                  <td>
+                    <input
+                      type="checkbox"
+                      name="columm"
+                      value="HR"
+                      checked={isColumnSelected('HR')}
+                      onChange={() => handleColumnSelection('HR')}
+                    />
+                    HR
+                  </td>
+                  <td>
+                    <input
+                      type="checkbox"
+                      name="columm"
+                      value="O2Sat"
+                      checked={isColumnSelected('O2Sat')}
+                      onChange={() => handleColumnSelection('O2Sat')}
+                    />
+                    O2Sat
+                  </td>
+                  <td>
+                    <input
+                      type="checkbox"
+                      name="columm"
+                      value="Temp"
+                      checked={isColumnSelected('Temp')}
+                      onChange={() => handleColumnSelection('Temp')}
+                    />
+                    Temp
+                  </td>
+                  <td>
+                    <input
+                      type="checkbox"
+                      name="columm"
+                      value="SBP"
+                      checked={isColumnSelected('SBP')}
+                      onChange={() => handleColumnSelection('SBP')}
+                    />
+                    SBP
+                  </td>
+                  <td>
+                    <input
+                      type="checkbox"
+                      name="columm"
+                      value="MAP"
+                      checked={isColumnSelected('MAP')}
+                      onChange={() => handleColumnSelection('MAP')}
+                    />
+                    MAP
+                  </td>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <input
+                      type="checkbox"
+                      name="columm"
+                      value="DBP"
+                      checked={isColumnSelected('DBP')}
+                      onChange={() => handleColumnSelection('DBP')}
+                    />
+                    DBP
+                  </td>
+                  <td>
+                    <input
+                      type="checkbox"
+                      name="columm"
+                      value="Resp"
+                      checked={isColumnSelected('Resp')}
+                      onChange={() => handleColumnSelection('Resp')}
+                    />
+                    Resp
+                  </td>
+                  <td>
+                    <input
+                      type="checkbox"
+                      name="columm"
+                      value="EtCO2"
+                      checked={isColumnSelected('EtCO2')}
+                      onChange={() => handleColumnSelection('EtCO2')}
+                    />
+                    EtCO2
+                  </td>
+                  <td>
+                    <input
+                      type="checkbox"
+                      name="columm"
+                      value="BaseExcess"
+                      checked={isColumnSelected('BaseExcess')}
+                      onChange={() => handleColumnSelection('BaseExcess')}
+                    />
+                    BaseExcess
+                  </td>
+                  <td>
+                    <input
+                      type="checkbox"
+                      name="columm"
+                      value="HCO3"
+                      checked={isColumnSelected('HCO3')}
+                      onChange={() => handleColumnSelection('HCO3')}
+                    />
+                    HCO3
+                  </td>
+                </tr>
+              </tbody>
+              <tbody>
+                <tr>
+                  <td>
+                    <input
+                      type="checkbox"
+                      name="columm"
+                      value="FiO2"
+                      checked={isColumnSelected('FiO2')}
+                      onChange={() => handleColumnSelection('FiO2')}
+                    />
+                    FiO2
+                  </td>
+                  <td>
+                    <input
+                      type="checkbox"
+                      name="columm"
+                      value="pH"
+                      checked={isColumnSelected('pH')}
+                      onChange={() => handleColumnSelection('pH')}
+                    />
+                    pH
+                  </td>
+                  <td>
+                    <input
+                      type="checkbox"
+                      name="columm"
+                      value="PaCO2"
+                      checked={isColumnSelected('PaCO2')}
+                      onChange={() => handleColumnSelection('PaCO2')}
+                    />
+                    PaCO2
+                  </td>
+                  <td>
+                    <input
+                      type="checkbox"
+                      name="columm"
+                      value="SaO2"
+                      checked={isColumnSelected('SaO2')}
+                      onChange={() => handleColumnSelection('SaO2')}
+                    />
+                    SaO2
+                  </td>
+                  <td>
+                    <input
+                      type="checkbox"
+                      name="columm"
+                      value="AST"
+                      checked={isColumnSelected('AST')}
+                      onChange={() => handleColumnSelection('AST')}
+                    />
+                    AST
+                  </td>
+                </tr>
+              </tbody>
+              <tbody>
+                <tr>
+                  <td>
+                    <input
+                      type="checkbox"
+                      name="columm"
+                      value="BUN"
+                      checked={isColumnSelected('BUN')}
+                      onChange={() => handleColumnSelection('BUN')}
+                    />
+                    BUN
+                  </td>
+                  <td>
+                    <input
+                      type="checkbox"
+                      name="columm"
+                      value="Alkalinephos"
+                      checked={isColumnSelected('Alkalinephos')}
+                      onChange={() => handleColumnSelection('Alkalinephos')}
+                    />
+                    Alkalinephos
+                  </td>
+                  <td>
+                    <input
+                      type="checkbox"
+                      name="columm"
+                      value="Calcium"
+                      checked={isColumnSelected('Calcium')}
+                      onChange={() => handleColumnSelection('Calcium')}
+                    />
+                    Calcium
+                  </td>
+                  <td>
+                    <input
+                      type="checkbox"
+                      name="columm"
+                      value="Chloride"
+                      checked={isColumnSelected('Chloride')}
+                      onChange={() => handleColumnSelection('Chloride')}
+                    />
+                    Chloride
+                  </td>
+                  <td>
+                    <input
+                      type="checkbox"
+                      name="columm"
+                      value="Creatinine"
+                      checked={isColumnSelected('Creatinine')}
+                      onChange={() => handleColumnSelection('Creatinine')}
+                    />
+                    Creatinine
+                  </td>
+                </tr>
+              </tbody>
+              <tbody>
+                <tr>
+                  <td>
+                    <input
+                      type="checkbox"
+                      name="columm"
+                      value="Bilirubin_direct"
+                      checked={isColumnSelected('Bilirubin_direct')}
+                      onChange={() => handleColumnSelection('Bilirubin_direct')}
+                    />
+                    Bilirubin_direct
+                  </td>
+                  <td>
+                    <input
+                      type="checkbox"
+                      name="columm"
+                      value="Glucose"
+                      checked={isColumnSelected('Glucose')}
+                      onChange={() => handleColumnSelection('Glucose')}
+                    />
+                    Glucose
+                  </td>
+                  <td>
+                    <input
+                      type="checkbox"
+                      name="columm"
+                      value="Lactate"
+                      checked={isColumnSelected('Lactate')}
+                      onChange={() => handleColumnSelection('Lactate')}
+                    />
+                    Glucose
+                  </td>
+                  <td>
+                    <input
+                      type="checkbox"
+                      name="columm"
+                      value="Magnesium"
+                      checked={isColumnSelected('Magnesium')}
+                      onChange={() => handleColumnSelection('Magnesium')}
+                    />
+                    Magnesium
+                  </td>
+                  <td>
+                    <input
+                      type="checkbox"
+                      name="columm"
+                      value="Phosphate"
+                      checked={isColumnSelected('Phosphate')}
+                      onChange={() => handleColumnSelection('Phosphate')}
+                    />
+                    Phosphate
+                  </td>
+                </tr>
+              </tbody>
+            </table>
 
+          </div>
+        )}
+
+      </div>
 
       {/* 도표 부분 */}
       <table className="table-auto w-full">
@@ -70,7 +346,7 @@ const Grid = () => {
           </tr>
           <tr className="grid-row">
             <td className="grid-cell grid-content text-center" style={{ backgroundColor: "#283443", color: "white", fontWeight: 'bold', textAlign: "center", width: '190px' }}>SMART</td>
-            <td className="grid-cell grid-content text-center" style={{ color: "red", textAlign: "center", fontWeight: 'bold', width: '190px' }}>59</td>
+            <td className="grid-cell grid-content text-center" style={{ color: "red", textAlign: "center", fontWeight: 'bold', width: '190px' }}>74</td>
             <td className="grid-cell grid-content text-center" style={{ color: "red", textAlign: "center", fontWeight: 'bold', width: '190px' }}>87</td>
             <td className="grid-cell grid-content text-center" style={{ color: "red", textAlign: "center", fontWeight: 'bold', width: '190px' }}>85</td>
             <td className="grid-cell grid-content text-center" style={{ color: "red", textAlign: "center", fontWeight: 'bold', width: '190px' }}>84</td>

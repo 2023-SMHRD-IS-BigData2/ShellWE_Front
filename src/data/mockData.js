@@ -77,11 +77,11 @@ export const mockDataTeam = [
 
 export const mockDataContacts = [
   {
-    id: 1,
-    name: "Jon Snow",
-    email: "jonsnow@gmail.com",
-    age: 35,
-    phone: "(665)121-5454",
+    age: 1,
+    bloodtype: "Jon dfdf",
+    gender: "jonsnow@gmail.com",
+    hpdate: 35,
+    name: "(665)121-5454",
     address: "0912 Won Street, Alabama, SY 10001",
     city: "New York",
     zipCode: "10001",
