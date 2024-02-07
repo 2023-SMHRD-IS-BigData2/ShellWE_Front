@@ -10,12 +10,15 @@ const Contacts = () => {
   const colors = tokens(theme.palette.mode);
 
   const columns = [
-    { field: "patinum", headerName: "patinum",},
+    { field: "id", headerName: "patinum", },
     { field: "name", headerName: "name" },
     {
       field: "age",
       headerName: "age",
       cellClassName: "age-column--cell",
+      type: "number",
+      headerAlign: "left",
+      align: "left",
     },
     {
       field: "bloodtype",
