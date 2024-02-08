@@ -35,7 +35,6 @@ const View = () => {
               <Route path='/' element={<Home />} />
               <Route path='/list' element={<Main />} />
               <Route path='/detail' element={<Detail />} />
-              <Route path='/admin' element={<Admin />} />
             </Routes>
           </main>
         </div>
