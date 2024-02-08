@@ -6,11 +6,8 @@ import "react-pro-sidebar/dist/css/styles.css";
 import { tokens } from "../../theme";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import PeopleOutlinedIcon from "@mui/icons-material/PeopleOutlined";
-import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
-import CalendarTodayOutlinedIcon from "@mui/icons-material/CalendarTodayOutlined";
-import HelpOutlineOutlinedIcon from "@mui/icons-material/HelpOutlineOutlined";
-import TimelineOutlinedIcon from "@mui/icons-material/TimelineOutlined";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
+import SettingsIcon from '@mui/icons-material/Settings';
 
 const Item = ({ title, to, icon, selected, setSelected }) => {
     const theme = useTheme();
@@ -84,39 +81,11 @@ const Sidebar = () => {
                             </Box>
                         )}
                     </MenuItem>
-                    {/* 
-                    // 로고와 제목
-                    {!isCollapsed && (
-                        <Box mb="25px">
-                            <Box display="flex" justifyContent="center" alignItems="center">
-                                <img
-                                    alt="profile-user"
-                                    width="100px"
-                                    height="100px"
-                                    src={`../../assets/user.png`}
-                                    style={{ cursor: "pointer", borderRadius: "50%" }}
-                                />
-                            </Box>
-                            <Box textAlign="center">
-                                <Typography
-                                    variant="h2"
-                                    color={colors.grey[100]}
-                                    fontWeight="bold"
-                                    sx={{ m: "10px 0 0 0" }}
-                                >
-                                    ROXI
-                                </Typography>
-                                <Typography variant="h5" color={colors.greenAccent[500]}>
-                                    패혈증 예측
-                                </Typography>
-                            </Box>
-                        </Box>
-                    )} */}
 
                     <Box paddingLeft={isCollapsed ? undefined : "10%"}>
                         <Item
                             title="Dashboard"
-                            to="/main"
+                            to="/admin"
                             icon={<HomeOutlinedIcon />}
                             selected={selected}
                             setSelected={setSelected}
@@ -127,47 +96,33 @@ const Sidebar = () => {
                             color={colors.grey[300]}
                             sx={{ m: "15px 0 5px 20px" }}
                         >
-                            Data
+                            의료진 관리
                         </Typography>
                         <Item
-                            title="Manage Team"
-                            to="/main/list"
+                            title="Staffs"
+                            to="/admin/list"
                             icon={<PeopleOutlinedIcon />}
                             selected={selected}
                             setSelected={setSelected}
                         />
-                        
+
 
                         <Typography
                             variant="h6"
                             color={colors.grey[300]}
                             sx={{ m: "15px 0 5px 20px" }}
                         >
-                            Pages
+                            환경설정
                         </Typography>
                         <Item
-                            title="Admin"
-                            to="/admin"
-                            icon={<PersonOutlinedIcon />}
-                            selected={selected}
-                            setSelected={setSelected}
-                        />
-                        <Item
-                            title="Calendar"
-                            to="/main/list"
-                            icon={<CalendarTodayOutlinedIcon />}
-                            selected={selected}
-                            setSelected={setSelected}
-                        />
-                        <Item
                             title="문의 사항"
-                            to="/main/list"
-                            icon={<HelpOutlineOutlinedIcon />}
+                            to="/admin/settings"
+                            icon={<SettingsIcon />}
                             selected={selected}
                             setSelected={setSelected}
                         />
 
-                        
+
                     </Box>
                 </Menu>
             </ProSidebar>
