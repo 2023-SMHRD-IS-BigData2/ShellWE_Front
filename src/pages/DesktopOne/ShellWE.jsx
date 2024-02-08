@@ -3,6 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import View from './View';
 import Login from '../Login/Login'
 import { PatientContext } from '../../context/PatientContext';
+import Admin from '../Admin/Admin';
 
 const ShellWE = () => {
 
@@ -19,6 +20,7 @@ const ShellWE = () => {
           <Route path='/' element={<Login />} />
           {/* 로그인 된 페이지 */}
           <Route path='/main/*' element={<View />}/>
+          <Route path='/admin/*' element={<Admin/>}/>
           </Routes>
       </div>
     </PatientContext.Provider>

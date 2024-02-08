@@ -9,6 +9,8 @@ const Login = () => {
       </h1>
 
       <Link to='/main'>메인 페이지</Link>
+      <br />
+      <Link to='/admin'>admin</Link>
 
     </div>
   )
