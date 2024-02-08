@@ -1,19 +1,19 @@
 import React from 'react';
+import ContactsWrapper from '../Main/Main';
 
 // 더미 데이터
-const cardData = [
-  { id: 1, title: '카드 1', content: '이것은 첫 번째 카드입니다.' },
-  { id: 2, title: '카드 2', content: '이것은 두 번째 카드입니다.' },
-  { id: 3, title: '카드 3', content: '이것은 세 번째 카드입니다.' },
+const cardData1 = [
+  { id: 1, content: <ContactsWrapper /> },
 ];
 
 // 각각의 카드를 렌더링하는 함수형 컴포넌트
 const Card = ({ title, content }) => (
-  <div style={{ border: '1px solid #ccc', borderRadius: '5px', padding: '10px', margin: '10px' }}>
-    <h2>{title}</h2>
-    <p>{content}</p>
-  </div>
-);
+    <div style={{ border: '1px solid #ccc', borderRadius: '5px', padding: '10px', margin: '20px' }}>
+      <h1 style={{ fontSize: '24px', margin: '0', paddingBottom: '10px', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis'  }}>{title}</h1>
+      <p style={{ maxHeight: '500px', overflow:'auto' }}>{content}</p>
+    </div>
+  );
+  
 
 // 카드 목록을 렌더링하는 함수형 컴포넌트
 const CardList = ({ data }) => (
@@ -27,8 +27,9 @@ const CardList = ({ data }) => (
 // App 컴포넌트
 const App = () => (
   <div>
-    <h1>카드 형식의 화면</h1>
-    <CardList data={cardData} />
+    <h2 style={{margin:'50px'}}>전체 환자 수</h2>
+    <CardList data={cardData1}/>
+
   </div>
 );
 
