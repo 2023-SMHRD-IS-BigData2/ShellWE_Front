@@ -1,11 +1,10 @@
-import React, { useEffect, useState, useContext } from 'react'
+import React, {  useState  } from 'react'
 import { Route, Routes } from "react-router-dom";
+import { CssBaseline, ThemeProvider } from '@mui/material';
+import { ColorModeContext, useMode } from '../../theme';
 import Detail from '../Detail/Detail'
 import Main from '../Main/Main'
 import Home from '../home/Main'
-import { PatientContext } from '../../context/PatientContext'
-import { ColorModeContext, useMode } from '../../theme';
-import { CssBaseline, ThemeProvider } from '@mui/material';
 import Sidebar from '../Bar/Sidebar';
 import Topbar from '../Bar/Topbar';
 
@@ -24,7 +23,7 @@ const View = () => {
             <Routes>
               <Route path='/' element={<Home />} />
               <Route path='/list' element={<Main />} />
-              <Route path='/detail' element={<Detail />} />
+              <Route path='/detail/:num' element={<Detail />} />
             </Routes>
           </main>
         </div>

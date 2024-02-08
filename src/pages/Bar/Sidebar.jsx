@@ -6,10 +6,7 @@ import "react-pro-sidebar/dist/css/styles.css";
 import { tokens } from "../../theme";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import PeopleOutlinedIcon from "@mui/icons-material/PeopleOutlined";
-import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
 import CalendarTodayOutlinedIcon from "@mui/icons-material/CalendarTodayOutlined";
-import HelpOutlineOutlinedIcon from "@mui/icons-material/HelpOutlineOutlined";
-import TimelineOutlinedIcon from "@mui/icons-material/TimelineOutlined";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 
 const Item = ({ title, to, icon, selected, setSelected }) => {
@@ -84,11 +81,10 @@ const Sidebar = () => {
                             </Box>
                         )}
                     </MenuItem>
-                    {/* 
-                    // 로고와 제목
                     {!isCollapsed && (
                         <Box mb="25px">
                             <Box display="flex" justifyContent="center" alignItems="center">
+                            {/* 
                                 <img
                                     alt="profile-user"
                                     width="100px"
@@ -96,6 +92,7 @@ const Sidebar = () => {
                                     src={`../../assets/user.png`}
                                     style={{ cursor: "pointer", borderRadius: "50%" }}
                                 />
+                            */}
                             </Box>
                             <Box textAlign="center">
                                 <Typography
@@ -104,14 +101,14 @@ const Sidebar = () => {
                                     fontWeight="bold"
                                     sx={{ m: "10px 0 0 0" }}
                                 >
-                                    ROXI
+                                    SMART
                                 </Typography>
                                 <Typography variant="h5" color={colors.greenAccent[500]}>
-                                    패혈증 예측
+                                    Sepsis Monitoring and Risk Tracking
                                 </Typography>
                             </Box>
                         </Box>
-                    )} */}
+                    )}
 
                     <Box paddingLeft={isCollapsed ? undefined : "10%"}>
                         <Item
@@ -136,7 +133,7 @@ const Sidebar = () => {
                             selected={selected}
                             setSelected={setSelected}
                         />
-                        
+
 
                         <Typography
                             variant="h6"
@@ -145,29 +142,17 @@ const Sidebar = () => {
                         >
                             Pages
                         </Typography>
-                        <Item
-                            title="Admin"
-                            to="/admin"
-                            icon={<PersonOutlinedIcon />}
-                            selected={selected}
-                            setSelected={setSelected}
-                        />
+
                         <Item
                             title="Calendar"
-                            to="/main/list"
+                            to="/main/calendar"
                             icon={<CalendarTodayOutlinedIcon />}
                             selected={selected}
                             setSelected={setSelected}
                         />
-                        <Item
-                            title="문의 사항"
-                            to="/main/list"
-                            icon={<HelpOutlineOutlinedIcon />}
-                            selected={selected}
-                            setSelected={setSelected}
-                        />
 
-                        
+
+
                     </Box>
                 </Menu>
             </ProSidebar>
