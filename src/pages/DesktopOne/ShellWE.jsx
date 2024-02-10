@@ -15,13 +15,14 @@ const ShellWE = () => {
   return (
     <PatientContext.Provider value={{ setPatient, patient, comment, setComment }}>
       <div className='app'>
+
+        {/* 로그인, 의료진, 관리자 페이지 */}
         <Routes>
-          {/* 로그인 페이지 */}
           <Route path='/' element={<Login />} />
-          {/* 로그인 된 페이지 */}
-          <Route path='/main/*' element={<View />}/>
-          <Route path='/admin/*' element={<Admin/>}/>
-          </Routes>
+          <Route path='/main/*' element={<View />} />
+          <Route path='/admin/*' element={<Admin />} />
+        </Routes>
+
       </div>
     </PatientContext.Provider>
   )

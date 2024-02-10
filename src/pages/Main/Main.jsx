@@ -1,3 +1,4 @@
+import React from "react";
 import { Box } from "@mui/material";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import { tokens } from "../../theme";
@@ -44,6 +45,8 @@ const Contacts = () => {
           "& .MuiDataGrid-toolbarContainer .MuiButton-text": {
             color: `${colors.grey[100]} !important`,
           },
+           // 스크롤 추가
+           overflow: "auto",
         }}
       >
         <DataGrid
@@ -56,4 +59,10 @@ const Contacts = () => {
   );
 };
 
-export default Contacts;
+const ContactsWrapper = () => (
+  <Box>
+    <Contacts />
+  </Box>
+);
+
+export default ContactsWrapper;

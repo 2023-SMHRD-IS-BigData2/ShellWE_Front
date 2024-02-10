@@ -3,20 +3,24 @@ import { Box } from "@mui/material";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import { tokens } from "../../theme";
 import { mockDataContacts } from "../../data/mockData";
-// import Header from "../../components/Header";
 import { useTheme } from "@mui/material";
 import PeopleOutlinedIcon from "@mui/icons-material/PeopleOutlined";
 import StatBox from './StatBox';
 import columns from './columns.json';
 
+
+ // App 컴포넌트
 const App = () => {
+// 더미 데이터
+const cardData1 = [
+  { id: 1, content: <ContactsWrapper /> },
+];
 
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
 
   return (
     <Box m="20px">
-      {/* 카드 섹션 */}
       <Box
         display="grid"
         gridTemplateColumns="repeat(12, 1fr)"
@@ -87,5 +91,6 @@ const App = () => {
     </Box>
   );
 };
+
 
 export default App;
