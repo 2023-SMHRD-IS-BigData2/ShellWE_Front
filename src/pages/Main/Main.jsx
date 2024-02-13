@@ -5,53 +5,13 @@ import { tokens } from "../../theme";
 import { mockDataContacts } from "../../data/mockData";
 // import Header from "../../components/Header";
 import { useTheme } from "@mui/material";
+import columns from './columns.json';
 
 const Contacts = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
 
-  const columns = [
 
-    { field: "id", headerName: "순번", },
-    { field: "name", headerName: "환자명" },
-    {
-      field: "age",
-      headerName: "나이",
-      cellClassName: "age-column--cell",
-      type: "number",
-      headerAlign: "left",
-      align: "left",
-    },
-    {
-
-      field: "bloodtype",
-      headerName: "혈액형",
-    },
-    {
-      field: "gender",
-      headerName: "성별",
-    },
-    {
-      field: "hpdate",
-      headerName: "입원일자",
-    },
-    {
-      field: "physician",
-      headerName: "담당 의료진",
-    },
-    {
-      field: "sepsisscore",
-      headerName: "SMART",
-    },
-    {
-      field: "sepsisslevel",
-      headerName: "패혈증 상태",
-    },
-    {
-      field: "ward",
-      headerName: "병동",
-    },
-  ];
 
   return (
     <Box m="20px">
@@ -91,7 +51,7 @@ const Contacts = () => {
       >
         <DataGrid
           rows={mockDataContacts}
-          columns={columns}
+          columns={columns.columns}
           components={{ Toolbar: GridToolbar }}
         />
       </Box>
