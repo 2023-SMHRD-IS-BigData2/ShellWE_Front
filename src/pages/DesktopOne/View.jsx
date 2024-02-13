@@ -3,8 +3,8 @@ import { Route, Routes } from "react-router-dom";
 import { CssBaseline, ThemeProvider } from '@mui/material';
 import { ColorModeContext, useMode } from '../../theme';
 import Detail from '../Detail/Detail'
-import Main from '../Main/Main'
-import Home from '../home/Main'
+import Dashboard from '../Main/Dashboard'
+import List from '../Main/List'
 import Sidebar from '../Bar/Sidebar';
 import Topbar from '../Bar/Topbar';
 
@@ -21,10 +21,12 @@ const View = () => {
           <main className="content" >
             <Topbar setIsSidebar={setIsSidebar} />            {/* 톱바 (로그인, 다크모드)  */}
             <Routes>
-              <Route path='/' element={<Home />} />                 {/*  메인 대쉬보드 */}
-              <Route path='/list' element={<Main />} />             {/* 환자 리스트 */}
+              <Route path='/' element={<Dashboard/>} />                 {/*  메인 대쉬보드 */}
+              <Route path='/list' element={<List/>} />             {/* 환자 리스트 */}
               <Route path='/detail/:num' element={<Detail />} />    {/* 환자 상세 페이지 */}
             </Routes>
+            
+            
           </main>
         </div>
       </ThemeProvider>

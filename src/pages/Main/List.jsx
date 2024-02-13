@@ -1,49 +1,45 @@
-import React from 'react';
+import React, { useEffect, useState } from "react";
 import { Box } from "@mui/material";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import { tokens } from "../../theme";
-import { mockDataContacts } from "../../data/mockData";
+// import { mockDataContacts } from "../../data/mockData";
+// import Header from "../../components/Header";
 import { useTheme } from "@mui/material";
-import PeopleOutlinedIcon from "@mui/icons-material/PeopleOutlined";
-import StatBox from './StatBox';
 import columns from './columns.json';
+import axios from "axios";
 
-
- // App 컴포넌트
-const App = () => {
-
-
+const Contacts = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
 
+  const [lists, setList] = useState(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get("http://localhost:8088/boot/getPatient");
+        setList(response.data[0]);
+        console.log("lists", response.data[0]);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  // lists 값이 null인 경우 로딩 상태를 표시하거나 다른 방식으로 처리
+  if (lists === null) {
+    return <div>Loading...</div>;
+  }
+
+  const listsWithId = lists.map((list, index) => ({
+    ...list,
+    id: index + 1,
+  }));
+
   return (
     <Box m="20px">
-      <Box
-        display="grid"
-        gridTemplateColumns="repeat(12, 1fr)"
-        gridAutoRows="140px"
-        gap="20px"
-      >
-        <Box
-          gridColumn="span 3"
-          backgroundColor={colors.primary[400]}
-          display="flex"
-          alignItems="center"
-          justifyContent="center"
-        >
-          <StatBox
-            title="34"                // 값
-            subtitle="의심환자"        // 제목
-            progress="0.14"           // 그래프
-            increase="+14%"           // 퍼센트
-            icon={                    //  아이콘
-              <PeopleOutlinedIcon
-                sx={{ color: colors.greenAccent[600], fontSize: "26px" }}
-              />
-            }
-          />
-        </Box>
-      </Box>
       <Box
         m="40px 0 0 0"
         height="75vh"
@@ -74,14 +70,13 @@ const App = () => {
           "& .MuiDataGrid-toolbarContainer .MuiButton-text": {
             color: `${colors.grey[100]} !important`,
           },
+          // 스크롤 추가
+          overflow: "auto",
         }}
       >
         <DataGrid
-          // 환자 데이터
-          rows={mockDataContacts}
-          // 컬럼명
+          rows={listsWithId}
           columns={columns.columns}
-          // 필터링 기능
           components={{ Toolbar: GridToolbar }}
         />
       </Box>
@@ -89,5 +84,10 @@ const App = () => {
   );
 };
 
+const ContactsWrapper = () => (
+  <Box>
+    <Contacts />
+  </Box>
+);
 
-export default App;
+export default ContactsWrapper;
