@@ -41,6 +41,9 @@ const Data = () => {
         id: index + 1,
     }));
 
+    
+
+    // 컬럼 추가
     const columnslist = [
         ...columns.columns,
         {
@@ -71,8 +74,19 @@ const Data = () => {
                     </Box>
                 );
             },
+        },
+        {
+            field: "comment",
+            headerName: "코멘트",
+            flex: 1,
+            renderCell: () => {
+                return (
+                    <Box onRowClick>버튼</Box>
+                );
+            }
         }
-    ]
+    ];
+   
 
     const handleRowClick = (params) => {
         const num = params.row.patinum;

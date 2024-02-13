@@ -26,8 +26,6 @@ const View = () => {
               <Route path='/list' element={<List />} />             {/* 환자 리스트 */}
               <Route path='/detail/:num' element={<Detail />} />    {/* 환자 상세 페이지 */}
             </Routes>
-
-
           </main>
         </div>
       </ThemeProvider>

@@ -1,0 +1,23 @@
+{
+    "columns": [
+        {
+            "field": "commentnum",
+            "headerName": "순번"
+        },
+        {
+            "field": "membernum",
+            "headerName": "담당 의료진"
+        },
+        {
+            "field": "contents",
+            "headerName": "내용",
+            "flex" : 1,
+            "" : "auto"
+        },
+        {
+            "field": "inputdate",
+            "headerName": "입력시간",
+            "flex":0.4
+        }
+    ]
+}

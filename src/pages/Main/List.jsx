@@ -3,6 +3,7 @@ import { Box } from "@mui/material";
 import { tokens } from "../../theme";
 import { useTheme } from "@mui/material";
 import Data from "./Data";
+import { auto } from "@popperjs/core";
 
 
 const List = () => {
@@ -15,6 +16,7 @@ const List = () => {
             <Box
                 m="25px 0 0 0"
                 height="85vh"
+                overflow={auto}
                 sx={{
                     "& .MuiDataGrid-root": {
                         border: "none",
@@ -42,8 +44,6 @@ const List = () => {
                     "& .MuiDataGrid-toolbarContainer .MuiButton-text": {
                         color: `${colors.grey[100]} !important`,
                     },
-                    // 스크롤 추가
-                    overflow: "auto",
                 }}
             >
                 <Data />

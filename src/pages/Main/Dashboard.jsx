@@ -1,17 +1,59 @@
-import React from 'react';
-import { Box } from "@mui/material";
+import React, { useEffect, useState } from 'react';
+import { Box, Typography } from "@mui/material";
 import { tokens } from "../../theme";
 import { useTheme } from "@mui/material";
 import PeopleOutlinedIcon from "@mui/icons-material/PeopleOutlined";
 import StatBox from './StatBox';
 import Data from './Data';
+import { Button } from '@mui/base';
+import CommentModal from '../DesktopOne/CommentModal';
+import columns from './commentColumns.json';
+import { DataGrid } from '@mui/x-data-grid';
+import axios from 'axios';
 
 // 대쉬보드
 const App = () => {
 
+    const [comments, setComment] = useState(null);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await axios.get("http://localhost:8088/boot/getComment?patinum=3");
+                setComment(response.data.comments);
+                console.log("comment", response.data.comments);
+            } catch (error) {
+                console.log(error);
+            }
+        };
+
+        fetchData();
+    }, []);
+
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    /**Modal열기 */
+    const openModal = () => {
+        setIsModalOpen(true);
+    }
+    /**Modal닫기 */
+    const closeModal = () => {
+        setIsModalOpen(false);
+    }
+
     /** 다크모드 */
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
+
+
+    // lists 값이 null인 경우 로딩 상태를 표시하거나 다른 방식으로 처리
+    if (comments === null) {
+        return <div>Loading...</div>;
+    }
+    // 인덱스 1부터 시작
+    const commentWithId = comments.map((comments, index) => ({
+        ...comments,
+        id: index + 1,
+    }));
 
     return (
         <Box m="20px">
@@ -114,7 +156,49 @@ const App = () => {
             >
                 <Data />
             </Box>
-        </Box>
+            <Box>
+                <Button onClick={openModal}>코멘트</Button>
+            </Box>
+            <CommentModal
+                isOpen={isModalOpen} closeModal={closeModal}>
+                <Box m="40px">
+                    <Box
+                        m="25px 0 0 0"
+                        height="70vh"
+                        sx={{
+                            "& .MuiDataGrid-root": {
+                                border: "none",
+                            },
+                            "& .MuiDataGrid-cell": {
+                                borderBottom: "none",
+                            },
+                            "& .name-column--cell": {
+                                color: colors.greenAccent[300],
+                            },
+                            "& .MuiDataGrid-columnHeaders": {
+                                backgroundColor: colors.grey[700],
+                                borderBottom: "none",
+                            },
+                            // "& .MuiDataGrid-virtualScroller": {
+                            //     backgroundColor: colors.primary[400],
+                            // },
+                            "& .MuiDataGrid-footerContainer": {
+                                borderTop: "none",
+                                backgroundColor: colors.grey[700],
+                            },
+                            // "& .MuiDataGrid-toolbarContainer .MuiButton-text": {
+                            //     color: `${colors.grey[100]} !important`,
+                            // },
+                        }}>
+                        <DataGrid
+                            rows={commentWithId}
+                            columns={columns.columns}
+                        // components={{ Toolbar: GridToolbar }}    
+                        />
+                    </Box>
+                </Box>
+            </CommentModal >
+        </Box >
     );
 };
 
