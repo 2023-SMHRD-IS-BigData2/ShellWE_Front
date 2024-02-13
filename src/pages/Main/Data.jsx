@@ -5,7 +5,8 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 // 환자 데이터 컴포넌트
 const Data = () => {
-
+    
+    const navigate = useNavigate();
     /** 환자 리스트 */
     const [lists, setList] = useState(null);
 
@@ -33,7 +34,6 @@ const Data = () => {
         id: index + 1,
     }));
 
-    const navigate = useNavigate();
     const handleRowClick = (params) => {
         const num = params.row.patinum;
         navigate(`/main/detail/${num}`);
