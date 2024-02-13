@@ -1,35 +1,19 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { tokens } from "../../theme";
 import { useTheme } from "@mui/material"
 import { Box, Typography } from "@mui/material";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import columns from './columns.json';
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
 // 환자 데이터 컴포넌트
-const Data = () => {
+const Data = ({lists}) => {
 
     /** 다크모드 */
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
 
     const navigate = useNavigate();
-    /** 환자 리스트 */
-    const [lists, setList] = useState(null);
-
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const response = await axios.get("http://localhost:8088/boot/getPatient");
-                setList(response.data.patientList);
-                console.log("lists", response.data.patientList);
-            } catch (error) {
-                console.log(error);
-            }
-        };
-
-        fetchData();
-    }, []);
+   
 
     // lists 값이 null인 경우 로딩 상태를 표시하거나 다른 방식으로 처리
     if (lists === null) {
