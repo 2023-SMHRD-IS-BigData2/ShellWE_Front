@@ -2,12 +2,11 @@ import React, { useEffect, useState } from "react";
 import { Box } from "@mui/material";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import { tokens } from "../../theme";
-import { mockDataContacts } from "../../data/mockData";
+// import { mockDataContacts } from "../../data/mockData";
 // import Header from "../../components/Header";
 import { useTheme } from "@mui/material";
 import columns from './columns.json';
 import axios from "axios";
-
 
 const Contacts = () => {
   const theme = useTheme();
@@ -28,6 +27,16 @@ const Contacts = () => {
 
     fetchData();
   }, []);
+
+  // lists 값이 null인 경우 로딩 상태를 표시하거나 다른 방식으로 처리
+  if (lists === null) {
+    return <div>Loading...</div>;
+  }
+
+  const listsWithId = lists.map((list, index) => ({
+    ...list,
+    id: index + 1,
+  }));
 
   return (
     <Box m="20px">
@@ -66,7 +75,7 @@ const Contacts = () => {
         }}
       >
         <DataGrid
-          rows={mockDataContacts}
+          rows={listsWithId}
           columns={columns.columns}
           components={{ Toolbar: GridToolbar }}
         />
