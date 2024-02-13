@@ -47,11 +47,6 @@
             "field": "sepsisscore",
             "headerName": "SMART",
             "flex" : 1
-        },
-        {
-            "field": "sepsisslevel",
-            "headerName": "패혈증 상태",
-            "flex" : 1
         }
     ]
 }
