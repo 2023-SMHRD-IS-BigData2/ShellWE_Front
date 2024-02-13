@@ -10,7 +10,7 @@ import StatBox from './StatBox';
 // App 컴포넌트
 const App = () => {
 
-
+    /** 다크모드 */
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
 
