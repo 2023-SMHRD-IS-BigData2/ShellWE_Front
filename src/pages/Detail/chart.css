@@ -19,7 +19,5 @@
     flex-grow: 1; /* 버튼들이 수직 방향으로 동일한 높이로 늘어납니다. */
   }
   
-  .selected {
-    background: #8884d8;
-  }
+ 
     

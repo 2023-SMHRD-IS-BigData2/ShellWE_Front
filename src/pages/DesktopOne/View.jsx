@@ -2,11 +2,12 @@ import React, { useState } from 'react'
 import { Route, Routes } from "react-router-dom";
 import { CssBaseline, ThemeProvider } from '@mui/material';
 import { ColorModeContext, useMode } from '../../theme';
-import Detail from '../Detail/Detail'
+import Detail from '../Detail/detail_hojun'
 import Dashboard from '../Main/Dashboard'
 import List from '../Main/List'
 import Sidebar from '../Bar/Sidebar';
 import Topbar from '../Bar/Topbar';
+
 
 const View = () => {
   const [theme, colorMode] = useMode();
