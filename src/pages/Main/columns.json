@@ -1,12 +1,13 @@
 {
     "columns": [
         {
-            "field": "id",
+            "field": "patinum",
             "headerName": "순번"
         },
         {
             "field": "name",
-            "headerName": "환자명"
+            "headerName": "환자명",
+            "flex" : 1
         },
         {
             "field": "age",
@@ -14,35 +15,43 @@
             "cellClassName": "age-column--cell",
             "type": "number",
             "headerAlign": "left",
-            "align": "left"
+            "align": "left",
+            "flex" : 1
         },
         {
             "field": "bloodtype",
-            "headerName": "혈액형"
+            "headerName": "혈액형",
+            "flex" : 1
         },
         {
             "field": "gender",
-            "headerName": "성별"
-        },
-        {
-            "field": "hpdate",
-            "headerName": "입원일자"
-        },
-        {
-            "field": "physician",
-            "headerName": "담당 의료진"
-        },
-        {
-            "field": "sepsisscore",
-            "headerName": "SMART"
-        },
-        {
-            "field": "sepsisslevel",
-            "headerName": "패혈증 상태"
+            "headerName": "성별",
+            "flex" : 1
         },
         {
             "field": "ward",
-            "headerName": "병동"
+            "headerName": "병동",
+            "flex" : 1
+        },
+        {
+            "field": "hpdate",
+            "headerName": "입원일자",
+            "flex" : 1
+        },
+        {
+            "field": "physician",
+            "headerName": "담당 의료진",
+            "flex" : 1
+        },
+        {
+            "field": "sepsisscore",
+            "headerName": "SMART",
+            "flex" : 1
+        },
+        {
+            "field": "sepsisslevel",
+            "headerName": "패혈증 상태",
+            "flex" : 1
         }
     ]
 }
