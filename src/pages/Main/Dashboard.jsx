@@ -3,8 +3,8 @@ import { Box } from "@mui/material";
 import { tokens } from "../../theme";
 import { useTheme } from "@mui/material";
 import PeopleOutlinedIcon from "@mui/icons-material/PeopleOutlined";
-import List from './List';
 import StatBox from './StatBox';
+import Data from './Data';
 
 
 // App 컴포넌트
@@ -44,6 +44,8 @@ const App = () => {
             </Box>
             <Box
                 m="25px 0 0 0"
+                height="70vh"
+                        width="168vh"
                 sx={{
                     "& .MuiDataGrid-root": {
                         border: "none",
@@ -73,7 +75,7 @@ const App = () => {
                     },
                 }}
             >
-                <List />
+                <Data />
             </Box>
         </Box>
     );
