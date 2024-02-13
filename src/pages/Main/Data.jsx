@@ -21,8 +21,8 @@ const Data = () => {
         const fetchData = async () => {
             try {
                 const response = await axios.get("http://localhost:8088/boot/getPatient");
-                setList(response.data[0]);
-                console.log("lists", response.data[0]);
+                setList(response.data.patientList);
+                console.log("lists", response.data.patientList);
             } catch (error) {
                 console.log(error);
             }
