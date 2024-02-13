@@ -43,8 +43,7 @@ const App = () => {
                 </Box>
             </Box>
             <Box
-                m="40px 0 0 0"
-                height="75vh"
+                m="25px 0 0 0"
                 sx={{
                     "& .MuiDataGrid-root": {
                         border: "none",
