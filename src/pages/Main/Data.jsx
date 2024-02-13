@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import columns from './columns.json';
 import axios from "axios";
-
+import { useNavigate } from "react-router-dom";
 // 환자 데이터 컴포넌트
 const Data = () => {
 
@@ -33,13 +33,18 @@ const Data = () => {
         id: index + 1,
     }));
 
-
+    const navigate = useNavigate();
+    const handleRowClick = (params) => {
+        const num = params.row.patinum;
+        navigate(`/main/detail/${num}`);
+    };
 
     return (
         <DataGrid
             rows={listsWithId}                       /** 환자 데이터 */
             columns={columns.columns}                /** 컬럼명 */
             components={{ Toolbar: GridToolbar }}    /** 필터 기능 (다운로드, 크기 조절) */
+            onRowClick={handleRowClick} // 각 행 클릭 시 핸들러 호출
         >
         </DataGrid>
     )
