@@ -30,10 +30,11 @@ const App = () => {
           display="flex"
           alignItems="center"
           justifyContent="center"
+
         >
           <StatBox
             title="34"                // 값
-            subtitle="의심환자"        // 제목
+            subtitle="전체환자"        // 제목
             progress="0.14"           // 그래프
             increase="+14%"           // 퍼센트
             icon={                    //  아이콘
@@ -42,6 +43,48 @@ const App = () => {
               />
             }
           />
+          
+        </Box>
+        <Box
+          gridColumn="span 3"
+          backgroundColor={colors.primary[400]}
+          display="flex"
+          alignItems="center"
+          justifyContent="center"
+        >
+          <StatBox
+            title="34"                // 값
+            subtitle="오늘 screening환자"        // 제목
+            progress="0.14"           // 그래프
+            increase="+14%"           // 퍼센트
+            icon={                    //  아이콘
+              <PeopleOutlinedIcon
+                sx={{ color: colors.greenAccent[600], fontSize: "26px" }}
+              />
+            }
+          />
+          
+        </Box>
+        <Box
+          gridColumn="span 3"
+          backgroundColor={colors.primary[400]}
+          display="flex"
+          alignItems="center"
+          justifyContent="center"
+          
+        >
+          <StatBox
+            title="34"                // 값
+            subtitle="이전 screening환자"        // 제목
+            progress="0.14"           // 그래프
+            increase="+14%"           // 퍼센트
+            icon={                    //  아이콘
+              <PeopleOutlinedIcon
+                sx={{ color: colors.greenAccent[600], fontSize: "26px" }}
+              />
+            }
+          />
+          
         </Box>
       </Box>
       <Box
