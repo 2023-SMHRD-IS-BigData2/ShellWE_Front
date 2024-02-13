@@ -11,10 +11,7 @@ import columns from './columns.json';
 
  // App 컴포넌트
 const App = () => {
-// 더미 데이터
-const cardData1 = [
-  { id: 1, content: <ContactsWrapper /> },
-];
+
 
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
