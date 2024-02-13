@@ -19,7 +19,7 @@ const View = () => {
         <CssBaseline />
         <div className="app" style={{ width: "2030px" }}>
           <Sidebar isSidebar={isSidebar} />                   {/* 사이드 바 (메뉴목록) */}
-          <main className="content" >
+          <main className="content" style={{marginLeft:"60px", marginTop:"20px"}}>
             <Topbar setIsSidebar={setIsSidebar} />            {/* 톱바 (로그인, 다크모드)  */}
             <Routes>
               <Route path='/' element={<Dashboard />} />            {/*  메인 대쉬보드 */}

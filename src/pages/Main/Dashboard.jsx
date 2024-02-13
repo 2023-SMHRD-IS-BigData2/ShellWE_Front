@@ -30,7 +30,45 @@ const App = () => {
                 >
                     <StatBox
                         title="34"                // 값
-                        subtitle="의심환자"        // 제목
+                        subtitle="전체환자"        // 제목
+                        progress="0.14"           // 그래프
+                        increase="+14%"           // 퍼센트
+                        icon={                    //  아이콘
+                            <PeopleOutlinedIcon
+                                sx={{ color: colors.greenAccent[600], fontSize: "26px" }}
+                            />
+                        }
+                    />
+                </Box>
+                <Box
+                    gridColumn="span 3"
+                    backgroundColor={colors.primary[400]}
+                    display="flex"
+                    alignItems="center"
+                    justifyContent="center"
+                >
+                    <StatBox
+                        title="34"                // 값
+                        subtitle="Screening 환자"        // 제목
+                        progress="0.14"           // 그래프
+                        increase="+14%"           // 퍼센트
+                        icon={                    //  아이콘
+                            <PeopleOutlinedIcon
+                                sx={{ color: colors.greenAccent[600], fontSize: "26px" }}
+                            />
+                        }
+                    />
+                </Box>
+                <Box
+                    gridColumn="span 3"
+                    backgroundColor={colors.primary[400]}
+                    display="flex"
+                    alignItems="center"
+                    justifyContent="center"
+                >
+                    <StatBox
+                        title="34"                // 값
+                        subtitle="이전 Screening환자"        // 제목
                         progress="0.14"           // 그래프
                         increase="+14%"           // 퍼센트
                         icon={                    //  아이콘
@@ -44,7 +82,7 @@ const App = () => {
             <Box
                 m="25px 0 0 0"
                 height="70vh"
-                        width="168vh"
+                width="160vh"
                 sx={{
                     "& .MuiDataGrid-root": {
                         border: "none",
