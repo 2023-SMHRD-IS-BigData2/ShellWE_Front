@@ -3,6 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import { CssBaseline, ThemeProvider } from '@mui/material';
 import { ColorModeContext, useMode } from '../../theme';
 import Detail from '../Detail/detail_hojun'
+import Details from '../Detail/Detail'
 import Dashboard from '../Main/Dashboard'
 import List from '../Main/List'
 import Sidebar from '../Bar/Sidebar';
@@ -25,6 +26,7 @@ const View = () => {
               <Route path='/' element={<Dashboard />} />            {/*  메인 대쉬보드 */}
               <Route path='/list' element={<List />} />             {/* 환자 리스트 */}
               <Route path='/detail/:num' element={<Detail />} />    {/* 환자 상세 페이지 */}
+              <Route path='/detailDesign' element={<Details />} />    {/* 환자 상세 페이지 */}
             </Routes>
           </main>
         </div>

@@ -1,9 +1,10 @@
-import { Box, Typography } from '@mui/material'
+import { Box, Typography, useTheme } from '@mui/material'
 import React, { useContext, useState } from 'react'
 import CommentModal from '../DesktopOne/CommentModal'
 import { PatientContext } from '../../context/PatientContext';
+import { tokens } from "../../theme";
 
-const DetailHeader = () => {
+const DetailHeader = ({title,subtitle}) => {
 
     const { patient, comment } = useContext(PatientContext);
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -15,17 +16,24 @@ const DetailHeader = () => {
     const closeModal = () => {
         setIsModalOpen(false);
     }
+    const theme = useTheme();
+    const colors = tokens(theme.palette.mode);
     console.log("comment : " + comment);
     return (
-        <div>
-            <table border={1}>
-                <tr>
-                    <td>{patient.pNum}</td>
-                    <td>{patient.name}</td>
-                    <td>{patient.sex}/{patient.age}</td>
-                    <td><div onClick={openModal}>코멘트</div></td>
-                </tr>
-            </table>
+        <Box>
+            <Box mb="30px">
+                <Typography
+                    variant="h2"
+                    color={colors.grey[100]}
+                    fontWeight="bold"
+                    sx={{ m: "0 0 5px 0" }}
+                >
+                    {title}
+                </Typography>
+                <Typography variant="h5" color={colors.greenAccent[400]}>
+                    {subtitle}
+                </Typography>
+            </Box>
             <CommentModal
                 isOpen={isModalOpen} closeModal={closeModal}>
                 <Box>
@@ -46,7 +54,7 @@ const DetailHeader = () => {
                     </Typography>
                 </Box>
             </CommentModal>
-        </div >
+        </Box >
     )
 }
 
