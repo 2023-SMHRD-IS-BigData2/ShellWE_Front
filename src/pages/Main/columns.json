@@ -1,7 +1,7 @@
 {
     "columns": [
         {
-            "field": "id",
+            "field": "patinum",
             "headerName": "순번"
         },
         {
