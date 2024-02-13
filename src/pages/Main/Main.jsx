@@ -38,6 +38,10 @@ const Contacts = () => {
     id: index + 1,
   }));
 
+  const handleRowClick = (params) => {
+    console.log("params", params);
+  };
+
   return (
     <Box m="20px">
       <Box
@@ -74,10 +78,12 @@ const Contacts = () => {
           overflow: "auto",
         }}
       >
+
         <DataGrid
           rows={listsWithId}
           columns={columns.columns}
           components={{ Toolbar: GridToolbar }}
+          onRowClick={handleRowClick} // 각 행 클릭 시 핸들러 호출
         />
       </Box>
     </Box>
