@@ -75,11 +75,7 @@ const Contacts = () => {
         }}
       >
         <DataGrid
-<<<<<<< HEAD
-          rows={lists}
-=======
           rows={listsWithId}
->>>>>>> a119b36603888946d0725a5774aa170af41b04a1
           columns={columns.columns}
           components={{ Toolbar: GridToolbar }}
         />
