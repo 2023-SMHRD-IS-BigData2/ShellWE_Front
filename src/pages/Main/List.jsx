@@ -4,7 +4,8 @@ import { tokens } from "../../theme";
 import { useTheme } from "@mui/material";
 import Data from "./Data";
 
-const Contacts = () => {
+
+const List = () => {
     /** 다크모드 */
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
@@ -53,7 +54,7 @@ const Contacts = () => {
 
 const ContactsWrapper = () => (
     <Box>
-        <Contacts />
+        <List />
     </Box>
 );
 

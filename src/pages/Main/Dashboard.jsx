@@ -6,8 +6,7 @@ import PeopleOutlinedIcon from "@mui/icons-material/PeopleOutlined";
 import StatBox from './StatBox';
 import Data from './Data';
 
-
-// App 컴포넌트
+// 대쉬보드
 const App = () => {
 
     /** 다크모드 */

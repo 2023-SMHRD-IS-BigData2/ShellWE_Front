@@ -3,6 +3,7 @@ import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import columns from './columns.json';
 import axios from "axios";
 
+// 환자 데이터 컴포넌트
 const Data = () => {
 
     /** 환자 리스트 */
