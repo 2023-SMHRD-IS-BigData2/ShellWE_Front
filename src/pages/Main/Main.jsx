@@ -66,7 +66,7 @@ const Contacts = () => {
         }}
       >
         <DataGrid
-          rows={mockDataContacts}
+          rows={lists}
           columns={columns.columns}
           components={{ Toolbar: GridToolbar }}
         />
