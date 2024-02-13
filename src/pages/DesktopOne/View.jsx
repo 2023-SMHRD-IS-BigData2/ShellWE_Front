@@ -17,13 +17,13 @@ const View = () => {
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <div className="app" style={{width:"2030px"}}>
-          <Sidebar isSidebar={isSidebar} />
+          <Sidebar isSidebar={isSidebar} />                   {/* 사이드 바 (메뉴목록) */}
           <main className="content" >
-            <Topbar setIsSidebar={setIsSidebar} />
+            <Topbar setIsSidebar={setIsSidebar} />            {/* 톱바 (로그인, 다크모드)  */}
             <Routes>
-              <Route path='/' element={<Home />} />
-              <Route path='/list' element={<Main />} />
-              <Route path='/detail/:num' element={<Detail />} />
+              <Route path='/' element={<Home />} />                 {/*  메인 대쉬보드 */}
+              <Route path='/list' element={<Main />} />             {/* 환자 리스트 */}
+              <Route path='/detail/:num' element={<Detail />} />    {/* 환자 상세 페이지 */}
             </Routes>
           </main>
         </div>

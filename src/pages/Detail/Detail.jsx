@@ -7,9 +7,12 @@ import data from "./jsondata.json";
 import DownloadOutlinedIcon from "@mui/icons-material/DownloadOutlined";
 
 const Detail = () => {
-
+  /** 다크모드 */
   const theme = useTheme();
+  /** 다크모드 */
   const colors = tokens(theme.palette.mode);
+
+
   console.log(data);
   return (
     <Box m="20px">
@@ -40,7 +43,7 @@ const Detail = () => {
                 fontWeight="600"
                 color={colors.grey[100]}
               >
-                SMART
+                SMART                            {/* 패혈증 수치 */}
               </Typography>
               <Typography
                 variant="h3"
