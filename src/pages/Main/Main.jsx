@@ -7,12 +7,14 @@ import { tokens } from "../../theme";
 import { useTheme } from "@mui/material";
 import columns from './columns.json';
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const Contacts = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
 
   const [lists, setList] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -39,7 +41,8 @@ const Contacts = () => {
   }));
 
   const handleRowClick = (params) => {
-    console.log("params", params);
+    const num = params.row.patinum;
+    navigate(`/main/detail/${num}`);
   };
 
   return (

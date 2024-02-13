@@ -1,10 +1,13 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Box, Button, IconButton, Typography, useTheme } from "@mui/material";
 import { tokens } from "../../theme";
 import { mockTransactions } from "../../data/mockData";
 import DetailHeader from './DetailHeader'
-import data from "./jsondata.json";
+// import data from "./jsondata.json";
 import DownloadOutlinedIcon from "@mui/icons-material/DownloadOutlined";
+import { useParams } from 'react-router-dom'
+import axios from 'axios';
+import Graphic from "./Graphic"
 
 const Detail = () => {
   /** 다크모드 */
@@ -12,6 +15,22 @@ const Detail = () => {
   /** 다크모드 */
   const colors = tokens(theme.palette.mode);
 
+  let { num } = useParams() //메인에서 넘어온 값
+
+  const [data, setData] = useState(null); //스프링에서 받아온 값
+
+  // 환자 값에 따라 디테일 페이지 다르게 하기
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(`http://localhost:8088/boot/getList?patinum=${num}`);
+        setData(response.data[0]);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchData();
+  }, [num]);
 
   console.log(data);
   return (
@@ -63,6 +82,7 @@ const Detail = () => {
           </Box>
           <Box height="250px" m="-20px 0 0 0" >
             {/* <LineChart isDashboard={true} /> */}
+          
           </Box>
         </Box>
         <Box
