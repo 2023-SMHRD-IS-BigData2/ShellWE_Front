@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
@@ -46,6 +45,9 @@ const Login = () => {
       );
       if (response && response.data) {
         setMessage(response.data.login); // 서버로부터 받은 로그인 메시지를 message 상태로 설정
+      } else {
+        setError("로그인 실패");
+        console.error("Login failed: No data in the response"); // 응답 데이터가 없을 경우 에러 메시지 설정 및 콘솔에 로그 출력
       }
     } catch (error) {
       setError("로그인 실패");
@@ -62,7 +64,7 @@ const Login = () => {
   return (
     <div>
       <h1>Login Page</h1>
-       <h1>{message}</h1> {/*서버로부터 받은 메시지 출력 */}
+      <h1>{message}</h1> // 서버로부터 받은 메시지 출력
       <input
         type="text"
         className="form-control"
@@ -82,13 +84,15 @@ const Login = () => {
         ref={inputRef} // ref 연결
         onKeyDown={handleKeyDown} // onKeyDown 이벤트 핸들러 추가
       />
+
       <button
         type="button"
         onClick={onClickLogin}
       >
         로그인
       </button>
-       {error && <div>{error}</div>} {/* 에러 메시지가 있을 경우 출력 */}
+
+      {error && <div>{error}</div>} // 에러 메시지가 있을 경우 출력
     </div>
   );
 };
