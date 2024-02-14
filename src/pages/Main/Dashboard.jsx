@@ -14,6 +14,7 @@ const App = () => {
     const [Allpatient, setAllpatient] = useState(null)
     const [todayScreening, settodayScreening] = useState(null)
     const [Screening, setScreening] = useState(null)
+    const [percent, setPercent] = useState(null)
 
 
     useEffect(() => {
@@ -24,6 +25,7 @@ const App = () => {
                 setAllpatient(response.data.Allpatient)
                 settodayScreening(response.data.todayScreening)
                 setScreening(response.data.Screening)
+                // setPercent(Screening/Allpatient*100)
                 console.log("lists", response.data);
             } catch (error) {
                 console.log(error);
@@ -32,11 +34,13 @@ const App = () => {
 
         fetchData();
     }, []);
+    useEffect(() => {
+        setPercent(Screening / Allpatient * 100)
+    }, [Allpatient, Screening])
 
     /** 다크모드 */
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
-
     return (
         <Box m="20px">
             <Box
@@ -71,11 +75,12 @@ const App = () => {
                     alignItems="center"
                     justifyContent="center"
                 >
+
                     <StatBox
                         title={Screening}                // 값
                         subtitle="Screening 환자"        // 제목
-                        progress="0.14"           // 그래프
-                        increase="+14%"           // 퍼센트
+                        progress={Screening / Allpatient}           // 그래프
+                        increase={percent + "%"}           // 퍼센트
                         icon={                    //  아이콘
                             <PeopleOutlinedIcon
                                 sx={{ color: colors.greenAccent[600], fontSize: "26px" }}
