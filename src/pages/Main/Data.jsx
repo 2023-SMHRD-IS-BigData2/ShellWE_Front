@@ -18,6 +18,7 @@ const Data = () => {
     const colors = tokens(theme.palette.mode);
     const [hoveredRowId, setHoveredRowId] = useState(null);
 
+
     // lists 값이 null인 경우 로딩 상태를 표시하거나 다른 방식으로 처리
     if (lists === null) {
         return <div>Loading...</div>;
