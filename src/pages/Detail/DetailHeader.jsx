@@ -1,12 +1,11 @@
 import { Box, Typography, useTheme } from '@mui/material'
-import React, { useContext, useState } from 'react'
+import React, { useState } from 'react'
 import CommentModal from '../DesktopOne/CommentModal'
-import { PatientContext } from '../../context/PatientContext';
+// import { PatientContext } from '../../context/PatientContext';
 import { tokens } from "../../theme";
 
 const DetailHeader = ({title,subtitle}) => {
 
-    const { patient, comment } = useContext(PatientContext);
     const [isModalOpen, setIsModalOpen] = useState(false);
     /**Modal열기 */
     const openModal = () => {
@@ -18,7 +17,7 @@ const DetailHeader = ({title,subtitle}) => {
     }
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
-    console.log("comment : " + comment);
+    // console.log("comment : " + comment);
     return (
         <Box>
             <Box mb="30px">
@@ -38,7 +37,7 @@ const DetailHeader = ({title,subtitle}) => {
                 isOpen={isModalOpen} closeModal={closeModal}>
                 <Box>
                     <Typography>
-                        {comment.patinum} <b>{patient.name}</b>
+                        {/* {comment.patinum} <b>{patient.name}</b> */}
                         <table border={1}>
                             <tr>
                                 <th>내용</th>
@@ -46,8 +45,8 @@ const DetailHeader = ({title,subtitle}) => {
                             </tr>
 
                             <tr>
-                                <td>{comment.contents}</td>
-                                <td>{comment.inputdate}</td>
+                                {/* <td>{comment.contents}</td>
+                                <td>{comment.inputdate}</td> */}
                             </tr>
 
                         </table>

@@ -12,7 +12,7 @@ const CommentModal = ({ isOpen, closeModal, children }) => {
                     left: "50%",
                     transform: "translate(-50%,-50%)",
                     width: 800,
-                    height: 400,
+                    height: 600,
                     maxWidth: "100%",
                     maxHeight: "90%",
                     overflowY: "auto"
