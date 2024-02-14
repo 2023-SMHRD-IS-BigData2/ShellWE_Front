@@ -64,7 +64,7 @@ const Login = () => {
   return (
     <div>
       <h1>Login Page</h1>
-      <h1>{message}</h1> // 서버로부터 받은 메시지 출력
+       <h1>{message}</h1> {/* 서버로부터 받은 메시지 출력 */}
       <input
         type="text"
         className="form-control"
@@ -92,7 +92,7 @@ const Login = () => {
         로그인
       </button>
 
-      {error && <div>{error}</div>} // 에러 메시지가 있을 경우 출력
+       {error && <div>{error}</div>} {/* 에러 메시지가 있을 경우 출력 */}
     </div>
   );
 };
