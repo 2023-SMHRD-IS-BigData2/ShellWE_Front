@@ -63,7 +63,10 @@ const Data = () => {
                         <Link
                             key={row.id}
                             to={`/main/detail/${row.patinum}`}
-                            style={{ textDecoration: 'none', color: 'white' }}
+                            style={{
+                                textDecoration: 'none',
+                                color:colors.primary[100]
+                            }}
                         >
                             {row.name}
                         </Link>
