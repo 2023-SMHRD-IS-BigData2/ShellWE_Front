@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 const Login = () => {
-  const [inputId, setInputId] = useState(""); //ID값
-  const [inputPw, setInputPw] = useState(""); //PW값
+  const [inputId, setInputId] = useState("");
+  const [inputPw, setInputPw] = useState("");
+  const [error, setError] = useState("");
 
   const handleInputId = (e) => {
     setInputId(e.target.value);
@@ -13,36 +15,37 @@ const Login = () => {
     setInputPw(e.target.value);
   };
 
-  const onClickLogin = () => {
-    console.log("click login");
-    console.log("ID: ", inputId);
-    console.log("PW: ", inputPw);
+  const onClickLogin = async () => {
+    try {
+      const response = await axios.post(
+        'http://localhost:8088/boot/login',
+        `ID=${inputId}&PW=${inputPw}`,
+        {
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+          },
+        }
+      );
 
-    // 로그인 처리 로직 추가
-
-    // 입력한 아이디와 비밀번호를 서버로 전송하고 로그인 처리하는 코드 작성
-
-    // 예시 코드 (axios를 사용한 POST 요청)
-    // const data = {
-    //   email: inputId,
-    //   passwd: inputPw
-    // };
-    // axios.post("http://localhost:8080/api/login", data)
-    //   .then((res) => {
-    //     // 로그인 성공 시 처리하는 코드 작성
-    //   })
-    //   .catch((error) => {
-    //     // 로그인 실패 시 처리하는 코드 작성
-    //   });
+      if (response && response.data) {
+        console.log("Login successful:", response.data);
+        // 로그인 성공 시 적절한 처리를 수행하고, 예를 들어 메인 페이지로 이동
+      } else {
+        setError("로그인 실패");
+        console.error("Login failed: No data in the response");
+      }
+    } catch (error) {
+      setError("로그인 실패");
+      console.error("Login failed:", error.response ? error.response.data : error.message);
+    }
   };
 
   return (
     <div>
       <h1>Login Page</h1>
 
-      {/* 아이디 입력 필드 */}
       <input
-        type="ID"
+        type="text"
         className="form-control"
         placeholder="ID를 입력하세요"
         name="id"
@@ -50,9 +53,8 @@ const Login = () => {
         onChange={handleInputId}
       />
 
-      {/* 비밀번호 입력 필드 */}
       <input
-        type="PW"
+        type="password"
         className="form-control"
         placeholder="Pw를 입력하세요"
         name="pw"
@@ -60,7 +62,6 @@ const Login = () => {
         onChange={handleInputPw}
       />
 
-      {/* 로그인 버튼 */}
       <button
         type="button"
         onClick={onClickLogin}
@@ -68,11 +69,11 @@ const Login = () => {
         확인
       </button>
 
-      {/* 메인 페이지로 이동하는 링크 */}
+      {error && <div>{error}</div>} {/* 에러가 있을 경우 에러 메시지 표시 */}
+      
       <Link to='/main'>메인 페이지</Link>
       <br />
 
-      {/* 관리자 페이지로 이동하는 링크 */}
       <Link to='/admin'>admin</Link>
     </div>
   );
