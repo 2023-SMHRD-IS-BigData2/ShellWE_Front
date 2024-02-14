@@ -1,11 +1,11 @@
-import { Box, Typography } from '@mui/material'
-import React, { useContext, useState } from 'react'
+import { Box, Typography, useTheme } from '@mui/material'
+import React, { useState } from 'react'
 import CommentModal from '../DesktopOne/CommentModal'
-import { PatientContext } from '../../context/PatientContext';
+// import { PatientContext } from '../../context/PatientContext';
+import { tokens } from "../../theme";
 
-const DetailHeader = () => {
+const DetailHeader = ({title,subtitle}) => {
 
-    const { patient, comment } = useContext(PatientContext);
     const [isModalOpen, setIsModalOpen] = useState(false);
     /**Modal열기 */
     const openModal = () => {
@@ -15,22 +15,29 @@ const DetailHeader = () => {
     const closeModal = () => {
         setIsModalOpen(false);
     }
-    console.log("comment : " + comment);
+    const theme = useTheme();
+    const colors = tokens(theme.palette.mode);
+    // console.log("comment : " + comment);
     return (
-        <div>
-            <table border={1}>
-                <tr>
-                    <td>{patient.pNum}</td>
-                    <td>{patient.name}</td>
-                    <td>{patient.sex}/{patient.age}</td>
-                    <td><div onClick={openModal}>코멘트</div></td>
-                </tr>
-            </table>
+        <Box>
+            <Box mb="30px">
+                <Typography
+                    variant="h2"
+                    color={colors.grey[100]}
+                    fontWeight="bold"
+                    sx={{ m: "0 0 5px 0" }}
+                >
+                    {title}
+                </Typography>
+                <Typography variant="h5" color={colors.greenAccent[400]}>
+                    {subtitle}
+                </Typography>
+            </Box>
             <CommentModal
                 isOpen={isModalOpen} closeModal={closeModal}>
                 <Box>
                     <Typography>
-                        {comment.patinum} <b>{patient.name}</b>
+                        {/* {comment.patinum} <b>{patient.name}</b> */}
                         <table border={1}>
                             <tr>
                                 <th>내용</th>
@@ -38,15 +45,15 @@ const DetailHeader = () => {
                             </tr>
 
                             <tr>
-                                <td>{comment.contents}</td>
-                                <td>{comment.inputdate}</td>
+                                {/* <td>{comment.contents}</td>
+                                <td>{comment.inputdate}</td> */}
                             </tr>
 
                         </table>
                     </Typography>
                 </Box>
             </CommentModal>
-        </div >
+        </Box >
     )
 }
 

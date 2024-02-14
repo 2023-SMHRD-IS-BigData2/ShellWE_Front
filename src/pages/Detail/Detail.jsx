@@ -7,7 +7,6 @@ import DetailHeader from './DetailHeader'
 import DownloadOutlinedIcon from "@mui/icons-material/DownloadOutlined";
 import { useParams } from 'react-router-dom'
 import axios from 'axios';
-import Graphic from "./Graphic"
 
 const Detail = () => {
   /** 다크모드 */
@@ -32,22 +31,29 @@ const Detail = () => {
     fetchData();
   }, [num]);
 
+  const test = () => {
+    console.log("test");
+  }
+
   console.log(data);
   return (
     <Box m="20px">
-      <DetailHeader />
+      <DetailHeader title="이름" subtitle="정보" />
+
       <Box
         display="grid"
         gridTemplateColumns="repeat(12, 1fr)"
         gridAutoRows="140px"
         gap="20px"
+        maxWidth="2000px"
       >
-
+        {/* 그래프 박스 */}
         <Box
           gridColumn="span 8"
           gridRow="span 2"
           backgroundColor={colors.primary[400]}
           borderRadius="30px"
+          width="1500px"
         >
           <Box
             mt="25px"
@@ -72,34 +78,30 @@ const Detail = () => {
                 68
               </Typography>
             </Box>
-            <Box>
-              <IconButton>
-                <DownloadOutlinedIcon
-                  sx={{ fontSize: "26px", color: colors.greenAccent[500] }}
-                />
-              </IconButton>
-            </Box>
           </Box>
           <Box height="250px" m="-20px 0 0 0" >
             {/* <LineChart isDashboard={true} /> */}
-          
+
           </Box>
         </Box>
+
         <Box
-          gridColumn="span 2"
+          gridColumn="span 4"
           gridRow="span 2"
-          backgroundColor={colors.primary[400]}
+          // backgroundColor={colors.primary[400]}
           overflow="auto"
+          height="680px"
+          borderRadius="30px"
         >
           <Box
-            display="flex"
+            display="flex auto"
             justifyContent="space-between"
-            alignItems="center"
-            borderBottom={`4px solid ${colors.primary[500]}`}
+            backgroundColor={colors.primary[400]}
+            marginBottom="4px"
             colors={colors.grey[100]}
             p="15px"
           >
-            <Typography color={colors.grey[100]} variant="h5" fontWeight="600">
+            <Typography color={colors.grey[100]} variant="h5" fontWeight="600" align="center">
               2024-02-02
             </Typography>
           </Box>
@@ -113,7 +115,9 @@ const Detail = () => {
                 display="flex"
                 justifyContent="space-between"
                 alignItems="center"
-                borderBottom={`4px solid ${colors.primary[500]}`}
+                borderRadius="6px"
+                backgroundColor={colors.primary[400]}
+                marginBottom="4px"
                 p="15px"
               >
                 <Box>
@@ -125,32 +129,58 @@ const Detail = () => {
                     HR
                   </Typography>
                 </Box>
-                <Box color={colors.grey[100]}>정상</Box>
-                <Button
-                  sx={{
-                    backgroundColor: colors.blueAccent[700],
-                    color: colors.grey[100],
-                    fontSize: "14px",
-                    fontWeight: "bold",
-                    padding: "10px 20px",
-                  }}
+                <Box // color={colors.grey[100]}
+                >정상</Box>
+                <Box
+                  backgroundColor={colors.greenAccent[500]}
+                  p="5px 10px"
+                  borderRadius="4px"
+                  onClick={test} // 그래프 보여주기
                 >
-
-                  <Box
-                    backgroundColor={colors.greenAccent[500]}
-                    p="5px 10px"
-                    borderRadius="4px"
-                  >
-
-                    보기
-                  </Box>
-                </Button>
+                  보기
+                </Box>
               </Box>
             ))}
 
           </Box>
         </Box>
+        {/* 그래프 박스 */}
+        <Box
+          gridColumn="span 8"
+          gridRow="span 2"
+          backgroundColor={colors.primary[400]}
+          borderRadius="30px"
+          height="350px"
+        >
+          <Box
+            mt="25px"
+            p="0 30px"
+            display="flex "
+            justifyContent="space-between"
+            alignItems="center"
+          >
+            <Box>
+              <Typography
+                variant="h5"
+                fontWeight="600"
+                color={colors.grey[100]}
+              >
+                SMART                            {/* 패혈증 수치 */}
+              </Typography>
+              <Typography
+                variant="h3"
+                fontWeight="bold"
+                color={colors.greenAccent[500]}
+              >
+                68
+              </Typography>
+            </Box>
+          </Box>
+          <Box height="250px" m="-20px 0 0 0" >
+            {/* <LineChart isDashboard={true} /> */}
 
+          </Box>
+        </Box>
       </Box>
     </Box>
   )
