@@ -41,9 +41,9 @@ const Data = () => {
 
     useEffect(() => {
         // 선택된 패혈증 상태가 변경될 때마다 호출됩니다.
-        if (selectedSepsissLevel) {
+        if (selectedSepsissLevel && selectedPatinum) {
             // API 호출 등의 작업 수행
-            axios.get(`http://localhost:8088/boot/changeStatus?sepsisslevel=${sepsissLevel}&patinum=${patinum}`)
+            axios.get(`http://localhost:8088/boot/changeStatus?sepsisslevel=${selectedSepsissLevel}&patinum=${selectedPatinum}`)
                 .then(response => {
                     console.log("API 호출 결과:", response.data);
                     // 여기서 필요한 추가 작업 수행
@@ -53,7 +53,7 @@ const Data = () => {
                     // 에러 처리 로직 추가
                 });
         }
-    }, [selectedSepsissLevel]);
+    }, [selectedSepsissLevel, selectedPatinum]);
 
     // lists 값이 null인 경우 로딩 상태를 표시하거나 다른 방식으로 처리
     if (lists === null) {
@@ -140,7 +140,7 @@ const Data = () => {
                 rows={listsWithId}                       /** 환자 데이터 */
                 columns={columnslist}                /** 컬럼명 */
                 components={{ Toolbar: GridToolbar }}    /** 필터 기능 (다운로드, 크기 조절) */
-                onRowClick={(row) => handleModalOpen(row.sepsisslevel)}
+                onRowClick={(row) => handleModalOpen(row.sepsisslevel, row.patinum)}
             />
             {/* 모달 */}
             <Modal
@@ -168,7 +168,6 @@ const Data = () => {
                             <option value="None">None</option>
                         </select>
                     </Typography>
-                    <Button onClick={handleChangeStatus}>변경</Button>
                     <Button onClick={handleModalClose}>닫기</Button>
                 </Box>
 
