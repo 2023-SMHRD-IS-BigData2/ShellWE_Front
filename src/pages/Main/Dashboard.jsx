@@ -12,11 +12,13 @@ const App = () => {
     const [Allpatient, setAllpatient] = useState(null)
     const [todayScreening, settodayScreening] = useState(null)
     const [Screening, setScreening] = useState(null)
+
     /** 코멘트 */
     const [comments, setComments] = useState(null);
     /** 코멘트 인덱스 */
     const [patiIndex, setpatiIndex] = useState(1);
     /** 카드 변수 */
+
     const [percent, setPercent] = useState(null)
 
     const [inputValue, setInputValue] = useState('');
@@ -45,6 +47,7 @@ const App = () => {
                 setAllpatient(response.data.Allpatient)
                 settodayScreening(response.data.todayScreening)
                 setScreening(response.data.Screening)
+                // setPercent(Screening/Allpatient*100)
                 console.log("lists", response.data);
             } catch (error) {
                 console.log(error);
@@ -53,6 +56,7 @@ const App = () => {
 
         fetchData();
     }, []);
+
     // 코멘트 Back
 
     const handleSubmit = async (event) => {
@@ -78,6 +82,7 @@ const App = () => {
         fetchData();
     }, [inputValue, patiIndex]);
 
+
     return (
         <DashboardContext.Provider
             value={{
@@ -93,9 +98,9 @@ const App = () => {
             >
                 <Card />
                 <Data />
-
             </Box >
-        </DashboardContext.Provider >
+        </DashboardContext.Provider>
+
     );
 };
 
