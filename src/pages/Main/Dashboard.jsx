@@ -47,7 +47,6 @@ const App = () => {
                 setAllpatient(response.data.Allpatient)
                 settodayScreening(response.data.todayScreening)
                 setScreening(response.data.Screening)
-                // setPercent(Screening/Allpatient*100)
                 console.log("lists", response.data);
             } catch (error) {
                 console.log(error);
