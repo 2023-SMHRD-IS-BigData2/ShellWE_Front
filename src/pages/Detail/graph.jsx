@@ -59,8 +59,9 @@ const Graph = () => {
             </Box>
             <Box height="250px" m="-20px 0 0 0" >
                 <ResponsiveContainer width="100%" height={300}>
-                    <LineChart width="100%" height={300} data={filteredData}>
-                        <CartesianGrid strokeDasharray="3 3" />
+                    <LineChart width="100%" height={300} data={filteredData}
+                    margin={{ top: 20, bottom: 40, right: 20, left: 80 }}>
+                        <CartesianGrid  vertical={false} strokeOpacity={0.3}/>
                         <XAxis dataKey="time" />
                         <YAxis yAxisId={graph} dataKey={graph} orientation="right" />
                         <Tooltip />

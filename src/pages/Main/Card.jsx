@@ -27,6 +27,7 @@ const List = () => {
                     display="flex"
                     alignItems="center"
                     justifyContent="center"
+                    borderRadius="30px"
                 >
                     <StatBox
                         title={Allpatient}         // 값
@@ -40,12 +41,15 @@ const List = () => {
                         }
                     />
                 </Box>
+
+
                 <Box
                     gridColumn="span 3"
                     backgroundColor={colors.primary[400]}
                     display="flex"
                     alignItems="center"
                     justifyContent="center"
+                    borderRadius="30px"
                 >
                     <StatBox
                         title={Screening}                // 값
@@ -59,12 +63,15 @@ const List = () => {
                         }
                     />
                 </Box>
+
+
                 <Box
                     gridColumn="span 3"
                     backgroundColor={colors.primary[400]}
                     display="flex"
                     alignItems="center"
                     justifyContent="center"
+                    borderRadius="30px"
                 >
                     <StatBox
                         title={todayScreening}                // 값

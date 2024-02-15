@@ -55,9 +55,10 @@ const Sidebar = () => {
                     color: "#6870fa !important",
                 },
             }}
-
+            borderRadius="30px"
         >
-            <ProSidebar collapsed={isCollapsed} style={{ borderTopRightRadius: "30px" }}>
+            <ProSidebar collapsed={isCollapsed} style={{ borderTopRightRadius: "30px" }}
+            borderRadius="30px">
                 <Menu iconShape="square" style={{ borderTopRightRadius: "30px" }}>
                     {/* LOGO AND MENU ICON */}
                     <MenuItem
