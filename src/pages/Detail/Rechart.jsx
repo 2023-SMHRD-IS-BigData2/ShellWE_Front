@@ -2,8 +2,14 @@ import React, { useState, useContext, useEffect } from "react";
 import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip, ResponsiveContainer, Brush } from "recharts";
 import { ChartContext } from './ChartContext'
 import "./chart.css";
+import { Box, Typography, useTheme } from "@mui/material";
+import { tokens } from "../../theme";
 
 export default function Example() {
+    /** 다크모드 */
+    const theme = useTheme();
+    const colors = tokens(theme.palette.mode);
+
     // state 설정
     const [selectedKeys, setSelectedKeys] = useState(["map"]); // 처음에 출력할 값
     const [filteredData, setFilteredData] = useState([]); // 달력의 기준으로 필터링된 값
@@ -40,7 +46,7 @@ export default function Example() {
     }, [StartDate, EndDate, data]);
 
     // 각 키에 대한 색상 설정
-    const colors = {
+    const colorsChart = {
         Smart: "#EB9DA2",
         o2sat: "#F0B884",
         map: "#E8E6A5",
@@ -60,101 +66,149 @@ export default function Example() {
             key={key}
             type="linear"
             dataKey={key}
-            stroke={key === "Smart" ? "#EB9DA2" : colors[key]}
+            stroke={key === "Smart" ? "#EB9DA2" : colorsChart[key]}
             strokeWidth={key === "Smart" ? 6 : 3}
-            fill={colors[key]}
+            fill={colorsChart[key]}
             activeDot={{ r: 8 }}
             yAxisId={key}
-            label={({ x, y, value }) => (
-                <text x={x} y={y} dy={-8} fill={colors[key]} textAnchor="middle">
-                    {value}
-                </text>
-            )}
+            dot={false}
+            // label={({ x, y, value }) => (
+            //     <text x={x} y={y} dy={-8} fill={colorsChart[key]} textAnchor="middle">
+            //         {value}
+            //     </text>
+            // )}
         />
     ));
 
     return (
+
         <div style={{ display: "flex" }}>
-            <div style={{ display: "flex", width: "200px", flexDirection: "column" }}>
-                {/* 버튼 클릭 이벤트 처리 */}
-                <button
-                    onClick={() => handleButtonClick("Smart")}
-                    style={{
-                        background: selectedKeys.includes("Smart") ? "#EB9DA2" : "#fff",
-                    }}
+
+
+            {/* 그래프 박스 */}
+            <Box
+                gridColumn="span 8"
+                gridRow="span 2"
+                backgroundColor={colors.primary[400]}
+                borderRadius="30px"
+                height="350px"
+                width="135vh"
+            >
+                <Box
+                    mt="25px"
+                    p="0 30px"
+                    display="flex "
+                    justifyContent="space-between"
+                    alignItems="center"
                 >
-                    Smart
-                </button>
-                <button
-                    onClick={() => handleButtonClick("o2sat")}
-                    style={{
-                        background: selectedKeys.includes("o2sat") ? "#F0B884" : "#fff",
+
+                    <Box>
+                        <Typography
+                            variant="h5"
+                            fontWeight="600"
+                            color={colors.grey[100]}
+                        >
+                            SMART                            {/* 패혈증 수치 */}
+                        </Typography>
+                        <Typography
+                            variant="h3"
+                            fontWeight="bold"
+                            color={colors.greenAccent[500]}
+                        >
+                            68
+                        </Typography>
+                    </Box>
+                    {/* 버튼 */}
+                    {/* 버튼 클릭 이벤트 처리 */}
+                    <Box style={{
+                        display: "flex",
+                        // width: "60px", 
+                        // flexDirection: "row"
                     }}
-                >
-                    O2sat
-                </button>
-                <button
-                    onClick={() => handleButtonClick("map")}
-                    style={{
-                        background: selectedKeys.includes("map") ? "#E8E6A5" : "#fff",
-                    }}
-                >
-                    Map
-                </button>
-                <button
-                    onClick={() => handleButtonClick("temp")}
-                    style={{
-                        background: selectedKeys.includes("temp") ? "#BBE8B5" : "#fff",
-                    }}
-                >
-                    Temp
-                </button>
-                <button
-                    onClick={() => handleButtonClick("sbp")}
-                    style={{
-                        background: selectedKeys.includes("sbp") ? "#ACBBE8" : "#fff",
-                    }}
-                >
-                    SBP
-                </button>
-                <button
-                    onClick={() => handleButtonClick("hr")}
-                    style={{
-                        background: selectedKeys.includes("hr") ? "#C5ACE8" : "#fff",
-                    }}
-                >
-                    HR
-                </button>
-            </div>
-            <div style={{ flex: 1 }}>
-                {/* 차트 컴포넌트 */}
-                <ResponsiveContainer width="100%" height={360}>
-                    <LineChart width="100%" height="100%" data={filteredData} margin={{ bottom: 5, right: 70, left: 80 }}>
-                        <CartesianGrid strokeDasharray="3" />
-                        <XAxis
-                            dataKey="time"
-                            onClick={(event) => {
-                                handleXAxisClick(event.value);
+                    >
+                        <button
+                            onClick={() => handleButtonClick("Smart")}
+                            style={{
+                                background: selectedKeys.includes("Smart") ? "#EB9DA2" : "#fff",
                             }}
-                        />
-                        <YAxis yAxisId="Smart" dataKey="Smart" domain={[0, 100]} hide />
-                        <YAxis yAxisId="o2sat" dataKey="o2sat" domain={[0, 100]} hide />
-                        <YAxis yAxisId="map" dataKey="map" domain={[0, 100]} hide />
-                        <YAxis yAxisId="temp" dataKey="temp" domain={[31, 90]} hide />
-                        <YAxis yAxisId="sbp" dataKey="sbp" domain={[0, 80]} hide />
-                        <YAxis yAxisId="hr" dataKey="hr" domain={[0, 100]} hide />
-                        <Tooltip />
-                        {lines}
-                        <Brush
-                            dataKey="time"
-                            height={21}
-                            stroke="#EB9DA2"
-                            startIndex={0}
-                            endIndex={Math.min(5, data.length - 1)}
-                        />
-                    </LineChart>
-                </ResponsiveContainer>
-            </div>
+                        >
+                            Smart
+                        </button>
+                        <button
+                            onClick={() => handleButtonClick("o2sat")}
+                            style={{
+                                background: selectedKeys.includes("o2sat") ? "#F0B884" : "#fff",
+                            }}
+                        >
+                            O2sat
+                        </button>
+                        <button
+                            onClick={() => handleButtonClick("map")}
+                            style={{
+                                background: selectedKeys.includes("map") ? "#E8E6A5" : "#fff",
+                            }}
+                        >
+                            Map
+                        </button>
+                        <button
+                            onClick={() => handleButtonClick("temp")}
+                            style={{
+                                background: selectedKeys.includes("temp") ? "#BBE8B5" : "#fff",
+                            }}
+                        >
+                            Temp
+                        </button>
+                        <button
+                            onClick={() => handleButtonClick("sbp")}
+                            style={{
+                                background: selectedKeys.includes("sbp") ? "#ACBBE8" : "#fff",
+                            }}
+                        >
+                            SBP
+                        </button>
+                        <button
+                            onClick={() => handleButtonClick("hr")}
+                            style={{
+                                background: selectedKeys.includes("hr") ? "#C5ACE8" : "#fff",
+                            }}
+                        >
+                            HR
+                        </button>
+                    </Box>
+                </Box>
+                <Box height="250px" m="-20px 0 0 0" >
+                    {/* 차트 컴포넌트 */}
+                    <ResponsiveContainer width="100%" height={320}>
+                        <LineChart
+                            data={filteredData}
+                            margin={{ bottom: 50, right: 70, left: 80 }}
+                        >
+                            <CartesianGrid vertical={false} strokeOpacity={0.2} />
+                            <XAxis
+                                dataKey="time"
+                                onClick={(event) => {
+                                    handleXAxisClick(event.value);
+                                }}
+                            />
+                            <YAxis yAxisId="Smart" dataKey="Smart" domain={[0, 100]} hide />
+                            <YAxis yAxisId="o2sat" dataKey="o2sat" domain={[0, 100]} hide />
+                            <YAxis yAxisId="map" dataKey="map" domain={[0, 100]} hide />
+                            <YAxis yAxisId="temp" dataKey="temp" domain={[31, 90]} hide />
+                            <YAxis yAxisId="sbp" dataKey="sbp" domain={[0, 80]} hide />
+                            <YAxis yAxisId="hr" dataKey="hr" domain={[0, 100]} hide />
+                            <Tooltip />
+                            {lines}
+                            <Brush
+                                dataKey="time"
+                                height={21}
+                                stroke="#EB9DA2"
+                                startIndex={0}
+                                endIndex={Math.min(5, data.length - 1)}
+                            />
+                        </LineChart>
+                    </ResponsiveContainer>
+                </Box>
+            </Box>
         </div>
     );
 }
