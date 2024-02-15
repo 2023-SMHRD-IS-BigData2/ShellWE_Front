@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import { DashboardContext, tokens } from "../../theme";
 import { useTheme } from "@mui/material"
 import { Box, Typography, IconButton } from "@mui/material";
@@ -17,6 +17,7 @@ const Data = () => {
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
     const [hoveredRowId, setHoveredRowId] = useState(null);
+
 
 
     // lists 값이 null인 경우 로딩 상태를 표시하거나 다른 방식으로 처리
@@ -65,7 +66,7 @@ const Data = () => {
                             to={`/main/detail/${row.patinum}`}
                             style={{
                                 textDecoration: 'none',
-                                color:colors.primary[100]
+                                color: colors.primary[100]
                             }}
                         >
                             {row.name}
@@ -196,19 +197,19 @@ const Data = () => {
     if (comments === null) {
         return <div>Loading...</div>;
     }
+
     // 인덱스 1부터 시작
     const commentWithId = comments.map((comments, index) => ({
         ...comments,
         id: index + 1,
     }));
-
     return (
         <Box
-        borderRadius="30px">
+            borderRadius="30px">
             <Box
                 m="25px 0 0 0"
                 height="70vh"
-                width="160vh"
+                // width="160vh"
                 borderRadius="30px"
                 sx={{
                     "& .MuiDataGrid-root": {
@@ -223,8 +224,8 @@ const Data = () => {
                     "& .MuiDataGrid-columnHeaders": {
                         backgroundColor: colors.blueAccent[700],
                         borderBottom: "none",
-                        borderTopLeftRadius:"30px",
-                        borderTopRightRadius:"30px"
+                        borderTopLeftRadius: "30px",
+                        borderTopRightRadius: "30px"
                     },
                     "& .MuiDataGrid-virtualScroller": {
                         backgroundColor: colors.primary[400],
@@ -232,8 +233,8 @@ const Data = () => {
                     "& .MuiDataGrid-footerContainer": {
                         borderTop: "none",
                         backgroundColor: colors.blueAccent[700],
-                        borderBottomLeftRadius:"30px",
-                        borderBottomRightRadius:"30px"
+                        borderBottomLeftRadius: "30px",
+                        borderBottomRightRadius: "30px"
                     },
                     "& .MuiCheckbox-root": {
                         color: `${colors.greenAccent[200]} !important`,
@@ -280,6 +281,9 @@ const Data = () => {
                         <DataGrid
                             rows={commentWithId}
                             columns={commentColumns}
+                            autoPageSize={0}
+                            pageSizeOptions={[0]}
+                            pagination={false}
                         />
                     </Box>
                     <Box

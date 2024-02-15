@@ -22,7 +22,7 @@ const Admin = () => {
         <div className="app" style={{ width: "2030px" }}>
           <Sidebar isSidebar={isSidebar} />
           <main className="content" >
-            <Topbar setIsSidebar={setIsSidebar} />
+            {/* <Topbar setIsSidebar={setIsSidebar} /> */}
             <Routes>
               <Route path='/' element={<Dashboard />} />
               <Route path='/settings' element={<Settings />} />

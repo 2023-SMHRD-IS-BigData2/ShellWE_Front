@@ -29,6 +29,16 @@ const App = () => {
   /**다크모드 */
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
+
+  // =================== 코멘트 ============================
+  // Modal 여는 변수
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  /** 코멘트 */
+  const [comments, setComments] = useState(null);
+  /** 코멘트 입력 값 */
+  const [inputValue, setInputValue] = useState('');
+  // ======================== 코멘트============================
+
   // 환자 값에 따라 디테일 페이지 다르게 하기
   useEffect(() => {
     const fetchData = async () => {
@@ -73,7 +83,18 @@ const App = () => {
       setEDate(lastData.time.split(' ')[0]);
     }
   }, [data]);
-
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(`http://localhost:8088/boot/getComment?patinum=${num}`);
+        setComments(response.data.comments);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    // console.log("comment reflesh")
+    fetchData();
+  }, [inputValue, num]);
   // 값이 안나왔을때의 표시
   if (data === null) {
     return <div>Loading...</div>;
@@ -97,12 +118,39 @@ const App = () => {
     setdateModal(!dateModal);
   };
 
+  // ======================= 코멘트 모달 =========================
+
+  /**Modal열기 */
+  const openModal = (e) => {
+    setIsModalOpen(true);
+    // setpatiIndex(e) // 인덱스
+  }
+  /**Modal닫기 */
+  const closeModal = () => {
+    setIsModalOpen(false);
+  }
+
+  // 코멘트 Back 전송
+  const handleSubmit = async (event) => {
+    // console.log("handleSubmit");
+    event.preventDefault();
+    try {
+      await axios.post(`http://localhost:8088/boot/insertComment?insertComment=${inputValue}&patinum=${num}`);
+      setInputValue("")
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  // 코멘트 내용 출력
+  
+  // ===============================================
 
   return (
     <div>
       <div>
         <ChartContext.Provider value={{ clickedXValue, handleXAxisClick, makechart, data, denger, graph, setSDate, setEDate, StartDate, EndDate, subtitle }}>
-          <Box m="20px">
+          <Box m="20px"
+            marginTop="60px">
             <Box display="flex" justifyContent="space-between" alignItems="center">
               <DetailHeader title="환자명" subtitle="환자 데이터" />
               <Box>
@@ -128,7 +176,14 @@ const App = () => {
               maxWidth="2000px"
             >
               <Rechart />
-              <Date />
+              <Date comments={comments}
+                setInputValue={setInputValue}
+                handleSubmit={handleSubmit}
+                inputValue={inputValue}
+                isModalOpen={isModalOpen}
+                closeModal={closeModal}
+                openModal={openModal}
+                num={num} />
               <Graph />
               <Chart />
 
