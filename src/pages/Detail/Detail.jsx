@@ -87,13 +87,14 @@ const Detail = () => {
           </Box>
         </Box>
 
+        {/* 달력 박스 */}
         <Box
           backgroundColor={colors.primary[400]}
           gridColumn="span 4"
           gridRow="span 2"
           borderRadius="20px"
         >
-
+          {/* 달력 */}
         </Box>
 
 
@@ -132,9 +133,10 @@ const Detail = () => {
           </Box>
           <Box height="250px" m="-20px 0 0 0" >
             {/* <LineChart isDashboard={true} /> */}
-              {/* <Rechart/> */}
+            {/* <Rechart/> */}
           </Box>
         </Box>
+        
         {/* 버튼들 */}
         <Box
           gridColumn="span 4"
