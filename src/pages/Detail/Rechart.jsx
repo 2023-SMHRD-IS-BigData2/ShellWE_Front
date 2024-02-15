@@ -105,11 +105,11 @@ export default function Example() {
                         SMART                            {/* 패혈증 수치 */}
                     </Typography>
                     <Typography
-                        variant="h3"
+                        variant="h4"
                         fontWeight="bold"
                         color={colors.greenAccent[500]}
                     >
-                        68
+                        {"최근 값"}
                     </Typography>
                 </Box>
                 {/* 버튼 */}

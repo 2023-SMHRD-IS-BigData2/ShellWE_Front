@@ -14,7 +14,7 @@ const Charts = () => {
   const [updatedValue, setUpdatedValue] = useState(0); // updatedValue 상태와 값을 초기화합니다.
 
   useEffect(() => {
-    // console.log("chart클릭", clickedXValue);
+    console.log("chart클릭", clickedXValue);
     const date = clickedXValue
       ? clickedXValue.split(' ')[0]
       : ""; // clickedXValue에서 날짜 부분만 추출합니다.
