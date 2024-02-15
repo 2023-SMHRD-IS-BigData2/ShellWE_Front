@@ -203,11 +203,13 @@ const Data = () => {
     }));
 
     return (
-        <Box>
+        <Box
+        borderRadius="30px">
             <Box
                 m="25px 0 0 0"
                 height="70vh"
                 width="160vh"
+                borderRadius="30px"
                 sx={{
                     "& .MuiDataGrid-root": {
                         border: "none",
@@ -221,6 +223,8 @@ const Data = () => {
                     "& .MuiDataGrid-columnHeaders": {
                         backgroundColor: colors.blueAccent[700],
                         borderBottom: "none",
+                        borderTopLeftRadius:"30px",
+                        borderTopRightRadius:"30px"
                     },
                     "& .MuiDataGrid-virtualScroller": {
                         backgroundColor: colors.primary[400],
@@ -228,6 +232,8 @@ const Data = () => {
                     "& .MuiDataGrid-footerContainer": {
                         borderTop: "none",
                         backgroundColor: colors.blueAccent[700],
+                        borderBottomLeftRadius:"30px",
+                        borderBottomRightRadius:"30px"
                     },
                     "& .MuiCheckbox-root": {
                         color: `${colors.greenAccent[200]} !important`,
