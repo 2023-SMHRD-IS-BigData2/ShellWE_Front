@@ -75,7 +75,7 @@ const Login = () => {
                       loading="eager" alt="" class="user-page-icon" /> */}
               </div>
               <h1 className="user-page-title">Log in</h1>
-              <p>Please fill your Email and Password to log in</p>
+              <p>Please fill your ID and Password to log in</p>
             </div>
             <div className="user-page-content">
               <div className="w-form">
@@ -88,7 +88,7 @@ const Login = () => {
                   data-wf-element-id="b1c52374-4bdb-9294-dabc-125d9d7b72ea"
                 >
                   <div className="input-group">
-                    <label htmlFor="Email">Email</label>
+                    <label htmlFor="Email">ID</label>
                     <input
                       className="form-input w-input"
                       maxLength={256}
@@ -116,7 +116,7 @@ const Login = () => {
                     />
                   </div>
                   <input
-                    type="submit"
+                    type="login"
                     data-wait="Please wait..."
                     className="button-primary-1 w-button"
                     defaultValue="Log in"
@@ -128,12 +128,6 @@ const Login = () => {
                 <div className="error-message w-form-fail">
                   <div>Oops! Something went wrong while submitting the form.</div>
                 </div>
-              </div>
-              <div>
-                Don't have an account?
-                <a href="/user-pages/sign-up" className="text-primary">
-                  Sign Up
-                </a>
               </div>
             </div>
           </div>
