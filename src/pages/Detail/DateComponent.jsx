@@ -1,10 +1,17 @@
-import React, { useState,useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { ChartContext } from './ChartContext'
+import { Box, useTheme } from "@mui/material";
+import { tokens } from "../../theme";
 
 const DateComponent = () => {
-  const {setSDate,setEDate} = useContext(ChartContext)
+  /**다크모드 */
+  const theme = useTheme();
+  const colors = tokens(theme.palette.mode);
+
+  const { setSDate, setEDate } = useContext(ChartContext)
+
 
   const [startDate, setStartDate] = useState(new Date()); // 시작 날짜 상태와 상태를 업데이트하는 함수
   const [endDate, setEndDate] = useState(null); // 끝 날짜 상태와 상태를 업데이트하는 함수
@@ -30,14 +37,29 @@ const DateComponent = () => {
   };
 
   return (
-    <DatePicker // 달력
-      selected={startDate} // 선택된 시작 날짜
-      onChange={onChange} // 날짜가 선택되었을 때 실행되는 콜백 함수
-      startDate={startDate} // 시작 날짜
-      endDate={endDate} // 끝 날짜
-      selectsRange // 범위 선택 활성화
-      inline // 인라인 형태로 DatePicker 표시
-    />
+    <Box
+      backgroundColor={colors.primary[400]}
+      gridColumn="span 4"
+      gridRow="span 2"
+      borderRadius="20px"
+      height="350px"
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center", // 수직 가운데 정렬
+        alignItems: "center" // 수평 가운데 정렬
+      }}
+    >
+        {/* 달력 */}
+        <DatePicker // 달력
+          selected={startDate} // 선택된 시작 날짜
+          onChange={onChange} // 날짜가 선택되었을 때 실행되는 콜백 함수
+          startDate={startDate} // 시작 날짜
+          endDate={endDate} // 끝 날짜
+          selectsRange // 범위 선택 활성화
+          inline // 인라인 형태로 DatePicker 표시
+        />
+    </Box>
   );
 };
 

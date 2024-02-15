@@ -6,10 +6,14 @@ import Date from "./DateComponent";
 import axios from 'axios';
 import { useParams } from 'react-router-dom'
 import { ChartContext } from "./ChartContext";
-
+import DetailHeader from "./DetailHeader";
+import { Box, Button, useTheme } from "@mui/material";
+import { tokens } from "../../theme";
+import DownloadOutlinedIcon from "@mui/icons-material/DownloadOutlined";
 
 // 연동 및 데이터 집어넣기
 const App = () => {
+
   let { num } = useParams() //메인에서 디테일 번호 전하는 파람
   console.log('useParams', num);
 
@@ -21,6 +25,9 @@ const App = () => {
   const [StartDate, setSDate] = useState(null); // 달력의 시작값
   const [EndDate, setEDate] = useState(null); // 달력의 끝값
 
+  /**다크모드 */
+  const theme = useTheme();
+  const colors = tokens(theme.palette.mode);
   // 환자 값에 따라 디테일 페이지 다르게 하기
   useEffect(() => {
     const fetchData = async () => {
@@ -40,7 +47,7 @@ const App = () => {
     if (data && data.length > 0) {
       setclickedXValue(EndDate);
     }
-  }, [data,EndDate]);
+  }, [data, EndDate]);
 
 
   // 날짜 선택하면 그 날짜에 대한 값의 기준의 맞는 값들 넘어오는 useEffect
@@ -92,14 +99,40 @@ const App = () => {
   return (
     <div>
       <div>
-        <ChartContext.Provider value={{ clickedXValue, handleXAxisClick, makechart, data, denger, graph, setSDate, setEDate, StartDate,EndDate }}>
-          <button onClick={dateopen}>달력</button>
-          {dateModal && (
-            <Date />
-          )}
-          <Rechart />
-          <Chart />
-          <Graph />
+        <ChartContext.Provider value={{ clickedXValue, handleXAxisClick, makechart, data, denger, graph, setSDate, setEDate, StartDate, EndDate }}>
+          <Box m="20px">
+            <Box display="flex" justifyContent="space-between" alignItems="center">
+              <DetailHeader title="환자명" subtitle="환자 데이터" />
+              <Box>
+                <Button
+                  sx={{
+                    backgroundColor: colors.blueAccent[700],
+                    color: colors.grey[100],
+                    fontSize: "14px",
+                    fontWeight: "bold",
+                    padding: "10px 20px",
+                  }}
+                >
+                  <DownloadOutlinedIcon sx={{ mr: "10px" }} />
+                  Download
+                </Button>
+              </Box>
+            </Box>
+            <Box
+              display="grid"
+              gridTemplateColumns="repeat(12, 1fr)"
+              gridAutoRows="140px"
+              gap="20px"
+              maxWidth="2000px"
+            >
+              <Rechart />
+              <Date />
+              <Graph />
+              <Chart />
+
+            </Box>
+          </Box>
+
         </ChartContext.Provider>
       </div>
     </div>
