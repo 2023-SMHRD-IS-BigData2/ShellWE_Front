@@ -15,13 +15,6 @@ const Admin = () => {
   const [theme, colorMode] = useMode();
   const [isSidebar, setIsSidebar] = useState(true);
 
-  const { setPatient, setComment } = useContext(PatientContext);
-  useEffect(() => {
-    axios.get('http://localhost:3000/PatientList.json')
-      .then(res => setPatient(res.data.List[0]))
-    axios.get('http://localhost:3000/Comment.json')
-      .then(res => setComment(res.data.List[0]))
-  }, [setComment, setPatient])
 
   return (
     <ColorModeContext.Provider value={colorMode}>
