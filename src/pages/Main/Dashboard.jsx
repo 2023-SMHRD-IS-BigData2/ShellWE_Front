@@ -21,6 +21,8 @@ const App = () => {
 
     const [percent, setPercent] = useState(null)
 
+    /**sepsis level */
+    const [sepsisState, setSepsisState] = useState(null)
     const [inputValue, setInputValue] = useState('');
     // Modal 여는 변수
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -81,7 +83,10 @@ const App = () => {
         fetchData();
     }, [inputValue, patiIndex]);
 
-
+    // sepsislevel 눌렀을 때 함수명 handlesepsis
+    // 백으로 보내는 함수 
+    // http://localhost:8088/boot/changeStatus?sepsisslevel={}&patinum={}
+    
     return (
         <DashboardContext.Provider
             value={{
@@ -89,7 +94,8 @@ const App = () => {
                 setAllpatient, settodayScreening, setScreening,
                 comments, patiIndex, setInputValue, handleSubmit, inputValue,
                 isModalOpen, closeModal, openModal,
-                Allpatient, Screening, todayScreening, percent
+                Allpatient, Screening, todayScreening, percent, 
+                sepsisState, setSepsisState
             }}
         >
             <Box

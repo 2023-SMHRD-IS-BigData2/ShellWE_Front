@@ -1,22 +1,41 @@
 import React, { useContext, useEffect, useState } from "react";
 import { DashboardContext, tokens } from "../../theme";
 import { useTheme } from "@mui/material"
-import { Box, Typography, IconButton } from "@mui/material";
+import { Box, Typography, IconButton, Button } from "@mui/material";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import { Link } from "react-router-dom";
 import CommentModal from "../DesktopOne/CommentModal";
+import StatusModal from "../DesktopOne/StatusModal";
 import InputBase from "@mui/material/InputBase";
 import SendIcon from '@mui/icons-material/Send';
 import MailOutlineIcon from '@mui/icons-material/MailOutline';
+import axios from "axios";
+
 
 // 환자 데이터 컴포넌트
 const Data = () => {
-    const { lists, comments, isModalOpen, closeModal, openModal, setInputValue, inputValue, handleSubmit } = useContext(DashboardContext);
+    const { lists, comments, isModalOpen, closeModal, openModal, setInputValue, inputValue, handleSubmit, handleSepsis, sepsisState, setSepsisState } = useContext(DashboardContext);
+    const [selectedSepsissLevel, setSelectedSepsissLevel] = useState("None");
+
+
 
     /** 다크모드 */
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
     const [hoveredRowId, setHoveredRowId] = useState(null);
+
+    // 새로운 상태 추가: 모달이 열렸는지 나타내는 상태
+    const [isStatusModalOpen, setStatusModalOpen] = useState(false);
+
+    // handleModalOpen 함수 정의
+    const handleModalOpen = () => {
+        setStatusModalOpen(true); // 모달을 열기 위해 상태 업데이트
+    };
+
+    // handleModalClose 함수 정의
+    const handleModalClose = () => {
+        setStatusModalOpen(false); // 모달을 닫기 위해 상태 업데이트
+    };
 
 
     // lists 값이 null인 경우 로딩 상태를 표시하거나 다른 방식으로 처리
@@ -28,6 +47,26 @@ const Data = () => {
         ...list,
         id: index + 1,
     }));
+
+    //환자 
+    const handleOptionChange = (value, patinum) => {
+        console.log("바뀌기전",selectedSepsissLevel);
+        setSelectedSepsissLevel(value);
+        console.log("Selected Value: ", value);
+        console.log("Selected Patinum: ", patinum);
+    
+        // 서버에 데이터를 보내는 요청을 만듭니다.
+        axios.post(`http://localhost:8088/boot/changeSepsisslevel?sepsisslevel=${value}&patinum=${patinum}&pastStatus=${selectedSepsissLevel}`)
+        .then((response) => {
+            console.log('서버 응답:', response);
+            // 요청이 성공했을 때 수행할 작업을 이곳에 추가합니다.
+        })
+        .catch((error) => {
+            console.error('서버 요청 오류:', error);
+            // 요청이 실패했을 때 수행할 작업을 이곳에 추가합니다.
+        });
+    };
+
 
     // 환자 테이블 컬럼
     const columnslist = [
@@ -65,7 +104,7 @@ const Data = () => {
                             to={`/main/detail/${row.patinum}`}
                             style={{
                                 textDecoration: 'none',
-                                color:colors.primary[100]
+                                color: colors.primary[100]
                             }}
                         >
                             {row.name}
@@ -131,7 +170,7 @@ const Data = () => {
             flex: 1,
             headerAlign: "center",
             align: "center",
-            renderCell: ({ row: { sepsisslevel } }) => {
+            renderCell: ({ row: { sepsisslevel, patinum  } }) => {
                 return (
                     <Box
                         width="100%"
@@ -147,10 +186,22 @@ const Data = () => {
                                     : "none"
                         }
                         borderRadius="4px"
+                        onClick={() => {
+                            //"Screening" 또는 "Observing" 상태의 열 클릭 시 모달 열기
+                            if (sepsisslevel === "Screening" || sepsisslevel === "Observing") {
+                                handleModalOpen();
+                            }
+                        }}
+
                     >
-                        <Typography color={colors.grey[100]} sx={{ ml: "5px" }}>
-                            {sepsisslevel === "None" ? "" : sepsisslevel}
-                        </Typography>
+                        <select value={selectedSepsissLevel} onChange={(e) => handleOptionChange(e.target.value, patinum)}>
+                        <option value="Screening">Screening</option>
+                        <option value="Observing">Observing</option>
+                        <option value="None">None</option>
+                    </select>
+                    <Typography color={colors.grey[100]} sx={{ ml: "5px" }}>
+                        {sepsisslevel === "None" ? "" : sepsisslevel}
+                    </Typography>
                     </Box>
                 );
             },
@@ -190,6 +241,8 @@ const Data = () => {
             headerName: "작성자"
         }
     ]
+    // patiIndex 정의
+    //const [patiIndex, setPatiIndex] = useState(1);
 
 
     // lists 값이 null인 경우 로딩 상태를 표시하거나 다른 방식으로 처리
@@ -293,6 +346,36 @@ const Data = () => {
                     </Box>
                 </Box>
             </CommentModal>
+            {/*Status 모달*/}
+            <StatusModal
+                isOpen={isStatusModalOpen} // 상태에 따라 모달 열림/닫힘 결정
+                closeModal={handleModalClose}
+                aria-labelledby="modal-title"
+                aria-describedby="modal-description"
+            >
+                <Box sx={{
+                    position: 'absolute',
+                    top: '50%',
+                    left: '50%',
+                    transform: 'translate(-50%, -50%)',
+                    bgcolor: 'background.paper',
+                    boxShadow: 24,
+                    p: 4,
+                }}>
+                    <Typography id="modal-title" variant="h6" component="h2">
+                        패혈증 상태를 선택해주세요
+                    </Typography>
+                    <Typography id="modal-description" sx={{ mt: 2 }}>
+                        <select value={selectedSepsissLevel} onChange={(e) => setSelectedSepsissLevel(e.target.value)}>
+                            <option value="Screening">Screening</option>
+                            <option value="Observing">Observing</option>
+                            <option value="None">None</option>
+                        </select>
+                    </Typography>
+                    <Button onClick={handleModalClose}>닫기</Button>
+                </Box>
+
+            </StatusModal>
         </Box>
     )
 }
