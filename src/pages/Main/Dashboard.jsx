@@ -47,7 +47,7 @@ const App = () => {
                 setAllpatient(response.data.Allpatient)
                 settodayScreening(response.data.todayScreening)
                 setScreening(response.data.Screening)
-                console.log("lists", response.data);
+                // console.log("lists", response.data);
             } catch (error) {
                 console.log(error);
             }
@@ -59,7 +59,7 @@ const App = () => {
     // 코멘트 Back
 
     const handleSubmit = async (event) => {
-        console.log("handleSubmit");
+        // console.log("handleSubmit");
         event.preventDefault();
         try {
             await axios.post(`http://localhost:8088/boot/insertComment?insertComment=${inputValue}&patinum=${patiIndex}`);
@@ -77,7 +77,7 @@ const App = () => {
                 console.log(error);
             }
         };
-        console.log("comment reflesh")
+        // console.log("comment reflesh")
         fetchData();
     }, [inputValue, patiIndex]);
 

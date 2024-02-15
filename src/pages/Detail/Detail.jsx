@@ -32,11 +32,8 @@ const Detail = () => {
     fetchData();
   }, [num]);
 
-  const test = () => {
-    console.log("test");
-  }
 
-  console.log(data);
+  // console.log(data);
   return (
     <Box m="20px">
       <DetailHeader title="이름" subtitle="정보" />
