@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from 'react'
+import React, { useState } from 'react'
 import { Route, Routes } from "react-router-dom";
 import Settings from './Settings'
 import Staffs from './AdminList'
@@ -7,7 +7,7 @@ import { ColorModeContext, useMode } from '../../theme';
 import { CssBaseline, ThemeProvider } from '@mui/material';
 import Sidebar from './Sidebar';
 import Topbar from '../Bar/Topbar';
-import axios from 'axios'
+
 
 
 const Admin = () => {
