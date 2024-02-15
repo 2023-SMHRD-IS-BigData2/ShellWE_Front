@@ -18,12 +18,13 @@ const App = () => {
   // console.log('useParams', num);
 
   const [data, setData] = useState(null); //스프링에서 받아온 값
-  const [clickedXValue, setclickedXValue] = useState(null) // X축 클릭한 값
+  const [clickedXValue, setclickedXValue] = useState(null) // X축 클릭한 값 (날짜)
   const [denger, setdenger] = useState(null) // dengercolumn 가져온 값
   const [graph, setgraph] = useState(null) // 새로운 차트 만드는 키 값
   const [dateModal, setdateModal] = useState(false); // 달력이 열렸나 안렸나 확인
   const [StartDate, setSDate] = useState(null); // 달력의 시작값
   const [EndDate, setEDate] = useState(null); // 달력의 끝값
+  const [subtitle, setSubtitle] = useState(null); // 밑 그래프의 제목 값
 
   /**다크모드 */
   const theme = useTheme();
@@ -86,8 +87,9 @@ const App = () => {
   // 차트생성 버튼 클릭
   const makechart = (make) => {
     // console.log("버튼 클릭");
-    // console.log("선택된 key 값:", make);
+    console.log("선택된 key 값:", make);
     setgraph(make);
+    setSubtitle(make);
   };
 
   // 열렸나 닫혔나 확인값
@@ -99,7 +101,7 @@ const App = () => {
   return (
     <div>
       <div>
-        <ChartContext.Provider value={{ clickedXValue, handleXAxisClick, makechart, data, denger, graph, setSDate, setEDate, StartDate, EndDate }}>
+        <ChartContext.Provider value={{ clickedXValue, handleXAxisClick, makechart, data, denger, graph, setSDate, setEDate, StartDate, EndDate, subtitle }}>
           <Box m="20px">
             <Box display="flex" justifyContent="space-between" alignItems="center">
               <DetailHeader title="환자명" subtitle="환자 데이터" />

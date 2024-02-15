@@ -4,6 +4,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 import { ChartContext } from './ChartContext'
 import { Box, useTheme } from "@mui/material";
 import { tokens } from "../../theme";
+import MailOutlineIcon from '@mui/icons-material/MailOutline';
 
 const DateComponent = () => {
   /**다크모드 */
@@ -50,15 +51,30 @@ const DateComponent = () => {
         alignItems: "center" // 수평 가운데 정렬
       }}
     >
-        {/* 달력 */}
-        <DatePicker // 달력
-          selected={startDate} // 선택된 시작 날짜
-          onChange={onChange} // 날짜가 선택되었을 때 실행되는 콜백 함수
-          startDate={startDate} // 시작 날짜
-          endDate={endDate} // 끝 날짜
-          selectsRange // 범위 선택 활성화
-          inline // 인라인 형태로 DatePicker 표시
-        />
+      <Box onClick={() => {
+        // openModal(e.row.id) 
+      }}
+        backgroundColor={colors.greenAccent[500]}
+        p="5px 10px"
+        borderRadius="4px"
+        width="80px"
+        marginBottom="20px"
+      >
+        <Box display="auto flex"
+          justifyContent="center"
+        >
+          <MailOutlineIcon />
+        </Box>
+      </Box>
+      {/* 달력 */}
+      <DatePicker // 달력
+        selected={startDate} // 선택된 시작 날짜
+        onChange={onChange} // 날짜가 선택되었을 때 실행되는 콜백 함수
+        startDate={startDate} // 시작 날짜
+        endDate={endDate} // 끝 날짜
+        selectsRange // 범위 선택 활성화
+        inline // 인라인 형태로 DatePicker 표시
+      />
     </Box>
   );
 };
