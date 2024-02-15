@@ -1,0 +1,48 @@
+{
+    "columns": [
+        {
+            "field": "membernum",
+            "headerName": "사번번호"
+        },
+        {
+            "field": "name",
+            "headerName": "이름",
+            "flex" : 1
+        },
+        {
+            "field": "pw",
+            "headerName": "비밀번호",
+            "flex" : 1
+        },
+        {
+            "field": "memberrank",
+            "headerName": "직급",
+            "flex" : 1
+        },
+        {
+            "field": "logintime",
+            "headerName": "로그인 시간",
+            "flex" : 1
+        },
+        {
+            "field": "logouttime",
+            "headerName": "로그아웃 시간",
+            "flex" : 1
+        },
+        {
+            "field": "tell",
+            "headerName": "연락처",
+            "flex" : 1
+        },
+        {
+            "field": "date",
+            "headerName": "날짜",
+            "flex" : 1
+        },
+        {
+            "field": "id",
+            "headerName": "아이디",
+            "flex" : 1
+        }
+    ]
+}

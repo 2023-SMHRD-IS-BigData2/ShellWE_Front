@@ -76,16 +76,15 @@ export const mockDataTeam = [
 
 export const mockDataContacts = [
   {
-    id:1,
-    name: "김민지",
-    age: 35,
-    bloodtype : "O형",
-    gender : "여성",
-    hpdate: 221015,
-    physician: "장준휴",
-    sepsisscore: 65,
-    sepsisslevel: "screening",
-    ward: "A병동"
+    membernum:1,
+    name:"사무엘",
+    pw:"1",
+    memberrank:"인턴",
+    logintime:"12:00",
+    logouttime:"12:15",
+    tell:"010-0000-0000",
+    date:"2024-02-13",
+    id:"idid"
   },
   {
     id:2,
