@@ -47,13 +47,14 @@ const Detail = () => {
         gap="20px"
         maxWidth="2000px"
       >
+
         {/* 그래프 박스 */}
         <Box
           gridColumn="span 8"
           gridRow="span 2"
           backgroundColor={colors.primary[400]}
           borderRadius="30px"
-          width="1500px"
+          width="135vh"
         >
           <Box
             mt="25px"
@@ -85,37 +86,36 @@ const Detail = () => {
           </Box>
         </Box>
 
+        {/* 버튼들 */}
         <Box
           gridColumn="span 4"
           gridRow="span 2"
-          // backgroundColor={colors.primary[400]}
-          overflow="auto"
-          height="680px"
-          borderRadius="30px"
         >
           <Box
             display="flex auto"
             justifyContent="space-between"
             backgroundColor={colors.primary[400]}
-            marginBottom="4px"
+            marginBottom="6px"
             colors={colors.grey[100]}
             p="15px"
+            borderRadius="20px"
           >
             <Typography color={colors.grey[100]} variant="h5" fontWeight="600" align="center">
               2024-02-02
             </Typography>
           </Box>
-          <Box
-            overflow="auto">
 
-            {/* 호준이 줄거 */}
+          <Box
+            overflow="auto"
+            height="65vh">
+            {/* 반복되는 부분 */}
             {mockTransactions.map((transaction, i) => (
               <Box
                 // key={`${transaction.txId}-${i}`} key 값
                 display="flex"
                 justifyContent="space-between"
                 alignItems="center"
-                borderRadius="6px"
+                borderRadius="20px"
                 backgroundColor={colors.primary[400]}
                 marginBottom="4px"
                 p="15px"
@@ -129,8 +129,9 @@ const Detail = () => {
                     HR
                   </Typography>
                 </Box>
-                <Box // color={colors.grey[100]}
-                >정상</Box>
+                <Box>
+                  정상
+                </Box>
                 <Box
                   backgroundColor={colors.greenAccent[500]}
                   p="5px 10px"
@@ -141,7 +142,6 @@ const Detail = () => {
                 </Box>
               </Box>
             ))}
-
           </Box>
         </Box>
         {/* 그래프 박스 */}
@@ -151,6 +151,7 @@ const Detail = () => {
           backgroundColor={colors.primary[400]}
           borderRadius="30px"
           height="350px"
+          width="135vh"
         >
           <Box
             mt="25px"
