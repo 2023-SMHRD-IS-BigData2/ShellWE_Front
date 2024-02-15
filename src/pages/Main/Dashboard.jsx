@@ -94,6 +94,7 @@ const App = () => {
         >
             <Box
                 m="20px"
+                marginTop="60px"
             >
                 <Card />
                 <Data />
