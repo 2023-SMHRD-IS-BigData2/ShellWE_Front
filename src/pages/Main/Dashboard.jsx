@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Box } from "@mui/material";
 import { DashboardContext } from "../../theme";
 import Data from './Data';
@@ -17,11 +17,12 @@ const App = () => {
     const [comments, setComments] = useState(null);
     /** 코멘트 인덱스 */
     const [patiIndex, setpatiIndex] = useState(1);
+    /** 코멘트 입력 값 */
+    const [inputValue, setInputValue] = useState('');
     /** 카드 변수 */
-
     const [percent, setPercent] = useState(null)
 
-    const [inputValue, setInputValue] = useState('');
+
     // Modal 여는 변수
     const [isModalOpen, setIsModalOpen] = useState(false);
     /**Modal열기 */
@@ -33,6 +34,8 @@ const App = () => {
     const closeModal = () => {
         setIsModalOpen(false);
     }
+    const gridRef = useRef(null);
+
     /** 카드 값 */
     useEffect(() => {
         setPercent(Screening / Allpatient * 100)
@@ -56,18 +59,8 @@ const App = () => {
         fetchData();
     }, []);
 
-    // 코멘트 Back
 
-    const handleSubmit = async (event) => {
-        // console.log("handleSubmit");
-        event.preventDefault();
-        try {
-            await axios.post(`http://localhost:8088/boot/insertComment?insertComment=${inputValue}&patinum=${patiIndex}`);
-            setInputValue("")
-        } catch (error) {
-            console.log(error);
-        }
-    };
+    // 코멘트 내용 출력
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -81,6 +74,26 @@ const App = () => {
         fetchData();
     }, [inputValue, patiIndex]);
 
+    useEffect(() => {
+        if (gridRef.current) {
+            const rowCount = comments.length;
+            const lastRowIndex = rowCount - 1;
+
+            gridRef.current.scrollToIndexes({ rowIndex: lastRowIndex });
+        }
+    }, [comments]);
+
+    // 코멘트 Back 전송
+    const handleSubmit = async (event) => {
+        // console.log("handleSubmit");
+        event.preventDefault();
+        try {
+            await axios.post(`http://localhost:8088/boot/insertComment?insertComment=${inputValue}&patinum=${patiIndex}`);
+            setInputValue("")
+        } catch (error) {
+            console.log(error);
+        }
+    };
 
     return (
         <DashboardContext.Provider
@@ -95,6 +108,7 @@ const App = () => {
             <Box
                 m="20px"
                 marginTop="60px"
+                width="97.5%"
             >
                 <Card />
                 <Data />
