@@ -18,9 +18,9 @@ export default function Example() {
     const { handleXAxisClick, data, StartDate, EndDate } = useContext(ChartContext)
 
     // 데이터와 날짜 값 확인
-    console.log("datas", data);
-    console.log("StartDate", StartDate);
-    console.log("EndDate", EndDate);
+    // console.log("datas", data);
+    // console.log("StartDate", StartDate);
+    // console.log("EndDate", EndDate);
 
     // 버튼 클릭 이벤트 처리
     const handleButtonClick = (value) => {

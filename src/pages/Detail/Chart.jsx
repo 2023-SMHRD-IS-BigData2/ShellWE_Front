@@ -10,11 +10,11 @@ const Charts = () => {
   const colors = tokens(theme.palette.mode);
 
   const { clickedXValue, makechart, denger } = useContext(ChartContext); // ChartContext로부터 clickedXValue, makechart, denger 값을 가져옵니다.
-  console.log("denger", denger);
+  // console.log("denger", denger);
   const [updatedValue, setUpdatedValue] = useState(0); // updatedValue 상태와 값을 초기화합니다.
 
   useEffect(() => {
-    console.log("chart클릭", clickedXValue);
+    // console.log("chart클릭", clickedXValue);
     const date = clickedXValue
       ? clickedXValue.split(' ')[0]
       : ""; // clickedXValue에서 날짜 부분만 추출합니다.

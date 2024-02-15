@@ -15,7 +15,7 @@ import DownloadOutlinedIcon from "@mui/icons-material/DownloadOutlined";
 const App = () => {
 
   let { num } = useParams() //메인에서 디테일 번호 전하는 파람
-  console.log('useParams', num);
+  // console.log('useParams', num);
 
   const [data, setData] = useState(null); //스프링에서 받아온 값
   const [clickedXValue, setclickedXValue] = useState(null) // X축 클릭한 값
@@ -55,7 +55,7 @@ const App = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(`http://localhost:8088/boot/dengerColumns?patinum=${num}&date=${clickedXValue.split(' ')[0]}`);
-        console.log(response.data.dengercolumn);
+        // console.log(response.data.dengercolumn);
         setdenger(response.data.dengercolumn);
       } catch (error) {
         console.log(error);
@@ -85,8 +85,8 @@ const App = () => {
 
   // 차트생성 버튼 클릭
   const makechart = (make) => {
-    console.log("버튼 클릭");
-    console.log("선택된 key 값:", make);
+    // console.log("버튼 클릭");
+    // console.log("선택된 key 값:", make);
     setgraph(make);
   };
 
