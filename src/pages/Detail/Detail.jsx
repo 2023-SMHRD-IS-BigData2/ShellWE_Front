@@ -7,6 +7,7 @@ import DetailHeader from './DetailHeader'
 import DownloadOutlinedIcon from "@mui/icons-material/DownloadOutlined";
 import { useParams } from 'react-router-dom'
 import axios from 'axios';
+import Rechart from './Rechart'
 
 const Detail = () => {
   /** 다크모드 */
@@ -86,6 +87,54 @@ const Detail = () => {
           </Box>
         </Box>
 
+        <Box
+          backgroundColor={colors.primary[400]}
+          gridColumn="span 4"
+          gridRow="span 2"
+          borderRadius="20px"
+        >
+
+        </Box>
+
+
+        {/* 그래프 박스 */}
+        <Box
+          gridColumn="span 8"
+          gridRow="span 2"
+          backgroundColor={colors.primary[400]}
+          borderRadius="30px"
+          height="350px"
+          width="135vh"
+        >
+          <Box
+            mt="25px"
+            p="0 30px"
+            display="flex "
+            justifyContent="space-between"
+            alignItems="center"
+          >
+            <Box>
+              <Typography
+                variant="h5"
+                fontWeight="600"
+                color={colors.grey[100]}
+              >
+                SMART                            {/* 패혈증 수치 */}
+              </Typography>
+              <Typography
+                variant="h3"
+                fontWeight="bold"
+                color={colors.greenAccent[500]}
+              >
+                68
+              </Typography>
+            </Box>
+          </Box>
+          <Box height="250px" m="-20px 0 0 0" >
+            {/* <LineChart isDashboard={true} /> */}
+              {/* <Rechart/> */}
+          </Box>
+        </Box>
         {/* 버튼들 */}
         <Box
           gridColumn="span 4"
@@ -107,7 +156,7 @@ const Detail = () => {
 
           <Box
             overflow="auto"
-            height="65vh">
+            height="30vh">
             {/* 반복되는 부분 */}
             {mockTransactions.map((transaction, i) => (
               <Box
@@ -144,44 +193,7 @@ const Detail = () => {
             ))}
           </Box>
         </Box>
-        {/* 그래프 박스 */}
-        <Box
-          gridColumn="span 8"
-          gridRow="span 2"
-          backgroundColor={colors.primary[400]}
-          borderRadius="30px"
-          height="350px"
-          width="135vh"
-        >
-          <Box
-            mt="25px"
-            p="0 30px"
-            display="flex "
-            justifyContent="space-between"
-            alignItems="center"
-          >
-            <Box>
-              <Typography
-                variant="h5"
-                fontWeight="600"
-                color={colors.grey[100]}
-              >
-                SMART                            {/* 패혈증 수치 */}
-              </Typography>
-              <Typography
-                variant="h3"
-                fontWeight="bold"
-                color={colors.greenAccent[500]}
-              >
-                68
-              </Typography>
-            </Box>
-          </Box>
-          <Box height="250px" m="-20px 0 0 0" >
-            {/* <LineChart isDashboard={true} /> */}
 
-          </Box>
-        </Box>
       </Box>
     </Box>
   )
