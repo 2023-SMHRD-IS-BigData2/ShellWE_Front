@@ -175,7 +175,7 @@ export default function Example() {
                 <ResponsiveContainer width="100%" height={300}>
                     <LineChart
                         data={filteredData}
-                        margin={{ top: 20, bottom: 40, right: 70, left: 80 }}
+                        margin={{ top: 20, bottom: 40, right: 80, left: 80 }}
                     >
                         <CartesianGrid vertical={false} strokeOpacity={0.3} />
                         <XAxis
@@ -198,11 +198,8 @@ export default function Example() {
                             stroke="#EB9DA2"
                             startIndex={0}
                             endIndex={Math.min(5, data.length - 1)}
-                            opacity={0.2}
-                            strokeOpacity={0.2}
+                            opacity="0.2"
                             fillOpacity={0.2}
-                            floodOpacity={0.2}
-                            stopOpacity={0.2}
                         />
                     </LineChart>
                 </ResponsiveContainer>
