@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import './login.css';
 
 const Login = () => {
   const [inputId, setInputId] = useState(""); // 입력한 아이디 값을 상태로 관리
@@ -63,36 +64,81 @@ const Login = () => {
 
   return (
     <div>
-      <h1>Login Page</h1>
-       <h1>{message}</h1> {/* 서버로부터 받은 메시지 출력 */}
-      <input
-        type="text"
-        className="form-control"
-        placeholder="ID를 입력하세요"
-        name="id"
-        value={inputId}
-        onChange={handleInputId}
-      />
-
-      <input
-        type="password"
-        className="form-control"
-        placeholder="Pw를 입력하세요"
-        name="pw"
-        value={inputPw}
-        onChange={handleInputPw}
-        ref={inputRef} // ref 연결
-        onKeyDown={handleKeyDown} // onKeyDown 이벤트 핸들러 추가
-      />
-
-      <button
-        type="button"
-        onClick={onClickLogin}
-      >
-        로그인
-      </button>
-
-       {error && <div>{error}</div>} {/* 에러 메시지가 있을 경우 출력 */}
+       {/* 추가한 HTML과 CSS */}
+      <section className="user-pages-section">
+        <div className="inner-container w-container">
+          <div className="user-page-content-wrap">
+            <div className="user-page-title-wrap">
+              <div className="user-page-icon-wrap">
+                {/* logo */}
+                {/* <img src="https://assets-global.website-files.com/6465a677c2eb8d266483bb5c/646700a3d35799da2b5a84d8_sashub-icon.svg"
+                      loading="eager" alt="" class="user-page-icon" /> */}
+              </div>
+              <h1 className="user-page-title">Log in</h1>
+              <p>Please fill your Email and Password to log in</p>
+            </div>
+            <div className="user-page-content">
+              <div className="w-form">
+                <form
+                  id="wf-form-User-Page-Form"
+                  name="wf-form-User-Page-Form"
+                  data-name="User Page Form"
+                  method="get"
+                  data-wf-page-id="64673c2876d96422ff763b57"
+                  data-wf-element-id="b1c52374-4bdb-9294-dabc-125d9d7b72ea"
+                >
+                  <div className="input-group">
+                    <label htmlFor="Email">Email</label>
+                    <input
+                      className="form-input w-input"
+                      maxLength={256}
+                      name="Email"
+                      data-name="Email"
+                      placeholder=""
+                      type="email"
+                      id="Email"
+                      required=""
+                    />
+                  </div>
+                  <div className="input-group">
+                    <div className="password-item">
+                      <label htmlFor="Password">Password</label>
+                    </div>
+                    <input
+                      className="form-input w-input"
+                      maxLength={256}
+                      name="Password"
+                      data-name="Password"
+                      placeholder=""
+                      type="password"
+                      id="Password"
+                      required=""
+                    />
+                  </div>
+                  <input
+                    type="submit"
+                    data-wait="Please wait..."
+                    className="button-primary-1 w-button"
+                    defaultValue="Log in"
+                  />
+                </form>
+                <div className="success-message w-form-done">
+                  <div>Thank you! Your submission has been received!</div>
+                </div>
+                <div className="error-message w-form-fail">
+                  <div>Oops! Something went wrong while submitting the form.</div>
+                </div>
+              </div>
+              <div>
+                Don't have an account?
+                <a href="/user-pages/sign-up" className="text-primary">
+                  Sign Up
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   );
 };
