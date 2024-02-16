@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import { DashboardContext, tokens } from "../../theme";
-import { useTheme } from "@mui/material"
+import { createTheme, useTheme } from "@mui/material"
 import { Box, Typography, IconButton, Button, Select, MenuItem } from "@mui/material";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import { Link } from "react-router-dom";
@@ -172,8 +172,8 @@ const Data = () => {
                             }}
                             border={0}
                             sx={{
-                                paddingLeft: "70px",
-                                paddingRight: "70px",
+                                paddingLeft: "95px",
+                                paddingRight: "80px",
                                 border: 'none',
                                 backgroundColor: sepsisslevel === "Screening"
                                     ? colors.redAccent[600]
@@ -249,7 +249,18 @@ const Data = () => {
     ]
     // patiIndex 정의
     //const [patiIndex, setPatiIndex] = useState(1);
-
+    const tableTheme = createTheme({
+        components: {
+          MuiDataGrid: {
+            styleOverrides: {
+              root: {
+                border: '5px solid red', // 선 색상을 변경할 스타일 속성
+                backgroundColor: "blue"
+              },
+            },
+          },
+        },
+      });
 
     // lists 값이 null인 경우 로딩 상태를 표시하거나 다른 방식으로 처리
     if (comments === null) {
@@ -306,6 +317,11 @@ const Data = () => {
                     columns={columnslist}                /** 컬럼명 */
                     components={{ Toolbar: GridToolbar }}    /** 필터 기능 (다운로드, 크기 조절) */
                     autoPageSize={10}
+                    componentsProps={{ // 테마를 컴포넌트에 적용
+                        MuiDataGrid: {
+                            tableTheme,
+                        },
+                      }}
                 />
             </Box>
 

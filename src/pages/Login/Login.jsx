@@ -85,46 +85,52 @@ const Login = () => {
             </div>
             <div className="user-page-content">
               <div className="w-form">
-                  <div
-                    className="input-group"
-                  >
-                    <label htmlFor="Email">ID</label>
-                    <input
-                      className="form-input w-input form-control" // 가져온 코드
-                      maxLength={256}
-                      type="text"
-                      placeholder="ID를 입력하세요"
-                      name="id"
-                      value={inputId}
-                      onChange={handleInputId}
-                    />
+                <div
+                  className="input-group"
+                >
+                  <label htmlFor="Email">ID</label>
+                  <input
+                    className="form-input w-input form-control" // 가져온 코드
+                    maxLength={256}
+                    type="text"
+                    placeholder="ID를 입력하세요"
+                    name="id"
+                    value={inputId}
+                    onChange={handleInputId}
+                  />
+                </div>
+                <div className="input-group">
+                  <div className="password-item">
+                    <label htmlFor="Password">Password</label>
                   </div>
-                  <div className="input-group">
-                    <div className="password-item">
-                      <label htmlFor="Password">Password</label>
-                    </div>
-                    <input
-                      className="form-input w-input form-control" // 가져온 코드
-                      maxLength={256}
-                      type="password"
-                      placeholder="Pw를 입력하세요"
-                      name="pw"
-                      value={inputPw}
-                      onChange={handleInputPw}
-                      ref={inputRef} // ref 연결
-                      onKeyDown={handleKeyDown} // onKeyDown 이벤트 핸들러 추가
-                    />
-                  </div>
-                  <div
-                    style={{
-                      display: "flex",
-                      justifyContent: "center"
-                    }}>
-                    <button
-                      onClick={onClickLogin}>
-                      로그인
-                    </button>
-                  </div>
+                  <input
+                    className="form-input w-input form-control" // 가져온 코드
+                    maxLength={256}
+                    type="password"
+                    placeholder="Pw를 입력하세요"
+                    name="pw"
+                    value={inputPw}
+                    onChange={handleInputPw}
+                    ref={inputRef} // ref 연결
+                    onKeyDown={handleKeyDown} // onKeyDown 이벤트 핸들러 추가
+                  />
+                </div>
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    marginTop:"50px",
+                    margin:"auto",
+                    width: "60%",
+                  }}>
+                  <button
+                  style={{
+                    backgroundColor:"#b7ebde"
+                  }}
+                    onClick={onClickLogin}>
+                    로그인
+                  </button>
+                </div>
                 <div className="error-message w-form-fail">
                   {error && <div>{error}</div>}
                 </div>
