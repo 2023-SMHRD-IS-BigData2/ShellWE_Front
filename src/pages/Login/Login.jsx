@@ -63,11 +63,18 @@ const Login = () => {
   };
 
   return (
-    <div>
-       {/* 추가한 HTML과 CSS */}
+    <div style={{
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      margin: "auto",
+      // width:"400px"
+    }}>
+      {/* 추가한 HTML과 CSS */}
       <section className="user-pages-section">
         <div className="inner-container w-container">
-          <div className="user-page-content-wrap">
+          <div className="user-page-content-wrap"
+            style={{ width: "600px" }}>
             <div className="user-page-title-wrap">
               <div className="user-page-icon-wrap">
                 {/* logo */}
@@ -75,7 +82,7 @@ const Login = () => {
                       loading="eager" alt="" class="user-page-icon" /> */}
               </div>
               <h1 className="user-page-title">Log in</h1>
-              <p>Please fill your ID and Password to log in</p>
+              {/* <p>Please fill your ID and Password to log in</p> */}
             </div>
             <div className="user-page-content">
               <div className="w-form">
@@ -87,7 +94,9 @@ const Login = () => {
                   data-wf-page-id="64673c2876d96422ff763b57"
                   data-wf-element-id="b1c52374-4bdb-9294-dabc-125d9d7b72ea"
                 >
-                  <div className="input-group">
+                  <div
+                    className="input-group"
+                  >
                     <label htmlFor="Email">ID</label>
                     <input
                       className="form-input w-input"
@@ -115,12 +124,18 @@ const Login = () => {
                       required=""
                     />
                   </div>
-                  <input
-                    type="login"
-                    data-wait="Please wait..."
-                    className="button-primary-1 w-button"
-                    defaultValue="Log in"
-                  />
+                  <div
+                    style={{
+                      display: "flex",
+                      justifyContent: "center"
+                    }}>
+                    <input
+                      type="login"
+                      data-wait="Please wait..."
+                      className="button-primary-1 w-button"
+                      defaultValue="Log in"
+                    />
+                  </div>
                 </form>
                 <div className="success-message w-form-done">
                   <div>Thank you! Your submission has been received!</div>
@@ -132,8 +147,8 @@ const Login = () => {
             </div>
           </div>
         </div>
-      </section>
-    </div>
+      </section >
+    </div >
   );
 };
 
