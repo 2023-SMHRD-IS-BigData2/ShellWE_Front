@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import { DashboardContext, tokens } from "../../theme";
 import { useTheme } from "@mui/material"
-import { Box, Typography, IconButton, Button } from "@mui/material";
+import { Box, Typography, IconButton, Button, Select, MenuItem } from "@mui/material";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import { Link } from "react-router-dom";
 import CommentModal from "../DesktopOne/CommentModal";
@@ -12,7 +12,7 @@ import MailOutlineIcon from '@mui/icons-material/MailOutline';
 
 // 환자 데이터 컴포넌트
 const Data = () => {
-    const { lists, comments, isModalOpen, closeModal, openModal, setInputValue, inputValue, handleSubmit, handleOptionChange } = useContext(DashboardContext);
+    const { lists, comments, isModalOpen, closeModal, openModal, setInputValue, inputValue, handleSubmit, handleOptionChange, setSepsisState } = useContext(DashboardContext);
     const [selectedSepsissLevel, setSelectedSepsissLevel] = useState("None");
 
     /** 다크모드 */
@@ -150,37 +150,40 @@ const Data = () => {
             renderCell: ({ row: { sepsisslevel, patinum } }) => {
                 return (
                     <Box
-                        width="100%"
                         m="0 auto"
                         p="5px"
                         display="flex"
                         justifyContent="center"
-                        backgroundColor={
-                            sepsisslevel === "Screening"
-                                ? colors.redAccent[600]
-                                : sepsisslevel === "Observing"
-                                    ? colors.greenAccent[700]
-                                    : "none"
-                        }
+                        // backgroundColor={
+                        // sepsisslevel === "Screening"
+                        //     ? colors.redAccent[600]
+                        //     : sepsisslevel === "Observing"
+                        //         ? colors.greenAccent[700]
+                        //         : "none"
+                        // }
                         borderRadius="4px"
-                        onClick={() => {
-                            //"Screening" 또는 "Observing" 상태의 열 클릭 시 모달 열기
-                            if (sepsisslevel === "Screening" || sepsisslevel === "Observing") {
-                                handleModalOpen();
-                            }
-                        }}
 
                     >
-                        <select
-                            value={sepsisslevel} // 변경 하지 말아주세요
-                            onChange={(e) => handleOptionChange(e.target.value, patinum)}>
-                            <option value="Screening">Screening</option>
-                            <option value="Observing">Observing</option>
-                            <option value="None">None</option>
-                        </select>
-                        <Typography color={colors.grey[100]} sx={{ ml: "5px" }}>
-                            {sepsisslevel === "None" ? "" : sepsisslevel}
-                        </Typography>
+                        <Select
+                            value={sepsisslevel}
+                            onChange={(e) => {handleOptionChange(e.target.value, patinum)
+                                setSepsisState(e)}}
+                            border={0}
+                            sx={{
+                                paddingLeft: "70px",
+                                paddingRight: "70px",
+                                border: 'none',
+                                backgroundColor: sepsisslevel === "Screening"
+                                    ? colors.redAccent[600]
+                                    : sepsisslevel === "Observing"
+                                        ? colors.greenAccent[700]
+                                        : "none",
+                            }}
+                        >
+                            <MenuItem value="Screening">Screening</MenuItem>
+                            <MenuItem value="Observing">Observing</MenuItem>
+                            <MenuItem value="None">None</MenuItem>
+                        </Select>
                     </Box>
                 );
             },
@@ -236,7 +239,7 @@ const Data = () => {
     }));
     return (
         <Box
-        m="20px"
+            m="20px"
             borderRadius="30px">
             <Box
                 m="25px 0 0 0"
@@ -278,7 +281,8 @@ const Data = () => {
                     rows={listsWithId}                       /** 환자 데이터 */
                     columns={columnslist}                /** 컬럼명 */
                     components={{ Toolbar: GridToolbar }}    /** 필터 기능 (다운로드, 크기 조절) */
-                    autoPageSize={[10, 20]}
+                    autoPageSize={10}
+                    pageSizeOptions={[0,10]}
                 />
             </Box>
 

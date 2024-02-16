@@ -12,7 +12,7 @@ const App = () => {
     const [Allpatient, setAllpatient] = useState(null)
     const [todayScreening, settodayScreening] = useState(null)
     const [Screening, setScreening] = useState(null)
-
+    
     /** 코멘트 */
     const [comments, setComments] = useState(null);
     /** 코멘트 인덱스 */
@@ -77,9 +77,9 @@ const App = () => {
                 console.log(error);
             }
         };
-
+        console.log("patient");
         fetchData();
-    }, [handleOptionChange]);
+    }, [sepsisState]);
 
 
     // 코멘트 내용 출력
@@ -92,7 +92,7 @@ const App = () => {
                 console.log(error);
             }
         };
-        // console.log("comment reflesh")
+        console.log("comments")
         fetchData();
     }, [inputValue, patiIndex]);
 
@@ -109,6 +109,7 @@ const App = () => {
 
             gridRef.current.scrollToIndexes({ rowIndex: lastRowIndex });
         }
+        console.log("comment scroll");
     }, [comments]);
 
     // 코멘트 Back 전송
@@ -132,7 +133,7 @@ const App = () => {
                 comments, patiIndex, setInputValue, handleSubmit, inputValue,
                 isModalOpen, closeModal, openModal,
                 Allpatient, Screening, todayScreening, percent,
-                handleOptionChange
+                handleOptionChange, setSepsisState
             }}
         >
             <Box
