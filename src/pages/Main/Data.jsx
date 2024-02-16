@@ -56,7 +56,7 @@ const Data = () => {
         console.log("Selected Patinum: ", patinum);
     
         // 서버에 데이터를 보내는 요청을 만듭니다.
-        axios.post(`http://localhost:8088/boot/changeSepsisslevel?sepsisslevel=${value}&patinum=${patinum}&pastStatus=${selectedSepsissLevel}`)
+        axios.post(`http://localhost:8088/boot/changeStatus?sepsisslevel=${value}&patinum=${patinum}`)
         .then((response) => {
             console.log('서버 응답:', response);
             // 요청이 성공했을 때 수행할 작업을 이곳에 추가합니다.
