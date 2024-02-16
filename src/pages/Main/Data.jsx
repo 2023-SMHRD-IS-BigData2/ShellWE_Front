@@ -48,26 +48,6 @@ const Data = () => {
         id: index + 1,
     }));
 
-    //환자 
-    // const handleOptionChange = (value, patinum) => {
-    //     console.log("바뀌기전", selectedSepsissLevel);
-    //     // setSelectedSepsissLevel(value);
-    //     console.log("Selected Value: ", value);
-    //     console.log("Selected Patinum: ", patinum);
-
-    //     // 서버에 데이터를 보내는 요청을 만듭니다.
-    //     axios.post(`http://localhost:8088/boot/changeStatus?sepsisslevel=${value}&patinum=${patinum}`)
-    //         .then((response) => {
-    //             console.log('서버 응답:', response);
-    //             // 요청이 성공했을 때 수행할 작업을 이곳에 추가합니다.
-    //         })
-    //         .catch((error) => {
-    //             console.error('서버 요청 오류:', error);
-    //             // 요청이 실패했을 때 수행할 작업을 이곳에 추가합니다.
-    //         });
-    // };
-
-
     // 환자 테이블 컬럼
     const columnslist = [
         {
@@ -194,9 +174,9 @@ const Data = () => {
                         }}
 
                     >
-                        <select 
-                        value={sepsisslevel} // 변경 하지 말아주세요
-                        onChange={(e) => handleOptionChange(e.target.value, patinum)}>
+                        <select
+                            value={sepsisslevel} // 변경 하지 말아주세요
+                            onChange={(e) => handleOptionChange(e.target.value, patinum)}>
                             <option value="Screening">Screening</option>
                             <option value="Observing">Observing</option>
                             <option value="None">None</option>
