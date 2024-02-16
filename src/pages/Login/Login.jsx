@@ -46,6 +46,7 @@ const Login = () => {
       );
       if (response && response.data) {
         setMessage(response.data.login); // 서버로부터 받은 로그인 메시지를 message 상태로 설정
+        console.log(response.data.login); // 서버로부터 받은 로그인 메시지를 message 상태로 설정
       } else {
         setError("로그인 실패");
         console.error("Login failed: No data in the response"); // 응답 데이터가 없을 경우 에러 메시지 설정 및 콘솔에 로그 출력
@@ -82,31 +83,34 @@ const Login = () => {
                       loading="eager" alt="" class="user-page-icon" /> */}
               </div>
               <h1 className="user-page-title">Log in</h1>
-              {/* <p>Please fill your ID and Password to log in</p> */}
+              <p>{message}</p>
             </div>
             <div className="user-page-content">
               <div className="w-form">
-                <form
+                {/* <form
                   id="wf-form-User-Page-Form"
                   name="wf-form-User-Page-Form"
                   data-name="User Page Form"
                   method="get"
                   data-wf-page-id="64673c2876d96422ff763b57"
                   data-wf-element-id="b1c52374-4bdb-9294-dabc-125d9d7b72ea"
-                >
+                  action={onClickLogin}
+                > */}
                   <div
                     className="input-group"
                   >
                     <label htmlFor="Email">ID</label>
                     <input
-                      className="form-input w-input"
+                      className="form-input w-input form-control" // 가져온 코드
                       maxLength={256}
-                      name="Email"
-                      data-name="Email"
-                      placeholder=""
-                      type="email"
-                      id="Email"
-                      required=""
+                      // data-name="Email" // 가져온 코드
+                      // id="id" // 가져온 코드
+                      // required="" // 가져온 코드
+                      type="text"
+                      placeholder="ID를 입력하세요"
+                      name="id"
+                      value={inputId}
+                      onChange={handleInputId}
                     />
                   </div>
                   <div className="input-group">
@@ -114,14 +118,19 @@ const Login = () => {
                       <label htmlFor="Password">Password</label>
                     </div>
                     <input
-                      className="form-input w-input"
+                      className="form-input w-input form-control" // 가져온 코드
                       maxLength={256}
-                      name="Password"
-                      data-name="Password"
-                      placeholder=""
+                      // data-name="Password" // 가져온 코드
                       type="password"
-                      id="Password"
-                      required=""
+                      // id="Password" // 가져온 코드
+                      // required="" // 가져온 코드
+
+                      placeholder="Pw를 입력하세요"
+                      name="pw"
+                      value={inputPw}
+                      onChange={handleInputPw}
+                      ref={inputRef} // ref 연결
+                      onKeyDown={handleKeyDown} // onKeyDown 이벤트 핸들러 추가
                     />
                   </div>
                   <div
@@ -129,19 +138,21 @@ const Login = () => {
                       display: "flex",
                       justifyContent: "center"
                     }}>
+                    <button
+                      onClick={onClickLogin}>
+                      로그인
+                    </button>
                     <input
                       type="login"
                       data-wait="Please wait..."
                       className="button-primary-1 w-button"
                       defaultValue="Log in"
+                      onClick={onClickLogin}
                     />
                   </div>
-                </form>
-                <div className="success-message w-form-done">
-                  <div>Thank you! Your submission has been received!</div>
-                </div>
+                {/* </form> */}
                 <div className="error-message w-form-fail">
-                  <div>Oops! Something went wrong while submitting the form.</div>
+                  {error && <div>{error}</div>}
                 </div>
               </div>
             </div>
