@@ -46,7 +46,6 @@ const Login = () => {
       );
       if (response && response.data) {
         setMessage(response.data.login); // 서버로부터 받은 로그인 메시지를 message 상태로 설정
-        console.log(response.data.login); // 서버로부터 받은 로그인 메시지를 message 상태로 설정
       } else {
         setError("로그인 실패");
         console.error("Login failed: No data in the response"); // 응답 데이터가 없을 경우 에러 메시지 설정 및 콘솔에 로그 출력
@@ -69,7 +68,6 @@ const Login = () => {
       justifyContent: "center",
       alignItems: "center",
       margin: "auto",
-      // width:"400px"
     }}>
       {/* 추가한 HTML과 CSS */}
       <section className="user-pages-section">
@@ -87,15 +85,6 @@ const Login = () => {
             </div>
             <div className="user-page-content">
               <div className="w-form">
-                {/* <form
-                  id="wf-form-User-Page-Form"
-                  name="wf-form-User-Page-Form"
-                  data-name="User Page Form"
-                  method="get"
-                  data-wf-page-id="64673c2876d96422ff763b57"
-                  data-wf-element-id="b1c52374-4bdb-9294-dabc-125d9d7b72ea"
-                  action={onClickLogin}
-                > */}
                   <div
                     className="input-group"
                   >
@@ -103,9 +92,6 @@ const Login = () => {
                     <input
                       className="form-input w-input form-control" // 가져온 코드
                       maxLength={256}
-                      // data-name="Email" // 가져온 코드
-                      // id="id" // 가져온 코드
-                      // required="" // 가져온 코드
                       type="text"
                       placeholder="ID를 입력하세요"
                       name="id"
@@ -120,11 +106,7 @@ const Login = () => {
                     <input
                       className="form-input w-input form-control" // 가져온 코드
                       maxLength={256}
-                      // data-name="Password" // 가져온 코드
                       type="password"
-                      // id="Password" // 가져온 코드
-                      // required="" // 가져온 코드
-
                       placeholder="Pw를 입력하세요"
                       name="pw"
                       value={inputPw}
@@ -142,15 +124,7 @@ const Login = () => {
                       onClick={onClickLogin}>
                       로그인
                     </button>
-                    <input
-                      type="login"
-                      data-wait="Please wait..."
-                      className="button-primary-1 w-button"
-                      defaultValue="Log in"
-                      onClick={onClickLogin}
-                    />
                   </div>
-                {/* </form> */}
                 <div className="error-message w-form-fail">
                   {error && <div>{error}</div>}
                 </div>

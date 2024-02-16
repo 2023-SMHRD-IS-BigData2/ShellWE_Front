@@ -18,9 +18,9 @@ export default function Example() {
     const { handleXAxisClick, data, StartDate, EndDate } = useContext(ChartContext)
 
     // 데이터와 날짜 값 확인
-    console.log("datas", data);
-    console.log("StartDate", StartDate);
-    console.log("EndDate", EndDate);
+    // console.log("datas", data);
+    // console.log("StartDate", StartDate);
+    // console.log("EndDate", EndDate);
 
     // 버튼 클릭 이벤트 처리
     const handleButtonClick = (value) => {
@@ -105,11 +105,11 @@ export default function Example() {
                         SMART                            {/* 패혈증 수치 */}
                     </Typography>
                     <Typography
-                        variant="h3"
+                        variant="h4"
                         fontWeight="bold"
                         color={colors.greenAccent[500]}
                     >
-                        68
+                        {"최근 값"}
                     </Typography>
                 </Box>
                 {/* 버튼 */}

@@ -1,22 +1,41 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import { DashboardContext, tokens } from "../../theme";
 import { useTheme } from "@mui/material"
-import { Box, Typography, IconButton } from "@mui/material";
+import { Box, Typography, IconButton, Button } from "@mui/material";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import { Link } from "react-router-dom";
 import CommentModal from "../DesktopOne/CommentModal";
 import InputBase from "@mui/material/InputBase";
 import SendIcon from '@mui/icons-material/Send';
 import MailOutlineIcon from '@mui/icons-material/MailOutline';
+import axios from "axios";
+
 
 // 환자 데이터 컴포넌트
 const Data = () => {
-    const { lists, comments, isModalOpen, closeModal, openModal, setInputValue, inputValue, handleSubmit } = useContext(DashboardContext);
+    const { lists, comments, isModalOpen, closeModal, openModal, setInputValue, inputValue, handleSubmit, handleOptionChange } = useContext(DashboardContext);
+    const [selectedSepsissLevel, setSelectedSepsissLevel] = useState("None");
+
+
 
     /** 다크모드 */
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
     const [hoveredRowId, setHoveredRowId] = useState(null);
+
+    // 새로운 상태 추가: 모달이 열렸는지 나타내는 상태
+    const [isStatusModalOpen, setStatusModalOpen] = useState(false);
+
+    // handleModalOpen 함수 정의
+    const handleModalOpen = () => {
+        setStatusModalOpen(true); // 모달을 열기 위해 상태 업데이트
+    };
+
+    // handleModalClose 함수 정의
+    const handleModalClose = () => {
+        setStatusModalOpen(false); // 모달을 닫기 위해 상태 업데이트
+    };
+
 
 
     // lists 값이 null인 경우 로딩 상태를 표시하거나 다른 방식으로 처리
@@ -65,7 +84,7 @@ const Data = () => {
                             to={`/main/detail/${row.patinum}`}
                             style={{
                                 textDecoration: 'none',
-                                color:colors.primary[100]
+                                color: colors.primary[100]
                             }}
                         >
                             {row.name}
@@ -131,7 +150,7 @@ const Data = () => {
             flex: 1,
             headerAlign: "center",
             align: "center",
-            renderCell: ({ row: { sepsisslevel } }) => {
+            renderCell: ({ row: { sepsisslevel, patinum } }) => {
                 return (
                     <Box
                         width="100%"
@@ -147,7 +166,21 @@ const Data = () => {
                                     : "none"
                         }
                         borderRadius="4px"
+                        onClick={() => {
+                            //"Screening" 또는 "Observing" 상태의 열 클릭 시 모달 열기
+                            if (sepsisslevel === "Screening" || sepsisslevel === "Observing") {
+                                handleModalOpen();
+                            }
+                        }}
+
                     >
+                        <select
+                            value={sepsisslevel} // 변경 하지 말아주세요
+                            onChange={(e) => handleOptionChange(e.target.value, patinum)}>
+                            <option value="Screening">Screening</option>
+                            <option value="Observing">Observing</option>
+                            <option value="None">None</option>
+                        </select>
                         <Typography color={colors.grey[100]} sx={{ ml: "5px" }}>
                             {sepsisslevel === "None" ? "" : sepsisslevel}
                         </Typography>
@@ -190,24 +223,28 @@ const Data = () => {
             headerName: "작성자"
         }
     ]
+    // patiIndex 정의
+    //const [patiIndex, setPatiIndex] = useState(1);
 
 
     // lists 값이 null인 경우 로딩 상태를 표시하거나 다른 방식으로 처리
     if (comments === null) {
         return <div>Loading...</div>;
     }
+
     // 인덱스 1부터 시작
     const commentWithId = comments.map((comments, index) => ({
         ...comments,
         id: index + 1,
     }));
-
     return (
-        <Box>
+        <Box
+            borderRadius="30px">
             <Box
                 m="25px 0 0 0"
                 height="70vh"
-                width="160vh"
+                // width="160vh"
+                borderRadius="30px"
                 sx={{
                     "& .MuiDataGrid-root": {
                         border: "none",
@@ -221,6 +258,8 @@ const Data = () => {
                     "& .MuiDataGrid-columnHeaders": {
                         backgroundColor: colors.blueAccent[700],
                         borderBottom: "none",
+                        borderTopLeftRadius: "30px",
+                        borderTopRightRadius: "30px"
                     },
                     "& .MuiDataGrid-virtualScroller": {
                         backgroundColor: colors.primary[400],
@@ -228,6 +267,8 @@ const Data = () => {
                     "& .MuiDataGrid-footerContainer": {
                         borderTop: "none",
                         backgroundColor: colors.blueAccent[700],
+                        borderBottomLeftRadius: "30px",
+                        borderBottomRightRadius: "30px"
                     },
                     "& .MuiCheckbox-root": {
                         color: `${colors.greenAccent[200]} !important`,
@@ -274,6 +315,9 @@ const Data = () => {
                         <DataGrid
                             rows={commentWithId}
                             columns={commentColumns}
+                            autoPageSize={0}
+                            pageSizeOptions={[0]}
+                            pagination={false}
                         />
                     </Box>
                     <Box

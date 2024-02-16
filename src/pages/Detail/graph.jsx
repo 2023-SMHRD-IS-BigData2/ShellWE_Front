@@ -9,7 +9,7 @@ const Graph = () => {
     /** 다크모드 */
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
-    const { clickedXValue, data, graph } = useContext(ChartContext);
+    const { clickedXValue, data, graph , subtitle} = useContext(ChartContext);
 
 
     // clickedXValue 값이 null인 경우에 대한 처리
@@ -42,25 +42,26 @@ const Graph = () => {
             >
                 <Box>
                     <Typography
-                        variant="h5"
+                        variant="h4"
                         fontWeight="600"
                         color={colors.grey[100]}
                     >
-                        SMART                            {/* 패혈증 수치 */}
+                        {subtitle}                           {/* 패혈증 수치 */}
                     </Typography>
                     <Typography
-                        variant="h3"
+                        variant="h4"
                         fontWeight="bold"
                         color={colors.greenAccent[500]}
                     >
-                        68
+                        {"최근 값"}
                     </Typography>
                 </Box>
             </Box>
             <Box height="250px" m="-20px 0 0 0" >
                 <ResponsiveContainer width="100%" height={300}>
-                    <LineChart width="100%" height={300} data={filteredData}>
-                        <CartesianGrid strokeDasharray="3 3" />
+                    <LineChart width="100%" height={300} data={filteredData}
+                    margin={{ top: 20, bottom: 40, right: 20, left: 80 }}>
+                        <CartesianGrid  vertical={false} strokeOpacity={0.3}/>
                         <XAxis dataKey="time" />
                         <YAxis yAxisId={graph} dataKey={graph} orientation="right" />
                         <Tooltip />

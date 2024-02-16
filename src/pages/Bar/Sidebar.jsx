@@ -1,13 +1,15 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { ProSidebar, Menu, MenuItem } from "react-pro-sidebar";
 import { Box, IconButton, Typography, useTheme } from "@mui/material";
 import { Link } from "react-router-dom";
 import "react-pro-sidebar/dist/css/styles.css";
-import { tokens } from "../../theme";
+import { ColorModeContext, tokens } from "../../theme";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
-import PeopleOutlinedIcon from "@mui/icons-material/PeopleOutlined";
 import CalendarTodayOutlinedIcon from "@mui/icons-material/CalendarTodayOutlined";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
+import LightModeOutlinedIcon from "@mui/icons-material/LightModeOutlined";
+import DarkModeOutlinedIcon from "@mui/icons-material/DarkModeOutlined";
+import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
 
 const Item = ({ title, to, icon, selected, setSelected }) => {
     const theme = useTheme();
@@ -30,6 +32,7 @@ const Item = ({ title, to, icon, selected, setSelected }) => {
 const Sidebar = () => {
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
+    const colorMode = useContext(ColorModeContext);
     const [isCollapsed, setIsCollapsed] = useState(false);
     const [selected, setSelected] = useState("Dashboard");
 
@@ -52,9 +55,10 @@ const Sidebar = () => {
                     color: "#6870fa !important",
                 },
             }}
-
+            borderRadius="30px"
         >
-            <ProSidebar collapsed={isCollapsed} style={{ borderTopRightRadius: "30px" }}>
+            <ProSidebar collapsed={isCollapsed} style={{ borderTopRightRadius: "30px" }}
+            borderRadius="30px">
                 <Menu iconShape="square" style={{ borderTopRightRadius: "30px" }}>
                     {/* LOGO AND MENU ICON */}
                     <MenuItem
@@ -84,7 +88,7 @@ const Sidebar = () => {
                     {!isCollapsed && (
                         <Box mb="25px">
                             <Box display="flex" justifyContent="center" alignItems="center">
-                            {/* 
+                                {/* 
                                 <img
                                     alt="profile-user"
                                     width="100px"
@@ -118,31 +122,6 @@ const Sidebar = () => {
                             selected={selected}
                             setSelected={setSelected}
                         />
-
-                        <Typography
-                            variant="h6"
-                            color={colors.grey[300]}
-                            sx={{ m: "15px 0 5px 20px" }}
-                        >
-                            Data
-                        </Typography>
-                        <Item
-                            title="Manage Team"
-                            to="/main/detailDesign"
-                            icon={<PeopleOutlinedIcon />}
-                            selected={selected}
-                            setSelected={setSelected}
-                        />
-
-
-                        <Typography
-                            variant="h6"
-                            color={colors.grey[300]}
-                            sx={{ m: "15px 0 5px 20px" }}
-                        >
-                            Pages
-                        </Typography>
-
                         <Item
                             title="Calendar"
                             to="/main/calendar"
@@ -150,9 +129,31 @@ const Sidebar = () => {
                             selected={selected}
                             setSelected={setSelected}
                         />
-
-
-
+                        <Box
+                            onClick={colorMode.toggleColorMode}>
+                            <Item
+                                title={theme.palette.mode === "dark" ? (
+                                    "Light Mode"
+                                ) : (
+                                    "Dark Mode"
+                                )}
+                                icon=
+                                {theme.palette.mode === "dark" ? (
+                                    <DarkModeOutlinedIcon />
+                                ) : (
+                                    <LightModeOutlinedIcon />
+                                )}
+                                selected={selected}
+                                setSelected={setSelected}
+                            />
+                        </Box>
+                        <Item
+                            title="Username"
+                            to="/"
+                            icon={<PersonOutlinedIcon />}
+                            selected={selected}
+                            setSelected={setSelected}
+                        />
                     </Box>
                 </Menu>
             </ProSidebar>
