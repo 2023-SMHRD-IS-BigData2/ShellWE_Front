@@ -205,8 +205,8 @@ const Data = () => {
     ];
     const commentColumns = [
         {
-            field: "commentnum",
-            headerName: "순번"
+            field: "id",
+            headerName: "번호"
         },
         {
             field: "contents",
@@ -281,7 +281,7 @@ const Data = () => {
                     rows={listsWithId}                       /** 환자 데이터 */
                     columns={columnslist}                /** 컬럼명 */
                     components={{ Toolbar: GridToolbar }}    /** 필터 기능 (다운로드, 크기 조절) */
-                    autoPageSize={10}
+                    autoPageSize={[10, 20]}
                 >
                 </DataGrid>
             </Box>
