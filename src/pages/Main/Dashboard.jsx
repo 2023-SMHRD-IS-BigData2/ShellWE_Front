@@ -11,14 +11,13 @@ const App = () => {
     // 로그인한 사람의 id값 state로 가져오기
     const location = useLocation();
     const id = location.state?.id;
-    console.log("id",id);
+    console.log("id", id);
 
     /** 환자 리스트 */
     const [lists, setList] = useState(null);
     const [Allpatient, setAllpatient] = useState(null)
     const [todayScreening, settodayScreening] = useState(null)
     const [Screening, setScreening] = useState(null)
-
     /** 코멘트 */
     const [comments, setComments] = useState(null);
     /** 코멘트 인덱스 */
@@ -117,7 +116,7 @@ const App = () => {
         // console.log("handleSubmit");
         event.preventDefault();
         try {
-            await axios.post(`http://localhost:8088/boot/insertComment?insertComment=${inputValue}&patinum=${patiIndex}&membernum=${1}`);
+            await axios.post(`http://localhost:8088/boot/insertComment?insertComment=${inputValue}&patinum=${patiIndex}&membernum=${id}`);
             setInputValue("")
         } catch (error) {
             console.log(error);
