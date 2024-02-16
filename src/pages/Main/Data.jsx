@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import { DashboardContext, tokens } from "../../theme";
 import { useTheme } from "@mui/material"
-import { Box, Typography, IconButton } from "@mui/material";
+import { Box, Typography, IconButton, Button, Select, MenuItem } from "@mui/material";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import { Link } from "react-router-dom";
 import CommentModal from "../DesktopOne/CommentModal";
@@ -9,14 +9,29 @@ import InputBase from "@mui/material/InputBase";
 import SendIcon from '@mui/icons-material/Send';
 import MailOutlineIcon from '@mui/icons-material/MailOutline';
 
+
 // 환자 데이터 컴포넌트
 const Data = () => {
-    const { lists, comments, isModalOpen, closeModal, openModal, setInputValue, inputValue, handleSubmit } = useContext(DashboardContext);
+    const { lists, comments, isModalOpen, closeModal, openModal, setInputValue, inputValue, handleSubmit, handleOptionChange, setSepsisState } = useContext(DashboardContext);
+    const [selectedSepsissLevel, setSelectedSepsissLevel] = useState("None");
 
     /** 다크모드 */
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
     const [hoveredRowId, setHoveredRowId] = useState(null);
+
+    // 새로운 상태 추가: 모달이 열렸는지 나타내는 상태
+    const [isStatusModalOpen, setStatusModalOpen] = useState(false);
+
+    // handleModalOpen 함수 정의
+    const handleModalOpen = () => {
+        setStatusModalOpen(true); // 모달을 열기 위해 상태 업데이트
+    };
+
+    // handleModalClose 함수 정의
+    const handleModalClose = () => {
+        setStatusModalOpen(false); // 모달을 닫기 위해 상태 업데이트
+    };
 
 
 
@@ -132,26 +147,45 @@ const Data = () => {
             flex: 1,
             headerAlign: "center",
             align: "center",
-            renderCell: ({ row: { sepsisslevel } }) => {
+            renderCell: ({ row: { sepsisslevel, patinum } }) => {
                 return (
                     <Box
-                        width="100%"
                         m="0 auto"
                         p="5px"
                         display="flex"
                         justifyContent="center"
-                        backgroundColor={
-                            sepsisslevel === "Screening"
-                                ? colors.redAccent[600]
-                                : sepsisslevel === "Observing"
-                                    ? colors.greenAccent[700]
-                                    : "none"
-                        }
+                        // backgroundColor={
+                        // sepsisslevel === "Screening"
+                        //     ? colors.redAccent[600]
+                        //     : sepsisslevel === "Observing"
+                        //         ? colors.greenAccent[700]
+                        //         : "none"
+                        // }
                         borderRadius="4px"
+
                     >
-                        <Typography color={colors.grey[100]} sx={{ ml: "5px" }}>
-                            {sepsisslevel === "None" ? "" : sepsisslevel}
-                        </Typography>
+                        <Select
+                            value={sepsisslevel === "None" ? "" : sepsisslevel}
+                            onChange={(e) => {
+                                handleOptionChange(e.target.value, patinum)
+                                setSepsisState(e)
+                            }}
+                            border={0}
+                            sx={{
+                                paddingLeft: "70px",
+                                paddingRight: "70px",
+                                border: 'none',
+                                backgroundColor: sepsisslevel === "Screening"
+                                    ? colors.redAccent[600]
+                                    : sepsisslevel === "Observing"
+                                        ? colors.greenAccent[700]
+                                        : "none",
+                            }}
+                        >
+                            <MenuItem value="Screening">Screening</MenuItem>
+                            <MenuItem value="Observing">Observing</MenuItem>
+                            <MenuItem value="None">None</MenuItem>
+                        </Select>
                     </Box>
                 );
             },
@@ -179,7 +213,29 @@ const Data = () => {
         {
             field: "contents",
             headerName: "내용",
-            flex: 1
+            flex: 1,
+            renderCell: (params) => {
+                const content = params.value;
+                const hasArrow = content.includes("->");
+
+                return (
+                    <div style={{
+                        backgroundColor: hasArrow ? colors.greenAccent[700] : "inherit",
+                        width: "60%",
+                        display: hasArrow ?"flex": "",
+                        justifyContent: hasArrow ?"center": "none",
+                        height: "60%",
+                        borderRadius: "12px"
+                    }}>
+                        <Box display={hasArrow ? "flex" : ""}
+                            justifyContent={hasArrow ? "center" : "left"}
+                            margin="auto">
+                            {content}
+
+                        </Box>
+                    </div>
+                );
+            }
         },
         {
             field: "inputdate",
@@ -191,6 +247,8 @@ const Data = () => {
             headerName: "작성자"
         }
     ]
+    // patiIndex 정의
+    //const [patiIndex, setPatiIndex] = useState(1);
 
 
     // lists 값이 null인 경우 로딩 상태를 표시하거나 다른 방식으로 처리
@@ -205,11 +263,11 @@ const Data = () => {
     }));
     return (
         <Box
+            m="20px"
             borderRadius="30px">
             <Box
                 m="25px 0 0 0"
                 height="70vh"
-                // width="160vh"
                 borderRadius="30px"
                 sx={{
                     "& .MuiDataGrid-root": {
@@ -247,9 +305,8 @@ const Data = () => {
                     rows={listsWithId}                       /** 환자 데이터 */
                     columns={columnslist}                /** 컬럼명 */
                     components={{ Toolbar: GridToolbar }}    /** 필터 기능 (다운로드, 크기 조절) */
-                    autoPageSize={[10, 20]}
-                >
-                </DataGrid>
+                    autoPageSize={10}
+                />
             </Box>
 
             {/** 코멘트 모달 */}
