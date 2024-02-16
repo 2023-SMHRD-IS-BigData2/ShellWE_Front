@@ -12,7 +12,7 @@ const App = () => {
     const [Allpatient, setAllpatient] = useState(null)
     const [todayScreening, settodayScreening] = useState(null)
     const [Screening, setScreening] = useState(null)
-    
+
     /** 코멘트 */
     const [comments, setComments] = useState(null);
     /** 코멘트 인덱스 */
@@ -96,12 +96,6 @@ const App = () => {
         fetchData();
     }, [inputValue, patiIndex]);
 
-
-    // sepsislevel 눌렀을 때 함수명 handlesepsis
-    // 백으로 보내는 함수 
-    // http://localhost:8088/boot/changeStatus?sepsisslevel={}&patinum={}
-
-
     useEffect(() => {
         if (gridRef.current) {
             const rowCount = comments.length;
@@ -117,7 +111,7 @@ const App = () => {
         // console.log("handleSubmit");
         event.preventDefault();
         try {
-            await axios.post(`http://localhost:8088/boot/insertComment?insertComment=${inputValue}&patinum=${patiIndex}`);
+            await axios.post(`http://localhost:8088/boot/insertComment?insertComment=${inputValue}&patinum=${patiIndex}&membernum=${1}`);
             setInputValue("")
         } catch (error) {
             console.log(error);
