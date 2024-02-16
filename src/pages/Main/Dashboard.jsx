@@ -35,6 +35,23 @@ const App = () => {
     const closeModal = () => {
         setIsModalOpen(false);
     }
+    const handleOptionChange = (value, patinum) => {
+        // console.log("바뀌기전", selectedSepsissLevel);
+        // setSelectedSepsissLevel(value);
+        console.log("Selected Value: ", value);
+        console.log("Selected Patinum: ", patinum);
+
+        // 서버에 데이터를 보내는 요청을 만듭니다.
+        axios.post(`http://localhost:8088/boot/changeStatus?sepsisslevel=${value}&patinum=${patinum}`)
+            .then((response) => {
+                console.log('서버 응답:', response);
+                // 요청이 성공했을 때 수행할 작업을 이곳에 추가합니다.
+            })
+            .catch((error) => {
+                console.error('서버 요청 오류:', error);
+                // 요청이 실패했을 때 수행할 작업을 이곳에 추가합니다.
+            });
+    };
     /** 카드 값 */
     useEffect(() => {
         setPercent(Screening / Allpatient * 100)
@@ -56,7 +73,7 @@ const App = () => {
         };
 
         fetchData();
-    }, []);
+    }, [handleOptionChange]);
 
     // 코멘트 Back
 
@@ -95,7 +112,7 @@ const App = () => {
                 comments, patiIndex, setInputValue, handleSubmit, inputValue,
                 isModalOpen, closeModal, openModal,
                 Allpatient, Screening, todayScreening, percent, 
-                sepsisState, setSepsisState
+                handleOptionChange
             }}
         >
             <Box
