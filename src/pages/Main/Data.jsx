@@ -8,15 +8,12 @@ import CommentModal from "../DesktopOne/CommentModal";
 import InputBase from "@mui/material/InputBase";
 import SendIcon from '@mui/icons-material/Send';
 import MailOutlineIcon from '@mui/icons-material/MailOutline';
-import axios from "axios";
 
 
 // 환자 데이터 컴포넌트
 const Data = () => {
     const { lists, comments, isModalOpen, closeModal, openModal, setInputValue, inputValue, handleSubmit, handleOptionChange } = useContext(DashboardContext);
     const [selectedSepsissLevel, setSelectedSepsissLevel] = useState("None");
-
-
 
     /** 다크모드 */
     const theme = useTheme();
@@ -239,11 +236,11 @@ const Data = () => {
     }));
     return (
         <Box
+        m="20px"
             borderRadius="30px">
             <Box
                 m="25px 0 0 0"
                 height="70vh"
-                // width="160vh"
                 borderRadius="30px"
                 sx={{
                     "& .MuiDataGrid-root": {
@@ -282,8 +279,7 @@ const Data = () => {
                     columns={columnslist}                /** 컬럼명 */
                     components={{ Toolbar: GridToolbar }}    /** 필터 기능 (다운로드, 크기 조절) */
                     autoPageSize={[10, 20]}
-                >
-                </DataGrid>
+                />
             </Box>
 
             {/** 코멘트 모달 */}

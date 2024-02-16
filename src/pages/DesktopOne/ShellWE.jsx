@@ -9,7 +9,9 @@ const ShellWE = () => {
 
 
   return (
-      <div className='app'>
+      <div 
+      className='app'
+      >
 
         {/* 로그인, 의료진, 관리자 페이지 */}
         <Routes>

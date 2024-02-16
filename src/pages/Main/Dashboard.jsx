@@ -100,7 +100,7 @@ const App = () => {
     // sepsislevel 눌렀을 때 함수명 handlesepsis
     // 백으로 보내는 함수 
     // http://localhost:8088/boot/changeStatus?sepsisslevel={}&patinum={}
-    
+
 
     useEffect(() => {
         if (gridRef.current) {
@@ -131,16 +131,24 @@ const App = () => {
                 setAllpatient, settodayScreening, setScreening,
                 comments, patiIndex, setInputValue, handleSubmit, inputValue,
                 isModalOpen, closeModal, openModal,
-                Allpatient, Screening, todayScreening, percent, 
+                Allpatient, Screening, todayScreening, percent,
                 handleOptionChange
             }}
         >
             <Box
                 m="20px"
                 marginTop="60px"
-                width="97.5%"
+            // width="97.5%"
+
             >
-                <Card />
+                <Box
+                    display="grid"
+                    gridTemplateColumns="repeat(12, 1fr)"
+                    gridAutoRows="140px"
+                    gap="20px">
+
+                    <Card />
+                </Box>
                 <Data />
             </Box >
         </DashboardContext.Provider>
