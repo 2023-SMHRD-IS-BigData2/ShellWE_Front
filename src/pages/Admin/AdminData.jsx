@@ -4,12 +4,36 @@ import columns from './AdminColumns.json';
 import axios from "axios";
 import DoctorForm from "./DoctorForm";
 import ClearIcon from '@mui/icons-material/Clear';
+import AddModal from './AddModal';
+import { Box } from "@mui/material";
+import { tokens } from "../../theme";
+import { useTheme } from "@mui/material"
+import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from '@mui/material';
 
 const AdminData = () => {
     const [isFormOpen, setIsFormOpen] = useState(false);
     const [patientData, setPatientData] = useState([]);
     const [showConfirmation, setShowConfirmation] = useState(false);
     const [selectedMemberNum, setSelectedMemberNum] = useState(null);
+    /** 다크모드 */
+    const theme = useTheme();
+    const colors = tokens(theme.palette.mode);
+
+    // Modal 여는 변수
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    /**Modal열기 */
+    const openModal = (e) => {
+        setIsModalOpen(true);
+    }
+    /**Modal닫기 */
+    const closeModal = () => {
+        setIsModalOpen(false);
+    }
+    const rows = [
+        { id: 1, name: 'John Doe', age: 25 },
+        { id: 2, name: 'Jane Smith', age: 30 },
+        { id: 3, name: 'Bob Johnson', age: 35 },
+    ];
 
     const fetchData = async () => {
         try {
@@ -27,7 +51,7 @@ const AdminData = () => {
 
     useEffect(() => {
         fetchData();
-    }, [showConfirmation]);
+    }, [showConfirmation, closeModal]);
 
     const openForm = () => {
         setIsFormOpen(true);
@@ -79,15 +103,10 @@ const AdminData = () => {
 
     return (
         <div>
-            <button onClick={openForm}>의료진 추가</button>
-            {isFormOpen && (
-                <div className="modal">
-                    <div className="modal-content">
-                        <span className="close" onClick={closeForm}>×</span>
-                        <DoctorForm closeModal={closeForm} />
-                    </div>
-                </div>
-            )}
+            <button onClick={
+                openModal
+            }>의료진 추가</button>
+
             <DataGrid rows={patientData} columns={columnslist} components={{ Toolbar: GridToolbar }} />
 
             {showConfirmation && (
@@ -108,9 +127,8 @@ const AdminData = () => {
                         <button style={{ margin: "10px" }} onClick={handleConfirmationCancel}>취소</button>
                     </div>
                 </div>
-
-
             )}
+            <DoctorForm closeModal={closeModal} isOpen={isModalOpen} />
         </div>
     );
 };

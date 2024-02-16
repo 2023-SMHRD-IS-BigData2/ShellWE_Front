@@ -119,14 +119,14 @@ const Login = () => {
                   style={{
                     display: "flex",
                     justifyContent: "center",
-                    marginTop:"50px",
-                    margin:"auto",
+                    marginTop: "50px",
+                    margin: "auto",
                     width: "60%",
                   }}>
                   <button
-                  style={{
-                    backgroundColor:"#b7ebde"
-                  }}
+                    style={{
+                      backgroundColor: "#b7ebde"
+                    }}
                     onClick={onClickLogin}>
                     로그인
                   </button>
