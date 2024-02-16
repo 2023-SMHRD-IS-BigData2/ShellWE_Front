@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import './login.css';
 
 const Login = () => {
   const [inputId, setInputId] = useState(""); // 입력한 아이디 값을 상태로 관리
@@ -45,6 +46,9 @@ const Login = () => {
       );
       if (response && response.data) {
         setMessage(response.data.login); // 서버로부터 받은 로그인 메시지를 message 상태로 설정
+      } else {
+        setError("로그인 실패");
+        console.error("Login failed: No data in the response"); // 응답 데이터가 없을 경우 에러 메시지 설정 및 콘솔에 로그 출력
       }
     } catch (error) {
       setError("로그인 실패");
@@ -59,38 +63,77 @@ const Login = () => {
   };
 
   return (
-    <div>
-      <h1>Login Page</h1>
-       <h1>{message}</h1> {/* 서버로부터 받은 메시지 출력 */}
-      <input
-        type="text"
-        className="form-control"
-        placeholder="ID를 입력하세요"
-        name="id"
-        value={inputId}
-        onChange={handleInputId}
-      />
-
-      <input
-        type="password"
-        className="form-control"
-        placeholder="Pw를 입력하세요"
-        name="pw"
-        value={inputPw}
-        onChange={handleInputPw}
-        ref={inputRef} // ref 연결
-        onKeyDown={handleKeyDown} // onKeyDown 이벤트 핸들러 추가
-      />
-
-      <button
-        type="button"
-        onClick={onClickLogin}
-      >
-        로그인
-      </button>
-
-       {error && <div>{error}</div>} {/* 에러 메시지가 있을 경우 출력 */}
-    </div>
+    <div style={{
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      margin: "auto",
+    }}>
+      {/* 추가한 HTML과 CSS */}
+      <section className="user-pages-section">
+        <div className="inner-container w-container">
+          <div className="user-page-content-wrap"
+            style={{ width: "600px" }}>
+            <div className="user-page-title-wrap">
+              <div className="user-page-icon-wrap">
+                {/* logo */}
+                {/* <img src="https://assets-global.website-files.com/6465a677c2eb8d266483bb5c/646700a3d35799da2b5a84d8_sashub-icon.svg"
+                      loading="eager" alt="" class="user-page-icon" /> */}
+              </div>
+              <h1 className="user-page-title">Log in</h1>
+              <p>{message}</p>
+            </div>
+            <div className="user-page-content">
+              <div className="w-form">
+                  <div
+                    className="input-group"
+                  >
+                    <label htmlFor="Email">ID</label>
+                    <input
+                      className="form-input w-input form-control" // 가져온 코드
+                      maxLength={256}
+                      type="text"
+                      placeholder="ID를 입력하세요"
+                      name="id"
+                      value={inputId}
+                      onChange={handleInputId}
+                    />
+                  </div>
+                  <div className="input-group">
+                    <div className="password-item">
+                      <label htmlFor="Password">Password</label>
+                    </div>
+                    <input
+                      className="form-input w-input form-control" // 가져온 코드
+                      maxLength={256}
+                      type="password"
+                      placeholder="Pw를 입력하세요"
+                      name="pw"
+                      value={inputPw}
+                      onChange={handleInputPw}
+                      ref={inputRef} // ref 연결
+                      onKeyDown={handleKeyDown} // onKeyDown 이벤트 핸들러 추가
+                    />
+                  </div>
+                  <div
+                    style={{
+                      display: "flex",
+                      justifyContent: "center"
+                    }}>
+                    <button
+                      onClick={onClickLogin}>
+                      로그인
+                    </button>
+                  </div>
+                <div className="error-message w-form-fail">
+                  {error && <div>{error}</div>}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section >
+    </div >
   );
 };
 
