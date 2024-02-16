@@ -5,7 +5,6 @@ import { Box, Typography, IconButton, Button } from "@mui/material";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import { Link } from "react-router-dom";
 import CommentModal from "../DesktopOne/CommentModal";
-import StatusModal from "../DesktopOne/StatusModal";
 import InputBase from "@mui/material/InputBase";
 import SendIcon from '@mui/icons-material/Send';
 import MailOutlineIcon from '@mui/icons-material/MailOutline';
@@ -358,36 +357,6 @@ const Data = () => {
                     </Box>
                 </Box>
             </CommentModal>
-            {/*Status 모달*/}
-            <StatusModal
-                isOpen={isStatusModalOpen} // 상태에 따라 모달 열림/닫힘 결정
-                closeModal={handleModalClose}
-                aria-labelledby="modal-title"
-                aria-describedby="modal-description"
-            >
-                <Box sx={{
-                    position: 'absolute',
-                    top: '50%',
-                    left: '50%',
-                    transform: 'translate(-50%, -50%)',
-                    bgcolor: 'background.paper',
-                    boxShadow: 24,
-                    p: 4,
-                }}>
-                    <Typography id="modal-title" variant="h6" component="h2">
-                        패혈증 상태를 선택해주세요
-                    </Typography>
-                    <Typography id="modal-description" sx={{ mt: 2 }}>
-                        <select value={selectedSepsissLevel} onChange={(e) => setSelectedSepsissLevel(e.target.value)}>
-                            <option value="Screening">Screening</option>
-                            <option value="Observing">Observing</option>
-                            <option value="None">None</option>
-                        </select>
-                    </Typography>
-                    <Button onClick={handleModalClose}>닫기</Button>
-                </Box>
-
-            </StatusModal>
         </Box>
     )
 }

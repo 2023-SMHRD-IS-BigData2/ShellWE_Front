@@ -25,7 +25,6 @@ const App = () => {
 
     /**sepsis level */
     const [sepsisState, setSepsisState] = useState(null)
-    const [inputValue, setInputValue] = useState('');
 
     // Modal 여는 변수
     const [isModalOpen, setIsModalOpen] = useState(false);
