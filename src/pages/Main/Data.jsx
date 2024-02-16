@@ -20,21 +20,6 @@ const Data = () => {
     const colors = tokens(theme.palette.mode);
     const [hoveredRowId, setHoveredRowId] = useState(null);
 
-    // 새로운 상태 추가: 모달이 열렸는지 나타내는 상태
-    const [isStatusModalOpen, setStatusModalOpen] = useState(false);
-
-    // handleModalOpen 함수 정의
-    const handleModalOpen = () => {
-        setStatusModalOpen(true); // 모달을 열기 위해 상태 업데이트
-    };
-
-    // handleModalClose 함수 정의
-    const handleModalClose = () => {
-        setStatusModalOpen(false); // 모달을 닫기 위해 상태 업데이트
-    };
-
-
-
     // lists 값이 null인 경우 로딩 상태를 표시하거나 다른 방식으로 처리
     if (lists === null) {
         return <div>Loading...</div>;

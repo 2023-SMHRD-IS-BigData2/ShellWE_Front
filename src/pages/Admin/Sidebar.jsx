@@ -1,17 +1,21 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { ProSidebar, Menu, MenuItem } from "react-pro-sidebar";
 import { Box, IconButton, Typography, useTheme } from "@mui/material";
 import { Link } from "react-router-dom";
 import "react-pro-sidebar/dist/css/styles.css";
-import { tokens } from "../../theme";
+import { ColorModeContext, tokens } from "../../theme";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import PeopleOutlinedIcon from "@mui/icons-material/PeopleOutlined";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 import SettingsIcon from '@mui/icons-material/Settings';
+import LightModeOutlinedIcon from "@mui/icons-material/LightModeOutlined";
+import DarkModeOutlinedIcon from "@mui/icons-material/DarkModeOutlined";
+import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
 
 const Item = ({ title, to, icon, selected, setSelected }) => {
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
+    
     return (
         <MenuItem
             active={selected === title}
@@ -30,6 +34,7 @@ const Item = ({ title, to, icon, selected, setSelected }) => {
 const Sidebar = () => {
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
+    const colorMode = useContext(ColorModeContext);
     const [isCollapsed, setIsCollapsed] = useState(false);
     const [selected, setSelected] = useState("Dashboard");
 
@@ -83,38 +88,16 @@ const Sidebar = () => {
                     </MenuItem>
 
                     <Box paddingLeft={isCollapsed ? undefined : "10%"}>
-                        <Item
-                            title="Dashboard"
-                            to="/admin"
-                            icon={<HomeOutlinedIcon />}
-                            selected={selected}
-                            setSelected={setSelected}
-                        />
+                        
 
-                        <Typography
-                            variant="h6"
-                            color={colors.grey[300]}
-                            sx={{ m: "15px 0 5px 20px" }}
-                        >
-                            의료진 관리
-                        </Typography>
+                        
                         <Item
                             title="Staffs"
-                            to="/admin/list"
+                            to="/admin"
                             icon={<PeopleOutlinedIcon />}
                             selected={selected}
                             setSelected={setSelected}
                         />
-                       
-
-
-                        <Typography
-                            variant="h6"
-                            color={colors.grey[300]}
-                            sx={{ m: "15px 0 5px 20px" }}
-                        >
-                            환경설정
-                        </Typography>
                         <Item
                             title="문의 사항"
                             to="/admin/settings"
@@ -122,7 +105,31 @@ const Sidebar = () => {
                             selected={selected}
                             setSelected={setSelected}
                         />
-
+                        <Box
+                            onClick={colorMode.toggleColorMode}>
+                            <Item
+                                title={theme.palette.mode === "dark" ? (
+                                    "Light Mode"
+                                ) : (
+                                    "Dark Mode"
+                                )}
+                                icon=
+                                {theme.palette.mode === "dark" ? (
+                                    <DarkModeOutlinedIcon />
+                                ) : (
+                                    <LightModeOutlinedIcon />
+                                )}
+                                selected={selected}
+                                setSelected={setSelected}
+                            />
+                        </Box>
+                        <Item
+                            title="Username"
+                            to="/"
+                            icon={<PersonOutlinedIcon />}
+                            selected={selected}
+                            setSelected={setSelected}
+                        />
 
                     </Box>
                 </Menu>
