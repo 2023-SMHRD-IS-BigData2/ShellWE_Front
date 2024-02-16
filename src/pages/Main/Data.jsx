@@ -282,7 +282,6 @@ const Data = () => {
                     columns={columnslist}                /** 컬럼명 */
                     components={{ Toolbar: GridToolbar }}    /** 필터 기능 (다운로드, 크기 조절) */
                     autoPageSize={10}
-                    pageSizeOptions={[0,10]}
                 />
             </Box>
 
