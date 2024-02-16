@@ -165,9 +165,11 @@ const Data = () => {
 
                     >
                         <Select
-                            value={sepsisslevel}
-                            onChange={(e) => {handleOptionChange(e.target.value, patinum)
-                                setSepsisState(e)}}
+                            value={sepsisslevel === "None" ? "" : sepsisslevel}
+                            onChange={(e) => {
+                                handleOptionChange(e.target.value, patinum)
+                                setSepsisState(e)
+                            }}
                             border={0}
                             sx={{
                                 paddingLeft: "70px",
@@ -211,7 +213,29 @@ const Data = () => {
         {
             field: "contents",
             headerName: "내용",
-            flex: 1
+            flex: 1,
+            renderCell: (params) => {
+                const content = params.value;
+                const hasArrow = content.includes("->");
+
+                return (
+                    <div style={{
+                        backgroundColor: hasArrow ? colors.greenAccent[700] : "inherit",
+                        width: "60%",
+                        display: hasArrow ?"flex": "",
+                        justifyContent: hasArrow ?"center": "none",
+                        height: "60%",
+                        borderRadius: "12px"
+                    }}>
+                        <Box display={hasArrow ? "flex" : ""}
+                            justifyContent={hasArrow ? "center" : "left"}
+                            margin="auto">
+                            {content}
+
+                        </Box>
+                    </div>
+                );
+            }
         },
         {
             field: "inputdate",
