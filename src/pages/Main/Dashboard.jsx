@@ -4,9 +4,15 @@ import { DashboardContext } from "../../theme";
 import Data from './Data';
 import axios from 'axios';
 import Card from './Card';
+import { useLocation } from 'react-router-dom';
 
 // 대쉬보드
 const App = () => {
+    // 로그인한 사람의 id값 state로 가져오기
+    const location = useLocation();
+    const id = location.state?.id;
+    console.log("id",id);
+
     /** 환자 리스트 */
     const [lists, setList] = useState(null);
     const [Allpatient, setAllpatient] = useState(null)
@@ -137,11 +143,11 @@ const App = () => {
 
             >
                 <Box
-                    // display="grid"
-                    // gridTemplateColumns="repeat(12, 1fr)"
-                    // gridAutoRows="140px"
-                    // gap="20px"
-                    >
+                // display="grid"
+                // gridTemplateColumns="repeat(12, 1fr)"
+                // gridAutoRows="140px"
+                // gap="20px"
+                >
 
                     <Card />
                 </Box>

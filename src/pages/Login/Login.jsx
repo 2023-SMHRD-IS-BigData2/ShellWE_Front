@@ -22,7 +22,7 @@ const Login = () => {
   useEffect(() => {
     // message 상태가 변경될 때마다 실행되는 useEffect
     if (message === 'main') {
-      navigate('/main'); // message가 'main'일 경우 '/main' 경로로 이동
+      navigate('/main', { state: { id: inputId } }); // message가 'main'일 경우 '/main' 경로로 이동
     } else if (message === 'admin') {
       navigate('/admin'); // message가 'admin'일 경우 '/admin' 경로로 이동
     }
@@ -119,14 +119,14 @@ const Login = () => {
                   style={{
                     display: "flex",
                     justifyContent: "center",
-                    marginTop:"50px",
-                    margin:"auto",
+                    marginTop: "50px",
+                    margin: "auto",
                     width: "60%",
                   }}>
                   <button
-                  style={{
-                    backgroundColor:"#b7ebde"
-                  }}
+                    style={{
+                      backgroundColor: "#b7ebde"
+                    }}
                     onClick={onClickLogin}>
                     로그인
                   </button>
