@@ -14,14 +14,8 @@ const List = () => {
     const colors = tokens(theme.palette.mode);
 
     return (
-        <Box>
-
-            <Box
-                display="grid"
-                gridTemplateColumns="repeat(12, 1fr)"
-                gridAutoRows="140px"
-                gap="20px"
-            >
+        <>
+            <Box>
                 <Box
                     gridColumn="span 4"
                     backgroundColor={colors.primary[400]}
@@ -63,7 +57,7 @@ const List = () => {
                             />
                         }
                     />
-                    
+
                 </Box>
 
 
@@ -88,7 +82,7 @@ const List = () => {
                     />
                 </Box>
             </Box>
-        </Box>
+        </>
     );
 };
 
@@ -98,4 +92,4 @@ const ContactsWrapper = () => (
     </Box>
 );
 
-export default ContactsWrapper;
+export default List;

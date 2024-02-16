@@ -57,7 +57,9 @@ const Sidebar = () => {
             }}
             borderRadius="30px"
         >
-            <ProSidebar collapsed={isCollapsed} style={{ borderTopRightRadius: "30px" }}
+            <ProSidebar 
+            collapsed={isCollapsed} 
+            style={{ borderTopRightRadius: "30px" }}
             borderRadius="30px">
                 <Menu iconShape="square" style={{ borderTopRightRadius: "30px" }}>
                     {/* LOGO AND MENU ICON */}
@@ -86,7 +88,9 @@ const Sidebar = () => {
                         )}
                     </MenuItem>
                     {!isCollapsed && (
-                        <Box mb="25px">
+                        <Box 
+                        mb="25px"
+                        >
                             <Box display="flex" justifyContent="center" alignItems="center">
                                 {/* 
                                 <img
@@ -114,7 +118,9 @@ const Sidebar = () => {
                         </Box>
                     )}
 
-                    <Box paddingLeft={isCollapsed ? undefined : "10%"}>
+                    <Box 
+                    paddingLeft={isCollapsed ? undefined : "10%"}
+                    >
                         <Item
                             title="Dashboard"
                             to="/main"

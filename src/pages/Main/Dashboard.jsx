@@ -23,6 +23,9 @@ const App = () => {
     const [percent, setPercent] = useState(null)
 
 
+    /**sepsis level */
+    const [sepsisState, setSepsisState] = useState(null)
+
     // Modal 여는 변수
     const [isModalOpen, setIsModalOpen] = useState(false);
     /**Modal열기 */
@@ -34,6 +37,25 @@ const App = () => {
     const closeModal = () => {
         setIsModalOpen(false);
     }
+
+    const handleOptionChange = (value, patinum) => {
+        // console.log("바뀌기전", selectedSepsissLevel);
+        // setSelectedSepsissLevel(value);
+        console.log("Selected Value: ", value);
+        console.log("Selected Patinum: ", patinum);
+
+        // 서버에 데이터를 보내는 요청을 만듭니다.
+        axios.post(`http://localhost:8088/boot/changeStatus?sepsisslevel=${value}&patinum=${patinum}`)
+            .then((response) => {
+                console.log('서버 응답:', response);
+                // 요청이 성공했을 때 수행할 작업을 이곳에 추가합니다.
+            })
+            .catch((error) => {
+                console.error('서버 요청 오류:', error);
+                // 요청이 실패했을 때 수행할 작업을 이곳에 추가합니다.
+            });
+    };
+
     const gridRef = useRef(null);
 
     /** 카드 값 */
@@ -55,9 +77,9 @@ const App = () => {
                 console.log(error);
             }
         };
-
+        console.log("patient");
         fetchData();
-    }, []);
+    }, [sepsisState]);
 
 
     // 코멘트 내용 출력
@@ -70,7 +92,7 @@ const App = () => {
                 console.log(error);
             }
         };
-        // console.log("comment reflesh")
+        console.log("comments")
         fetchData();
     }, [inputValue, patiIndex]);
 
@@ -81,6 +103,7 @@ const App = () => {
 
             gridRef.current.scrollToIndexes({ rowIndex: lastRowIndex });
         }
+        console.log("comment scroll");
     }, [comments]);
 
     // 코멘트 Back 전송
@@ -88,12 +111,13 @@ const App = () => {
         // console.log("handleSubmit");
         event.preventDefault();
         try {
-            await axios.post(`http://localhost:8088/boot/insertComment?insertComment=${inputValue}&patinum=${patiIndex}`);
+            await axios.post(`http://localhost:8088/boot/insertComment?insertComment=${inputValue}&patinum=${patiIndex}&membernum=${1}`);
             setInputValue("")
         } catch (error) {
             console.log(error);
         }
     };
+
 
     return (
         <DashboardContext.Provider
@@ -102,15 +126,24 @@ const App = () => {
                 setAllpatient, settodayScreening, setScreening,
                 comments, patiIndex, setInputValue, handleSubmit, inputValue,
                 isModalOpen, closeModal, openModal,
-                Allpatient, Screening, todayScreening, percent
+                Allpatient, Screening, todayScreening, percent,
+                handleOptionChange, setSepsisState
             }}
         >
             <Box
                 m="20px"
                 marginTop="60px"
-                width="97.5%"
+            // width="97.5%"
+
             >
-                <Card />
+                <Box
+                    display="grid"
+                    gridTemplateColumns="repeat(12, 1fr)"
+                    gridAutoRows="140px"
+                    gap="20px">
+
+                    <Card />
+                </Box>
                 <Data />
             </Box >
         </DashboardContext.Provider>
