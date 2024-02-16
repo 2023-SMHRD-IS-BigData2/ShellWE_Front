@@ -14,7 +14,7 @@ import MailOutlineIcon from '@mui/icons-material/MailOutline';
 const Data = () => {
     const { lists, comments, isModalOpen, closeModal, openModal, setInputValue, inputValue, handleSubmit, handleOptionChange, setSepsisState, setWardValue, handleSelectChange, patinum, 
             wardValue, handlePhysicianChange } = useContext(DashboardContext);
-    const [selectedSepsissLevel, setSelectedSepsissLevel, ] = useState("None");
+    const [selectedSepsissLevel, setSelectedSepsissLevel] = useState("None");
 
     /** 다크모드 */
     const theme = useTheme();
@@ -175,11 +175,21 @@ const Data = () => {
                             }}
                             border={0}
                         >
-                            <option value="병동1">병동1</option>
-                            <option value="병동2">병동2</option>
-                            <option value="병동3">병동3</option>
-                            <option value="병동4">병동4</option>
-                            <option value="병동5">병동5</option>
+                            <option value="Dr.Smith">Dr.Smith</option>
+                            <option value="Dr.Johanson">Dr.Johanson</option>
+                            <option value="Dr.Thomas">Dr.Thomas</option>
+                            <option value="Dr.Michael">Dr.Michael</option>
+                            <option value="Dr.Andrew">Dr.Andrew</option>
+                            <option value="Dr.John">Dr.John</option>
+                            <option value="Dr.James">Dr.James</option>
+                            <option value="Dr.William">Dr.William</option>
+                            <option value="Dr.Joseph">Dr.Joseph</option>
+                            <option value="Dr.David">Dr.David</option>
+                            <option value="Dr.Daniel">Dr.Daniel</option>
+                            <option value="Dr. Lee">Dr. Lee</option>
+                            <option value="Dr. Martinez">Dr. Martinez</option>
+                            <option value="Dr.Robert">Dr.Robert</option>
+                            
                         </select>
                     </box>
                 )
