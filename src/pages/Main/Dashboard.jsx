@@ -137,10 +137,11 @@ const App = () => {
 
             >
                 <Box
-                    display="grid"
-                    gridTemplateColumns="repeat(12, 1fr)"
-                    gridAutoRows="140px"
-                    gap="20px">
+                    // display="grid"
+                    // gridTemplateColumns="repeat(12, 1fr)"
+                    // gridAutoRows="140px"
+                    // gap="20px"
+                    >
 
                     <Card />
                 </Box>

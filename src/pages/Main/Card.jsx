@@ -15,7 +15,12 @@ const List = () => {
 
     return (
         <>
-            <Box>
+            <Box
+             display="grid"
+                    gridTemplateColumns="repeat(12, 1fr)"
+                    gridAutoRows="140px"
+                    gap="20px"
+            >
                 <Box
                     gridColumn="span 4"
                     backgroundColor={colors.primary[400]}
