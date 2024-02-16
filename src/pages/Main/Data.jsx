@@ -1,22 +1,40 @@
 import React, { useContext, useState } from "react";
 import { DashboardContext, tokens } from "../../theme";
 import { useTheme } from "@mui/material"
-import { Box, Typography, IconButton } from "@mui/material";
+import { Box, Typography, IconButton, Button } from "@mui/material";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import { Link } from "react-router-dom";
 import CommentModal from "../DesktopOne/CommentModal";
 import InputBase from "@mui/material/InputBase";
 import SendIcon from '@mui/icons-material/Send';
 import MailOutlineIcon from '@mui/icons-material/MailOutline';
+import axios from "axios";
+
 
 // 환자 데이터 컴포넌트
 const Data = () => {
-    const { lists, comments, isModalOpen, closeModal, openModal, setInputValue, inputValue, handleSubmit } = useContext(DashboardContext);
+    const { lists, comments, isModalOpen, closeModal, openModal, setInputValue, inputValue, handleSubmit, handleOptionChange } = useContext(DashboardContext);
+    const [selectedSepsissLevel, setSelectedSepsissLevel] = useState("None");
+
+
 
     /** 다크모드 */
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
     const [hoveredRowId, setHoveredRowId] = useState(null);
+
+    // 새로운 상태 추가: 모달이 열렸는지 나타내는 상태
+    const [isStatusModalOpen, setStatusModalOpen] = useState(false);
+
+    // handleModalOpen 함수 정의
+    const handleModalOpen = () => {
+        setStatusModalOpen(true); // 모달을 열기 위해 상태 업데이트
+    };
+
+    // handleModalClose 함수 정의
+    const handleModalClose = () => {
+        setStatusModalOpen(false); // 모달을 닫기 위해 상태 업데이트
+    };
 
 
 
@@ -132,7 +150,7 @@ const Data = () => {
             flex: 1,
             headerAlign: "center",
             align: "center",
-            renderCell: ({ row: { sepsisslevel } }) => {
+            renderCell: ({ row: { sepsisslevel, patinum } }) => {
                 return (
                     <Box
                         width="100%"
@@ -148,7 +166,21 @@ const Data = () => {
                                     : "none"
                         }
                         borderRadius="4px"
+                        onClick={() => {
+                            //"Screening" 또는 "Observing" 상태의 열 클릭 시 모달 열기
+                            if (sepsisslevel === "Screening" || sepsisslevel === "Observing") {
+                                handleModalOpen();
+                            }
+                        }}
+
                     >
+                        <select
+                            value={sepsisslevel} // 변경 하지 말아주세요
+                            onChange={(e) => handleOptionChange(e.target.value, patinum)}>
+                            <option value="Screening">Screening</option>
+                            <option value="Observing">Observing</option>
+                            <option value="None">None</option>
+                        </select>
                         <Typography color={colors.grey[100]} sx={{ ml: "5px" }}>
                             {sepsisslevel === "None" ? "" : sepsisslevel}
                         </Typography>
@@ -191,6 +223,8 @@ const Data = () => {
             headerName: "작성자"
         }
     ]
+    // patiIndex 정의
+    //const [patiIndex, setPatiIndex] = useState(1);
 
 
     // lists 값이 null인 경우 로딩 상태를 표시하거나 다른 방식으로 처리
