@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from '@mui/material';
 import AddModal from './AddModal';
-import { Box } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import { tokens } from "../../theme";
 import { useTheme } from "@mui/material"
 import InputBase from "@mui/material/InputBase";
@@ -62,7 +62,8 @@ const DoctorForm = ({ closeModal, isOpen }) => {
         <Box m="40px">
           <Box
             // m="20px"
-            display="flex" margin="auto" justifyContent="center">
+            display="flex" margin="auto" justifyContent="center"
+            >
 
             <form onSubmit={handleSubmit}>
               <TableContainer
@@ -76,7 +77,9 @@ const DoctorForm = ({ closeModal, isOpen }) => {
                     <TableRow
                     >
                       <TableCell colSpan={2}>
-                        <h4 style={{ margin: "auto", display: "flex", justifyContent: "center" }}>의료진 등록</h4>
+                        <Typography variant="h3" color={colors.greenAccent[500]} style={{ margin: "auto", display: "flex", justifyContent: "center" }}>
+                          의료진 등록
+                        </Typography>
                       </TableCell>
                     </TableRow>
                   </TableHead>
@@ -105,12 +108,12 @@ const DoctorForm = ({ closeModal, isOpen }) => {
                     </TableRow>
                     <TableRow>
                       <TableCell>직급</TableCell>
-                      <TableCell style={{ display: 'flex', alignItems: 'center' }}>
-                        <RadioGroup value={rank} onChange={handleRankChange} style={{ display: 'flex', }}>
-                          <div style={{ display: 'flex', alignItems: 'center' }}>
+                      <TableCell>
+                        <RadioGroup value={rank} onChange={handleRankChange}>
+                          <div style={{ display: 'flex', alignItems: 'center', height: "30px" }}>
                             <FormControlLabel
                               value="doctor"
-                              control={<Radio style={{ color: colors.grey[400] }} />}
+                              control={<Radio style={{ color: colors.grey[400], }} />}
                               label="의사"
                               style={{ marginRight: '30px' }}
                             />
@@ -145,7 +148,7 @@ const DoctorForm = ({ closeModal, isOpen }) => {
                           }}>
                           <button
                             style={{
-                              backgroundColor: "#b7ebde"
+                              backgroundColor: colors.greenAccent[500]
                             }}
                             type="submit" onClick={logFormData}>
                             로그인

@@ -51,7 +51,7 @@ const AdminData = () => {
 
     useEffect(() => {
         fetchData();
-    }, [showConfirmation, closeModal]);
+    }, [showConfirmation, isModalOpen]);
 
     const openForm = () => {
         setIsFormOpen(true);

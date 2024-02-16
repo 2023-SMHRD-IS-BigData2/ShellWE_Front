@@ -15,7 +15,8 @@ const CommentModal = ({ isOpen, closeModal, children }) => {
                     height: 600,
                     maxWidth: "100%",
                     maxHeight: "90%",
-                    overflowY: "auto"
+                    overflowY: "auto",
+                    borderRadius:"30px"
                 }}>
                 {children}
             </Paper>
