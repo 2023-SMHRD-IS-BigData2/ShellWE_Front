@@ -45,9 +45,6 @@ const Login = () => {
       );
       if (response && response.data) {
         setMessage(response.data.login); // 서버로부터 받은 로그인 메시지를 message 상태로 설정
-      } else {
-        setError("로그인 실패");
-        console.error("Login failed: No data in the response"); // 응답 데이터가 없을 경우 에러 메시지 설정 및 콘솔에 로그 출력
       }
     } catch (error) {
       setError("로그인 실패");

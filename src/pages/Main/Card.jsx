@@ -1,9 +1,10 @@
 import React, { useContext } from "react";
-import { Box } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import { DashboardContext, tokens } from "../../theme";
 import { useTheme } from "@mui/material";
 import PeopleOutlinedIcon from "@mui/icons-material/PeopleOutlined";
 import StatBox from './StatBox';
+import ProgressCircle from "./ProgressCircle";
 
 const List = () => {
 
@@ -22,11 +23,12 @@ const List = () => {
                 gap="20px"
             >
                 <Box
-                    gridColumn="span 3"
+                    gridColumn="span 4"
                     backgroundColor={colors.primary[400]}
                     display="flex"
                     alignItems="center"
                     justifyContent="center"
+                    borderRadius="30px"
                 >
                     <StatBox
                         title={Allpatient}         // 값
@@ -40,17 +42,20 @@ const List = () => {
                         }
                     />
                 </Box>
+
+
                 <Box
-                    gridColumn="span 3"
+                    gridColumn="span 4"
                     backgroundColor={colors.primary[400]}
                     display="flex"
                     alignItems="center"
-                    justifyContent="center"
+                    justifyContent="space-between"
+                    borderRadius="30px"
                 >
                     <StatBox
-                        title={Screening}                // 값
+                        title={Screening}         // 값
                         subtitle="Screening 환자"        // 제목
-                        progress={Screening / Allpatient}           // 그래프
+                        progress={Screening / Allpatient}          // 그래프
                         increase={percent + "%"}           // 퍼센트
                         icon={                    //  아이콘
                             <PeopleOutlinedIcon
@@ -58,13 +63,17 @@ const List = () => {
                             />
                         }
                     />
+                    
                 </Box>
+
+
                 <Box
-                    gridColumn="span 3"
+                    gridColumn="span 4"
                     backgroundColor={colors.primary[400]}
                     display="flex"
                     alignItems="center"
                     justifyContent="center"
+                    borderRadius="30px"
                 >
                     <StatBox
                         title={todayScreening}                // 값

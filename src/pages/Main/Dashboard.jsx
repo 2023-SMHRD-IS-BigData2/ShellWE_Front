@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Box } from "@mui/material";
 import { DashboardContext } from "../../theme";
 import Data from './Data';
@@ -17,13 +17,16 @@ const App = () => {
     const [comments, setComments] = useState(null);
     /** 코멘트 인덱스 */
     const [patiIndex, setpatiIndex] = useState(1);
+    /** 코멘트 입력 값 */
+    const [inputValue, setInputValue] = useState('');
     /** 카드 변수 */
-
     const [percent, setPercent] = useState(null)
+
 
     /**sepsis level */
     const [sepsisState, setSepsisState] = useState(null)
     const [inputValue, setInputValue] = useState('');
+
     // Modal 여는 변수
     const [isModalOpen, setIsModalOpen] = useState(false);
     /**Modal열기 */
@@ -35,6 +38,7 @@ const App = () => {
     const closeModal = () => {
         setIsModalOpen(false);
     }
+
     const handleOptionChange = (value, patinum) => {
         // console.log("바뀌기전", selectedSepsissLevel);
         // setSelectedSepsissLevel(value);
@@ -52,6 +56,9 @@ const App = () => {
                 // 요청이 실패했을 때 수행할 작업을 이곳에 추가합니다.
             });
     };
+
+    const gridRef = useRef(null);
+
     /** 카드 값 */
     useEffect(() => {
         setPercent(Screening / Allpatient * 100)
@@ -66,7 +73,7 @@ const App = () => {
                 setAllpatient(response.data.Allpatient)
                 settodayScreening(response.data.todayScreening)
                 setScreening(response.data.Screening)
-                console.log("lists", response.data);
+                // console.log("lists", response.data);
             } catch (error) {
                 console.log(error);
             }
@@ -75,18 +82,8 @@ const App = () => {
         fetchData();
     }, [handleOptionChange]);
 
-    // 코멘트 Back
 
-    const handleSubmit = async (event) => {
-        console.log("handleSubmit");
-        event.preventDefault();
-        try {
-            await axios.post(`http://localhost:8088/boot/insertComment?insertComment=${inputValue}&patinum=${patiIndex}`);
-            setInputValue("")
-        } catch (error) {
-            console.log(error);
-        }
-    };
+    // 코멘트 내용 출력
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -96,14 +93,38 @@ const App = () => {
                 console.log(error);
             }
         };
-        console.log("comment reflesh")
+        // console.log("comment reflesh")
         fetchData();
     }, [inputValue, patiIndex]);
+
 
     // sepsislevel 눌렀을 때 함수명 handlesepsis
     // 백으로 보내는 함수 
     // http://localhost:8088/boot/changeStatus?sepsisslevel={}&patinum={}
     
+
+    useEffect(() => {
+        if (gridRef.current) {
+            const rowCount = comments.length;
+            const lastRowIndex = rowCount - 1;
+
+            gridRef.current.scrollToIndexes({ rowIndex: lastRowIndex });
+        }
+    }, [comments]);
+
+    // 코멘트 Back 전송
+    const handleSubmit = async (event) => {
+        // console.log("handleSubmit");
+        event.preventDefault();
+        try {
+            await axios.post(`http://localhost:8088/boot/insertComment?insertComment=${inputValue}&patinum=${patiIndex}`);
+            setInputValue("")
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
+
     return (
         <DashboardContext.Provider
             value={{
@@ -117,6 +138,8 @@ const App = () => {
         >
             <Box
                 m="20px"
+                marginTop="60px"
+                width="97.5%"
             >
                 <Card />
                 <Data />

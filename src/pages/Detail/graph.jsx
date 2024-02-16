@@ -1,10 +1,16 @@
-import React, { useContext} from 'react';
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip } from 'recharts';
+import React, { useContext } from 'react';
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import { ChartContext } from './ChartContext';
+import { Box, Typography, useTheme } from "@mui/material";
+import { tokens } from "../../theme";
 
 const Graph = () => {
-    const { clickedXValue, data, graph } = useContext(ChartContext);
-   
+
+    /** 다크모드 */
+    const theme = useTheme();
+    const colors = tokens(theme.palette.mode);
+    const { clickedXValue, data, graph , subtitle} = useContext(ChartContext);
+
 
     // clickedXValue 값이 null인 경우에 대한 처리
     if (!clickedXValue) {
@@ -18,13 +24,53 @@ const Graph = () => {
     const filteredData = data.filter(item => item.time.includes(clickedDate));
 
     return (
-        <LineChart width={1800} height={300} data={filteredData}>
-            <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="time" />
-            <YAxis yAxisId={graph} dataKey={graph} orientation="right" />
-            <Tooltip />
-            <Line type="linear" dataKey={graph} stroke="red" yAxisId={graph} />
-        </LineChart>
+        <Box
+            gridColumn="span 8"
+            gridRow="span 2"
+            backgroundColor={colors.primary[400]}
+            borderRadius="30px"
+            height="350px"
+            width="135vh"
+            marginTop="50px"
+        >
+            <Box
+                mt="25px"
+                p="0 30px"
+                display="flex "
+                justifyContent="space-between"
+                alignItems="center"
+            >
+                <Box>
+                    <Typography
+                        variant="h4"
+                        fontWeight="600"
+                        color={colors.grey[100]}
+                    >
+                        {subtitle}                           {/* 패혈증 수치 */}
+                    </Typography>
+                    <Typography
+                        variant="h4"
+                        fontWeight="bold"
+                        color={colors.greenAccent[500]}
+                    >
+                        {"최근 값"}
+                    </Typography>
+                </Box>
+            </Box>
+            <Box height="250px" m="-20px 0 0 0" >
+                <ResponsiveContainer width="100%" height={300}>
+                    <LineChart width="100%" height={300} data={filteredData}
+                    margin={{ top: 20, bottom: 40, right: 20, left: 80 }}>
+                        <CartesianGrid  vertical={false} strokeOpacity={0.3}/>
+                        <XAxis dataKey="time" />
+                        <YAxis yAxisId={graph} dataKey={graph} orientation="right" />
+                        <Tooltip />
+                        <Line type="linear" dataKey={graph} stroke="red" yAxisId={graph} />
+                    </LineChart>
+                </ResponsiveContainer>
+
+            </Box>
+        </Box>
     );
 };
 

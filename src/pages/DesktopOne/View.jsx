@@ -28,7 +28,7 @@ const View = () => {
           // marginTop:"20px"
         }}
           >
-            <Topbar setIsSidebar={setIsSidebar} />            {/* 톱바 (로그인, 다크모드)  */}
+            {/* <Topbar setIsSidebar={setIsSidebar} />            톱바 (로그인, 다크모드)  */}
             <Routes>
               <Route path='/' element={<Dashboard />} />            {/*  메인 대쉬보드 */}
               <Route path='/list' element={<List />} />             {/* 환자 리스트 */}

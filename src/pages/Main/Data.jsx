@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import { DashboardContext, tokens } from "../../theme";
 import { useTheme } from "@mui/material"
 import { Box, Typography, IconButton, Button } from "@mui/material";
@@ -36,6 +36,7 @@ const Data = () => {
     const handleModalClose = () => {
         setStatusModalOpen(false); // 모달을 닫기 위해 상태 업데이트
     };
+
 
 
     // lists 값이 null인 경우 로딩 상태를 표시하거나 다른 방식으로 처리
@@ -251,18 +252,20 @@ const Data = () => {
     if (comments === null) {
         return <div>Loading...</div>;
     }
+
     // 인덱스 1부터 시작
     const commentWithId = comments.map((comments, index) => ({
         ...comments,
         id: index + 1,
     }));
-
     return (
-        <Box>
+        <Box
+            borderRadius="30px">
             <Box
                 m="25px 0 0 0"
                 height="70vh"
-                width="160vh"
+                // width="160vh"
+                borderRadius="30px"
                 sx={{
                     "& .MuiDataGrid-root": {
                         border: "none",
@@ -276,6 +279,8 @@ const Data = () => {
                     "& .MuiDataGrid-columnHeaders": {
                         backgroundColor: colors.blueAccent[700],
                         borderBottom: "none",
+                        borderTopLeftRadius: "30px",
+                        borderTopRightRadius: "30px"
                     },
                     "& .MuiDataGrid-virtualScroller": {
                         backgroundColor: colors.primary[400],
@@ -283,6 +288,8 @@ const Data = () => {
                     "& .MuiDataGrid-footerContainer": {
                         borderTop: "none",
                         backgroundColor: colors.blueAccent[700],
+                        borderBottomLeftRadius: "30px",
+                        borderBottomRightRadius: "30px"
                     },
                     "& .MuiCheckbox-root": {
                         color: `${colors.greenAccent[200]} !important`,
@@ -329,6 +336,9 @@ const Data = () => {
                         <DataGrid
                             rows={commentWithId}
                             columns={commentColumns}
+                            autoPageSize={0}
+                            pageSizeOptions={[0]}
+                            pagination={false}
                         />
                     </Box>
                     <Box

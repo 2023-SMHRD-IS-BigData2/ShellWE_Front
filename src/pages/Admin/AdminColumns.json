@@ -5,13 +5,13 @@
             "headerName": "사번번호"
         },
         {
-            "field": "name",
-            "headerName": "이름",
+            "field": "id",
+            "headerName": "아이디",
             "flex" : 1
         },
         {
-            "field": "pw",
-            "headerName": "비밀번호",
+            "field": "name",
+            "headerName": "이름",
             "flex" : 1
         },
         {
@@ -20,12 +20,12 @@
             "flex" : 1
         },
         {
-            "field": "logintime",
+            "field": "loginTime",
             "headerName": "로그인 시간",
             "flex" : 1
         },
         {
-            "field": "logouttime",
+            "field": "logoutTime",
             "headerName": "로그아웃 시간",
             "flex" : 1
         },
@@ -38,11 +38,7 @@
             "field": "date",
             "headerName": "날짜",
             "flex" : 1
-        },
-        {
-            "field": "id",
-            "headerName": "아이디",
-            "flex" : 1
         }
+        
     ]
 }
