@@ -12,8 +12,9 @@ import MailOutlineIcon from '@mui/icons-material/MailOutline';
 
 // 환자 데이터 컴포넌트
 const Data = () => {
-    const { lists, comments, isModalOpen, closeModal, openModal, setInputValue, inputValue, handleSubmit, handleOptionChange, setSepsisState } = useContext(DashboardContext);
-    const [selectedSepsissLevel, setSelectedSepsissLevel] = useState("None");
+    const { lists, comments, isModalOpen, closeModal, openModal, setInputValue, inputValue, handleSubmit, handleOptionChange, setSepsisState, setWardValue, handleSelectChange, patinum, 
+            wardValue, handlePhysicianChange } = useContext(DashboardContext);
+    const [selectedSepsissLevel, setSelectedSepsissLevel, ] = useState("None");
 
     /** 다크모드 */
     const theme = useTheme();
@@ -103,7 +104,32 @@ const Data = () => {
             headerName: "병동",
             headerAlign: "center",
             align: "center",
-            flex: 1
+            flex: 1,
+            renderCell:({row:{ setWardValue, patinum}})=>{
+                return(
+                    <Box
+                        m="0 auto"
+                        p="5px"
+                        display="flex"
+                        justifyContent="center"
+                        borderRadius="4px"
+                    >
+                        <select
+                            onChange={(e)=>{
+                                handleSelectChange(patinum, e.target.value)
+                                wardValue(e)
+                            }}
+                            border={0}
+                        >
+                            <option value="physician">병동1</option>
+                            <option value="병동2">병동2</option>
+                            <option value="병동3">병동3</option>
+                            <option value="병동4">병동4</option>
+                            <option value="병동5">병동5</option>
+                        </select>
+                    </Box>
+                )
+            }
         },
         {
             field: "hpdate",
@@ -117,7 +143,32 @@ const Data = () => {
             headerName: "담당 의료진",
             headerAlign: "left",
             align: "left",
-            flex: 0.8
+            flex: 0.8,
+            renderCell:({row:{physicianValue, patinum}})=>{
+                return(
+                    <box
+                        m="0 auto"
+                        p="5px"
+                        display="flex"
+                        justifyContent="center"
+                        borderRadius="4px"
+                    >
+                        <select
+                            onChange={(e)=>{
+                                handlePhysicianChange(patinum, e.target.value)
+                                physicianValue(e)
+                            }}
+                            border={0}
+                        >
+                            <option value="병동1">병동1</option>
+                            <option value="병동2">병동2</option>
+                            <option value="병동3">병동3</option>
+                            <option value="병동4">병동4</option>
+                            <option value="병동5">병동5</option>
+                        </select>
+                    </box>
+                )
+            }
         },
         {
             field: "sepsisscore",

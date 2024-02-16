@@ -30,6 +30,8 @@ const App = () => {
 
     /**sepsis level */
     const [sepsisState, setSepsisState] = useState(null)
+    /**ward update */
+    const [patinum, setWardValue] = useState(null)
 
     // Modal 여는 변수
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -60,6 +62,26 @@ const App = () => {
                 // 요청이 실패했을 때 수행할 작업을 이곳에 추가합니다.
             });
     };
+    //환자 병동 수정
+    const handleSelectChange = (patinum, wardValue ) => {
+        axios.post(`http://localhost:8088/boot/updateWard?patinum=${patinum}&ward=${wardValue}`)
+            .then((response)=>{
+                console.log('서버 응답:', response);
+            })
+            .catch((error)=>{
+                console.error('서버 요청 오류:', error);
+            });
+    }
+    // 환자 의료진 수정
+    // const handlePhysicianChange = (patinum, physicianValue ) => {
+    //     axios.post(`http://localhost:8088/boot/updatePhysician?patinum=${patinum}&physician=${physicianValue}`)
+    //         .then((response)=>{
+    //             console.log('서버 응답:', response);
+    //         })
+    //         .catch((error)=>{
+    //             console.error('서버 요청 오류:', error);
+    //         });
+    // }
 
     const gridRef = useRef(null);
 
@@ -132,7 +154,7 @@ const App = () => {
                 comments, patiIndex, setInputValue, handleSubmit, inputValue,
                 isModalOpen, closeModal, openModal,
                 Allpatient, Screening, todayScreening, percent,
-                handleOptionChange, setSepsisState
+                handleOptionChange, setSepsisState, handleSelectChange, setWardValue, //handlePhysicianChange, physicianValue
             }}
         >
             <Box
