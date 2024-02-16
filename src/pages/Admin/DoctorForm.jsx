@@ -75,7 +75,9 @@ const DoctorForm = ({ closeModal, isOpen }) => {
                   <TableHead >
                     <TableRow
                     >
-                      <TableCell><h4>의료진 등록</h4></TableCell>
+                      <TableCell colSpan={2}>
+                        <h4 style={{ margin: "auto", display: "flex", justifyContent: "center" }}>의료진 등록</h4>
+                      </TableCell>
                     </TableRow>
                   </TableHead>
                   <TableBody>
@@ -132,26 +134,29 @@ const DoctorForm = ({ closeModal, isOpen }) => {
                           placeholder="연락처 입력" />
                       </TableCell>
                     </TableRow>
+                    <TableRow>
+                      <TableCell colSpan={2}>
+                        <div
+                          style={{
+                            display: "flex",
+                            justifyContent: "center",
+                            margin: "auto",
+                            width: "60%",
+                          }}>
+                          <button
+                            style={{
+                              backgroundColor: "#b7ebde"
+                            }}
+                            type="submit" onClick={logFormData}>
+                            로그인
+                          </button>
+                        </div>
+                      </TableCell>
+                    </TableRow>
                   </TableBody>
                 </Table>
               </TableContainer>
 
-              <div
-                style={{
-                  display: "flex",
-                  justifyContent: "center",
-                  marginTop: "30px",
-                  margin: "auto",
-                  width: "60%",
-                }}>
-                <button
-                  style={{
-                    backgroundColor: "#b7ebde"
-                  }}
-                  type="submit" onClick={logFormData}>
-                  로그인
-                </button>
-              </div>
             </form>
           </Box>
         </Box>
