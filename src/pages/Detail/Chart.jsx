@@ -13,6 +13,17 @@ const Charts = () => {
   // console.log("denger", denger);
   const [updatedValue, setUpdatedValue] = useState(0); // updatedValue 상태와 값을 초기화합니다.
 
+  // 마우스 올렸는지/안 올렸는지
+  const [isHovered, setIsHovered] = useState(null);
+  /** 마우스 올렸을 때 */
+  const handleMouseEnter = (key) => {
+    setIsHovered(key);
+  };
+  /** 마우스 안 올렸을 때 */
+  const handleMouseLeave = (key) => {
+    setIsHovered(key);
+  };
+
   useEffect(() => {
     console.log("chart클릭", clickedXValue);
     const date = clickedXValue
@@ -36,28 +47,46 @@ const Charts = () => {
             justifyContent="space-between"
             alignItems="center"
             borderRadius="20px"
-            backgroundColor={colors.primary[400]}
-            marginBottom="4px"
-            p="15px">
+            backgroundColor={value ? colors.primary[400] : colors.redAccent[600]}
+            marginBottom="7px"
+            p="15px"
+            sx={{
+              transition: "all 0.3s ease",
+              transform: isHovered === key ? "scale(1.05, 1.2)" : "scale(1, 1)",
+            }}
+            onMouseEnter={() => { handleMouseEnter(key) }}
+            onMouseLeave={() => { handleMouseLeave(key) }}
+            onClick={() => makechart(key)}
+          >
             <Box>
-              <Typography color={colors.greenAccent[500]} variant="h4" fontWeight="600">
+              <Typography sx={{
+                transform: isHovered === key ? "none" : "inherit",
+              }} color={colors.greenAccent[500]} variant="h4" fontWeight="600">
                 {key}
               </Typography>
             </Box>
-            <Box>
-              {
-                value
-                  ? "정상"
-                  : "비정상"
-              }
-            </Box>
             <Box
+              ml="auto" mr="20px"
+            >
+              <Typography
+                fontSize="15px"
+                sx={{
+                  transform: "none",
+                }}>
+                {
+                  value
+                    ? "범위 이내"
+                    : "범위 초과"
+                }
+              </Typography>
+            </Box>
+            {/* <Box
               backgroundColor={colors.greenAccent[500]}
               p="5px 10px"
               borderRadius="4px"
               onClick={() => makechart(key)}>
               보기
-            </Box>
+            </Box> */}
           </Box>
         );
       });
@@ -65,9 +94,9 @@ const Charts = () => {
 
   return (
     <Box gridColumn="span 4" gridRow="span 2"
-    borderRadius="30px"
-            height="350px"
-            marginTop="50px"
+      borderRadius="30px"
+      height="350px"
+      marginTop="50px"
     >
       <Box
         display="flex auto"
