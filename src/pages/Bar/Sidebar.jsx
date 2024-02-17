@@ -92,15 +92,15 @@ const Sidebar = () => {
                         mb="25px"
                         >
                             <Box display="flex" justifyContent="center" alignItems="center">
-                                {/* 
+                                {
                                 <img
                                     alt="profile-user"
-                                    width="100px"
-                                    height="100px"
-                                    src={`../../assets/user.png`}
+                                    width="70px"
+                                    height="70px"
+                                    src="https://i.ibb.co/mqXF466/image.png"
                                     style={{ cursor: "pointer", borderRadius: "50%" }}
                                 />
-                            */}
+                            }
                             </Box>
                             <Box textAlign="center">
                                 <Typography
