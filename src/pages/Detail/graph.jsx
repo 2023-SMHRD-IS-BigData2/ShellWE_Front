@@ -1,5 +1,5 @@
-import React, { useContext , useState } from 'react';
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
+import React, { useContext } from 'react';
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer ,Brush} from 'recharts';
 import { ChartContext } from './ChartContext';
 import { Box, Typography, useTheme } from "@mui/material";
 import { tokens } from "../../theme";
@@ -45,7 +45,7 @@ const Graph = () => {
                         fontWeight="600"
                         color={colors.grey[100]}
                     >
-                        {subtitle}                           {/* 패혈증 수치 */}
+                        {subtitle}{/* 패혈증 수치 */}
                     </Typography>
                     <Typography
                         variant="h4"
@@ -53,15 +53,12 @@ const Graph = () => {
                         color={colors.greenAccent[500]}
                     >
                          {data[data.length - 1][subtitle]}
-                         {data[data.length - 1][subtitle]}
                     </Typography>
                 </Box>
             </Box>
             <Box height="250px" m="-20px 0 0 0" >
                 <ResponsiveContainer width="100%" height={300}>
                     <LineChart width="100%" height={300} data={filteredData}
-                        margin={{ top: 20, bottom: 40, right: 20, left: 80 }}>
-                        <CartesianGrid vertical={false} strokeOpacity={0.3} />
                         margin={{ top: 20, bottom: 40, right: 20, left: 80 }}>
                         <CartesianGrid vertical={false} strokeOpacity={0.3} />
                         <XAxis dataKey="time" />
