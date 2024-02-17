@@ -12,9 +12,8 @@ import MailOutlineIcon from '@mui/icons-material/MailOutline';
 
 // 환자 데이터 컴포넌트
 const Data = () => {
-    const { lists, comments, isModalOpen, closeModal, openModal, setInputValue, inputValue, handleSubmit, handleOptionChange, setSepsisState, setWardValue, handleSelectChange, patinum, 
-            wardValue, handlePhysicianChange } = useContext(DashboardContext);
-    const [selectedSepsissLevel, setSelectedSepsissLevel] = useState("None");
+    const { lists, comments, isModalOpen, closeModal, openModal, setInputValue, inputValue, handleSubmit, handleOptionChange, setPatientEffect, handleSelectChange, 
+         handlePhysicianChange } = useContext(DashboardContext);
 
     /** 다크모드 */
     const theme = useTheme();
@@ -105,8 +104,8 @@ const Data = () => {
             headerAlign: "center",
             align: "center",
             flex: 1,
-            renderCell:({row:{ setWardValue, patinum}})=>{
-                return(
+            renderCell: ({ row: { ward, patinum } }) => {
+                return (
                     <Box
                         m="0 auto"
                         p="5px"
@@ -114,19 +113,19 @@ const Data = () => {
                         justifyContent="center"
                         borderRadius="4px"
                     >
-                        <select
-                            onChange={(e)=>{
+                        <Select
+                            onChange={(e) => {
                                 handleSelectChange(patinum, e.target.value)
-                                wardValue(e)
-                            }}
+                                setPatientEffect(e)
+                            }} value={ward}
                             border={0}
                         >
-                            <option value="physician">병동1</option>
-                            <option value="병동2">병동2</option>
-                            <option value="병동3">병동3</option>
-                            <option value="병동4">병동4</option>
-                            <option value="병동5">병동5</option>
-                        </select>
+                            <MenuItem value="physician">병동1</MenuItem>
+                            <MenuItem value="병동2">병동2</MenuItem>
+                            <MenuItem value="병동3">병동3</MenuItem>
+                            <MenuItem value="병동4">병동4</MenuItem>
+                            <MenuItem value="병동5">병동5</MenuItem>
+                        </Select>
                     </Box>
                 )
             }
@@ -144,8 +143,8 @@ const Data = () => {
             headerAlign: "left",
             align: "left",
             flex: 0.8,
-            renderCell:({row:{physicianValue, patinum}})=>{
-                return(
+            renderCell: ({ row: { physician, patinum } }) => {
+                return (
                     <box
                         m="0 auto"
                         p="5px"
@@ -153,29 +152,31 @@ const Data = () => {
                         justifyContent="center"
                         borderRadius="4px"
                     >
-                        <select
-                            onChange={(e)=>{
+                        <Select
+                            onChange={(e) => {
                                 handlePhysicianChange(patinum, e.target.value)
-                                physicianValue(e)
+                                // physicianValue(e)
+                                setPatientEffect(e)
                             }}
+                            value={physician}
                             border={0}
                         >
-                            <option value="Dr.Smith">Dr.Smith</option>
-                            <option value="Dr.Johanson">Dr.Johanson</option>
-                            <option value="Dr.Thomas">Dr.Thomas</option>
-                            <option value="Dr.Michael">Dr.Michael</option>
-                            <option value="Dr.Andrew">Dr.Andrew</option>
-                            <option value="Dr.John">Dr.John</option>
-                            <option value="Dr.James">Dr.James</option>
-                            <option value="Dr.William">Dr.William</option>
-                            <option value="Dr.Joseph">Dr.Joseph</option>
-                            <option value="Dr.David">Dr.David</option>
-                            <option value="Dr.Daniel">Dr.Daniel</option>
-                            <option value="Dr. Lee">Dr. Lee</option>
-                            <option value="Dr. Martinez">Dr. Martinez</option>
-                            <option value="Dr.Robert">Dr.Robert</option>
-                            
-                        </select>
+                            <MenuItem value="Dr.Smith">Dr.Smith</MenuItem>
+                            <MenuItem value="Dr.Johanson">Dr.Johanson</MenuItem>
+                            <MenuItem value="Dr.Thomas">Dr.Thomas</MenuItem>
+                            <MenuItem value="Dr.Michael">Dr.Michael</MenuItem>
+                            <MenuItem value="Dr.Andrew">Dr.Andrew</MenuItem>
+                            <MenuItem value="Dr.John">Dr.John</MenuItem>
+                            <MenuItem value="Dr.James">Dr.James</MenuItem>
+                            <MenuItem value="Dr.William">Dr.William</MenuItem>
+                            <MenuItem value="Dr.Joseph">Dr.Joseph</MenuItem>
+                            <MenuItem value="Dr.David">Dr.David</MenuItem>
+                            <MenuItem value="Dr.Daniel">Dr.Daniel</MenuItem>
+                            <MenuItem value="Dr. Lee">Dr. Lee</MenuItem>
+                            <MenuItem value="Dr. Martinez">Dr. Martinez</MenuItem>
+                            <MenuItem value="Dr.Robert">Dr.Robert</MenuItem>
+
+                        </Select>
                     </box>
                 )
             }
@@ -214,7 +215,7 @@ const Data = () => {
                             value={sepsisslevel === "None" ? "" : sepsisslevel}
                             onChange={(e) => {
                                 handleOptionChange(e.target.value, patinum)
-                                setSepsisState(e)
+                                setPatientEffect(e)
                             }}
                             border={0}
                             sx={{
@@ -268,8 +269,8 @@ const Data = () => {
                     <div style={{
                         backgroundColor: hasArrow ? colors.greenAccent[700] : "inherit",
                         width: "60%",
-                        display: hasArrow ?"flex": "",
-                        justifyContent: hasArrow ?"center": "none",
+                        display: hasArrow ? "flex" : "",
+                        justifyContent: hasArrow ? "center" : "none",
                         height: "60%",
                         borderRadius: "12px"
                     }}>
@@ -293,20 +294,19 @@ const Data = () => {
             headerName: "작성자"
         }
     ]
-    // patiIndex 정의
-    //const [patiIndex, setPatiIndex] = useState(1);
+    
     const tableTheme = createTheme({
         components: {
-          MuiDataGrid: {
-            styleOverrides: {
-              root: {
-                border: '5px solid red', // 선 색상을 변경할 스타일 속성
-                backgroundColor: "blue"
-              },
+            MuiDataGrid: {
+                styleOverrides: {
+                    root: {
+                        border: '5px solid red', // 선 색상을 변경할 스타일 속성
+                        backgroundColor: "blue"
+                    },
+                },
             },
-          },
         },
-      });
+    });
 
     // lists 값이 null인 경우 로딩 상태를 표시하거나 다른 방식으로 처리
     if (comments === null) {
@@ -367,7 +367,7 @@ const Data = () => {
                         MuiDataGrid: {
                             tableTheme,
                         },
-                      }}
+                    }}
                 />
             </Box>
 
