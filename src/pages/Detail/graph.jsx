@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext , useState } from 'react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import { ChartContext } from './ChartContext';
 import { Box, Typography, useTheme } from "@mui/material";
@@ -9,8 +9,7 @@ const Graph = () => {
     /** 다크모드 */
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
-    const { clickedXValue, data, graph , subtitle} = useContext(ChartContext);
-
+    const { clickedXValue, data, graph, subtitle } = useContext(ChartContext);
 
     // clickedXValue 값이 null인 경우에 대한 처리
     if (!clickedXValue) {
@@ -53,15 +52,15 @@ const Graph = () => {
                         fontWeight="bold"
                         color={colors.greenAccent[500]}
                     >
-                        {"최근 값"}
+                         {data[data.length - 1][subtitle]}
                     </Typography>
                 </Box>
             </Box>
             <Box height="250px" m="-20px 0 0 0" >
                 <ResponsiveContainer width="100%" height={300}>
                     <LineChart width="100%" height={300} data={filteredData}
-                    margin={{ top: 20, bottom: 40, right: 20, left: 80 }}>
-                        <CartesianGrid  vertical={false} strokeOpacity={0.3}/>
+                        margin={{ top: 20, bottom: 40, right: 20, left: 80 }}>
+                        <CartesianGrid vertical={false} strokeOpacity={0.3} />
                         <XAxis dataKey="time" />
                         <YAxis yAxisId={graph} dataKey={graph} orientation="right" />
                         <Tooltip />

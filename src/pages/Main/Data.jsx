@@ -3,7 +3,7 @@ import { DashboardContext, tokens } from "../../theme";
 import { createTheme, useTheme } from "@mui/material"
 import { Box, Typography, IconButton, Button, Select, MenuItem } from "@mui/material";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
-import { Link } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 import CommentModal from "../DesktopOne/CommentModal";
 import InputBase from "@mui/material/InputBase";
 import SendIcon from '@mui/icons-material/Send';
@@ -12,13 +12,20 @@ import MailOutlineIcon from '@mui/icons-material/MailOutline';
 
 // 환자 데이터 컴포넌트
 const Data = () => {
-    const { lists, comments, isModalOpen, closeModal, openModal, setInputValue, inputValue, handleSubmit, handleOptionChange, setPatientEffect, handleSelectChange, 
-         handlePhysicianChange } = useContext(DashboardContext);
+    const { lists, comments, isModalOpen, closeModal, openModal, setInputValue, inputValue, handleSubmit, handleOptionChange, setPatientEffect, handleSelectChange,
+        handlePhysicianChange } = useContext(DashboardContext);
 
     /** 다크모드 */
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
     const [hoveredRowId, setHoveredRowId] = useState(null);
+    // useNavigate 훅을 사용하여 navigate 함수를 가져오기
+    const navigate = useNavigate();
+
+    // navigate로 디테일 페이지로 이동
+    const handlePageNavigation = (platinum) => {
+        navigate(`/main/detail/${platinum}` , {state:{lists:lists[platinum-1]}});
+    };
 
     // lists 값이 null인 경우 로딩 상태를 표시하거나 다른 방식으로 처리
     if (lists === null) {
@@ -29,6 +36,7 @@ const Data = () => {
         ...list,
         id: index + 1,
     }));
+
 
     // 환자 테이블 컬럼
     const columnslist = [
@@ -61,16 +69,15 @@ const Data = () => {
                         }
                         borderRadius="4px"
                     >
-                        <Link
-                            key={row.id}
-                            to={`/main/detail/${row.patinum}`}
+                        <b
+                            onClick={() => handlePageNavigation(row.id)}
                             style={{
                                 textDecoration: 'none',
                                 color: colors.primary[100]
                             }}
                         >
                             {row.name}
-                        </Link>
+                        </b>
                     </Box>
                 )
             },
@@ -201,7 +208,7 @@ const Data = () => {
                         p="5px"
                         display="flex"
                         justifyContent="center"
-                    
+
                         borderRadius="4px"
 
                     >
@@ -288,7 +295,7 @@ const Data = () => {
             headerName: "작성자"
         }
     ]
-    
+
     const tableTheme = createTheme({
         components: {
             MuiDataGrid: {
@@ -348,11 +355,11 @@ const Data = () => {
                     },
                     "& .MuiDataGrid-toolbarContainer .MuiButton-text": {
                         color: `${colors.grey[100]} !important`,
-                        minWidth:"10px"
-                        
+                        minWidth: "10px"
+
                     },
-                   
-                    
+
+
                 }}>
                 <DataGrid
                     rows={listsWithId}                       /** 환자 데이터 */
@@ -390,7 +397,7 @@ const Data = () => {
                             },
                             "& .MuiDataGrid-footerContainer": {
                                 borderTop: "none",
-                              backgroundColor: colors.grey[700],
+                                backgroundColor: colors.grey[700],
                             },
                         }}>
                         <DataGrid
