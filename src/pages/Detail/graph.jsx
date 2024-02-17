@@ -10,7 +10,6 @@ const Graph = () => {
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
     const { clickedXValue, data, graph, subtitle } = useContext(ChartContext);
-    const { clickedXValue, data, graph, subtitle } = useContext(ChartContext);
 
     // clickedXValue 값이 null인 경우에 대한 처리
     if (!clickedXValue) {
