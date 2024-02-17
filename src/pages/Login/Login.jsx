@@ -2,7 +2,6 @@ import React, { useEffect, useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './login.css';
-import { Height } from '@mui/icons-material';
 
 const Login = () => {
   const [inputId, setInputId] = useState(""); // 입력한 아이디 값을 상태로 관리
