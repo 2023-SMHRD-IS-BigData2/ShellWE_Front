@@ -201,13 +201,7 @@ const Data = () => {
                         p="5px"
                         display="flex"
                         justifyContent="center"
-                        // backgroundColor={
-                        // sepsisslevel === "Screening"
-                        //     ? colors.redAccent[600]
-                        //     : sepsisslevel === "Observing"
-                        //         ? colors.greenAccent[700]
-                        //         : "none"
-                        // }
+                    
                         borderRadius="4px"
 
                     >
@@ -301,7 +295,7 @@ const Data = () => {
                 styleOverrides: {
                     root: {
                         border: '5px solid red', // 선 색상을 변경할 스타일 속성
-                        backgroundColor: "blue"
+                        backgroundColor: "black"
                     },
                 },
             },
@@ -349,14 +343,16 @@ const Data = () => {
                         borderTop: "none",
                         backgroundColor: colors.blueAccent[700],
                         borderBottomLeftRadius: "30px",
-                        borderBottomRightRadius: "30px"
-                    },
-                    "& .MuiCheckbox-root": {
-                        color: `${colors.greenAccent[200]} !important`,
+                        borderBottomRightRadius: "30px",
+                        color: colors.blueAccent[300],
                     },
                     "& .MuiDataGrid-toolbarContainer .MuiButton-text": {
                         color: `${colors.grey[100]} !important`,
+                        minWidth:"10px"
+                        
                     },
+                   
+                    
                 }}>
                 <DataGrid
                     rows={listsWithId}                       /** 환자 데이터 */
@@ -394,7 +390,7 @@ const Data = () => {
                             },
                             "& .MuiDataGrid-footerContainer": {
                                 borderTop: "none",
-                                backgroundColor: colors.grey[700],
+                              backgroundColor: colors.grey[700],
                             },
                         }}>
                         <DataGrid

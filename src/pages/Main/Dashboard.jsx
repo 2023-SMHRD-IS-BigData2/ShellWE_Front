@@ -68,7 +68,7 @@ const App = () => {
             });
     }
 
-    //환자 의료진 수정
+    //환자의 담당 의료진 수정
     const handlePhysicianChange = (patinum, physician) => {
         axios.post(`http://localhost:8088/boot/updatePhysician?patinum=${patinum}&physician=${physician}`)
             .then((response) => {

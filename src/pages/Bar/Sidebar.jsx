@@ -23,7 +23,9 @@ const Item = ({ title, to, icon, selected, setSelected }) => {
             onClick={() => setSelected(title)}
             icon={icon}
         >
-            <Typography>{title}</Typography>
+            <Typography
+            style={{color:colors.grey[100]}}
+            >{title}</Typography>
             <Link to={to} />
         </MenuItem>
     );
@@ -125,13 +127,6 @@ const Sidebar = () => {
                             title="Dashboard"
                             to="/main"
                             icon={<HomeOutlinedIcon />}
-                            selected={selected}
-                            setSelected={setSelected}
-                        />
-                        <Item
-                            title="Calendar"
-                            to="/main/calendar"
-                            icon={<CalendarTodayOutlinedIcon />}
                             selected={selected}
                             setSelected={setSelected}
                         />
