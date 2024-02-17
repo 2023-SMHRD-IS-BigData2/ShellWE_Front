@@ -10,6 +10,7 @@ const Graph = () => {
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
     const { clickedXValue, data, graph, subtitle } = useContext(ChartContext);
+    const { clickedXValue, data, graph, subtitle } = useContext(ChartContext);
 
     // clickedXValue 값이 null인 경우에 대한 처리
     if (!clickedXValue) {
@@ -53,6 +54,7 @@ const Graph = () => {
                         color={colors.greenAccent[500]}
                     >
                          {data[data.length - 1][subtitle]}
+                         {data[data.length - 1][subtitle]}
                     </Typography>
                 </Box>
             </Box>
@@ -61,10 +63,21 @@ const Graph = () => {
                     <LineChart width="100%" height={300} data={filteredData}
                         margin={{ top: 20, bottom: 40, right: 20, left: 80 }}>
                         <CartesianGrid vertical={false} strokeOpacity={0.3} />
+                        margin={{ top: 20, bottom: 40, right: 20, left: 80 }}>
+                        <CartesianGrid vertical={false} strokeOpacity={0.3} />
                         <XAxis dataKey="time" />
                         <YAxis yAxisId={graph} dataKey={graph} orientation="right" />
                         <Tooltip />
                         <Line type="linear" dataKey={graph} stroke="red" yAxisId={graph} />
+                        <Brush
+                            dataKey="time"
+                            height={21}
+                            stroke="#EB9DA2"
+                            startIndex={0}
+                            endIndex={Math.min(5, data.length - 1)}
+                            opacity="0.2"
+                            fillOpacity={0.2}
+                        />
                     </LineChart>
                 </ResponsiveContainer>
 
