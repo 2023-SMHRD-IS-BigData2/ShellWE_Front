@@ -10,12 +10,16 @@ import DetailHeader from "./DetailHeader";
 import { Box, Button, useTheme } from "@mui/material";
 import { tokens } from "../../theme";
 import DownloadOutlinedIcon from "@mui/icons-material/DownloadOutlined";
+import { useLocation } from 'react-router-dom';
 
 // 연동 및 데이터 집어넣기
 const App = () => {
 
   let { num } = useParams() //메인에서 디테일 번호 전하는 파람
   // console.log('useParams', num);
+  const location = useLocation();
+  const lists = location.state?.lists;
+  console.log("list여", lists);
 
   const [data, setData] = useState(null); //스프링에서 받아온 값
   const [clickedXValue, setclickedXValue] = useState(null) // X축 클릭한 값 (날짜)
