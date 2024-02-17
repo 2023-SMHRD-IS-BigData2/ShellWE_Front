@@ -1,5 +1,5 @@
-import React, { useContext , useState } from 'react';
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
+import React, { useContext  } from 'react';
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer ,Brush} from 'recharts';
 import { ChartContext } from './ChartContext';
 import { Box, Typography, useTheme } from "@mui/material";
 import { tokens } from "../../theme";
@@ -65,6 +65,15 @@ const Graph = () => {
                         <YAxis yAxisId={graph} dataKey={graph} orientation="right" />
                         <Tooltip />
                         <Line type="linear" dataKey={graph} stroke="red" yAxisId={graph} />
+                        <Brush
+                            dataKey="time"
+                            height={21}
+                            stroke="#EB9DA2"
+                            startIndex={0}
+                            endIndex={Math.min(5, data.length - 1)}
+                            opacity="0.2"
+                            fillOpacity={0.2}
+                        />
                     </LineChart>
                 </ResponsiveContainer>
 
