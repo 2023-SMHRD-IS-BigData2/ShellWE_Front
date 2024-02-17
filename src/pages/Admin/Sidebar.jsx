@@ -126,7 +126,7 @@ const Sidebar = () => {
                             />
                         </Box>
                         <Item
-                            title="Username"
+                            title="Logout"
                             to="/"
                             icon={<PersonOutlinedIcon />}
                             selected={selected}
