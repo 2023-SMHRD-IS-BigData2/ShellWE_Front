@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './login.css';
+import { Height } from '@mui/icons-material';
 
 const Login = () => {
   const [inputId, setInputId] = useState(""); // 입력한 아이디 값을 상태로 관리
@@ -77,8 +78,8 @@ const Login = () => {
             <div className="user-page-title-wrap">
               <div className="user-page-icon-wrap">
                 {/* logo */}
-                {/* <img src="https://assets-global.website-files.com/6465a677c2eb8d266483bb5c/646700a3d35799da2b5a84d8_sashub-icon.svg"
-                      loading="eager" alt="" class="user-page-icon" /> */}
+                {<img src="https://i.ibb.co/mqXF466/image.png"
+                      loading="eager" alt="" class="user-page-icon" style={{width:"90px", height:"90px"}}/>}
               </div>
               <h1 className="user-page-title">Log in</h1>
               <p>{message}</p>
