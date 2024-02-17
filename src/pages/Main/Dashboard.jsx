@@ -23,10 +23,9 @@ const App = () => {
     const [percent, setPercent] = useState(null)
 
 
-    /**sepsis level */
-    const [sepsisState, setSepsisState] = useState(null)
-    /**ward update */
-    const [patinum, setWardValue] = useState(null)
+    /**환자 컬럼 업데이트 */
+    const [patientEffect, setPatientEffect] = useState(null)
+    
 
     // Modal 여는 변수
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -41,11 +40,6 @@ const App = () => {
     }
 
     const handleOptionChange = (value, patinum) => {
-        // console.log("바뀌기전", selectedSepsissLevel);
-        // setSelectedSepsissLevel(value);
-        console.log("Selected Value: ", value);
-        console.log("Selected Patinum: ", patinum);
-
         // 서버에 데이터를 보내는 요청을 만듭니다.
         axios.post(`http://localhost:8088/boot/changeStatus?sepsisslevel=${value}&patinum=${patinum}`)
             .then((response) => {
@@ -57,26 +51,28 @@ const App = () => {
                 // 요청이 실패했을 때 수행할 작업을 이곳에 추가합니다.
             });
     };
+
     //환자 병동 수정
-    const handleSelectChange = (patinum, wardValue ) => {
-        axios.post(`http://localhost:8088/boot/updateWard?patinum=${patinum}&ward=${wardValue}`)
-            .then((response)=>{
+    const handleSelectChange = (patinum, ward) => {
+        axios.post(`http://localhost:8088/boot/updateWard?patinum=${patinum}&ward=${ward}`)
+            .then((response) => {
                 console.log('서버 응답:', response);
             })
-            .catch((error)=>{
+            .catch((error) => {
                 console.error('서버 요청 오류:', error);
             });
     }
-    // 환자 의료진 수정
-    // const handlePhysicianChange = (patinum, physicianValue ) => {
-    //     axios.post(`http://localhost:8088/boot/updatePhysician?patinum=${patinum}&physician=${physicianValue}`)
-    //         .then((response)=>{
-    //             console.log('서버 응답:', response);
-    //         })
-    //         .catch((error)=>{
-    //             console.error('서버 요청 오류:', error);
-    //         });
-    // }
+
+    //환자 의료진 수정
+    const handlePhysicianChange = (patinum, physician) => {
+        axios.post(`http://localhost:8088/boot/updatePhysician?patinum=${patinum}&physician=${physician}`)
+            .then((response) => {
+                console.log('서버 응답:', response);
+            })
+            .catch((error) => {
+                console.error('서버 요청 오류:', error);
+            });
+    }
 
     const gridRef = useRef(null);
 
@@ -101,7 +97,7 @@ const App = () => {
         };
         console.log("patient");
         fetchData();
-    }, [sepsisState]);
+    }, [patientEffect]);
 
 
     // 코멘트 내용 출력
@@ -149,7 +145,7 @@ const App = () => {
                 comments, patiIndex, setInputValue, handleSubmit, inputValue,
                 isModalOpen, closeModal, openModal,
                 Allpatient, Screening, todayScreening, percent,
-                handleOptionChange, setSepsisState, handleSelectChange, setWardValue, //handlePhysicianChange, physicianValue
+                handleOptionChange, setPatientEffect, handleSelectChange,handlePhysicianChange
             }}
         >
             <Box
@@ -159,11 +155,11 @@ const App = () => {
 
             >
                 <Box
-                    // display="grid"
-                    // gridTemplateColumns="repeat(12, 1fr)"
-                    // gridAutoRows="140px"
-                    // gap="20px"
-                    >
+                // display="grid"
+                // gridTemplateColumns="repeat(12, 1fr)"
+                // gridAutoRows="140px"
+                // gap="20px"
+                >
 
                     <Card />
                 </Box>
