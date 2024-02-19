@@ -156,7 +156,7 @@ const App = () => {
           <Box m="20px"
             marginTop="60px">
             <Box display="flex" justifyContent="space-between" alignItems="center">
-              <DetailHeader title="환자명" subtitle="환자 데이터" />
+              <DetailHeader title={lists.name} subtitle={lists.age + "세 / "+ lists.gender + " / " + lists.bloodtype + "형 / "} />
               <Box>
                 <Button
                   sx={{
