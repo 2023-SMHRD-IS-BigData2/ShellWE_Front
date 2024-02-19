@@ -24,11 +24,11 @@ const App = () => {
   const [data, setData] = useState(null); //스프링에서 받아온 값
   const [clickedXValue, setclickedXValue] = useState(null) // X축 클릭한 값 (날짜)
   const [denger, setdenger] = useState(null) // dengercolumn 가져온 값
-  const [graph, setgraph] = useState(null) // 새로운 차트 만드는 키 값
+  const [graph, setgraph] = useState("sbp") // 새로운 차트 만드는 키 값
   const [dateModal, setdateModal] = useState(false); // 달력이 열렸나 안렸나 확인
   const [StartDate, setSDate] = useState(null); // 달력의 시작값
   const [EndDate, setEDate] = useState(null); // 달력의 끝값
-  const [subtitle, setSubtitle] = useState(null); // 밑 그래프의 제목 값
+  const [subtitle, setSubtitle] = useState("sbp"); // 밑 그래프의 제목 값
 
   /**다크모드 */
   const theme = useTheme();

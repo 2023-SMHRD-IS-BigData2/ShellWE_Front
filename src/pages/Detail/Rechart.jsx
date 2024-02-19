@@ -74,11 +74,11 @@ export default function Example() {
             activeDot={{ r: 8 }}
             yAxisId={key}
             dot={false}
-        // label={({ x, y, value }) => (
-        //     <text x={x} y={y} dy={-8} fill={colorsChart[key]} textAnchor="middle">
-        //         {value}
-        //     </text>
-        // )}
+            label={({ x, y, value }) => (
+                <text x={x} y={y} dy={-8} fill={colorsChart[key]} textAnchor="middle">
+                    {value}
+                </text>
+            )}
         />
     ));
 
@@ -100,27 +100,28 @@ export default function Example() {
             >
                 <Box>
                     <Typography
-                        variant="h5"
+                        variant="h3"
                         fontWeight="600"
                         color={colors.grey[100]}
+                        marginTop="-30px"
                     >
                         SMART                            {/* 패혈증 수치 */}
                     </Typography>
-                    <Typography
+                    {/* <Typography
                         variant="h4"
                         fontWeight="bold"
                         color={colors.greenAccent[500]}
                     >
-                        {"최근 값"}
-                    </Typography>
+                        {""}
+                    </Typography> */}
                 </Box>
                 {/* 버튼 */}
-                <Box 
-                style={{
-                    display: "flex",
-                    // width: "60px", 
-                    // flexDirection: "row"
-                }}
+                <Box
+                    style={{
+                        display: "flex",
+                        // width: "60px", 
+                        // flexDirection: "row"
+                    }}
                 >
                     <button
                         onClick={() => handleButtonClick("Smart")}
