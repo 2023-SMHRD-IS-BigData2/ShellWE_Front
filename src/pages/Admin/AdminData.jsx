@@ -4,20 +4,12 @@ import columns from './AdminColumns.json';
 import axios from "axios";
 import DoctorForm from "./DoctorForm";
 import ClearIcon from '@mui/icons-material/Clear';
-import AddModal from './AddModal';
-import { Box } from "@mui/material";
-import { tokens } from "../../theme";
-import { useTheme } from "@mui/material"
-import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from '@mui/material';
+
 
 const AdminData = () => {
-    const [isFormOpen, setIsFormOpen] = useState(false);
     const [patientData, setPatientData] = useState([]);
     const [showConfirmation, setShowConfirmation] = useState(false);
     const [selectedMemberNum, setSelectedMemberNum] = useState(null);
-    /** 다크모드 */
-    const theme = useTheme();
-    const colors = tokens(theme.palette.mode);
 
     // Modal 여는 변수
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -29,11 +21,7 @@ const AdminData = () => {
     const closeModal = () => {
         setIsModalOpen(false);
     }
-    const rows = [
-        { id: 1, name: 'John Doe', age: 25 },
-        { id: 2, name: 'Jane Smith', age: 30 },
-        { id: 3, name: 'Bob Johnson', age: 35 },
-    ];
+
 
     const fetchData = async () => {
         try {
@@ -53,14 +41,6 @@ const AdminData = () => {
         fetchData();
     }, [showConfirmation, isModalOpen]);
 
-    const openForm = () => {
-        setIsFormOpen(true);
-    };
-
-    const closeForm = () => {
-        setIsFormOpen(false);
-        fetchData();
-    };
 
     const handleClearIconClick = (membernum) => {
         console.log("선택된 행의 memverNum:", membernum);
@@ -71,13 +51,14 @@ const AdminData = () => {
     const handleConfirmationConfirm = async () => {
         console.log("확인 버튼 클릭");
         setShowConfirmation(false);
-
+      
         try {
-            await axios.post(`http://localhost:8088/boot/deleteMember?membernum=${selectedMemberNum}`);
+          const response = await axios.post(`http://localhost:8088/boot/deleteMember?membernum=${selectedMemberNum}`);
+          alert(response);
         } catch (error) {
-            console.log(error);
+          alert("관리자는 삭제가 불가능합니다");
         }
-    };
+      };
 
     const handleConfirmationCancel = () => {
         console.log("취소 버튼 클릭");
@@ -122,7 +103,7 @@ const AdminData = () => {
                         textAlign: "center",
                         color: "black"
                     }}>
-                        <p style={{ marginTop: "10px" }}>정말로 회원을 삭제하시겠습니까?</p>
+                        <p style={{ marginTop: "10px" , color:"black" }}>정말로 회원을 삭제하시겠습니까?</p>
                         <button style={{ margin: "10px" }} onClick={handleConfirmationConfirm}>확인</button>
                         <button style={{ margin: "10px" }} onClick={handleConfirmationCancel}>취소</button>
                     </div>
