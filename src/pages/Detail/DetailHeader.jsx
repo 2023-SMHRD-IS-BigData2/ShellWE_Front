@@ -5,13 +5,15 @@ import MailOutlineIcon from '@mui/icons-material/MailOutline';
 import CommentModal from '../DesktopOne/CommentModal';
 import { DataGrid } from '@mui/x-data-grid';
 import SendIcon from '@mui/icons-material/Send';
+import { useLocation } from 'react-router-dom';
 
 const DetailHeader = ({ title, subtitle,
     comments, setInputValue, handleSubmit, inputValue,
     isModalOpen, closeModal, openModal, num
 }) => {
-
-
+    const location = useLocation();
+    const lists = location.state?.lists;
+console.log("환자 정보",lists);
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
 
@@ -78,6 +80,21 @@ const DetailHeader = ({ title, subtitle,
             <CommentModal
                 isOpen={isModalOpen} closeModal={closeModal}>
                 <Box m="40px">
+                    {/* 환자 정보 */}
+                    <Box 
+                    display="flex"
+                    justifyContent="space-between"
+                    margin="auto"
+                    width="200px"
+                    >
+                        <Typography variant='h4'>
+                            {"순번 : "+lists.patinum}
+                        </Typography>
+                        <Typography variant='h4'>
+                            {"이름 : "+ lists.name}
+                        </Typography>
+                    </Box>
+                    {/* 테이블 */}
                     <Box
                         m="25px 0 0 0"
                         height="45vh"
@@ -105,6 +122,7 @@ const DetailHeader = ({ title, subtitle,
                             columns={commentColumns}
                         />
                     </Box>
+                    {/* 입력 부분 */}
                     <Box
                         m="20px"
                         display="flex"
