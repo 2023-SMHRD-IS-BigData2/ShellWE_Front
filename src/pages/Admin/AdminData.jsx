@@ -51,14 +51,14 @@ const AdminData = () => {
     const handleConfirmationConfirm = async () => {
         console.log("확인 버튼 클릭");
         setShowConfirmation(false);
-      
+
         try {
-          const response = await axios.post(`http://localhost:8088/boot/deleteMember?membernum=${selectedMemberNum}`);
-          alert(response);
+            await axios.post(`http://localhost:8088/boot/deleteMember?membernum=${selectedMemberNum}`);
+            console.log("삭제완료");
         } catch (error) {
-          alert("관리자는 삭제가 불가능합니다");
+            alert("관리자는 삭제가 불가능합니다");
         }
-      };
+    };
 
     const handleConfirmationCancel = () => {
         console.log("취소 버튼 클릭");
@@ -103,7 +103,7 @@ const AdminData = () => {
                         textAlign: "center",
                         color: "black"
                     }}>
-                        <p style={{ marginTop: "10px" , color:"black" }}>정말로 회원을 삭제하시겠습니까?</p>
+                        <p style={{ marginTop: "10px", color: "black" }}>정말로 회원을 삭제하시겠습니까?</p>
                         <button style={{ margin: "10px" }} onClick={handleConfirmationConfirm}>확인</button>
                         <button style={{ margin: "10px" }} onClick={handleConfirmationCancel}>취소</button>
                     </div>
