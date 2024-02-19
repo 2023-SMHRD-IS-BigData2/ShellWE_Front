@@ -11,14 +11,14 @@ export default function Example() {
     const colors = tokens(theme.palette.mode);
 
     // state 설정
-    const [selectedKeys, setSelectedKeys] = useState(["map"]); // 처음에 출력할 값
+    const [selectedKeys, setSelectedKeys] = useState(["sepsisscore"]); // 처음에 출력할 값
     const [filteredData, setFilteredData] = useState([]); // 달력의 기준으로 필터링된 값
 
     // ChartContext에서 필요한 값 가져오기
     const { handleXAxisClick, data, StartDate, EndDate } = useContext(ChartContext)
 
     // 데이터와 날짜 값 확인
-    // console.log("datas", data);
+    console.log("datas", data[0].sepsisscore);
     // console.log("StartDate", StartDate);
     // console.log("EndDate", EndDate);
 
@@ -47,7 +47,7 @@ export default function Example() {
 
     // 각 키에 대한 색상 설정
     const colorsChart = {
-        Smart: "#EB9DA2",
+        sepsisscore: "#EB9DA2",
         o2sat: "#F0B884",
         map: "#E8E6A5",
         temp: "#BBE8B5",
@@ -66,8 +66,8 @@ export default function Example() {
             key={key}
             type="linear"
             dataKey={key}
-            stroke={key === "Smart" ? "#EB9DA2" : colorsChart[key]}
-            strokeWidth={key === "Smart" ? 6 : 3}
+            stroke={key === "sepsisscore" ? "#EB9DA2" : colorsChart[key]}
+            strokeWidth={key === "sepsisscore" ? 6 : 3}
             fill={colorsChart[key]}
             activeDot={{ r: 8 }}
             yAxisId={key}
@@ -103,7 +103,7 @@ export default function Example() {
                         color={colors.grey[100]}
                         marginTop="-30px"
                     >
-                        SMART                            {/* 패혈증 수치 */}
+                        sepsisscore                            {/* 패혈증 수치 */}
                     </Typography>
                     {/* <Typography
                         variant="h4"
@@ -122,12 +122,12 @@ export default function Example() {
                     }}
                 >
                     <button
-                        onClick={() => handleButtonClick("Smart")}
+                        onClick={() => handleButtonClick("sepsisscore")}
                         style={{
-                            background: selectedKeys.includes("Smart") ? "#EB9DA2" : "#fff",
+                            background: selectedKeys.includes("sepsisscore") ? "#EB9DA2" : "#fff",
                         }}
                     >
-                        Smart
+                        smart
                     </button>
                     <button
                         onClick={() => handleButtonClick("o2sat")}
@@ -176,7 +176,7 @@ export default function Example() {
                 <ResponsiveContainer width="100%" height={300}>
                     <LineChart
                         data={filteredData}
-                        margin={{ top: 20, bottom: 40, right: 80, left: 80 }}
+                        margin={{ top: 43, bottom: 40, right: 80, left: 80 }}
                     >
                         <CartesianGrid vertical={false} strokeOpacity={0.3} />
                         <XAxis
@@ -185,7 +185,7 @@ export default function Example() {
                                 handleXAxisClick(event.value);
                             }}
                         />
-                        <YAxis yAxisId="Smart" dataKey="Smart" domain={[0, 100]} hide />
+                        <YAxis yAxisId="sepsisscore" dataKey="sepsisscore" domain={[0, 100]} hide />
                         <YAxis yAxisId="o2sat" dataKey="o2sat" domain={[0, 100]} hide />
                         <YAxis yAxisId="map" dataKey="map" domain={[0, 100]} hide />
                         <YAxis yAxisId="temp" dataKey="temp" domain={[31, 90]} hide />
