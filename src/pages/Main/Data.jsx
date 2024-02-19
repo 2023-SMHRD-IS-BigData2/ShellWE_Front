@@ -12,8 +12,8 @@ import MailOutlineIcon from '@mui/icons-material/MailOutline';
 
 // 환자 데이터 컴포넌트
 const Data = () => {
-    const { lists, comments, isModalOpen, closeModal, openModal, setInputValue, inputValue, handleSubmit, handleOptionChange, setPatientEffect, handleSelectChange, 
-         handlePhysicianChange } = useContext(DashboardContext);
+    const { lists, comments, isModalOpen, closeModal, openModal, setInputValue, inputValue, handleSubmit, handleOptionChange, setPatientEffect, handleSelectChange,
+        handlePhysicianChange } = useContext(DashboardContext);
 
     /** 다크모드 */
     const theme = useTheme();
@@ -201,7 +201,7 @@ const Data = () => {
                         p="5px"
                         display="flex"
                         justifyContent="center"
-                    
+
                         borderRadius="4px"
 
                     >
@@ -288,7 +288,7 @@ const Data = () => {
             headerName: "작성자"
         }
     ]
-    
+
     const tableTheme = createTheme({
         components: {
             MuiDataGrid: {
@@ -312,6 +312,16 @@ const Data = () => {
         ...comments,
         id: index + 1,
     }));
+    // 마우스 올렸는지/안 올렸는지
+    const [isHovered, setIsHovered] = useState(null);
+    /** 마우스 올렸을 때 */
+    const handleMouseEnter = (key) => {
+        setIsHovered(key);
+    };
+    /** 마우스 안 올렸을 때 */
+    const handleMouseLeave = (key) => {
+        setIsHovered(key);
+    };
     return (
         <Box
             m="20px"
@@ -348,11 +358,13 @@ const Data = () => {
                     },
                     "& .MuiDataGrid-toolbarContainer .MuiButton-text": {
                         color: `${colors.grey[100]} !important`,
-                        minWidth:"10px"
-                        
+                        minWidth: "10px"
+
                     },
-                   
-                    
+                    transition: "all 0.3s ease",
+                    transform: isHovered === key ? "scale(1.05, 1.2)" : "scale(1, 1)",
+
+
                 }}>
                 <DataGrid
                     rows={listsWithId}                       /** 환자 데이터 */
@@ -364,7 +376,14 @@ const Data = () => {
                             tableTheme,
                         },
                     }}
+                    onMouseEnter={() => {setHoveredRowId(event.row.id) }}
+                    onMouseLeave={() => { setHoveredRowId(null) }}
                 />
+                <Typography sx={{
+                    transform: isHovered === key ? "none" : "inherit",
+                }} color={colors.greenAccent[500]} variant="h4" fontWeight="600">
+                    {key}
+                </Typography>
             </Box>
 
             {/** 코멘트 모달 */}
@@ -390,7 +409,7 @@ const Data = () => {
                             },
                             "& .MuiDataGrid-footerContainer": {
                                 borderTop: "none",
-                              backgroundColor: colors.grey[700],
+                                backgroundColor: colors.grey[700],
                             },
                         }}>
                         <DataGrid
