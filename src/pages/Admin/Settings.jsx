@@ -5,27 +5,84 @@ import AccordionDetails from "@mui/material/AccordionDetails";
 import Typography from "@mui/material/Typography";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { tokens } from "../../theme";
+import { useState } from "react";
+import './test.css'
 
 const FAQ = () => {
+
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
+
+  const [selectedNumber, setSelectedNumber] = useState(null);
+  const [modalOpen, setModalOpen] = useState(false);
+
+  const handleNumberClick = (number) => {
+    setSelectedNumber(number);
+  };
+
+  const openModal = () => {
+    setModalOpen(true);
+
+  }
+
+  const renderNumberButtons = () => {
+    const numberButtons = [];
+    for (let i = 1; i <= 99; i++) {
+      numberButtons.push(
+        <button key={i} onClick={() => handleNumberClick(i)} className="triangle-button">
+          {i}
+        </button>
+      );
+    }
+    return numberButtons;
+  };
+
+  const closeModal = () => {
+    setModalOpen(false);
+  };
+
+  // 백 연동 기능 구현 필요
+
+
   return (
     <Box m="20px">
       {/* ================ 환경설정 한 부분 ===================================== */}
       <Accordion defaultExpanded>
         <AccordionSummary expandIcon={<ExpandMoreIcon />}>
           <Typography color={colors.greenAccent[500]} variant="h5">
-            무슨 기능을 넣을까요?
+            Smart 기준 설정
           </Typography>
         </AccordionSummary>
         <AccordionDetails>
           <Typography>
-            
+            {/* 스마트 값 */}
+
           </Typography>
         </AccordionDetails>
       </Accordion>
       {/* ====================================================== */}
-      
+      <div>
+        <div className="button-container" onClick={openModal}>
+          <h1>숫자 선택</h1>
+        </div>
+
+        <div>
+          <p>선택된 숫자: {selectedNumber}</p>
+        </div>
+
+        {modalOpen && (
+          <div className="modal">
+            <div className="modal-content">
+              <div className="modal-number-container">
+                {renderNumberButtons()}
+              </div>
+              {/* <h2>선택된 숫자</h2> */}
+              {/* <p>{selectedNumber}</p> */}
+              {/* <button onClick={closeModal}>닫기</button> */}
+            </div>
+          </div>
+        )}
+      </div>
     </Box>
   );
 };
