@@ -1,18 +1,26 @@
 import { useEffect, useState } from "react";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
-import columns from './AdminColumns.json';
 import axios from "axios";
 import DoctorForm from "./DoctorForm";
 import ClearIcon from '@mui/icons-material/Clear';
-
+import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
+import StaffEdit from "./StaffEdit";
+import { useNavigate } from "react-router-dom";
 
 const AdminData = () => {
-    const [patientData, setPatientData] = useState([]);
+    const [memberData, setMemberData] = useState([]);
     const [showConfirmation, setShowConfirmation] = useState(false);
     const [selectedMemberNum, setSelectedMemberNum] = useState(null);
 
+    // 의료진 수정할 때 사용
+    const [selectedMemberId, setSelectedMemberId] = useState(null);
+    const [selectedMemberName, setSelectedMemberName] = useState(null);
+    const [selectedMemberIds, setSelectedMemberIds] = useState(null);
+    const [selectedMemberPK, setSelectedMemberPK] = useState(null);
+
     // Modal 여는 변수
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [isAddModalOpen, setIsAddModalOpen] = useState(false);
     /**Modal열기 */
     const openModal = (e) => {
         setIsModalOpen(true);
@@ -20,32 +28,45 @@ const AdminData = () => {
     /**Modal닫기 */
     const closeModal = () => {
         setIsModalOpen(false);
+        setIsAddModalOpen(false);
     }
 
-
+    const navigate = useNavigate();
     const fetchData = async () => {
         try {
             const response = await axios.get("http://localhost:8088/boot/admin");
+            console.log("from back", response.data.members);
             const dataWithId = response.data.members.map((item, index) => ({
                 ...item,
                 ids: index + 1,
             }));
             console.log("lists", dataWithId);
-            setPatientData(dataWithId);
+            setMemberData(dataWithId);
         } catch (error) {
-            console.log(error);
+            console.log("admin",error);
         }
     };
 
     useEffect(() => {
         fetchData();
-    }, [showConfirmation, isModalOpen]);
+        // console.log("Effect test");
+    }, [showConfirmation, isModalOpen, isAddModalOpen]);
 
 
     const handleClearIconClick = (membernum) => {
-        console.log("선택된 행의 memverNum:", membernum);
+        // console.log("선택된 행의 memverNum:", membernum);
         setSelectedMemberNum(membernum);
         setShowConfirmation(true);
+    };
+    
+    const handleEditIconClick = (member) => {
+        setIsAddModalOpen(true);
+        
+        // console.log("선택된 행의 memverNum:", member);
+        setSelectedMemberId(member.id);
+        setSelectedMemberName(member.name);
+        setSelectedMemberIds(member.ids);
+        setSelectedMemberPK(member.membernum);
     };
 
     const handleConfirmationConfirm = async () => {
@@ -107,6 +128,16 @@ const AdminData = () => {
             flex: 1
         },
         {
+            field: "update",
+            headerName: "수정",
+            flex: 0.5,
+            renderCell: (params) => {
+                return (
+                    <EditOutlinedIcon onClick={() => handleEditIconClick(params.row)} />
+                );
+            }
+        },
+        {
             field: "delete",
             headerName: "회원탈퇴",
             flex: 0.5,
@@ -127,7 +158,7 @@ const AdminData = () => {
             }>의료진 추가</button>
 
             <DataGrid
-                rows={patientData}
+                rows={memberData}
                 columns={columnslist}
                 components={{ Toolbar: GridToolbar }}
             />
@@ -153,6 +184,9 @@ const AdminData = () => {
             )}
 
             <DoctorForm closeModal={closeModal} isOpen={isModalOpen} />
+            <StaffEdit closeModal={closeModal} isOpen={isAddModalOpen} memberData={memberData} 
+            selectedMemberName={selectedMemberName} selectedMemberId={selectedMemberId}
+            selectedMemberIds={selectedMemberIds} selectedMemberPK={selectedMemberPK} />
         </div>
     );
 };

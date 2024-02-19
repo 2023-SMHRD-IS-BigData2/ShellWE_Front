@@ -1,12 +1,10 @@
 import React, { useState } from 'react'
 import { Route, Routes } from "react-router-dom";
 import Settings from './Settings'
-import Staffs from './AdminList'
-import Dashboard from './AdminList'
+import Dashboard from './DesignTable'
 import { ColorModeContext, useMode } from '../../theme';
 import { CssBaseline, ThemeProvider } from '@mui/material';
 import Sidebar from './Sidebar';
-import Topbar from '../Bar/Topbar';
 
 
 
@@ -26,7 +24,6 @@ const Admin = () => {
             <Routes>
               <Route path='/' element={<Dashboard />} />
               <Route path='/settings' element={<Settings />} />
-              <Route path='/list' element={<Staffs />} />
             </Routes>
           </main>
         </div>

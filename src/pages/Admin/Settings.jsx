@@ -7,6 +7,7 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { tokens } from "../../theme";
 import { useState } from "react";
 import './test.css'
+import axios from "axios";
 
 const FAQ = () => {
 
@@ -16,8 +17,15 @@ const FAQ = () => {
   const [selectedNumber, setSelectedNumber] = useState(null);
   const [modalOpen, setModalOpen] = useState(false);
 
-  const handleNumberClick = (number) => {
+  const handleNumberClick = async (number) => {
     setSelectedNumber(number);
+    try {
+      await axios.post(`http://localhost:8088/boot/sepsissscoer?sepsiss=${65}`);
+      console.log("삭제완료");
+  } catch (error) {
+      alert("관리자는 삭제가 불가능합니다");
+  }
+    
   };
 
   const openModal = () => {
