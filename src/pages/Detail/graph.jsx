@@ -6,7 +6,7 @@ import { tokens } from "../../theme";
 
 const CustomizedLabel = ({ x, y, value }) => {
     return (
-        <text x={x+8} y={y+6} dy={-10} fontSize={12} textAnchor="middle" fill="red">{value}</text>
+        <text x={x+8} y={y} dy={-10} fontSize={12} textAnchor="middle" fill="red">{value}</text>
     );
 };
 
