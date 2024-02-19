@@ -4,28 +4,29 @@ import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import Typography from "@mui/material/Typography";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import { tokens } from "../../theme";
-import { useState } from "react";
+import { AdminContext, tokens } from "../../theme";
+import { useContext, useState } from "react";
 import './test.css'
 import axios from "axios";
 
 const FAQ = () => {
-
+const {sepsisScore, setSepsisScore} = useContext(AdminContext);
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
 
-  const [selectedNumber, setSelectedNumber] = useState(null);
+  // const [selectedNumber, setSelectedNumber] = useState(null);
   const [modalOpen, setModalOpen] = useState(false);
 
   const handleNumberClick = async (number) => {
-    setSelectedNumber(number);
+    // setSelectedNumber(number);
+    setSepsisScore(number);
     try {
-      await axios.post(`http://localhost:8088/boot/sepsissscoer?sepsiss=${65}`);
-      console.log("삭제완료");
-  } catch (error) {
-      alert("관리자는 삭제가 불가능합니다");
-  }
-    
+      await axios.post(`http://localhost:8088/boot/sepsissscoer?sepsiss=${number}`);
+      console.log("SMART 기준 성공");
+    } catch (error) {
+      console.log("SMART 기준", error);
+    }
+
   };
 
   const openModal = () => {
@@ -75,7 +76,7 @@ const FAQ = () => {
         </div>
 
         <div>
-          <p>선택된 숫자: {selectedNumber}</p>
+          <p>선택된 숫자: {sepsisScore}</p>
         </div>
 
         {modalOpen && (

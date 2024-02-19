@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import axios from "axios";
 import DoctorForm from "./DoctorForm";
@@ -6,10 +6,17 @@ import ClearIcon from '@mui/icons-material/Clear';
 import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
 import StaffEdit from "./StaffEdit";
 import { useNavigate } from "react-router-dom";
+import { AdminContext } from "../../theme";
 
 const AdminData = () => {
-    const [memberData, setMemberData] = useState([]);
-    const [showConfirmation, setShowConfirmation] = useState(false);
+    const { sepsisScore, setSepsisScore,
+        memberData, setMemberData,
+        openModal, closeModal,
+        isModalOpen, setIsModalOpen,
+        isAddModalOpen, setIsAddModalOpen,
+        showConfirmation, setShowConfirmation, fetchData } = useContext(AdminContext);
+    // const [memberData, setMemberData] = useState([]);
+    // const [showConfirmation, setShowConfirmation] = useState(false);
     const [selectedMemberNum, setSelectedMemberNum] = useState(null);
 
     // 의료진 수정할 때 사용
@@ -18,34 +25,36 @@ const AdminData = () => {
     const [selectedMemberIds, setSelectedMemberIds] = useState(null);
     const [selectedMemberPK, setSelectedMemberPK] = useState(null);
 
-    // Modal 여는 변수
-    const [isModalOpen, setIsModalOpen] = useState(false);
-    const [isAddModalOpen, setIsAddModalOpen] = useState(false);
-    /**Modal열기 */
-    const openModal = (e) => {
-        setIsModalOpen(true);
-    }
-    /**Modal닫기 */
-    const closeModal = () => {
-        setIsModalOpen(false);
-        setIsAddModalOpen(false);
-    }
+    // // Modal 여는 변수
+    // const [isModalOpen, setIsModalOpen] = useState(false);
+    // const [isAddModalOpen, setIsAddModalOpen] = useState(false);
+    // /**Modal열기 */
+    // const openModal = (e) => {
+    //     setIsModalOpen(true);
+    // }
+    // /**Modal닫기 */
+    // const closeModal = () => {
+    //     setIsModalOpen(false);
+    //     setIsAddModalOpen(false);
+    // }
 
     const navigate = useNavigate();
-    const fetchData = async () => {
-        try {
-            const response = await axios.get("http://localhost:8088/boot/admin");
-            console.log("from back", response.data.members);
-            const dataWithId = response.data.members.map((item, index) => ({
-                ...item,
-                ids: index + 1,
-            }));
-            console.log("lists", dataWithId);
-            setMemberData(dataWithId);
-        } catch (error) {
-            console.log("admin",error);
-        }
-    };
+    // const fetchData = async () => {
+    //     try {
+    //         const response = await axios.get("http://localhost:8088/boot/admin");
+    //         console.log("from back", response.data.members);
+    //         console.log("back sepsis", response.data.sepsiss);
+    //         const dataWithId = response.data.members.map((item, index) => ({
+    //             ...item,
+    //             ids: index + 1,
+    //         }));
+    //         console.log("lists", dataWithId);
+    //         setMemberData(dataWithId);
+    //         setSepsisScore(response.data.sepsiss);
+    //     } catch (error) {
+    //         console.log("admin",error);
+    //     }
+    // };
 
     useEffect(() => {
         fetchData();

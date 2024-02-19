@@ -200,6 +200,9 @@ export const ColorModeContext = createContext({
 export const DashboardContext = createContext(
   null
 );
+export const AdminContext = createContext(
+  null
+);
 
 
 /**색상 설정하는 함수 */
