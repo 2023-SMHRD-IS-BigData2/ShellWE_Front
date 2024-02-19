@@ -227,12 +227,23 @@ const Data = () => {
                                     ? colors.redAccent[600]
                                     : sepsisslevel === "Observing"
                                         ? colors.greenAccent[700]
+                                        : sepsisslevel =="in action"
+                                        ? "Silver" // Moccasin
                                         : "none",
+                                        color: sepsisslevel === "in action" ? "black" : "inherit", // 배경색이 검은색일 때 텍스트 색상 변경
                             }}
                         >
                             <MenuItem value="Screening">Screening</MenuItem>
                             <MenuItem value="Observing">Observing</MenuItem>
                             <MenuItem value="None">None</MenuItem>
+                            <MenuItem value="Done">Done</MenuItem>
+                            <MenuItem value="in action">in action</MenuItem>
+                            {/* Screening
+                            Screening (빨강)
+                            Observing (초록)
+                            In-action (하얀색)
+                            Done (파랑) // Done으로 설정 시 몇 시간 뒤에 None으로 자동 변경
+                            None // 체크박스에는 없음 */}
                         </Select>
                     </Box>
                 );
