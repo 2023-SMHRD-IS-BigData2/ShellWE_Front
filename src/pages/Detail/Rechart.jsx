@@ -17,6 +17,8 @@ export default function Example() {
     // ChartContext에서 필요한 값 가져오기
     const { handleXAxisClick, data, StartDate, EndDate } = useContext(ChartContext)
 
+    console.log("data: ",data);
+
     // 데이터와 날짜 값 확인
     // console.log("datas", data);
     // console.log("StartDate", StartDate);
