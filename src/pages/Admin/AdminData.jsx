@@ -54,6 +54,7 @@ const AdminData = () => {
 
         try {
             await axios.post(`http://localhost:8088/boot/deleteMember?membernum=${selectedMemberNum}`);
+            console.log("삭제완료");
         } catch (error) {
             alert("관리자는 삭제가 불가능합니다");
         }
