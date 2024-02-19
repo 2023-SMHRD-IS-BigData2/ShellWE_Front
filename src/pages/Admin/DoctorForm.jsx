@@ -151,7 +151,7 @@ const DoctorForm = ({ closeModal, isOpen }) => {
                               backgroundColor: colors.greenAccent[500]
                             }}
                             type="submit" onClick={logFormData}>
-                            로그인
+                           등록
                           </button>
                         </div>
                       </TableCell>

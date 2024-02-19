@@ -67,7 +67,45 @@ const AdminData = () => {
     };
 
     const columnslist = [
-        ...columns.columns,
+        {
+            field: "ids",
+            headerName: "번호",
+        },
+        {
+            field: "id",
+            headerName: "아이디",
+            flex: 1
+        },
+        {
+            field: "name",
+            headerName: "이름",
+            flex: 1
+        },
+        {
+            field: "memberrank",
+            headerName: "직급",
+            flex: 1
+        },
+        {
+            field: "loginTime",
+            headerName: "로그인 시간",
+            flex: 1
+        },
+        {
+            field: "logoutTime",
+            headerName: "로그아웃 시간",
+            flex: 1
+        },
+        {
+            field: "tell",
+            headerName: "연락처",
+            flex: 1
+        },
+        {
+            field: "date",
+            headerName: "날짜",
+            flex: 1
+        },
         {
             field: "delete",
             headerName: "회원탈퇴",
@@ -88,7 +126,11 @@ const AdminData = () => {
                 openModal
             }>의료진 추가</button>
 
-            <DataGrid rows={patientData} columns={columnslist} components={{ Toolbar: GridToolbar }} />
+            <DataGrid
+                rows={patientData}
+                columns={columnslist}
+                components={{ Toolbar: GridToolbar }}
+            />
 
             {showConfirmation && (
                 <div className="modal">
@@ -109,6 +151,7 @@ const AdminData = () => {
                     </div>
                 </div>
             )}
+
             <DoctorForm closeModal={closeModal} isOpen={isModalOpen} />
         </div>
     );

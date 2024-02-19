@@ -1,8 +1,8 @@
 {
     "columns": [
         {
-            "field": "membernum",
-            "headerName": "사번번호"
+            "field": "Id",
+            "headerName": "번호"
         },
         {
             "field": "id",
