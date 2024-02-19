@@ -26,14 +26,14 @@ const Login = () => {
     } else if (message === 'admin') {
       navigate('/admin'); // message가 'admin'일 경우 '/admin' 경로로 이동
     }
-  }, [message, navigate]);
+  }, [message, navigate, inputId]);
 
   const onClickLogin = async () => {
-    if (inputId === "" || inputPw === "") {
+    if (inputId === "" && inputPw === "") {
       setError("아이디와 패스워드를 모두 입력해주세요."); // 아이디 또는 패스워드가 비어있을 경우 에러 메시지 설정 후 종료
       return;
     }
-
+    console.log("로그인 시도");
     try {
       const response = await axios.post(
         'http://localhost:8088/boot/login', // 로그인 요청을 보낼 서버의 URL
@@ -78,10 +78,9 @@ const Login = () => {
               <div className="user-page-icon-wrap">
                 {/* logo */}
                 {<img src="https://i.ibb.co/mqXF466/image.png"
-                      loading="eager" alt="" class="user-page-icon" style={{width:"90px", height:"90px"}}/>}
+                  loading="eager" alt="" className="user-page-icon" style={{ width: "90px", height: "90px" }} />}
               </div>
               <h1 className="user-page-title">Log in</h1>
-              <p>{message}</p>
             </div>
             <div className="user-page-content">
               <div className="w-form">
@@ -97,6 +96,8 @@ const Login = () => {
                     name="id"
                     value={inputId}
                     onChange={handleInputId}
+                    ref={inputRef} // ref 연결
+                    onKeyDown={handleKeyDown} // onKeyDown 이벤트 핸들러 추가
                   />
                 </div>
                 <div className="input-group">
