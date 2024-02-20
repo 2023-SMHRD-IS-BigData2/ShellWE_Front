@@ -83,7 +83,7 @@ const App = () => {
 
     /** 카드 값 */
     useEffect(() => {
-        setPercent(Screening / Allpatient * 100)
+        setPercent((Screening / Allpatient) * 100)
     }, [Allpatient, Screening])
 
     // 환자 Back
