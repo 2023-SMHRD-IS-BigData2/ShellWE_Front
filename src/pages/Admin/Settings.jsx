@@ -1,14 +1,15 @@
 import React, { useContext, useState } from "react";
-import { Box, useTheme } from "@mui/material";
+import { Box, useTheme, Typography, InputBase } from "@mui/material";
 import Accordion from "@mui/material/Accordion";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
-import Typography from "@mui/material/Typography";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import axios from "axios";
 import { AdminContext, tokens } from "../../theme";
 import SmartModal from './Modal/SmartModal'
 import './test.css'
+import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
+import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 
 const FAQ = () => {
 
@@ -40,16 +41,36 @@ const FAQ = () => {
     const numberButtons = [];
     for (let i = 1; i <= 99; i++) {
       numberButtons.push(
-        <button key={i} onClick={() => handleNumberClick(i)} className="triangle-button">
+        <button key={i}
+          style={{
+            scale: "1.5",
+            marginBottom: "20px",
+            width: "40px"
+          }}
+
+          onClick={() => handleNumberClick(i)} className="triangle-button">
           {i}
         </button>
       );
     }
     return numberButtons;
   };
-
+  // 스크롤 이동 거리
+  const scrollDistance = 46;
   // 백 연동 기능 구현 필요
+  const [scrollPosition, setScrollPosition] = useState(0);
 
+  // 위로 스크롤
+  const scrollUp = () => {
+    const newPosition = scrollPosition - scrollDistance;
+    setScrollPosition(newPosition < 0 ? 0 : newPosition);
+  };
+
+  // 아래로 스크롤
+  const scrollDown = () => {
+    const newPosition = scrollPosition + scrollDistance;
+    setScrollPosition(newPosition);
+  };
   return (
     <Box m="20px">
       {/* ================ 환경설정 한 부분 ===================================== */}
@@ -60,9 +81,13 @@ const FAQ = () => {
           </Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography>
-            {/* 스마트 값 */}
-
+            <Typography variant="h1">
+              <InputBase
+                type="text"
+                // value={score}
+                sx={{ ml: 2, flex: 1 }}
+                // onChange={(e) => setContactNumber(e.target.value)}
+                placeholder={sepsisScore} />
           </Typography>
         </AccordionDetails>
       </Accordion>
@@ -77,29 +102,33 @@ const FAQ = () => {
         </div>
 
         <SmartModal isOpen={isSmartModalOpen} closeModal={closeModal}>
-          {/* {modalOpen && ( */}
           <div style={{
-            margin:"auto",
-            display:"flex",
-            justifyContent:"center",
-            alignContent:"center",
-            alignItems:"center",
-            
-          }} 
-          // className="modal"
+            position: "fixed",
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            margin: "auto",
+            display: "flex",
+            justifyContent: "center",
+            alignContent: "center",
+            alignItems: "center",
+
+          }}
           >
-            <div 
-            className="modal-content"
-            >
-              <div className="modal-number-container">
-                {renderNumberButtons()}
-              </div>
-              {/* <h2>선택된 숫자</h2> */}
-              {/* <p>{selectedNumber}</p> */}
-              {/* <button onClick={closeModal}>닫기</button> */}
+            <Typography variant="h1">
+              <InputBase
+                type="text"
+                // value={score}
+                sx={{ ml: 2, flex: 1 }}
+                // onChange={(e) => setContactNumber(e.target.value)}
+                placeholder={sepsisScore} />
+            </Typography>
+            <div>
+
             </div>
+
           </div>
-          {/* )} */}
         </SmartModal>
 
       </div>
