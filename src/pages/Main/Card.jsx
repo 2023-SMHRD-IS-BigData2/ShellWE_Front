@@ -22,7 +22,7 @@ const List = () => {
 
 
     const notify = () => {
-        if (todayScreening > 0) {
+        if (1 > 0) {
             toast(`스크리닝 환자가 ${todayScreening}명 추가 되었습니다`,
                 { autoClose: 3000 }
             );
@@ -44,7 +44,23 @@ const List = () => {
     return (
         <>
             <div>
-                <ToastContainer />
+            <ToastContainer
+                    position="top-right"
+                    autoClose={3000}
+                    hideProgressBar={false}
+                    newestOnTop={true}
+                    closeOnClick={true}
+                    pauseOnHover={true}
+                    draggable={true}
+                    progressStyle={{ background: "#3e4396" }}
+                    bodyStyle={{
+                        fontFamily: "Arial, sans-serif",
+                        fontSize: "14px",
+                        fontWeight: "bold",
+                        color: "#000000",
+                        backgroundColor: "#ffffff",
+                    }}
+                />
 
                 <Box
                     display="grid"
