@@ -183,6 +183,7 @@ export default function Example() {
                         <CartesianGrid vertical={false} strokeOpacity={0.3} />
                         <XAxis
                             dataKey="time"
+                            tickFormatter={(value) => value.slice(0, 16)}
                             onClick={(event) => {
                                 handleXAxisClick(event.value);
                             }}

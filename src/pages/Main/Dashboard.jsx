@@ -10,7 +10,7 @@ import { useLocation } from 'react-router-dom';
 const App = () => {
     // 로그인한 사람의 id값 state로 가져오기
     const location = useLocation();
-    const id = location.state?.id;
+    const [id] = useState(location.state?.id);
     console.log("id", id);
 
     /** 환자 리스트 */

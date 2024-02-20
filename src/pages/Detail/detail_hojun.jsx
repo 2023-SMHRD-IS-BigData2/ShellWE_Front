@@ -146,7 +146,7 @@ const App = () => {
     }
   };
   // 코멘트 내용 출력
-  
+
   // ===============================================
 
   return (
@@ -154,9 +154,10 @@ const App = () => {
       <div>
         <ChartContext.Provider value={{ clickedXValue, handleXAxisClick, makechart, data, denger, graph, setSDate, setEDate, StartDate, EndDate, subtitle }}>
           <Box m="20px"
-            marginTop="60px">
+            marginTop="60px"
+            >
             <Box display="flex" justifyContent="space-between" alignItems="center">
-              <DetailHeader title={lists.name} subtitle={lists.age + "세 / "+ lists.gender + " / " + lists.bloodtype + "형 / "} />
+              <DetailHeader title={lists.name} subtitle={lists.age + "세 / " + lists.gender + " / " + lists.bloodtype + "형 / "} />
               <Box>
                 <Button
                   sx={{
