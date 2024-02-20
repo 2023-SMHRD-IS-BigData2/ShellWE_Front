@@ -6,7 +6,7 @@ import { tokens } from "../../theme";
 
 const CustomizedLabel = ({ x, y, value }) => {
     return (
-        <text x={x+8} y={y} dy={-10} fontSize={12} textAnchor="middle" fill="red">{value}</text>
+        <text x={x+8} y={y+6} dy={-10} fontSize={12} textAnchor="middle" fill="red">{value}</text>
     );
 };
 
@@ -67,7 +67,7 @@ const Graph = () => {
                     <LineChart width="100%" height={300} data={filteredData}
                         margin={{ top: 20, bottom: 40, right: 20, left: 35 }}>
                         <CartesianGrid vertical={false} strokeOpacity={0.3} />
-                        <XAxis dataKey="time" />
+                        <XAxis dataKey="time" tickFormatter={(value) => value.slice(0, 16)} />
                         <YAxis yAxisId={graph} dataKey={graph} orientation="left"/>
                         <Line type="linear" dataKey={graph} stroke="red" yAxisId={graph} />
                         <Brush
