@@ -37,14 +37,14 @@ const Admin = () => {
     try {
       const response = await axios.get("http://localhost:8088/boot/admin");
       console.log("from back", response.data.members);
-      console.log("back sepsis", response.data.sepsiss.sepsiss);
+      // console.log("back sepsis", response.data.sepsiss.sepsiss);
       const dataWithId = response.data.members.map((item, index) => ({
         ...item,
         ids: index + 1,
       }));
       console.log("lists", dataWithId);
       setMemberData(dataWithId);
-      setSepsisScore(response.data.sepsiss.sepsiss);
+      // setSepsisScore(response.data.sepsiss.sepsiss);
     } catch (error) {
       console.log("admin", error);
     }
@@ -52,7 +52,7 @@ const Admin = () => {
 
   useEffect(() => {
     fetchData();
-    // console.log("Effect test");
+    console.log("Effect test ------------------");
   }, [showConfirmation, isModalOpen, isAddModalOpen]);
 
   return (

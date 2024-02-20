@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Box, useTheme, Typography, InputBase } from "@mui/material";
 import Accordion from "@mui/material/Accordion";
 import AccordionSummary from "@mui/material/AccordionSummary";
@@ -7,73 +7,72 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import axios from "axios";
 import { AdminContext, tokens } from "../../theme";
 import SmartModal from './Modal/SmartModal'
-import './test.css'
+// import './test.css'
 import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 
 const FAQ = () => {
 
   const {
-    sepsisScore, setSepsisScore, isSmartModalOpen, setIsSmartModalOpen, closeModal
+    // sepsisScore, setSepsisScore,
+    isSmartModalOpen, setIsSmartModalOpen, closeModal
   } = useContext(AdminContext);
 
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
-
+  const [number, setNumber] = useState();
   // const [selectedNumber, setSelectedNumber] = useState(null);
+  const [showConfirmation, setShowConfirmation] = useState()
+  const [sepsisScore, setSepsisScore] = useState()
 
-  const openModal = () => {
-    setIsSmartModalOpen(true);
-  };
-
-  const handleNumberClick = async (number) => {
-    // setSelectedNumber(number);
-    setSepsisScore(number);
+  const fetchData = async () => {
     try {
-      await axios.post(`http://localhost:8088/boot/sepsissscoer?sepsiss=${number}`);
-      console.log("SMART 기준 성공");
+      const response = await axios.get("http://localhost:8088/boot/getSep");
+      console.log("back sepsis", response.data.sepscore.sepsiss);
+      setSepsisScore(response.data.sepscore.sepsiss);
     } catch (error) {
-      console.log("SMART 기준", error);
+      console.log("admin", error);
     }
   };
 
-  const renderNumberButtons = () => {
-    const numberButtons = [];
-    for (let i = 1; i <= 99; i++) {
-      numberButtons.push(
-        <button key={i}
-          style={{
-            scale: "1.5",
-            marginBottom: "20px",
-            width: "40px"
-          }}
+  useEffect(() => {
+    fetchData();
+    console.log("--------Effect SMART ------------------");
+  }, []);
 
-          onClick={() => handleNumberClick(i)} className="triangle-button">
-          {i}
-        </button>
-      );
+  const handleConfirmationConfirm = async () => {
+    setShowConfirmation(false);
+    console.log("number", number);
+
+    // back과 연동 부분
+    const sepsiss = {
+      sepsissnum : 0,
+      sepsiss: number
     }
-    return numberButtons;
-  };
-  // 스크롤 이동 거리
-  const scrollDistance = 46;
-  // 백 연동 기능 구현 필요
-  const [scrollPosition, setScrollPosition] = useState(0);
-
-  // 위로 스크롤
-  const scrollUp = () => {
-    const newPosition = scrollPosition - scrollDistance;
-    setScrollPosition(newPosition < 0 ? 0 : newPosition);
+    axios
+      .post(`http://localhost:8088/boot/sepsissscoer`, sepsiss)
+      .then((response) => {
+        setSepsisScore(response.data.sepsiss);
+      })
+      .catch((error) => {
+        console.error("error", error);
+      });
   };
 
-  // 아래로 스크롤
-  const scrollDown = () => {
-    const newPosition = scrollPosition + scrollDistance;
-    setScrollPosition(newPosition);
+  const handleConfirmationCancel = () => {
+    console.log("취소 버튼 클릭");
+    setNumber(null);
+    setShowConfirmation(false);
   };
+
+  const handleNumberClick = (changeNum) => {
+    // console.log("선택된 행의 memverNum:", membernum);
+    setNumber(changeNum);
+    setShowConfirmation(true);
+  };
+
   return (
     <Box m="20px">
-      {/* ================ 환경설정 한 부분 ===================================== */}
       <Accordion defaultExpanded>
         <AccordionSummary expandIcon={<ExpandMoreIcon />}>
           <Typography color={colors.greenAccent[500]} variant="h5">
@@ -81,57 +80,45 @@ const FAQ = () => {
           </Typography>
         </AccordionSummary>
         <AccordionDetails>
-            <Typography variant="h1">
-              <InputBase
-                type="text"
-                // value={score}
-                sx={{ ml: 2, flex: 1 }}
-                // onChange={(e) => setContactNumber(e.target.value)}
-                placeholder={sepsisScore} />
-          </Typography>
+          <Box display="flex" justifyContent="space-between" width="100px" margin="auto">
+            <Typography variant="h2" color={colors.blueAccent[500]}>
+              {sepsisScore}
+            </Typography>
+            <Box>
+              <button onClick={() => { handleNumberClick(number) }}>설정</button>
+            </Box>
+          </Box>
         </AccordionDetails>
       </Accordion>
-      {/* ====================================================== */}
-      <div>
-        <div className="button-container" onClick={openModal} >
-          <h1>숫자 선택</h1>
-        </div>
 
-        <div>
-          <p>선택된 숫자: {sepsisScore}</p>
-        </div>
-
-        <SmartModal isOpen={isSmartModalOpen} closeModal={closeModal}>
-          <div style={{
+      {showConfirmation && (
+        <div className="modal">
+          <div className="modal-content" style={{
             position: "fixed",
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            margin: "auto",
-            display: "flex",
-            justifyContent: "center",
-            alignContent: "center",
-            alignItems: "center",
-
-          }}
-          >
-            <Typography variant="h1">
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+            borderRadius: "3%",
+            backgroundColor: colors.grey[300],
+            padding: "20px",
+            textAlign: "center",
+            color: "black"
+          }}>
+            <p style={{ marginTop: "10px", color: "black" }}>SMART 기준을 변경하시겠습니까?</p>
+            <Box width="300px">
               <InputBase
-                type="text"
-                // value={score}
-                sx={{ ml: 2, flex: 1 }}
-                // onChange={(e) => setContactNumber(e.target.value)}
-                placeholder={sepsisScore} />
-            </Typography>
-            <div>
-
-            </div>
-
+                type="number"
+                value={number}
+                sx={{ ml: 5, color: colors.blueAccent[500], scale: "1.5", width: "50px", mr: "10px" }}
+                onChange={(e) => setNumber(e.target.value)}
+                placeholder={sepsisScore} color="red"
+              />
+              <button style={{ margin: "10px" }} onClick={handleConfirmationConfirm}>확인</button>
+              <button style={{ margin: "10px" }} onClick={handleConfirmationCancel}>취소</button>
+            </Box>
           </div>
-        </SmartModal>
-
-      </div>
+        </div>
+      )}
     </Box>
   );
 };
