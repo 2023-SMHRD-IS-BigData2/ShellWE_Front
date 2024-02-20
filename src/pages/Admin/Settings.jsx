@@ -6,16 +6,10 @@ import AccordionDetails from "@mui/material/AccordionDetails";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import axios from "axios";
 import { AdminContext, tokens } from "../../theme";
-import SmartModal from './Modal/SmartModal'
-// import './test.css'
-import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
-import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 
 const FAQ = () => {
 
   const {
-    // sepsisScore, setSepsisScore,
-    isSmartModalOpen, setIsSmartModalOpen, closeModal
   } = useContext(AdminContext);
 
   const theme = useTheme();
@@ -28,8 +22,8 @@ const FAQ = () => {
   const fetchData = async () => {
     try {
       const response = await axios.get("http://localhost:8088/boot/getSep");
-      console.log("back sepsis", response.data.sepscore.sepsiss);
       setSepsisScore(response.data.sepscore.sepsiss);
+      console.log("back sepsis", sepsisScore);
     } catch (error) {
       console.log("admin", error);
     }
@@ -44,15 +38,11 @@ const FAQ = () => {
     setShowConfirmation(false);
     console.log("number", number);
 
-    // back과 연동 부분
-    const sepsiss = {
-      sepsissnum : 0,
-      sepsiss: number
-    }
     axios
-      .post(`http://localhost:8088/boot/sepsissscoer`, sepsiss)
+      .post(`http://localhost:8088/boot/sepsissscoer?sepsiss=${number}`)
       .then((response) => {
-        setSepsisScore(response.data.sepsiss);
+        // setSepsisScore(response.data.sepsiss);
+        console.log("Smart 변경", response);
       })
       .catch((error) => {
         console.error("error", error);
