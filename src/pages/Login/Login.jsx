@@ -25,11 +25,14 @@ const Login = () => {
       navigate('/main', { state: { id: inputId } }); // message가 'main'일 경우 '/main' 경로로 이동
     } else if (message === 'admin') {
       navigate('/admin'); // message가 'admin'일 경우 '/admin' 경로로 이동
+    } else if (message === 'login'){
+      setError("로그인 실패")
+
     }
   }, [message, navigate, inputId]);
 
   const onClickLogin = async () => {
-    if (inputId === "" && inputPw === "") {
+    if (inputId === "" || inputPw === "") {
       setError("아이디와 패스워드를 모두 입력해주세요."); // 아이디 또는 패스워드가 비어있을 경우 에러 메시지 설정 후 종료
       return;
     }
@@ -52,7 +55,6 @@ const Login = () => {
       }
     } catch (error) {
       setError("로그인 실패");
-      console.error("Login failed:", error.response ? error.response.data : error.message); // 에러 발생 시 에러 메시지 설정 및 콘솔에 로그 출력
     }
   };
 
@@ -81,6 +83,7 @@ const Login = () => {
                   loading="eager" alt="" className="user-page-icon" style={{ width: "90px", height: "90px" }} />}
               </div>
               <h1 className="user-page-title">Log in</h1>
+              <p>{error}</p>
             </div>
             <div className="user-page-content">
               <div className="w-form">
