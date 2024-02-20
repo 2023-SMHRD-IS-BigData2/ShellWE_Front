@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect  } from "react";
 import { Box, Typography } from "@mui/material";
 import { DashboardContext, tokens } from "../../theme";
 import { useTheme } from "@mui/material";
@@ -20,13 +20,21 @@ const List = () => {
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
 
-    // toast 컴포넌트
     const notify = () => toast("Screening 환자가 5명 추가 되었습니다", { autoClose: 3000 });
+
+    // toast 컴포넌트
+    useEffect(()=>{
+        const interval = setInterval(()=>{
+            notify();
+
+        }, 10000); // 한 시간(밀리초 단위)
+        // 컴포넌트가 언마운트 될 때 타이머를 정리합니다.
+        return () => clearInterval(interval);
+    }, []); // []를 전달하여 한 번만 실행되도록 설정합니다.
    
     return (
         <>
         <div>
-            <button onClick={notify}>Show Toast</button>
             <ToastContainer/>
 
             <Box
