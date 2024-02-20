@@ -1,7 +1,7 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from '@mui/material';
-import AddModal from './AddModal';
+import AddModal from './Modal/AddModal';
 import { Box, Typography } from "@mui/material";
 import { tokens } from "../../theme";
 import { useTheme } from "@mui/material"
@@ -151,7 +151,7 @@ const DoctorForm = ({ closeModal, isOpen }) => {
                               backgroundColor: colors.greenAccent[500]
                             }}
                             type="submit" onClick={logFormData}>
-                            로그인
+                           등록
                           </button>
                         </div>
                       </TableCell>

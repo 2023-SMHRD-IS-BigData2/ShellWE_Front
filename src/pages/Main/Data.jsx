@@ -8,6 +8,7 @@ import CommentModal from "../DesktopOne/CommentModal";
 import InputBase from "@mui/material/InputBase";
 import SendIcon from '@mui/icons-material/Send';
 import MailOutlineIcon from '@mui/icons-material/MailOutline';
+import { toast, ToastContainer } from "react-toastify"
 
 
 // 환자 데이터 컴포넌트
@@ -36,7 +37,15 @@ const Data = () => {
         ...list,
         id: index + 1,
     }));
-
+    // toast 컴포넌트
+     const notify = () => toast("Toastify Alert!")
+  
+   // 버튼 클릭시 notify 함수 실행하기
+   // 알람 실행시 표시될 컨테이너 넣어주기
+//    return <div>
+//      <button onClick={notify}></button>
+//      <ToastContainer/>
+//    </div>
 
     // 환자 테이블 컬럼
     const columnslist = [
