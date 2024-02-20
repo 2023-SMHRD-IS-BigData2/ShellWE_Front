@@ -24,7 +24,7 @@ const Data = () => {
 
     // navigate로 디테일 페이지로 이동
     const handlePageNavigation = (platinum) => {
-        navigate(`/main/detail/${platinum}` , {state:{lists:lists[platinum-1]}});
+        navigate(`/main/detail/${platinum}`, { state: { lists: lists[platinum - 1] } });
     };
 
     // lists 값이 null인 경우 로딩 상태를 표시하거나 다른 방식으로 처리

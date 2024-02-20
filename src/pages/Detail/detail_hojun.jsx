@@ -1,16 +1,15 @@
 import React, { useState, useEffect } from "react";
+import { useParams, useLocation } from 'react-router-dom'
+import { tokens } from "../../theme";
 import Rechart from "./Rechart";
 import Chart from "./Chart";
 import Graph from "./graph";
 import Date from "./DateComponent";
-import axios from 'axios';
-import { useParams } from 'react-router-dom'
 import { ChartContext } from "./ChartContext";
 import DetailHeader from "./DetailHeader";
+import axios from 'axios';
 import { Box, Button, useTheme } from "@mui/material";
-import { tokens } from "../../theme";
 import DownloadOutlinedIcon from "@mui/icons-material/DownloadOutlined";
-import { useLocation } from 'react-router-dom';
 
 // 연동 및 데이터 집어넣기
 const App = () => {
@@ -19,7 +18,7 @@ const App = () => {
   // console.log('useParams', num);
   const location = useLocation();
   const lists = location.state?.lists;
-  console.log("list여", lists);
+  // console.log("list여", lists);
 
   const [data, setData] = useState(null); //스프링에서 받아온 값
   const [clickedXValue, setclickedXValue] = useState(null) // X축 클릭한 값 (날짜)
@@ -157,7 +156,18 @@ const App = () => {
             marginTop="60px"
             >
             <Box display="flex" justifyContent="space-between" alignItems="center">
-              <DetailHeader title={lists.name} subtitle={lists.age + "세 / " + lists.gender + " / " + lists.bloodtype + "형 / "} />
+
+              <DetailHeader title={lists.name} subtitle={lists.age + "세 / " + lists.gender + " / " + lists.bloodtype + "형 / "}
+                comments={comments}
+                setInputValue={setInputValue}
+                handleSubmit={handleSubmit}
+                inputValue={inputValue}
+                isModalOpen={isModalOpen}
+                closeModal={closeModal}
+                openModal={openModal}
+                num={num}
+              />
+
               <Box>
                 <Button
                   sx={{
@@ -181,14 +191,7 @@ const App = () => {
               maxWidth="2000px"
             >
               <Rechart />
-              <Date comments={comments}
-                setInputValue={setInputValue}
-                handleSubmit={handleSubmit}
-                inputValue={inputValue}
-                isModalOpen={isModalOpen}
-                closeModal={closeModal}
-                openModal={openModal}
-                num={num} />
+              <Date />
               <Graph />
               <Chart />
 
