@@ -13,6 +13,7 @@ import ProgressCircle from "./ProgressCircle";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
+
 const List = () => {
 
     const { Allpatient, Screening, todayScreening, percent } = useContext(DashboardContext);
