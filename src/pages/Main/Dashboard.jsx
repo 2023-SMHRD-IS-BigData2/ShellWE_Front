@@ -81,14 +81,36 @@ const App = () => {
 
     const gridRef = useRef(null);
 
-    // 한시간마다 api출력하기
-    // useEffect(() => {
-    //     const intervalId = setInterval(() => {
-    //         fetchData();
-    //     }, 3600000); // 1시간은 밀리초 단위로 3600000입니다.
+    //한시간마다 api출력하기
+    const toast = () => {
+        axios.post("http:/localhost:8088/boot/getHourSepsiss")
+            .then((response) => {
+                console.log('서버 응답:', response);
+            })
+            .catch((error) => {
+                console.error('서버 요청 오류:', error);
+            });
+    }
+    useEffect(() => {
+        const intervalId = setInterval(() => {
+            fetchData();
+        }, 3600000); // 1시간은 밀리초 단위로 3600000입니다.
 
-    //     return () => clearInterval(intervalId);
-    // }, []);
+        return () => clearInterval(intervalId);
+    }, []);
+
+    // fetchData 함수 정의
+    const fetchData = async () => {
+        try {
+            const response = await axios.get("http:/localhost:8088/boot/getHourSepsiss");
+            setList(response.data.patientList);
+            setAllpatient(response.data.Allpatient);
+            settodayScreening(response.data.todayScreening);
+            setScreening(response.data.Screening);
+        } catch (error) {
+            console.log(error);
+        }
+    };
 
     // 서버에 데이터를 보내는 POST 요청 예제
     const sendDataToServer = async (data) => {
@@ -173,7 +195,7 @@ const App = () => {
                 comments, patiIndex, setInputValue, handleSubmit, inputValue,
                 isModalOpen, closeModal, openModal,
                 Allpatient, Screening, todayScreening, percent,
-                handleOptionChange, setPatientEffect, handleSelectChange, handlePhysicianChange, sendDataToServer
+                handleOptionChange, setPatientEffect, handleSelectChange, handlePhysicianChange, sendDataToServer, toast
             }}
         >
             <Box

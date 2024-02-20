@@ -46,7 +46,7 @@ const List = () => {
             <div>
             <ToastContainer
                     position="top-right"
-                    autoClose={3000}
+                    autoClose={30000}
                     hideProgressBar={false}
                     newestOnTop={true}
                     closeOnClick={true}
