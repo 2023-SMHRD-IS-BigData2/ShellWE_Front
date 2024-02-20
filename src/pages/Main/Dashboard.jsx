@@ -3,7 +3,7 @@ import { Box } from "@mui/material";
 import { DashboardContext } from "../../theme";
 import Data from './Data';
 import axios from 'axios';
-import Card from './Card';
+import Card from './Card/Card';
 import { useLocation } from 'react-router-dom';
 
 // 대쉬보드

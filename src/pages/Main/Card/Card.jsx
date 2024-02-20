@@ -1,10 +1,12 @@
 import React, { useContext } from "react";
 import { Box, Typography } from "@mui/material";
-import { DashboardContext, tokens } from "../../theme";
+import { DashboardContext, tokens } from "../../../theme";
 import { useTheme } from "@mui/material";
 import PeopleOutlinedIcon from "@mui/icons-material/PeopleOutlined";
 import StatBox from './StatBox';
-import ProgressCircle from "./ProgressCircle";
+// import ProgressCircle from "../ProgressCircle";
+import AllPatient from "./AllPatient";
+import TodayPatient from "./TodayPatient";
 
 const List = () => {
 
@@ -29,11 +31,11 @@ const List = () => {
                     justifyContent="center"
                     borderRadius="30px"
                 >
-                    <StatBox
+                    <AllPatient
                         title={Allpatient}         // 값
                         subtitle="전체환자"        // 제목
-                        progress="0.14"           // 그래프
-                        increase="+14%"           // 퍼센트
+                        // progress="0.14"           // 그래프
+                        // increase="+14%"           // 퍼센트
                         icon={                    //  아이콘
                             <PeopleOutlinedIcon
                                 sx={{ color: colors.greenAccent[600], fontSize: "26px" }}
@@ -74,7 +76,7 @@ const List = () => {
                     justifyContent="center"
                     borderRadius="30px"
                 >
-                    <StatBox
+                    <TodayPatient
                         title={todayScreening}                // 값
                         subtitle="오늘발생 환자"        // 제목
                         progress="0.34"           // 그래프
