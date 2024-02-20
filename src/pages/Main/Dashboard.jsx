@@ -30,7 +30,7 @@ const App = () => {
 
     /**환자 컬럼 업데이트 */
     const [patientEffect, setPatientEffect] = useState(null)
-    
+
 
     // Modal 여는 변수
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -80,6 +80,27 @@ const App = () => {
     }
 
     const gridRef = useRef(null);
+
+    // 한시간마다 api출력하기
+    // useEffect(() => {
+    //     const intervalId = setInterval(() => {
+    //         fetchData();
+    //     }, 3600000); // 1시간은 밀리초 단위로 3600000입니다.
+
+    //     return () => clearInterval(intervalId);
+    // }, []);
+
+    // 서버에 데이터를 보내는 POST 요청 예제
+    const sendDataToServer = async (data) => {
+        try {
+            const response = await axios.post("http://localhost:8088/boot/getPatient", data);
+            console.log('서버 응답:', response.data);
+            // 서버로부터의 응답을 처리하는 로직을 추가할 수 있습니다.
+        } catch (error) {
+            console.error('서버 요청 오류:', error);
+            // 요청이 실패했을 때의 오류 처리를 추가할 수 있습니다.
+        }
+    };
 
     /** 카드 값 */
     useEffect(() => {
@@ -141,6 +162,8 @@ const App = () => {
         }
     };
 
+    // screening환자 추가될 때 마다 toast띄우기
+
 
     return (
         <DashboardContext.Provider
@@ -150,7 +173,7 @@ const App = () => {
                 comments, patiIndex, setInputValue, handleSubmit, inputValue,
                 isModalOpen, closeModal, openModal,
                 Allpatient, Screening, todayScreening, percent,
-                handleOptionChange, setPatientEffect, handleSelectChange,handlePhysicianChange
+                handleOptionChange, setPatientEffect, handleSelectChange, handlePhysicianChange, sendDataToServer
             }}
         >
             <Box

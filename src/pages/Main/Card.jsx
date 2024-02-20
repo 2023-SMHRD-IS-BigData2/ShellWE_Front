@@ -5,6 +5,13 @@ import { useTheme } from "@mui/material";
 import PeopleOutlinedIcon from "@mui/icons-material/PeopleOutlined";
 import StatBox from './StatBox';
 import ProgressCircle from "./ProgressCircle";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
+
+
+
+
 
 const List = () => {
 
@@ -13,13 +20,20 @@ const List = () => {
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
 
+    // toast 컴포넌트
+    const notify = () => toast("Screening 환자가 5명 추가 되었습니다", { autoClose: 3000 });
+   
     return (
         <>
+        <div>
+            <button onClick={notify}>Show Toast</button>
+            <ToastContainer/>
+
             <Box
-             display="grid"
-                    gridTemplateColumns="repeat(12, 1fr)"
-                    gridAutoRows="140px"
-                    gap="20px"
+                display="grid"
+                gridTemplateColumns="repeat(12, 1fr)"
+                gridAutoRows="140px"
+                gap="20px"
             >
                 <Box
                     gridColumn="span 4"
@@ -87,6 +101,7 @@ const List = () => {
                     />
                 </Box>
             </Box>
+            </div>
         </>
     );
 };
