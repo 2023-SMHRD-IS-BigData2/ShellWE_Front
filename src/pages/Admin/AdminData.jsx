@@ -9,14 +9,13 @@ import { useNavigate } from "react-router-dom";
 import { AdminContext } from "../../theme";
 
 const AdminData = () => {
-    const { sepsisScore, setSepsisScore,
-        memberData, setMemberData,
+    const {
+        memberData,
         openModal, closeModal,
-        isModalOpen, setIsModalOpen,
-        isAddModalOpen, setIsAddModalOpen,
-        showConfirmation, setShowConfirmation, fetchData } = useContext(AdminContext);
-    // const [memberData, setMemberData] = useState([]);
-    // const [showConfirmation, setShowConfirmation] = useState(false);
+        isModalOpen, isAddModalOpen, setIsAddModalOpen,
+        showConfirmation, setShowConfirmation, fetchData
+    } = useContext(AdminContext);
+
     const [selectedMemberNum, setSelectedMemberNum] = useState(null);
 
     // 의료진 수정할 때 사용
@@ -25,52 +24,18 @@ const AdminData = () => {
     const [selectedMemberIds, setSelectedMemberIds] = useState(null);
     const [selectedMemberPK, setSelectedMemberPK] = useState(null);
 
-    // // Modal 여는 변수
-    // const [isModalOpen, setIsModalOpen] = useState(false);
-    // const [isAddModalOpen, setIsAddModalOpen] = useState(false);
-    // /**Modal열기 */
-    // const openModal = (e) => {
-    //     setIsModalOpen(true);
-    // }
-    // /**Modal닫기 */
-    // const closeModal = () => {
-    //     setIsModalOpen(false);
-    //     setIsAddModalOpen(false);
-    // }
 
     const navigate = useNavigate();
-    // const fetchData = async () => {
-    //     try {
-    //         const response = await axios.get("http://localhost:8088/boot/admin");
-    //         console.log("from back", response.data.members);
-    //         console.log("back sepsis", response.data.sepsiss);
-    //         const dataWithId = response.data.members.map((item, index) => ({
-    //             ...item,
-    //             ids: index + 1,
-    //         }));
-    //         console.log("lists", dataWithId);
-    //         setMemberData(dataWithId);
-    //         setSepsisScore(response.data.sepsiss);
-    //     } catch (error) {
-    //         console.log("admin",error);
-    //     }
-    // };
-
-    useEffect(() => {
-        fetchData();
-        // console.log("Effect test");
-    }, [showConfirmation, isModalOpen, isAddModalOpen]);
-
 
     const handleClearIconClick = (membernum) => {
         // console.log("선택된 행의 memverNum:", membernum);
         setSelectedMemberNum(membernum);
         setShowConfirmation(true);
     };
-    
+
     const handleEditIconClick = (member) => {
         setIsAddModalOpen(true);
-        
+
         // console.log("선택된 행의 memverNum:", member);
         setSelectedMemberId(member.id);
         setSelectedMemberName(member.name);
@@ -193,9 +158,9 @@ const AdminData = () => {
             )}
 
             <DoctorForm closeModal={closeModal} isOpen={isModalOpen} />
-            <StaffEdit closeModal={closeModal} isOpen={isAddModalOpen} memberData={memberData} 
-            selectedMemberName={selectedMemberName} selectedMemberId={selectedMemberId}
-            selectedMemberIds={selectedMemberIds} selectedMemberPK={selectedMemberPK} />
+            <StaffEdit closeModal={closeModal} isOpen={isAddModalOpen} memberData={memberData}
+                selectedMemberName={selectedMemberName} selectedMemberId={selectedMemberId}
+                selectedMemberIds={selectedMemberIds} selectedMemberPK={selectedMemberPK} />
         </div>
     );
 };

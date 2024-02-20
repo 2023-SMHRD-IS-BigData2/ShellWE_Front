@@ -1,21 +1,29 @@
+import React, { useContext, useState } from "react";
 import { Box, useTheme } from "@mui/material";
 import Accordion from "@mui/material/Accordion";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import Typography from "@mui/material/Typography";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import { AdminContext, tokens } from "../../theme";
-import { useContext, useState } from "react";
-import './test.css'
 import axios from "axios";
+import { AdminContext, tokens } from "../../theme";
+import SmartModal from './Modal/SmartModal'
+import './test.css'
 
 const FAQ = () => {
-const {sepsisScore, setSepsisScore} = useContext(AdminContext);
+
+  const {
+    sepsisScore, setSepsisScore, isSmartModalOpen, setIsSmartModalOpen, closeModal
+  } = useContext(AdminContext);
+
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
 
   // const [selectedNumber, setSelectedNumber] = useState(null);
-  const [modalOpen, setModalOpen] = useState(false);
+
+  const openModal = () => {
+    setIsSmartModalOpen(true);
+  };
 
   const handleNumberClick = async (number) => {
     // setSelectedNumber(number);
@@ -26,13 +34,7 @@ const {sepsisScore, setSepsisScore} = useContext(AdminContext);
     } catch (error) {
       console.log("SMART 기준", error);
     }
-
   };
-
-  const openModal = () => {
-    setModalOpen(true);
-
-  }
 
   const renderNumberButtons = () => {
     const numberButtons = [];
@@ -46,12 +48,7 @@ const {sepsisScore, setSepsisScore} = useContext(AdminContext);
     return numberButtons;
   };
 
-  const closeModal = () => {
-    setModalOpen(false);
-  };
-
   // 백 연동 기능 구현 필요
-
 
   return (
     <Box m="20px">
@@ -71,7 +68,7 @@ const {sepsisScore, setSepsisScore} = useContext(AdminContext);
       </Accordion>
       {/* ====================================================== */}
       <div>
-        <div className="button-container" onClick={openModal}>
+        <div className="button-container" onClick={openModal} >
           <h1>숫자 선택</h1>
         </div>
 
@@ -79,9 +76,21 @@ const {sepsisScore, setSepsisScore} = useContext(AdminContext);
           <p>선택된 숫자: {sepsisScore}</p>
         </div>
 
-        {modalOpen && (
-          <div className="modal">
-            <div className="modal-content">
+        <SmartModal isOpen={isSmartModalOpen} closeModal={closeModal}>
+          {/* {modalOpen && ( */}
+          <div style={{
+            margin:"auto",
+            display:"flex",
+            justifyContent:"center",
+            alignContent:"center",
+            alignItems:"center",
+            
+          }} 
+          // className="modal"
+          >
+            <div 
+            className="modal-content"
+            >
               <div className="modal-number-container">
                 {renderNumberButtons()}
               </div>
@@ -90,7 +99,9 @@ const {sepsisScore, setSepsisScore} = useContext(AdminContext);
               {/* <button onClick={closeModal}>닫기</button> */}
             </div>
           </div>
-        )}
+          {/* )} */}
+        </SmartModal>
+
       </div>
     </Box>
   );

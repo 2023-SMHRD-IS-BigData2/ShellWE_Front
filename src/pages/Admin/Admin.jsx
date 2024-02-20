@@ -20,6 +20,8 @@ const Admin = () => {
   // Modal 여는 변수
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
+  const [isSmartModalOpen, setIsSmartModalOpen] = useState(false);
+  
   /**Modal열기 */
   const openModal = (e) => {
     setIsModalOpen(true);
@@ -28,7 +30,9 @@ const Admin = () => {
   const closeModal = () => {
     setIsModalOpen(false);
     setIsAddModalOpen(false);
+    setIsSmartModalOpen(false);
   }
+
   const fetchData = async () => {
     try {
       const response = await axios.get("http://localhost:8088/boot/admin");
@@ -46,10 +50,10 @@ const Admin = () => {
     }
   };
 
-  // useEffect(() => {
-  //   fetchData();
-  //   // console.log("Effect test");
-  // }, [showConfirmation, isModalOpen, isAddModalOpen]);
+  useEffect(() => {
+    fetchData();
+    // console.log("Effect test");
+  }, [showConfirmation, isModalOpen, isAddModalOpen]);
 
   return (
     <ColorModeContext.Provider value={colorMode}>
@@ -59,20 +63,28 @@ const Admin = () => {
           <Sidebar isSidebar={isSidebar} />
           <main className="content" >
             {/* <Topbar setIsSidebar={setIsSidebar} /> */}
+
+            {/* Context */}
             <AdminContext.Provider 
             value={{ sepsisScore, setSepsisScore,
-              memberData, setMemberData,
+              memberData, 
               openModal, closeModal,
-              isModalOpen, setIsModalOpen,
+              isModalOpen, 
               isAddModalOpen, setIsAddModalOpen,
               showConfirmation, setShowConfirmation,
-              fetchData }}
+              fetchData ,
+
+              // Settings
+              isSmartModalOpen,setIsSmartModalOpen
+            }}
             >
+
               <Routes>
                 <Route path='/' element={<Dashboard />} />
                 <Route path='/settings' element={<Settings />} />
               </Routes>
             </AdminContext.Provider>
+
           </main>
         </div>
       </ThemeProvider>

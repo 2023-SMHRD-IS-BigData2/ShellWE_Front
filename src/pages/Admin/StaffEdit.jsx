@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import AddModal from './AddModal'
+import AddModal from './Modal/AddModal'
 import { tokens } from "../../theme";
 import { useTheme } from "@mui/material"
 import axios from "axios";
