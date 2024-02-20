@@ -55,6 +55,24 @@ const List = () => {
                 >
                     <Box
                         gridColumn="span 3"
+                        backgroundColor={colors.primary[999]}
+                        display="flex"
+                        alignItems="center"
+                        justifyContent="center"
+                        borderRadius="30px"
+                    >
+                        <Member
+                            title={"사용자"}         // 값
+                            // subtitle="로그인"        // 제목
+                            icon={                    //  아이콘
+                                <PersonOutlineOutlinedIcon
+                                    sx={{ color: colors.greenAccent[600], fontSize: "26px" }}
+                                />
+                            }
+                        />
+                    </Box>
+                    <Box
+                        gridColumn="span 3"
                         backgroundColor={colors.primary[400]}
                         display="flex"
                         alignItems="center"
@@ -119,24 +137,7 @@ const List = () => {
                         />
                     </Box>
 
-                    <Box
-                        gridColumn="span 3"
-                        backgroundColor={colors.primary[999]}
-                        display="flex"
-                        alignItems="center"
-                        justifyContent="center"
-                        borderRadius="30px"
-                    >
-                        <Member
-                            title={"사용자"}         // 값
-                            // subtitle="로그인"        // 제목
-                            icon={                    //  아이콘
-                                <PersonOutlineOutlinedIcon
-                                    sx={{ color: colors.greenAccent[600], fontSize: "26px" }}
-                                />
-                            }
-                        />
-                    </Box>
+                    
                 </Box>
             </div>
         </>
