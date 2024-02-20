@@ -233,15 +233,15 @@ const Data = () => {
                                 paddingRight: "80px",
                                 border: 'none',
                                 backgroundColor: sepsisslevel === "Screening"
-                                    ? colors.redAccent[500]
+                                    ? "#3e4396"
                                     : sepsisslevel === "Observing"
-                                        ? colors.greenAccent[500]
+                                        ? ""
                                         : sepsisslevel == "in action"
-                                            ? colors.grey[200] // Moccasin
+                                            ? ""  // Moccasin
                                             : sepsisslevel == "Done"
-                                                ? colors.blueAccent[300] // Moccasin
+                                                ? "" // Moccasin
                                                 : "none",
-                                color: sepsisslevel === "in action" ? "black" : "inherit", // 배경색이 검은색일 때 텍스트 색상 변경
+                                                color: "#ffffff", // 글자색을 검은색으로 변경
                             }}
                         >
                             <MenuItem value="Screening">Screening</MenuItem>
