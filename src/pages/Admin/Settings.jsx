@@ -15,34 +15,20 @@ const FAQ = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
   const [number, setNumber] = useState();
-  // const [selectedNumber, setSelectedNumber] = useState(null);
+  const [scoreEffect, setScoreEffect] = useState(null);
   const [showConfirmation, setShowConfirmation] = useState()
   const [sepsisScore, setSepsisScore] = useState()
 
-  const fetchData = async () => {
-    try {
-      const response = await axios.get("http://localhost:8088/boot/getSep");
-      setSepsisScore(response.data.sepscore.sepsiss);
-      console.log("back sepsis", sepsisScore);
-    } catch (error) {
-      console.log("admin", error);
-    }
-  };
 
-  useEffect(() => {
-    fetchData();
-    console.log("--------Effect SMART ------------------");
-  }, []);
-
-  const handleConfirmationConfirm = async () => {
+  const handleConfirmationConfirm = () => {
     setShowConfirmation(false);
     console.log("number", number);
-
+    const str = number.toString();
     axios
-      .post(`http://localhost:8088/boot/sepsissscoer?sepsiss=${number}`)
+      .post(`http://localhost:8088/boot/sepsissscoer?sepsiss=${str}`)
       .then((response) => {
-        // setSepsisScore(response.data.sepsiss);
-        console.log("Smart 변경", response);
+        // console.log("Smart 변경", response);
+        setScoreEffect(response)
       })
       .catch((error) => {
         console.error("error", error);
@@ -50,7 +36,7 @@ const FAQ = () => {
   };
 
   const handleConfirmationCancel = () => {
-    console.log("취소 버튼 클릭");
+    // console.log("취소 버튼 클릭");
     setNumber(null);
     setShowConfirmation(false);
   };
@@ -60,6 +46,21 @@ const FAQ = () => {
     setNumber(changeNum);
     setShowConfirmation(true);
   };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get("http://localhost:8088/boot/getSep");
+        setSepsisScore(response.data.sepscore);
+        // console.log("back sepsis", sepsisScore);
+      } catch (error) {
+        console.log("back sepsis", error);
+      }
+    };
+    fetchData();
+    // console.log("----Effect SMART-----");
+  }, [scoreEffect]);
+
 
   return (
     <Box m="20px">
@@ -100,8 +101,10 @@ const FAQ = () => {
                 type="number"
                 value={number}
                 sx={{ ml: 5, color: colors.blueAccent[500], scale: "1.5", width: "50px", mr: "10px" }}
-                onChange={(e) => setNumber(e.target.value)}
-                placeholder={sepsisScore} color="red"
+                onChange={(e) =>
+                  setNumber(e.target.value)
+                }
+                placeholder={sepsisScore}
               />
               <button style={{ margin: "10px" }} onClick={handleConfirmationConfirm}>확인</button>
               <button style={{ margin: "10px" }} onClick={handleConfirmationCancel}>취소</button>
