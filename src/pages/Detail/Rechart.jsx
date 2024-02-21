@@ -2,12 +2,13 @@ import React, { useState, useContext, useEffect } from "react";
 import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip, ResponsiveContainer, Brush } from "recharts";
 import { Box, Typography, useTheme } from "@mui/material";
 import "./chart.css";
-import { tokens, ChartContext } from "../../theme";
+import { tokens, ChartContext, ColorModeContext } from "../../theme";
 
 export default function Example() {
     /** 다크모드 */
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
+    // const {colors} = useContext(ColorModeContext);
 
     // state 설정
     const [selectedKeys, setSelectedKeys] = useState(["smart"]); // 처음에 출력할 값

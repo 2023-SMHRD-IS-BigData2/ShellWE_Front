@@ -3,7 +3,7 @@ import { Box, useTheme } from "@mui/material";
 import GroupsOutlinedIcon from '@mui/icons-material/GroupsOutlined';
 import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined';
 import NewReleasesIcon from '@mui/icons-material/NewReleases';
-import { DashboardContext, tokens } from "../../../theme";
+import { ColorModeContext, DashboardContext, tokens } from "../../../theme";
 import ScrnPatient from './ScrnPatient';
 import AllPatient from "./AllPatient";
 import TodayPatient from "./TodayPatient";
@@ -17,7 +17,7 @@ const List = () => {
     /** 다크모드 */
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
-
+    // const {colors} = useContext(ColorModeContext);
 
     const notify = () => {
         if (todayScreening > 0) {

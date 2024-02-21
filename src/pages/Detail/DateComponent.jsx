@@ -2,13 +2,15 @@ import React, { useState, useContext } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { Box, useTheme } from "@mui/material";
-import { tokens, ChartContext } from "../../theme";
+import { tokens, ChartContext, ColorModeContext } from "../../theme";
 
 
 const DateComponent = () => {
   /**다크모드 */
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
+  // const {colors} = useContext(ColorModeContext);
+
 
   const { setSDate, setEDate } = useContext(ChartContext)
 

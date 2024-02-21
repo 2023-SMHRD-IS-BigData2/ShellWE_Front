@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Box, Typography, useTheme } from '@mui/material';
 import { RadioGroup, FormControlLabel, Radio } from '@mui/material';
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from '@mui/material';
 import axios from "axios";
-import { tokens } from "../../theme";
+import { ColorModeContext, tokens } from "../../theme";
 import InputBase from "@mui/material/InputBase";
 import Modal from '../DesktopOne/Modal';
 
@@ -13,6 +13,7 @@ const DoctorForm = ({ closeModal, isOpen }) => {
   const [rank, setrank] = useState("");
   const [contactNumber, setContactNumber] = useState("");
   const [id, setId] = useState("");
+  // const {colors} = useContext(ColorModeContext);
   /** 다크모드 */
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);

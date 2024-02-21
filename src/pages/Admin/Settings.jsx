@@ -5,7 +5,7 @@ import Accordion from "@mui/material/Accordion";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import { AdminContext, tokens } from "../../theme";
+import { AdminContext, ColorModeContext, tokens } from "../../theme";
 
 const FAQ = () => {
 
@@ -14,6 +14,7 @@ const FAQ = () => {
 
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
+  // const {colors} = useContext(ColorModeContext);
   const [number, setNumber] = useState();
   const [scoreEffect, setScoreEffect] = useState(null);
   const [showConfirmation, setShowConfirmation] = useState()
