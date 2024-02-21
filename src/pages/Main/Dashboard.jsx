@@ -189,7 +189,7 @@ const App = () => {
                 // gap="20px"
                 >
 
-                    <Card />
+                    <Card id={id}/>
                 </Box>
                 <Data />
             </Box >

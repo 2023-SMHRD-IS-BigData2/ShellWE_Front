@@ -13,7 +13,7 @@ import ProgressCircle from "./ProgressCircle";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-const List = () => {
+const List = ({id}) => {
 
     const { Allpatient, Screening, todayScreening, percent } = useContext(DashboardContext);
     /** 다크모드 */
@@ -62,7 +62,7 @@ const List = () => {
                         borderRadius="30px"
                     >
                         <Member
-                            title={"사용자"}         // 값
+                            title={id}         // 값
                             // subtitle="로그인"        // 제목
                             icon={                    //  아이콘
                                 <PersonOutlineOutlinedIcon
