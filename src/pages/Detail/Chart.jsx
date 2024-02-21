@@ -1,12 +1,14 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Box, Typography, useTheme } from "@mui/material";
-import { tokens, ChartContext } from "../../theme";
+import { tokens, ChartContext, ColorModeContext } from "../../theme";
 
 const Charts = () => {
 
   /** 다크모드 */
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
+  // const {colors} = useContext(ColorModeContext);
+
 
   const { clickedXValue, makechart, denger } = useContext(ChartContext); // ChartContext로부터 clickedXValue, makechart, denger 값을 가져옵니다.
   // console.log("denger", denger);

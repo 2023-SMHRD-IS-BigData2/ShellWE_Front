@@ -6,16 +6,19 @@ import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import InputBase from "@mui/material/InputBase";
 import SendIcon from '@mui/icons-material/Send';
 import MailOutlineIcon from '@mui/icons-material/MailOutline';
-import { DashboardContext, tokens } from "../../theme";
+import { ColorModeContext, DashboardContext, PatientContext, tokens } from "../../theme";
 import Modal from "../DesktopOne/Modal";
 import { toast, ToastContainer } from "react-toastify"
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
+import axios from "axios";
+
 
 // 환자 데이터 컴포넌트
-const Data = () => {
+const Data = ({ setPatientNum }) => {
     const { lists, comments, isModalOpen, closeModal, openModal, setInputValue, inputValue, handleSubmit, handleOptionChange, setPatientEffect, handleSelectChange,
-        handlePhysicianChange } = useContext(DashboardContext);
-
+        handlePhysicianChange, } = useContext(DashboardContext);
+    // const { colors } = useContext(ColorModeContext);
+    const { setData } = useContext(PatientContext);
     /** 다크모드 */
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
@@ -25,7 +28,17 @@ const Data = () => {
 
     // navigate로 디테일 페이지로 이동
     const handlePageNavigation = (platinum) => {
-        navigate(`/main/detail/${platinum}`, { state: { lists: lists[platinum - 1] } });
+
+        axios.get(`http://localhost:8088/boot/getList?patinum=${platinum}`)
+            .then((res) => {
+                // nav(`/detail/${item.name}`, // 링크 맴핑
+                //     { state: res.data }); // state 변수에 데이터 담기
+                navigate(`/main/detail/${platinum}`, { state: { lists: lists[platinum] } });
+                setData(res.data[0]);
+                setPatientNum(platinum);
+            })
+
+
     };
 
     // lists 값이 null인 경우 로딩 상태를 표시하거나 다른 방식으로 처리
@@ -82,7 +95,7 @@ const Data = () => {
                         borderRadius="4px"
                     >
                         <b
-                            onClick={() => handlePageNavigation(row.id)}
+                            onClick={() => handlePageNavigation(row.patinum)}
                             style={{
                                 textDecoration: 'none',
                                 color: colors.primary[100]
@@ -366,9 +379,7 @@ const Data = () => {
                         p="5px"
                         display="flex"
                         justifyContent="center"
-
                         borderRadius="4px"
-
                     >
                         <Select
                             value={sepsisslevel === "None" ? "" : sepsisslevel}
@@ -390,7 +401,7 @@ const Data = () => {
                                             : sepsisslevel == "Done"
                                                 ? "" // Moccasin
                                                 : "None",
-                                color: "#ffffff", // 글자색을 검은색으로 변경
+                                // color: "#ffffff", // 글자색을 검은색으로 변경
                             }}
                         >
                             <MenuItem value="Screening">Screening</MenuItem>

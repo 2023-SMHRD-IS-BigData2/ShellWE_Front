@@ -266,6 +266,9 @@ export const AdminContext = createContext(
 export const ChartContext = createContext(
   null
 );
+export const PatientContext = createContext(
+  null
+);
 
 
 /**색상 설정하는 함수 */
