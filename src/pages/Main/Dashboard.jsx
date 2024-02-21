@@ -179,6 +179,7 @@ const App = () => {
             >
                 <Card />
                 <Data />
+               
             </Box >
         </DashboardContext.Provider>
 

@@ -46,7 +46,7 @@ const Charts = () => {
             justifyContent="space-between"
             alignItems="center"
             borderRadius="20px"
-            backgroundColor={value ? colors.primary[400] : colors.redAccent[600]}
+            backgroundColor={value ? colors.primary[400] : colors.primary[999]}
             marginBottom="7px"
             p="15px"
             sx={{

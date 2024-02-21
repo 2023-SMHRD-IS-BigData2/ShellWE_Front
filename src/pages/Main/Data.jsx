@@ -9,7 +9,7 @@ import MailOutlineIcon from '@mui/icons-material/MailOutline';
 import { DashboardContext, tokens } from "../../theme";
 import Modal from "../DesktopOne/Modal";
 import { toast, ToastContainer } from "react-toastify"
-
+import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 
 // 환자 데이터 컴포넌트
 const Data = () => {
@@ -47,13 +47,16 @@ const Data = () => {
     //      <ToastContainer/>
     //    </div>
 
+
     // 환자 테이블 컬럼
     const columnslist = [
         {
             field: "patinum",
             headerAlign: "center",
             align: "center",
-            headerName: "순번"
+            headerName: "순번",
+            headerClassName: "bold-header"
+
         },
         {
             field: "name",
@@ -123,6 +126,7 @@ const Data = () => {
             renderCell: ({ row: { ward, patinum } }) => {
                 return (
                     <Box
+                        width="100%"
                         m="0 auto"
                         p="5px"
                         display="flex"
@@ -135,12 +139,54 @@ const Data = () => {
                                 setPatientEffect(e)
                             }} value={ward}
                             border={0}
+                            sx={{
+                                paddingLeft: "95px",
+                                paddingRight: "80px",
+                                // backgroundColor: colors.Made[200]
+
+                            }}
+
                         >
-                            <MenuItem value="physician">병동1</MenuItem>
-                            <MenuItem value="병동2">병동2</MenuItem>
-                            <MenuItem value="병동3">병동3</MenuItem>
-                            <MenuItem value="병동4">병동4</MenuItem>
-                            <MenuItem value="병동5">병동5</MenuItem>
+                            <MenuItem value="physician">
+                                <div style={{ display: "flex", justifyContent: "space-between" }}>
+                                    병동1
+                                    <div style={{ marginTop: "1px" }}>
+                                        <ArrowDropDownIcon />
+                                    </div>
+                                </div>
+                            </MenuItem>
+                            <MenuItem value="병동2">
+                                <div style={{ display: "flex", justifyContent: "space-between" }}>
+                                    병동2
+                                    <div style={{ marginTop: "1px" }}>
+                                        <ArrowDropDownIcon />
+                                    </div>
+                                </div>
+                            </MenuItem>
+                            <MenuItem value="병동3">
+                                <div style={{ display: "flex", justifyContent: "space-between" }}>
+                                    병동3
+                                    <div style={{ marginTop: "1px" }}>
+                                        <ArrowDropDownIcon />
+                                    </div>
+                                </div>
+                            </MenuItem>
+                            <MenuItem value="병동4">
+                                <div style={{ display: "flex", justifyContent: "space-between" }}>
+                                    병동4
+                                    <div style={{ marginTop: "1px" }}>
+                                        <ArrowDropDownIcon />
+                                    </div>
+                                </div>
+                            </MenuItem>
+                            <MenuItem value="병동5">
+                                <div style={{ display: "flex", justifyContent: "space-between" }}>
+                                    병동5
+                                    <div style={{ marginTop: "1px" }}>
+                                        <ArrowDropDownIcon />
+                                    </div>
+                                </div>
+                            </MenuItem>
                         </Select>
                     </Box>
                 )
@@ -156,9 +202,9 @@ const Data = () => {
         {
             field: "physician",
             headerName: "담당 의료진",
-            headerAlign: "left",
-            align: "left",
-            flex: 0.8,
+            headerAlign: "center",
+            align: "center",
+            flex: 1,
             renderCell: ({ row: { physician, patinum } }) => {
                 return (
                     <box
@@ -174,23 +220,126 @@ const Data = () => {
                                 // physicianValue(e)
                                 setPatientEffect(e)
                             }}
+                            sx={{
+                                paddingLeft: "95px",
+                                paddingRight: "80px",
+
+                            }}
                             value={physician}
                             border={0}
                         >
-                            <MenuItem value="Dr.Smith">Dr.Smith</MenuItem>
-                            <MenuItem value="Dr.Johanson">Dr.Johanson</MenuItem>
-                            <MenuItem value="Dr.Thomas">Dr.Thomas</MenuItem>
-                            <MenuItem value="Dr.Michael">Dr.Michael</MenuItem>
-                            <MenuItem value="Dr.Andrew">Dr.Andrew</MenuItem>
-                            <MenuItem value="Dr.John">Dr.John</MenuItem>
-                            <MenuItem value="Dr.James">Dr.James</MenuItem>
-                            <MenuItem value="Dr.William">Dr.William</MenuItem>
-                            <MenuItem value="Dr.Joseph">Dr.Joseph</MenuItem>
-                            <MenuItem value="Dr.David">Dr.David</MenuItem>
-                            <MenuItem value="Dr.Daniel">Dr.Daniel</MenuItem>
-                            <MenuItem value="Dr. Lee">Dr. Lee</MenuItem>
-                            <MenuItem value="Dr. Martinez">Dr. Martinez</MenuItem>
-                            <MenuItem value="Dr.Robert">Dr.Robert</MenuItem>
+                            <MenuItem value="Dr.Smith">
+                                <div style={{ display: "flex", justifyContent: "space-between" }}>
+                                    Dr.Smith
+                                    <div style={{ marginTop: "1px" }}>
+                                        <ArrowDropDownIcon />
+                                    </div>
+                                </div>
+                            </MenuItem>
+                            <MenuItem value="Dr.Johanson">
+                                <div style={{ display: "flex", justifyContent: "space-between" }}>
+                                    Dr.Johanson
+                                    <div style={{ marginTop: "1px" }}>
+                                        <ArrowDropDownIcon />
+                                    </div>
+                                </div>
+                            </MenuItem>
+                            <MenuItem value="Dr.Thomas">
+                                <div style={{ display: "flex", justifyContent: "space-between" }}>
+                                    Dr.Thomas
+                                    <div style={{ marginTop: "1px" }}>
+                                        <ArrowDropDownIcon />
+                                    </div>
+                                </div>
+                            </MenuItem>
+                            <MenuItem value="Dr.Michael">
+                                <div style={{ display: "flex", justifyContent: "space-between" }}>
+                                    Dr.Michael
+                                    <div style={{ marginTop: "1px" }}>
+                                        <ArrowDropDownIcon />
+                                    </div>
+                                </div>
+                            </MenuItem>
+                            <MenuItem value="Dr.Andrew">
+                                <div style={{ display: "flex", justifyContent: "space-between" }}>
+                                    Dr.Andrew
+                                    <div style={{ marginTop: "1px" }}>
+                                        <ArrowDropDownIcon />
+                                    </div>
+                                </div>
+                            </MenuItem>
+                            <MenuItem value="Dr.John">
+                                <div style={{ display: "flex", justifyContent: "space-between" }}>
+                                    Dr.John
+                                    <div style={{ marginTop: "1px" }}>
+                                        <ArrowDropDownIcon />
+                                    </div>
+                                </div>
+                            </MenuItem>
+                            <MenuItem value="Dr.James">
+                                <div style={{ display: "flex", justifyContent: "space-between" }}>
+                                    Dr.James
+                                    <div style={{ marginTop: "1px" }}>
+                                        <ArrowDropDownIcon />
+                                    </div>
+                                </div>
+                            </MenuItem>
+                            <MenuItem value="Dr.William">
+                                <div style={{ display: "flex", justifyContent: "space-between" }}>
+                                    Dr.William
+                                    <div style={{ marginTop: "1px" }}>
+                                        <ArrowDropDownIcon />
+                                    </div>
+                                </div>
+                            </MenuItem>
+                            <MenuItem value="Dr.Joseph">
+                                <div style={{ display: "flex", justifyContent: "space-between" }}>
+                                    Dr.Joseph
+                                    <div style={{ marginTop: "1px" }}>
+                                        <ArrowDropDownIcon />
+                                    </div>
+                                </div>
+                            </MenuItem>
+                            <MenuItem value="Dr.David">
+                                <div style={{ display: "flex", justifyContent: "space-between" }}>
+                                    Dr.David
+                                    <div style={{ marginTop: "1px" }}>
+                                        <ArrowDropDownIcon />
+                                    </div>
+                                </div>
+                            </MenuItem>
+                            <MenuItem value="Dr.Daniel">
+                                <div style={{ display: "flex", justifyContent: "space-between" }}>
+                                    Dr.Daniel
+                                    <div style={{ marginTop: "1px" }}>
+                                        <ArrowDropDownIcon />
+                                    </div>
+                                </div>
+                            </MenuItem>
+                            <MenuItem value="Dr. Lee">
+                                <div style={{ display: "flex", justifyContent: "space-between" }}>
+                                    Dr. Lee
+                                    <div style={{ marginTop: "1px" }}>
+                                        <ArrowDropDownIcon />
+                                    </div>
+                                </div>
+                            </MenuItem>
+                            <MenuItem value="Dr. Martinez">
+                                <div style={{ display: "flex", justifyContent: "space-between" }}>
+                                    Dr. Martinez
+                                    <div style={{ marginTop: "1px" }}>
+                                        <ArrowDropDownIcon />
+                                    </div>
+                                </div>
+                            </MenuItem>
+                            <MenuItem value="Dr.Robert">
+                                <div style={{ display: "flex", justifyContent: "space-between" }}>
+                                    Dr.Robert
+                                    <div style={{ marginTop: "1px" }}>
+                                        <ArrowDropDownIcon />
+                                    </div>
+                                </div>
+                            </MenuItem>
 
                         </Select>
                     </box>
@@ -233,7 +382,7 @@ const Data = () => {
                                 paddingRight: "80px",
                                 border: 'none',
                                 backgroundColor: sepsisslevel === "Screening"
-                                    ? "#3e4396"
+                                    ? colors.blueAccent[700]
                                     : sepsisslevel === "Observing"
                                         ? ""
                                         : sepsisslevel == "In Action"
@@ -290,7 +439,7 @@ const Data = () => {
 
                 return (
                     <div style={{
-                        backgroundColor: hasArrow ? colors.greenAccent[700] : "inherit",
+                        backgroundColor: hasArrow ? colors.primary[999] : "inherit",
                         width: "60%",
                         display: hasArrow ? "flex" : "",
                         justifyContent: hasArrow ? "center" : "none",
@@ -324,7 +473,7 @@ const Data = () => {
                 styleOverrides: {
                     root: {
                         border: '5px solid red', // 선 색상을 변경할 스타일 속성
-                        backgroundColor: "black"
+                        backgroundColor: "black",
                     },
                 },
             },
@@ -349,24 +498,35 @@ const Data = () => {
                 m="25px 0 0 0"
                 height="70vh"
                 borderRadius="30px"
+                boxShadow="0px 2px 4px rgba(0, 0, 0, 0.2);"
+                // boxShadow="100px 100px 100px 100px rgba(0, 0, 0, 0.2);"
                 sx={{
                     "& .MuiDataGrid-root": {
                         border: "none",
+
                     },
                     "& .MuiDataGrid-cell": {
                         borderBottom: "none",
+                        fontWeight: "bold"
+
                     },
                     "& .name-column--cell": {
                         color: colors.greenAccent[300],
+                        // boxShadow:"0px 2px 4px rgba(0, 0, 0, 0.2);"
                     },
                     "& .MuiDataGrid-columnHeaders": {
                         backgroundColor: colors.blueAccent[700],
                         borderBottom: "none",
                         borderTopLeftRadius: "30px",
-                        borderTopRightRadius: "30px"
+                        borderTopRightRadius: "30px",
+                        // boxShadow:"5px 10px 4px rgba(0, 0, 0, 0.2);"
+                        fontWeight: "bold"
+
                     },
                     "& .MuiDataGrid-virtualScroller": {
                         backgroundColor: colors.primary[400],
+                        // boxShadow:"0px 2px 4px rgba(0, 0, 0, 0.2);"
+
                     },
                     "& .MuiDataGrid-footerContainer": {
                         borderTop: "none",
@@ -374,10 +534,14 @@ const Data = () => {
                         borderBottomLeftRadius: "30px",
                         borderBottomRightRadius: "30px",
                         color: colors.blueAccent[300],
+
+                        // boxShadow:"5px 10px 4px rgba(0, 0, 0, 0.2);"
                     },
                     "& .MuiDataGrid-toolbarContainer .MuiButton-text": {
-                        color: `${colors.grey[100]} !important`,
-                        minWidth: "10px"
+                        color: `${colors.blueAccent} !important`,
+                        minWidth: "10px",
+                        fontWeight: "bold",
+
 
                     },
 
@@ -393,6 +557,7 @@ const Data = () => {
                             tableTheme,
                         },
                     }}
+
                 />
             </Box>
 
@@ -414,12 +579,12 @@ const Data = () => {
                                 color: colors.greenAccent[300],
                             },
                             "& .MuiDataGrid-columnHeaders": {
-                                backgroundColor: colors.grey[700],
+                                backgroundColor: colors.primary[999],
                                 borderBottom: "none",
                             },
                             "& .MuiDataGrid-footerContainer": {
                                 borderTop: "none",
-                                backgroundColor: colors.grey[700],
+                                backgroundColor: colors.primary[999],
                             },
                         }}>
                         <DataGrid

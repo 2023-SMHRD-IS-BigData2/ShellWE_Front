@@ -68,7 +68,7 @@ const StaffEdit = ({ closeModal, isOpen, selectedMemberName, selectedMemberId , 
 
     return (
         <div>
-            <Modal isOpen={isOpen} closeModal={closeModal}>
+            <Modal isOpen={isOpen} closeModal={closeModal} colors={colors}>
                 <Box m="40px">
                     <Box
                         // m="20px"
