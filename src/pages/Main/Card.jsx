@@ -24,7 +24,7 @@ const List = () => {
     const notify = () => {
         if (1 > 0) {
             toast(`스크리닝 환자가 ${todayScreening}명 추가 되었습니다`,
-                { autoClose: 3000 }
+                { autoClose: 3000 } //3초
             );
         }
     }

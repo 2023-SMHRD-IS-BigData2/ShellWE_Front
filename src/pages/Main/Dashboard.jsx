@@ -83,7 +83,7 @@ const App = () => {
 
     //한시간마다 api출력하기
     const toast = () => {
-        axios.post("http:/localhost:8088/boot/getHourSepsiss")
+        axios.post("http://localhost:8088/boot/getHourSepsis")
             .then((response) => {
                 console.log('서버 응답:', response);
             })
@@ -94,15 +94,19 @@ const App = () => {
     useEffect(() => {
         const intervalId = setInterval(() => {
             fetchData();
-        }, 3600000); // 1시간은 밀리초 단위로 3600000입니다.
+        }, 15000); // 1시간은 밀리초 단위로 3600000입니다.
 
-        return () => clearInterval(intervalId);
+        // 컴포넌트가 언마운트될 때 클린업
+    return () => {
+        clearInterval(intervalId);
+        // 클린업 코드 작성 (예: 타이머나 리소스 해제 등)
+    };
     }, []);
 
     // fetchData 함수 정의
     const fetchData = async () => {
         try {
-            const response = await axios.get("http:/localhost:8088/boot/getHourSepsiss");
+            const response = await axios.get("http://localhost:8088/boot/getHourSepsis");
             setList(response.data.patientList);
             setAllpatient(response.data.Allpatient);
             settodayScreening(response.data.todayScreening);
@@ -111,11 +115,13 @@ const App = () => {
             console.log(error);
         }
     };
+    fetchData();
 
+    
     // 서버에 데이터를 보내는 POST 요청 예제
     const sendDataToServer = async (data) => {
         try {
-            const response = await axios.post("http://localhost:8088/boot/getPatient", data);
+            const response = await axios.get("http://localhost:8088/boot/getPatient", data);
             console.log('서버 응답:', response.data);
             // 서버로부터의 응답을 처리하는 로직을 추가할 수 있습니다.
         } catch (error) {
