@@ -16,11 +16,11 @@ import axios from "axios";
 const Data = ({ setPatientNum }) => {
     const { lists, comments, isModalOpen, closeModal, openModal, setInputValue, inputValue, handleSubmit, handleOptionChange, setPatientEffect, handleSelectChange,
         handlePhysicianChange, } = useContext(DashboardContext);
-    const { colors } = useContext(ColorModeContext);
+    // const { colors } = useContext(ColorModeContext);
     const { setData } = useContext(PatientContext);
     /** 다크모드 */
-    // const theme = useTheme();
-    // const colors = tokens(theme.palette.mode);
+    const theme = useTheme();
+    const colors = tokens(theme.palette.mode);
     const [hoveredRowId, setHoveredRowId] = useState(null);
     // useNavigate 훅을 사용하여 navigate 함수를 가져오기
     const navigate = useNavigate();

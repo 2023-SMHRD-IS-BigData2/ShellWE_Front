@@ -13,10 +13,10 @@ const DoctorForm = ({ closeModal, isOpen }) => {
   const [rank, setrank] = useState("");
   const [contactNumber, setContactNumber] = useState("");
   const [id, setId] = useState("");
-  const {colors} = useContext(ColorModeContext);
+  // const {colors} = useContext(ColorModeContext);
   /** 다크모드 */
-  // const theme = useTheme();
-  // const colors = tokens(theme.palette.mode);
+  const theme = useTheme();
+  const colors = tokens(theme.palette.mode);
 
   const handleRankChange = (e) => {
     setrank(e.target.value);

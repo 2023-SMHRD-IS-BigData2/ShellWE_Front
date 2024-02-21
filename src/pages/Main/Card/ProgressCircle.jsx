@@ -3,9 +3,9 @@ import { ColorModeContext, tokens } from "../../../theme";
 import { useContext } from "react";
 
 const ProgressCircle = ({ progress = "0.75", size = "40" }) => {
-  // const theme = useTheme();
-  // const colors = tokens(theme.palette.mode);
-  const {colors} = useContext(ColorModeContext);
+  const theme = useTheme();
+  const colors = tokens(theme.palette.mode);
+  // const {colors} = useContext(ColorModeContext);
   const angle = progress * 360;
   return (
     <Box

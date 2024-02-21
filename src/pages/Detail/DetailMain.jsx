@@ -32,9 +32,9 @@ const App = () => {
     const [subtitle, setSubtitle] = useState("sbp"); // 밑 그래프의 제목 값
 
     /**다크모드 */
-    // const theme = useTheme();
-    // const colors = tokens(theme.palette.mode);
-    const {colors} = useContext(ColorModeContext);
+    const theme = useTheme();
+    const colors = tokens(theme.palette.mode);
+    // const {colors} = useContext(ColorModeContext);
 
 
     // =================== 코멘트 ============================

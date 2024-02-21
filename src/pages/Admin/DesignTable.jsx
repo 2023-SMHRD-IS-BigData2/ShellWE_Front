@@ -5,10 +5,10 @@ import Data from "./Data";
 
 
 const List = () => {
-    const {colors} = useContext(ColorModeContext);
+    // const {colors} = useContext(ColorModeContext);
     /** 다크모드 */
-    // const theme = useTheme();
-    // const colors = tokens(theme.palette.mode);
+    const theme = useTheme();
+    const colors = tokens(theme.palette.mode);
 
     return (
         <Box m="20px">

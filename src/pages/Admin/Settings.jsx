@@ -12,9 +12,9 @@ const FAQ = () => {
   const {
   } = useContext(AdminContext);
 
-  // const theme = useTheme();
-  // const colors = tokens(theme.palette.mode);
-  const {colors} = useContext(ColorModeContext);
+  const theme = useTheme();
+  const colors = tokens(theme.palette.mode);
+  // const {colors} = useContext(ColorModeContext);
   const [number, setNumber] = useState();
   const [scoreEffect, setScoreEffect] = useState(null);
   const [showConfirmation, setShowConfirmation] = useState()

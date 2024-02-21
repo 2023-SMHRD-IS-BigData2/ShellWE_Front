@@ -57,7 +57,7 @@ const Admin = () => {
   }, [showConfirmation, isModalOpen, isAddModalOpen]);
 
   return (
-    <ColorModeContext.Provider value={{colorMode, colors}}>
+    <ColorModeContext.Provider value={colorMode}>
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <div className="app" style={{ width: "2030px" }}>

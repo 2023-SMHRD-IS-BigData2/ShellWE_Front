@@ -5,9 +5,9 @@ import { tokens, ChartContext, ColorModeContext } from "../../theme";
 
 const CustomizedLabel = ({ x, y, value }) => {
     /** 다크모드 */
-    // const theme = useTheme();
-    // const colors = tokens(theme.palette.mode);
-    const {colors} = useContext(ColorModeContext);
+    const theme = useTheme();
+    const colors = tokens(theme.palette.mode);
+    // const {colors} = useContext(ColorModeContext);
 
     return (
         <text x={x + 8} y={y} dy={-10} fontSize={12} textAnchor="middle" fill={colors.redAccent[100]}>{value}</text>
@@ -17,9 +17,9 @@ const CustomizedLabel = ({ x, y, value }) => {
 const Graph = () => {
 
     /** 다크모드 */
-    // const theme = useTheme();
-    // const colors = tokens(theme.palette.mode);
-    const {colors} = useContext(ColorModeContext);
+    const theme = useTheme();
+    const colors = tokens(theme.palette.mode);
+    // const {colors} = useContext(ColorModeContext);
     const { clickedXValue, data, graph, subtitle } = useContext(ChartContext);
 
     // clickedXValue 값이 null인 경우에 대한 처리

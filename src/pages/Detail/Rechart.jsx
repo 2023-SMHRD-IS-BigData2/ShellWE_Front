@@ -6,9 +6,9 @@ import { tokens, ChartContext, ColorModeContext } from "../../theme";
 
 export default function Example() {
     /** 다크모드 */
-    // const theme = useTheme();
-    // const colors = tokens(theme.palette.mode);
-    const {colors} = useContext(ColorModeContext);
+    const theme = useTheme();
+    const colors = tokens(theme.palette.mode);
+    // const {colors} = useContext(ColorModeContext);
 
     // state 설정
     const [selectedKeys, setSelectedKeys] = useState(["smart"]); // 처음에 출력할 값

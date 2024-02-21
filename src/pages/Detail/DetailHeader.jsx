@@ -14,9 +14,9 @@ const DetailHeader = ({ title, subtitle,
     const location = useLocation();
     const lists = location.state?.lists;
 console.log("환자 정보",lists);
-    // const theme = useTheme();
-    // const colors = tokens(theme.palette.mode);
-    const {colors} = useContext(ColorModeContext);
+    const theme = useTheme();
+    const colors = tokens(theme.palette.mode);
+    // const {colors} = useContext(ColorModeContext);
 
     const commentColumns = [
         {

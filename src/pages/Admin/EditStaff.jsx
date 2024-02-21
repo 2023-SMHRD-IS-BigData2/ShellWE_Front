@@ -10,9 +10,9 @@ import Modal from '../DesktopOne/Modal'
 
 const StaffEdit = ({ closeModal, isOpen, selectedMemberName, selectedMemberId , selectedMemberPK, selectedMemberIds}) => {
     /** 다크모드 */
-    // const theme = useTheme();
-    // const colors = tokens(theme.palette.mode);
-    const {colors} = useContext(ColorModeContext);
+    const theme = useTheme();
+    const colors = tokens(theme.palette.mode);
+    // const {colors} = useContext(ColorModeContext);
     const [name, setName] = useState();
     const [password, setPassword] = useState();
     const [rank, setrank] = useState("");

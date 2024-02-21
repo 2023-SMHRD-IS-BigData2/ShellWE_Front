@@ -7,9 +7,9 @@ import { tokens, ChartContext, ColorModeContext } from "../../theme";
 
 const DateComponent = () => {
   /**다크모드 */
-  // const theme = useTheme();
-  // const colors = tokens(theme.palette.mode);
-  const {colors} = useContext(ColorModeContext);
+  const theme = useTheme();
+  const colors = tokens(theme.palette.mode);
+  // const {colors} = useContext(ColorModeContext);
 
 
   const { setSDate, setEDate } = useContext(ChartContext)

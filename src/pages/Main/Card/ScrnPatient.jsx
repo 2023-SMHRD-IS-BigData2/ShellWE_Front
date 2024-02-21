@@ -4,9 +4,9 @@ import ProgressCircle from "./ProgressCircle";
 import { useContext } from "react";
 
 const StatBox = ({ title, subtitle, icon, progress, increase }) => {
-    // const theme = useTheme();
-    // const colors = tokens(theme.palette.mode);
-    const {colors} = useContext(ColorModeContext);
+    const theme = useTheme();
+    const colors = tokens(theme.palette.mode);
+    // const {colors} = useContext(ColorModeContext);
 
     return (
         <Box width="100%" m="40px">

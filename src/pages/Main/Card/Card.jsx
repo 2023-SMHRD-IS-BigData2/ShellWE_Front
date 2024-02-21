@@ -15,9 +15,9 @@ const List = () => {
 
     const { Allpatient, Screening, todayScreening, percent } = useContext(DashboardContext);
     /** 다크모드 */
-    // const theme = useTheme();
-    // const colors = tokens(theme.palette.mode);
-    const {colors} = useContext(ColorModeContext);
+    const theme = useTheme();
+    const colors = tokens(theme.palette.mode);
+    // const {colors} = useContext(ColorModeContext);
 
     const notify = () => {
         if (todayScreening > 0) {

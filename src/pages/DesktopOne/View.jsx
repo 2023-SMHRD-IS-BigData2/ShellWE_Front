@@ -2,8 +2,8 @@ import React, { useState } from 'react'
 import { Route, Routes } from "react-router-dom";
 import { CssBaseline, ThemeProvider } from '@mui/material';
 import { ColorModeContext, PatientContext, tokens, useMode } from '../../theme';
-import Detail from '../Detail/DetailMain'
-import Dashboard from '../Main/Dashboard'
+import Detail from '../Detail/DetailMain';
+import Dashboard from '../Main/Dashboard';
 import Sidebar from '../Bar/Sidebar';
 
 
@@ -17,7 +17,7 @@ const View = () => {
   const [data, setData] = useState(null);
 
   return (
-    <ColorModeContext.Provider value={{colorMode, colors}}>
+    <ColorModeContext.Provider value={colorMode}>
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <div
