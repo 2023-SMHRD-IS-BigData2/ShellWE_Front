@@ -35,7 +35,7 @@ const Data = ({ setPatientNum }) => {
                 //     { state: res.data }); // state 변수에 데이터 담기
                 navigate(`/main/detail/${platinum}`, { state: { lists: lists[platinum] } });
                 setData(res.data[0]);
-                setPatientNum(platinum);
+                // setPatientNum(platinum); // 오류 뜸
             })
 
 

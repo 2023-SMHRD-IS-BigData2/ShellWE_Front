@@ -47,19 +47,19 @@ const App = () => {
     // ======================== 코멘트============================
 
     // 환자 값에 따라 디테일 페이지 다르게 하기
-    useEffect(() => {
-        setPatientNum(lists.patinum);
-        fetchData();
-    }, [num]);
+    // useEffect(() => {
+    //     setPatientNum(lists.patinum);
+    //     fetchData();
+    // }, [num]);
 
-    const fetchData = async () => {
-        try {
-            const response = await axios.get(`http://localhost:8088/boot/getList?patinum=${patientNum ? patientNum : lists.patinum}`);
-            setData(response.data[0]);
-        } catch (error) {
-            console.log(error);
-        }
-    };
+    // const fetchData = async () => {
+    //     try {
+    //         const response = await axios.get(`http://localhost:8088/boot/getList?patinum=${patientNum ? patientNum : lists.patinum}`);
+    //         setData(response.data[0]);
+    //     } catch (error) {
+    //         console.log(error);
+    //     }
+    // };
 
 
     // 디테일 페이지가 열렸을때 마지막 값이 출력
