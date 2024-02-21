@@ -35,7 +35,7 @@ const AllPatient = ({ title, subtitle, icon }) => {
                         {title == 0 ?
                             <></>
                             :
-                            { icon }
+                            icon
                         }
                     </Typography>
                 </Box>
