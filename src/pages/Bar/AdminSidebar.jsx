@@ -12,9 +12,9 @@ import DarkModeOutlinedIcon from "@mui/icons-material/DarkModeOutlined";
 import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
 
 const Item = ({ title, to, icon, selected, setSelected }) => {
-    // const theme = useTheme();
-    // const colors = tokens(theme.palette.mode);
-    const {colors} = useContext(ColorModeContext);
+    const theme = useTheme();
+    const colors = tokens(theme.palette.mode);
+    // const { colors } = useContext(ColorModeContext);
     return (
         <MenuItem
             active={selected === title}
@@ -25,7 +25,7 @@ const Item = ({ title, to, icon, selected, setSelected }) => {
             icon={icon}
         >
             <Typography
-            style={{color:colors.grey[100]}}
+                style={{ color: colors.grey[100] }}
             >{title}</Typography>
             <Link to={to} />
         </MenuItem>
@@ -34,8 +34,8 @@ const Item = ({ title, to, icon, selected, setSelected }) => {
 
 const Sidebar = () => {
     const theme = useTheme();
-    // const colors = tokens(theme.palette.mode);
-    const {colors} = useContext(ColorModeContext);
+    const colors = tokens(theme.palette.mode);
+    // const {colors} = useContext(ColorModeContext);
     const colorMode = useContext(ColorModeContext);
     const [isCollapsed, setIsCollapsed] = useState(false);
     const [selected, setSelected] = useState("Dashboard");
@@ -90,9 +90,9 @@ const Sidebar = () => {
                     </MenuItem>
 
                     <Box paddingLeft={isCollapsed ? undefined : "10%"}>
-                        
 
-                        
+
+
                         <Item
                             title="Staffs"
                             to="/admin"

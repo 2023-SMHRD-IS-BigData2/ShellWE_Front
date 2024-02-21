@@ -12,8 +12,7 @@ import AdminSidebar from '../Bar/AdminSidebar';
 const Admin = () => {
   
   const [theme, colorMode] = useMode();
-  // const colors = tokens(theme.palette.mode);
-  const {colors} = useContext(ColorModeContext);
+  const colors = tokens(theme.palette.mode);
   const [isSidebar, setIsSidebar] = useState(true);
 
   const [sepsisScore, setSepsisScore] = useState([]);
