@@ -236,19 +236,19 @@ const Data = () => {
                                     ? "#3e4396"
                                     : sepsisslevel === "Observing"
                                         ? ""
-                                        : sepsisslevel == "in action"
+                                        : sepsisslevel == "In Action"
                                             ? ""  // Moccasin
                                             : sepsisslevel == "Done"
                                                 ? "" // Moccasin
-                                                : "none",
+                                                : "None",
                                                 color: "#ffffff", // 글자색을 검은색으로 변경
                             }}
                         >
                             <MenuItem value="Screening">Screening</MenuItem>
                             <MenuItem value="Observing">Observing</MenuItem>
-                            <MenuItem value="None">None</MenuItem>
+                            <MenuItem value="In Action">In Action</MenuItem>
                             <MenuItem value="Done">Done</MenuItem>
-                            <MenuItem value="in action">in action</MenuItem>
+                            <MenuItem value="None">None</MenuItem>
                             {/* Screening
                             Screening (빨강)
                             Observing (초록)
