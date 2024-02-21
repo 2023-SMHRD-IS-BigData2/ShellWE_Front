@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 import Modal from "@mui/material/Modal";
 import Paper from "@mui/material/Paper";
 
@@ -16,7 +16,8 @@ const useModal = ({ isOpen, closeModal, children }) => {
                     maxWidth: "100%",
                     maxHeight: "90%",
                     overflowY: "auto",
-                    borderRadius:"30px"
+                    borderRadius:"30px",
+                    // backgroundColor: "#94bffe",
                 }}>
                 {children}
             </Paper>

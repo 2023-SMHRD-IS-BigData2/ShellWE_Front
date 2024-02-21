@@ -54,6 +54,7 @@ const List = () => {
                     <Box
                         gridColumn="span 3"
                         backgroundColor={colors.primary[999]}
+                        boxShadow="0px 2px 4px rgba(0, 0, 0, 0.2);"
                         display="flex"
                         alignItems="center"
                         justifyContent="center"
@@ -71,6 +72,7 @@ const List = () => {
                     <Box
                         gridColumn="span 3"
                         backgroundColor={colors.primary[400]}
+                        boxShadow="0px 2px 4px rgba(0, 0, 0, 0.2);"
                         display="flex"
                         alignItems="center"
                         justifyContent="center"
@@ -91,6 +93,9 @@ const List = () => {
                     <Box
                         gridColumn="span 3"
                         backgroundColor={colors.primary[400]}
+                        // boxShadow="-2px 0px 8px rgba(0.2, 0.3, 0.5, 0.2);"
+                        borderColor="grey"
+                        boxShadow="0px 2px 4px rgba(0, 0, 0, 0.2);"
                         display="flex"
                         alignItems="center"
                         justifyContent="space-between"
@@ -109,6 +114,7 @@ const List = () => {
                     <Box
                         gridColumn="span 3"
                         backgroundColor={colors.primary[400]}
+                        boxShadow="0px 2px 4px rgba(0, 0, 0, 0.2);"
                         display="flex"
                         alignItems="center"
                         justifyContent="center"

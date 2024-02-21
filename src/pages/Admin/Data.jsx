@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
-import { AdminContext } from "../../theme";
+import { AdminContext, ColorModeContext } from "../../theme";
 import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
 import ClearIcon from '@mui/icons-material/Clear';
 import AddStaff from "./AddStaff";
@@ -15,7 +15,7 @@ const AdminData = () => {
         isModalOpen, isAddModalOpen, setIsAddModalOpen,
         showConfirmation, setShowConfirmation, fetchData
     } = useContext(AdminContext);
-
+    // const {colors} = useContext(ColorModeContext);
     const [selectedMemberNum, setSelectedMemberNum] = useState(null);
 
     // 의료진 수정할 때 사용
@@ -145,7 +145,7 @@ const AdminData = () => {
                         left: "50%",
                         transform: "translate(-50%, -50%)",
                         borderRadius: "3%",
-                        backgroundColor: "lightgray",
+                        // backgroundColor: ,
                         padding: "20px",
                         textAlign: "center",
                         color: "black"

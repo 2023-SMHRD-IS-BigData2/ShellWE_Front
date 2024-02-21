@@ -181,7 +181,10 @@ const App = () => {
                 marginTop="60px"
             >
                 <Card />
-                <Data setPatientNum={setPatientNum} />
+
+                <Data />
+               
+
             </Box >
         </DashboardContext.Provider>
 
