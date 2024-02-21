@@ -1,13 +1,16 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import axios from 'axios';
 import { Box } from "@mui/material";
-import { DashboardContext } from "../../theme";
+import { DashboardContext, PatientContext } from "../../theme";
 import Card from './Card/Card';
 import Data from './Data';
 
 // 대쉬보드
 const App = () => {
+
+    const { setPatientNum } = useContext(PatientContext);
+
     // 로그인한 사람의 id값 state로 가져오기
     const location = useLocation();
     const [id] = useState(location.state?.id);
@@ -178,7 +181,7 @@ const App = () => {
                 marginTop="60px"
             >
                 <Card />
-                <Data />
+                <Data setPatientNum={setPatientNum} />
             </Box >
         </DashboardContext.Provider>
 

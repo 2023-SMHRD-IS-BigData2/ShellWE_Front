@@ -12,9 +12,9 @@ import DarkModeOutlinedIcon from "@mui/icons-material/DarkModeOutlined";
 import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
 
 const Item = ({ title, to, icon, selected, setSelected }) => {
-    const theme = useTheme();
-    const colors = tokens(theme.palette.mode);
-    
+    // const theme = useTheme();
+    // const colors = tokens(theme.palette.mode);
+    const {colors} = useContext(ColorModeContext);
     return (
         <MenuItem
             active={selected === title}
@@ -34,7 +34,8 @@ const Item = ({ title, to, icon, selected, setSelected }) => {
 
 const Sidebar = () => {
     const theme = useTheme();
-    const colors = tokens(theme.palette.mode);
+    // const colors = tokens(theme.palette.mode);
+    const {colors} = useContext(ColorModeContext);
     const colorMode = useContext(ColorModeContext);
     const [isCollapsed, setIsCollapsed] = useState(false);
     const [selected, setSelected] = useState("Dashboard");

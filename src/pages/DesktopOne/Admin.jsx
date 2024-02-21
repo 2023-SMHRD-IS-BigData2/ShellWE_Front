@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Route, Routes } from "react-router-dom";
 import axios from 'axios';
 import { CssBaseline, ThemeProvider } from '@mui/material';
-import { AdminContext, ColorModeContext, useMode } from '../../theme';
+import { AdminContext, ColorModeContext, tokens, useMode } from '../../theme';
 import Dashboard from '../Admin/DesignTable'
 import Settings from '../Admin/Settings'
 import AdminSidebar from '../Bar/AdminSidebar';
@@ -12,6 +12,8 @@ import AdminSidebar from '../Bar/AdminSidebar';
 const Admin = () => {
   
   const [theme, colorMode] = useMode();
+  // const colors = tokens(theme.palette.mode);
+  const {colors} = useContext(ColorModeContext);
   const [isSidebar, setIsSidebar] = useState(true);
 
   const [sepsisScore, setSepsisScore] = useState([]);
@@ -56,7 +58,7 @@ const Admin = () => {
   }, [showConfirmation, isModalOpen, isAddModalOpen]);
 
   return (
-    <ColorModeContext.Provider value={colorMode}>
+    <ColorModeContext.Provider value={{colorMode, colors}}>
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <div className="app" style={{ width: "2030px" }}>

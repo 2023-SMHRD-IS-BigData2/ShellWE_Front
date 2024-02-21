@@ -1,17 +1,18 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import axios from "axios";
 import { Box, Typography, useTheme } from "@mui/material";
 import { RadioGroup, FormControlLabel, Radio } from '@mui/material';
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from '@mui/material';
 import InputBase from "@mui/material/InputBase";
-import { tokens } from "../../theme";
+import { ColorModeContext, tokens } from "../../theme";
 import Modal from '../DesktopOne/Modal'
 
 
 const StaffEdit = ({ closeModal, isOpen, selectedMemberName, selectedMemberId , selectedMemberPK, selectedMemberIds}) => {
     /** 다크모드 */
-    const theme = useTheme();
-    const colors = tokens(theme.palette.mode);
+    // const theme = useTheme();
+    // const colors = tokens(theme.palette.mode);
+    const {colors} = useContext(ColorModeContext);
     const [name, setName] = useState();
     const [password, setPassword] = useState();
     const [rank, setrank] = useState("");

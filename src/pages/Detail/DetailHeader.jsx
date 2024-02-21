@@ -1,10 +1,10 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { useLocation } from 'react-router-dom';
 import { Box, IconButton, InputBase, Typography, useTheme } from '@mui/material'
 import { DataGrid } from '@mui/x-data-grid';
 import MailOutlineIcon from '@mui/icons-material/MailOutline';
 import SendIcon from '@mui/icons-material/Send';
-import { tokens } from "../../theme";
+import { ColorModeContext, tokens } from "../../theme";
 import Modal from '../DesktopOne/Modal';
 
 const DetailHeader = ({ title, subtitle,
@@ -14,8 +14,9 @@ const DetailHeader = ({ title, subtitle,
     const location = useLocation();
     const lists = location.state?.lists;
 console.log("환자 정보",lists);
-    const theme = useTheme();
-    const colors = tokens(theme.palette.mode);
+    // const theme = useTheme();
+    // const colors = tokens(theme.palette.mode);
+    const {colors} = useContext(ColorModeContext);
 
     const commentColumns = [
         {
