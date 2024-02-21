@@ -20,6 +20,9 @@ const Data = () => {
     const colors = tokens(theme.palette.mode);
     const [hoveredRowId, setHoveredRowId] = useState(null);
 
+    // 마우스 올렸는지/안 올렸는지
+    const [isHovered, setIsHovered] = useState(null);
+
     // lists 값이 null인 경우 로딩 상태를 표시하거나 다른 방식으로 처리
     if (lists === null) {
         return <div>Loading...</div>;
@@ -312,10 +315,12 @@ const Data = () => {
         ...comments,
         id: index + 1,
     }));
-    // 마우스 올렸는지/안 올렸는지
-    const [isHovered, setIsHovered] = useState(null);
+
+
+
     /** 마우스 올렸을 때 */
     const handleMouseEnter = (key) => {
+        console.log("key", key);
         setIsHovered(key);
     };
     /** 마우스 안 올렸을 때 */
@@ -362,28 +367,39 @@ const Data = () => {
 
                     },
                     transition: "all 0.3s ease",
-                    transform: isHovered === key ? "scale(1.05, 1.2)" : "scale(1, 1)",
+                    transform: isHovered ? "scale(1.05, 1.2)" : "scale(1, 1)",
 
 
                 }}>
                 <DataGrid
                     rows={listsWithId}                       /** 환자 데이터 */
                     columns={columnslist}                /** 컬럼명 */
-                    components={{ Toolbar: GridToolbar }}    /** 필터 기능 (다운로드, 크기 조절) */
+                    components={{
+                        Toolbar: GridToolbar,
+                        // Row: ({ listsWithId, ...other }) => (
+                        //     <div
+                        //         onMouseEnter={(e) => handleMouseEnter(e)}
+                        //         onMouseLeave={() => setIsHovered(null)}
+                        //     >
+                        //        {other.children}
+                        //     </div>
+                        // ),
+                    }}    /** 필터 기능 (다운로드, 크기 조절) */
                     autoPageSize={10}
-                    componentsProps={{ // 테마를 컴포넌트에 적용
-                        MuiDataGrid: {
-                            tableTheme,
-                        },
-                    }}
-                    onMouseEnter={() => {setHoveredRowId(event.row.id) }}
-                    onMouseLeave={() => { setHoveredRowId(null) }}
+                    // componentsProps={{ // 테마를 컴포넌트에 적용
+                    //     MuiDataGrid: {
+                    //         tableTheme,
+                    //     },
+                    // }}
+                    row
+                    rowSelection={(e) => { handleMouseEnter(e.row.id) }}
+                // onRowLeave={() => { handleMouseLeave(null) }}
                 />
-                <Typography sx={{
+                {/* <Typography sx={{
                     transform: isHovered === key ? "none" : "inherit",
                 }} color={colors.greenAccent[500]} variant="h4" fontWeight="600">
                     {key}
-                </Typography>
+                </Typography> */}
             </Box>
 
             {/** 코멘트 모달 */}
