@@ -2,7 +2,7 @@ import React from 'react'
 import { Route, Routes } from "react-router-dom";
 import View from './View';
 import Login from '../Login/Login'
-import Admin from '../Admin/Admin';
+import Admin from './Admin';
 
 const ShellWE = () => {
 

@@ -1,13 +1,13 @@
 import React, { useContext, useState } from "react";
-import { DashboardContext, tokens } from "../../theme";
-import { createTheme, useTheme } from "@mui/material"
-import { Box, Typography, IconButton, Button, Select, MenuItem } from "@mui/material";
-import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import { useNavigate } from 'react-router-dom';
-import CommentModal from "../DesktopOne/CommentModal";
+import { createTheme, useTheme } from "@mui/material"
+import { Box, IconButton, Select, MenuItem } from "@mui/material";
+import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import InputBase from "@mui/material/InputBase";
 import SendIcon from '@mui/icons-material/Send';
 import MailOutlineIcon from '@mui/icons-material/MailOutline';
+import { DashboardContext, tokens } from "../../theme";
+import Modal from "../DesktopOne/Modal";
 import { toast, ToastContainer } from "react-toastify"
 
 
@@ -38,14 +38,14 @@ const Data = () => {
         id: index + 1,
     }));
     // toast 컴포넌트
-     const notify = () => toast("Toastify Alert!")
-  
-   // 버튼 클릭시 notify 함수 실행하기
-   // 알람 실행시 표시될 컨테이너 넣어주기
-//    return <div>
-//      <button onClick={notify}></button>
-//      <ToastContainer/>
-//    </div>
+    const notify = () => toast("Toastify Alert!")
+
+    // 버튼 클릭시 notify 함수 실행하기
+    // 알람 실행시 표시될 컨테이너 넣어주기
+    //    return <div>
+    //      <button onClick={notify}></button>
+    //      <ToastContainer/>
+    //    </div>
 
     // 환자 테이블 컬럼
     const columnslist = [
@@ -241,7 +241,7 @@ const Data = () => {
                                             : sepsisslevel == "Done"
                                                 ? "" // Moccasin
                                                 : "None",
-                                                color: "#ffffff", // 글자색을 검은색으로 변경
+                                color: "#ffffff", // 글자색을 검은색으로 변경
                             }}
                         >
                             <MenuItem value="Screening">Screening</MenuItem>
@@ -397,7 +397,7 @@ const Data = () => {
             </Box>
 
             {/** 코멘트 모달 */}
-            <CommentModal
+            <Modal
                 isOpen={isModalOpen} closeModal={closeModal}>
                 <Box m="40px">
                     <Box
@@ -446,7 +446,7 @@ const Data = () => {
                         </IconButton>
                     </Box>
                 </Box>
-            </CommentModal>
+            </Modal>
         </Box>
     )
 }

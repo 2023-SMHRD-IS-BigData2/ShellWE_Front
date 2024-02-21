@@ -1,12 +1,12 @@
-import { useContext, useEffect, useState } from "react";
-import { DataGrid, GridToolbar } from "@mui/x-data-grid";
-import axios from "axios";
-import DoctorForm from "./DoctorForm";
-import ClearIcon from '@mui/icons-material/Clear';
-import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
-import StaffEdit from "./StaffEdit";
+import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import { AdminContext } from "../../theme";
+import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
+import ClearIcon from '@mui/icons-material/Clear';
+import AddStaff from "./AddStaff";
+import EditStaff from "./EditStaff";
 
 const AdminData = () => {
     const {
@@ -157,8 +157,8 @@ const AdminData = () => {
                 </div>
             )}
 
-            <DoctorForm closeModal={closeModal} isOpen={isModalOpen} />
-            <StaffEdit closeModal={closeModal} isOpen={isAddModalOpen} memberData={memberData}
+            <AddStaff closeModal={closeModal} isOpen={isModalOpen} />
+            <EditStaff closeModal={closeModal} isOpen={isAddModalOpen} memberData={memberData}
                 selectedMemberName={selectedMemberName} selectedMemberId={selectedMemberId}
                 selectedMemberIds={selectedMemberIds} selectedMemberPK={selectedMemberPK} />
         </div>

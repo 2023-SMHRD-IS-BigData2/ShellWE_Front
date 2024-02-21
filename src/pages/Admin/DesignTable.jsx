@@ -1,8 +1,7 @@
 import React from "react";
-import { Box } from "@mui/material";
+import { Box,useTheme } from "@mui/material";
 import { tokens } from "../../theme";
-import { useTheme } from "@mui/material";
-import Data from "./AdminData";
+import Data from "./Data";
 
 
 const List = () => {

@@ -205,6 +205,9 @@ export const DashboardContext = createContext(
 export const AdminContext = createContext(
   null
 );
+export const ChartContext = createContext(
+  null
+);
 
 
 /**색상 설정하는 함수 */

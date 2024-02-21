@@ -1,10 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { useLocation } from 'react-router-dom';
+import axios from 'axios';
 import { Box } from "@mui/material";
 import { DashboardContext } from "../../theme";
-import Data from './Data';
-import axios from 'axios';
 import Card from './Card/Card';
-import { useLocation } from 'react-router-dom';
+import Data from './Data';
 
 // 대쉬보드
 const App = () => {
@@ -162,9 +162,6 @@ const App = () => {
         }
     };
 
-    // screening환자 추가될 때 마다 toast띄우기
-
-
     return (
         <DashboardContext.Provider
             value={{
@@ -179,18 +176,8 @@ const App = () => {
             <Box
                 m="20px"
                 marginTop="60px"
-            // width="97.5%"
-
             >
-                <Box
-                // display="grid"
-                // gridTemplateColumns="repeat(12, 1fr)"
-                // gridAutoRows="140px"
-                // gap="20px"
-                >
-
-                    <Card />
-                </Box>
+                <Card />
                 <Data />
             </Box >
         </DashboardContext.Provider>

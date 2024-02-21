@@ -2,7 +2,7 @@ import React from 'react'
 import Modal from "@mui/material/Modal";
 import Paper from "@mui/material/Paper";
 
-const CommentModal = ({ isOpen, closeModal, children }) => {
+const useModal = ({ isOpen, closeModal, children }) => {
     return (
         <Modal open={isOpen} onClose={closeModal}>
             <Paper
@@ -12,7 +12,7 @@ const CommentModal = ({ isOpen, closeModal, children }) => {
                     left: "50%",
                     transform: "translate(-50%,-50%)",
                     width: 800,
-                    height: 600,
+                    height: 620,
                     maxWidth: "100%",
                     maxHeight: "90%",
                     overflowY: "auto",
@@ -25,4 +25,4 @@ const CommentModal = ({ isOpen, closeModal, children }) => {
 }
 
 
-export default CommentModal
+export default useModal;

@@ -1,12 +1,11 @@
-import axios from "axios";
 import React, { useState } from "react";
-import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from '@mui/material';
-import AddModal from './Modal/AddModal';
-import { Box, Typography } from "@mui/material";
-import { tokens } from "../../theme";
-import { useTheme } from "@mui/material"
-import InputBase from "@mui/material/InputBase";
+import { Box, Typography, useTheme } from '@mui/material';
 import { RadioGroup, FormControlLabel, Radio } from '@mui/material';
+import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from '@mui/material';
+import axios from "axios";
+import { tokens } from "../../theme";
+import InputBase from "@mui/material/InputBase";
+import Modal from '../DesktopOne/Modal';
 
 const DoctorForm = ({ closeModal, isOpen }) => {
   const [name, setName] = useState("");
@@ -58,12 +57,12 @@ const DoctorForm = ({ closeModal, isOpen }) => {
 
   return (
     <div>
-      <AddModal isOpen={isOpen} closeModal={closeModal}>
+      <Modal isOpen={isOpen} closeModal={closeModal}>
         <Box m="40px">
           <Box
             // m="20px"
             display="flex" margin="auto" justifyContent="center"
-            >
+          >
 
             <form onSubmit={handleSubmit}>
               <TableContainer
@@ -151,7 +150,7 @@ const DoctorForm = ({ closeModal, isOpen }) => {
                               backgroundColor: colors.greenAccent[500]
                             }}
                             type="submit" onClick={logFormData}>
-                           등록
+                            등록
                           </button>
                         </div>
                       </TableCell>
@@ -163,7 +162,7 @@ const DoctorForm = ({ closeModal, isOpen }) => {
             </form>
           </Box>
         </Box>
-      </AddModal>
+      </Modal>
     </div>
   );
 };

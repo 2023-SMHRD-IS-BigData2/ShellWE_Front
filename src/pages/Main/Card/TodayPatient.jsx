@@ -1,21 +1,17 @@
 import { Box, Typography, useTheme } from "@mui/material";
 import { tokens } from "../../../theme";
-// import ProgressCircle from "./ProgressCircle";
-import NewReleasesOutlinedIcon from '@mui/icons-material/NewReleasesOutlined';
-import ShieldOutlinedIcon from '@mui/icons-material/ShieldOutlined';
-import ShieldIcon from '@mui/icons-material/Shield';
-import NewReleasesIcon from '@mui/icons-material/NewReleases';
 
-const AllPatient = ({ title, subtitle, icon, progress, increase }) => {
+const AllPatient = ({ title, subtitle, icon }) => {
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
 
     return (
-        <Box width="100%" m="100px">
+        <Box width="100%" m="0 80px 0 80px">
             <Box display="flex" justifyContent="space-between">
                 <Box display="auto"
-                    alignItems="center">
-                    <Typography variant="h4" m="12px 0 0 0" sx={{
+                    alignItems="center"
+                    mt="5px">
+                    <Typography variant="h2" fontWeight="bold" sx={{
                         color:
                             title === 0 ? colors.greenAccent[500] :
                                 colors.redAccent[500]
@@ -23,8 +19,8 @@ const AllPatient = ({ title, subtitle, icon, progress, increase }) => {
                         {subtitle}
                     </Typography>
                 </Box>
-                <Box>
-                    {/* {icon} */}
+                <Box display="auto"
+                    alignItems="center">
                     <Typography
                         variant="h1"
                         fontWeight="bold"
@@ -33,13 +29,13 @@ const AllPatient = ({ title, subtitle, icon, progress, increase }) => {
                         {title}
                     </Typography>
                 </Box>
-                <Box sx={{ scale: "1.5" }}>
-                    <Typography variant="h1">
+                <Box display="auto"
+                    alignItems="center">
+                    <Typography variant="h1" sx={{ scale: "1.5" }}>
                         {title == 0 ?
-                            // <ShieldIcon style={{ color: colors.greenAccent[400] }} />
                             <></>
                             :
-                            <NewReleasesIcon style={{ color: colors.redAccent[500] }} />
+                            { icon }
                         }
                     </Typography>
                 </Box>

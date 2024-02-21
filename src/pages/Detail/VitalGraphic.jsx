@@ -1,8 +1,7 @@
 import React, { useContext } from 'react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, ResponsiveContainer, Brush } from 'recharts';
-import { ChartContext } from './ChartContext';
 import { Box, Typography, useTheme } from "@mui/material";
-import { tokens } from "../../theme";
+import { tokens, ChartContext } from "../../theme";
 
 const CustomizedLabel = ({ x, y, value }) => {
     /** 다크모드 */

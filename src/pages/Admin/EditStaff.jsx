@@ -1,13 +1,11 @@
 import React, { useState } from "react";
-import AddModal from './Modal/AddModal'
-import { tokens } from "../../theme";
-import { useTheme } from "@mui/material"
 import axios from "axios";
-import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from '@mui/material';
-import { Box, Typography } from "@mui/material";
-import InputBase from "@mui/material/InputBase";
+import { Box, Typography, useTheme } from "@mui/material";
 import { RadioGroup, FormControlLabel, Radio } from '@mui/material';
-import { useLocation } from "react-router-dom";
+import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from '@mui/material';
+import InputBase from "@mui/material/InputBase";
+import { tokens } from "../../theme";
+import Modal from '../DesktopOne/Modal'
 
 
 const StaffEdit = ({ closeModal, isOpen, selectedMemberName, selectedMemberId , selectedMemberPK, selectedMemberIds}) => {
@@ -70,7 +68,7 @@ const StaffEdit = ({ closeModal, isOpen, selectedMemberName, selectedMemberId , 
 
     return (
         <div>
-            <AddModal isOpen={isOpen} closeModal={closeModal}>
+            <Modal isOpen={isOpen} closeModal={closeModal}>
                 <Box m="40px">
                     <Box
                         // m="20px"
@@ -189,7 +187,7 @@ const StaffEdit = ({ closeModal, isOpen, selectedMemberName, selectedMemberId , 
 
                     </Box>
                 </Box>
-            </AddModal>
+            </Modal>
         </div>
     )
 }

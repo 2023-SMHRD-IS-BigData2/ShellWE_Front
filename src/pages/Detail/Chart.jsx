@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
-import { ChartContext } from './ChartContext';
 import { Box, Typography, useTheme } from "@mui/material";
-import { tokens } from "../../theme";
+import { tokens, ChartContext } from "../../theme";
 
 const Charts = () => {
 

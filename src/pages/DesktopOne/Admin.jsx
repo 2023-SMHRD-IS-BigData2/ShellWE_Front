@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { Route, Routes } from "react-router-dom";
-import { AdminContext, ColorModeContext, useMode } from '../../theme';
-import { CssBaseline, ThemeProvider } from '@mui/material';
-import Dashboard from './DesignTable'
-import Settings from './Settings'
-import Sidebar from './Sidebar';
 import axios from 'axios';
+import { CssBaseline, ThemeProvider } from '@mui/material';
+import { AdminContext, ColorModeContext, useMode } from '../../theme';
+import Dashboard from '../Admin/DesignTable'
+import Settings from '../Admin/Settings'
+import AdminSidebar from '../Bar/AdminSidebar';
 
 
 
@@ -60,7 +60,7 @@ const Admin = () => {
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <div className="app" style={{ width: "2030px" }}>
-          <Sidebar isSidebar={isSidebar} />
+          <AdminSidebar isSidebar={isSidebar} />
           <main className="content" >
             {/* <Topbar setIsSidebar={setIsSidebar} /> */}
 

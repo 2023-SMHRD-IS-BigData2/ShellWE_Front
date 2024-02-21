@@ -1,15 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useLocation } from 'react-router-dom'
-import { tokens } from "../../theme";
-import Rechart from "./Rechart";
-import Chart from "./Chart";
-import Graph from "./graph";
-import Date from "./DateComponent";
-import { ChartContext } from "./ChartContext";
-import DetailHeader from "./DetailHeader";
 import axios from 'axios';
 import { Box, Button, useTheme } from "@mui/material";
 import DownloadOutlinedIcon from "@mui/icons-material/DownloadOutlined";
+import { tokens, ChartContext } from "../../theme";
+import Rechart from "./Rechart";
+import Chart from "./Chart";
+import Graphic from "./VitalGraphic";
+import Date from "./DateComponent";
+import DetailHeader from "./DetailHeader";
 
 // 연동 및 데이터 집어넣기
 const App = () => {
@@ -192,7 +191,7 @@ const App = () => {
             >
               <Rechart />
               <Date />
-              <Graph />
+              <Graphic />
               <Chart />
 
             </Box>

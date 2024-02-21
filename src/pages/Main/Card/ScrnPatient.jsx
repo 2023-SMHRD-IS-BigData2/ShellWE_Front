@@ -7,41 +7,28 @@ const StatBox = ({ title, subtitle, icon, progress, increase }) => {
     const colors = tokens(theme.palette.mode);
 
     return (
-        <Box width="100%" m="100px">
-            <Box display="flex" justifyContent="space-between" width="200px">
-                {/* <Box display="auto"
+        <Box width="100%" m="40px">
+            <Box display="flex" justifyContent="space-between">
+                <Box display="auto"
                     alignItems="center">
-                    <Typography variant="h4" m="12px 0 0 0" sx={{ color: colors.greenAccent[500], scale:"1.5" }}>
-                         {subtitle} 
-                    {icon}
-                    </Typography>
-                </Box> */}
-                <Box>
-                    <Typography
-                        variant="h2"
-                        fontWeight="bold"
-                        sx={{ color: colors.grey[100],
-                            scale:"1.5" }}
-                        >
-                        {icon}
+                    <Typography variant="h2" fontWeight="bold" m="6px 0 0 0" sx={{ color: colors.greenAccent[500] }}>
+                        {subtitle}
                     </Typography>
                 </Box>
                 <Box>
                     <Typography
-                        variant="h2"
+                        variant="h1"
                         fontWeight="bold"
+                        m="0 10px 0 10px"
                         sx={{ color: colors.grey[100] }}
                     >
                         {title}
                     </Typography>
                 </Box>
-                {/* <Box
+                <Box
                     position='relative'
                     display='flex'
                     alignItems='center'
-                // justifyContent='center'
-                // flexDirection='column'
-                // transform='scale(1.4)'
                 >
                     <Box sx={{
                         scale: "1.5"
@@ -60,7 +47,7 @@ const StatBox = ({ title, subtitle, icon, progress, increase }) => {
                     >
                         {increase}
                     </Typography>
-                </Box> */}
+                </Box>
             </Box>
         </Box>
     );

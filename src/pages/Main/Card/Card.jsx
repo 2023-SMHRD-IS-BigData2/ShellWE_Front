@@ -1,15 +1,13 @@
 import React, { useContext, useEffect } from "react";
-import { Box, Typography } from "@mui/material";
+import { Box, useTheme } from "@mui/material";
+import GroupsOutlinedIcon from '@mui/icons-material/GroupsOutlined';
+import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined';
+import NewReleasesIcon from '@mui/icons-material/NewReleases';
 import { DashboardContext, tokens } from "../../../theme";
-import { useTheme } from "@mui/material";
-import PeopleOutlinedIcon from "@mui/icons-material/PeopleOutlined";
-import StatBox from './StatBox';
-// import ProgressCircle from "../ProgressCircle";
+import ScrnPatient from './ScrnPatient';
 import AllPatient from "./AllPatient";
 import TodayPatient from "./TodayPatient";
-import Member from './Member'
-import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined';
-import ProgressCircle from "./ProgressCircle";
+import Logined from './Logined'
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -61,9 +59,8 @@ const List = () => {
                         justifyContent="center"
                         borderRadius="30px"
                     >
-                        <Member
+                        <Logined
                             title={"사용자"}         // 값
-                            // subtitle="로그인"        // 제목
                             icon={                    //  아이콘
                                 <PersonOutlineOutlinedIcon
                                     sx={{ color: colors.greenAccent[600], fontSize: "26px" }}
@@ -81,11 +78,9 @@ const List = () => {
                     >
                         <AllPatient
                             title={Allpatient}         // 값
-                            subtitle="전체 환자"        // 제목
-                            // progress="0.14"           // 그래프
-                            // increase="+14%"           // 퍼센트
+                            subtitle="ALL"        // 제목
                             icon={                    //  아이콘
-                                <PeopleOutlinedIcon
+                                <GroupsOutlinedIcon
                                     sx={{ color: colors.greenAccent[600], fontSize: "26px" }}
                                 />
                             }
@@ -101,16 +96,11 @@ const List = () => {
                         justifyContent="space-between"
                         borderRadius="30px"
                     >
-                        <StatBox
+                        <ScrnPatient
                             title={Screening}         // 값
-                            subtitle="스크리닝 환자"        // 제목
+                            subtitle="SCREENING"        // 제목
                             progress={Screening / Allpatient}          // 그래프
                             increase={percent + "%"}           // 퍼센트
-                            icon={                    //  아이콘
-                                <PeopleOutlinedIcon
-                                    sx={{ color: colors.greenAccent[600], fontSize: "26px" }}
-                                />
-                            }
                         />
 
                     </Box>
@@ -126,18 +116,14 @@ const List = () => {
                     >
                         <TodayPatient
                             title={todayScreening}                // 값
-                            subtitle="신규 환자"        // 제목
-                            progress="0.34"           // 그래프
-                            increase="+14%"           // 퍼센트
-                            icon={                    //  아이콘
-                                <PeopleOutlinedIcon
-                                    sx={{ color: colors.greenAccent[600], fontSize: "26px" }}
+                            subtitle="NEW"        // 제목
+                            icon={
+                                <NewReleasesIcon
+                                    sx={{ color: colors.redAccent[500], fontSize: "26px" }}
                                 />
                             }
                         />
                     </Box>
-
-                    
                 </Box>
             </div>
         </>

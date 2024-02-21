@@ -1,10 +1,10 @@
 import React, { useContext, useEffect, useState } from "react";
+import axios from "axios";
 import { Box, useTheme, Typography, InputBase } from "@mui/material";
 import Accordion from "@mui/material/Accordion";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import axios from "axios";
 import { AdminContext, tokens } from "../../theme";
 
 const FAQ = () => {

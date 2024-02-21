@@ -1,11 +1,11 @@
-import { Box, IconButton, InputBase, Typography, useTheme } from '@mui/material'
 import React from 'react'
-import { tokens } from "../../theme";
-import MailOutlineIcon from '@mui/icons-material/MailOutline';
-import CommentModal from '../DesktopOne/CommentModal';
-import { DataGrid } from '@mui/x-data-grid';
-import SendIcon from '@mui/icons-material/Send';
 import { useLocation } from 'react-router-dom';
+import { Box, IconButton, InputBase, Typography, useTheme } from '@mui/material'
+import { DataGrid } from '@mui/x-data-grid';
+import MailOutlineIcon from '@mui/icons-material/MailOutline';
+import SendIcon from '@mui/icons-material/Send';
+import { tokens } from "../../theme";
+import Modal from '../DesktopOne/Modal';
 
 const DetailHeader = ({ title, subtitle,
     comments, setInputValue, handleSubmit, inputValue,
@@ -77,7 +77,7 @@ console.log("환자 정보",lists);
                     </Box>
                 </Box>
             </Box>
-            <CommentModal
+            <Modal
                 isOpen={isModalOpen} closeModal={closeModal}>
                 <Box m="40px">
                     {/* 환자 정보 */}
@@ -139,7 +139,7 @@ console.log("환자 정보",lists);
                         </IconButton>
                     </Box>
                 </Box>
-            </CommentModal>
+            </Modal>
 
         </Box >
     )

@@ -1,9 +1,8 @@
 import React, { useState, useContext } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-import { ChartContext } from './ChartContext'
 import { Box, useTheme } from "@mui/material";
-import { tokens } from "../../theme";
+import { tokens, ChartContext } from "../../theme";
 
 
 const DateComponent = () => {
