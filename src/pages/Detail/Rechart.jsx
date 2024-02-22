@@ -132,12 +132,28 @@ export default function Example() {
                         SMART
                     </button>
                     <button
+                        onClick={() => handleButtonClick("hr")}
+                        style={{//
+                            background: selectedKeys.includes("hr") ? "#C5ACE8" : "#fff",
+                        }}
+                    >
+                        HR
+                    </button>
+                    <button
                         onClick={() => handleButtonClick("o2sat")}
                         style={{
                             background: selectedKeys.includes("o2sat") ? "#F0B884" : "#fff",
                         }}
                     >
                         O2sat
+                    </button>
+                    <button
+                        onClick={() => handleButtonClick("sbp")}
+                        style={{
+                            background: selectedKeys.includes("sbp") ? "#ACBBE8" : "#fff",
+                        }}
+                    >
+                        SBP
                     </button>
                     <button
                         onClick={() => handleButtonClick("dbp")}
@@ -155,22 +171,6 @@ export default function Example() {
                     >
                         Temp
                     </button>
-                    <button
-                        onClick={() => handleButtonClick("sbp")}
-                        style={{
-                            background: selectedKeys.includes("sbp") ? "#ACBBE8" : "#fff",
-                        }}
-                    >
-                        SBP
-                    </button>
-                    <button
-                        onClick={() => handleButtonClick("hr")}
-                        style={{
-                            background: selectedKeys.includes("hr") ? "#C5ACE8" : "#fff",
-                        }}
-                    >
-                        HR
-                    </button>
                 </Box>
             </Box>
             <Box height="250px" m="-20px 0 0 0" >
@@ -180,20 +180,22 @@ export default function Example() {
                         data={filteredData}
                         margin={{ top: 43, bottom: 40, right: 80, left: 80 }}
                     >
-                        <CartesianGrid vertical={false} strokeOpacity={0.3} />
+                        <CartesianGrid vertical={false} strokeOpacity={0.3} style={{backgroundColor:"red", width:"200px", height:"10px"}} />
                         <XAxis
                             dataKey="time"
+                            
+                            style={{backgroundColor:"red", width:"100px", height:"10px"}}
                             tickFormatter={(value) => value.slice(0, 16)}
                             onClick={(event) => {
                                 handleXAxisClick(event.value);
                             }}
                         />
                         <YAxis yAxisId="smart" dataKey="smart" domain={[0, 100]} hide />
-                        <YAxis yAxisId="o2sat" dataKey="o2sat" domain={[0, 100]} hide />
-                        <YAxis yAxisId="dbp" dataKey="dbp" domain={[0, 100]} hide />
-                        <YAxis yAxisId="temp" dataKey="temp" domain={[31, 90]} hide />
-                        <YAxis yAxisId="sbp" dataKey="sbp" domain={[0, 80]} hide />
-                        <YAxis yAxisId="hr" dataKey="hr" domain={[0, 100]} hide />
+                        <YAxis yAxisId="hr" dataKey="hr" domain={[50, 120]} hide />
+                        <YAxis yAxisId="o2sat" dataKey="o2sat" domain={[80, 100]} hide />
+                        <YAxis yAxisId="sbp" dataKey="sbp" domain={[80, 180]} hide />
+                        <YAxis yAxisId="dbp" dataKey="dbp" domain={[40, 100]} hide />
+                        <YAxis yAxisId="temp" dataKey="temp" domain={[35, 38]} hide />
                         <Tooltip />
                         {lines}
                         <Brush

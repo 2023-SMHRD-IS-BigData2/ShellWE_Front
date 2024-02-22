@@ -73,6 +73,7 @@ const Charts = () => {
                 fontSize="15px"
                 sx={{
                   transform: "none",
+                  color: colors.grey[100]
                 }}>
                 {
                   value
