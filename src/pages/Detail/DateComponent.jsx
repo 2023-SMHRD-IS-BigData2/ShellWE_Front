@@ -12,10 +12,10 @@ const DateComponent = () => {
   // const {colors} = useContext(ColorModeContext);
 
 
-  const { setSDate, setEDate } = useContext(ChartContext)
+  const { setSDate, setEDate, StartDate } = useContext(ChartContext)
 
 
-  const [startDate, setStartDate] = useState(new Date()); // 시작 날짜 상태와 상태를 업데이트하는 함수
+  const [startDate, setStartDate] = useState(StartDate); // 시작 날짜 상태와 상태를 업데이트하는 함수
   const [endDate, setEndDate] = useState(null); // 끝 날짜 상태와 상태를 업데이트하는 함수
 
   const onChange = (dates) => {

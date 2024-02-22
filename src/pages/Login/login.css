@@ -2094,7 +2094,7 @@
   }
   
   :root {
-    --black: #0d1015;
+    --black: #141b2d; /* 배경 색 */
     --elegance-white: #cfcfd0;
     --white: white;
     --steel-blue: #337cf8;
