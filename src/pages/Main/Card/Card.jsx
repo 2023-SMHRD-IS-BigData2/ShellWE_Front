@@ -11,7 +11,7 @@ import Logined from './Logined'
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-const List = () => {
+const List = ({id}) => {
 
     const { Allpatient, Screening, todayScreening, percent } = useContext(DashboardContext);
     /** 다크모드 */
@@ -61,7 +61,7 @@ const List = () => {
                         borderRadius="30px"
                     >
                         <Logined
-                            title={"사용자"}         // 값
+                            title={id}         // 값
                             icon={                    //  아이콘
                                 <PersonOutlineOutlinedIcon
                                     sx={{ color: colors.greenAccent[600], fontSize: "26px" }}

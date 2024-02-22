@@ -19,39 +19,44 @@ const Login = () => {
     setInputPw(e.target.value); // 패스워드 입력값 변경 시 상태 업데이트
   };
 
-  useEffect(() => {
-    // message 상태가 변경될 때마다 실행되는 useEffect
-    if (message === 'main') {
-      navigate('/main', { state: { id: inputId } }); // message가 'main'일 경우 '/main' 경로로 이동
-    } else if (message === 'admin') {
-      navigate('/admin'); // message가 'admin'일 경우 '/admin' 경로로 이동
-    } else if (message === 'login'){
-      setError("로그인 실패")
-
-    }
-  }, [message, navigate, inputId]);
-
   const onClickLogin = async () => {
     if (inputId === "" || inputPw === "") {
-      setError("아이디와 패스워드를 모두 입력해주세요."); // 아이디 또는 패스워드가 비어있을 경우 에러 메시지 설정 후 종료
+      setError("아이디와 패스워드를 모두 입력해주세요.");
       return;
     }
+  
     console.log("로그인 시도");
+    
     try {
       const response = await axios.post(
-        'http://localhost:8088/boot/login', // 로그인 요청을 보낼 서버의 URL
-        `ID=${inputId}&PW=${inputPw}`, // 요청 바디에 아이디와 패스워드를 전달
+        'http://localhost:8088/boot/login',
+        `ID=${inputId}&PW=${inputPw}`,
         {
           headers: {
-            'Content-Type': 'application/x-www-form-urlencoded', // 요청 헤더 설정
+            'Content-Type': 'application/x-www-form-urlencoded',
           },
         }
       );
+      
       if (response && response.data) {
-        setMessage(response.data.login); // 서버로부터 받은 로그인 메시지를 message 상태로 설정
+        setMessage(response.data.login);
+        
+        if (response.data.login === "main") {
+          console.log(message);
+          
+          const userId = response.data.userId;
+          console.log("사용자 ID:", userId);
+          localStorage.setItem('userId', userId); // userId 값을 로컬 스토리지에 저장
+          
+          navigate('/main');
+        } else if (response.data.login === "admin") {
+          navigate('/admin');
+        } else if (response.data.login === "login") {
+          setError("로그인 실패");
+        }
       } else {
         setError("로그인 실패");
-        console.error("Login failed: No data in the response"); // 응답 데이터가 없을 경우 에러 메시지 설정 및 콘솔에 로그 출력
+        console.error("Login failed: No data in the response");
       }
     } catch (error) {
       setError("로그인 실패");

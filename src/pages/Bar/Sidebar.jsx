@@ -13,6 +13,11 @@ import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
 const Item = ({ title, to, icon, selected, setSelected }) => {
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
+    const handleLogout = () => {
+        console.log("로그아웃");
+        localStorage.removeItem('userId'); // 로컬 스토리지에서 userId 값을 제거
+
+      };
     // const {colors} = useContext(ColorModeContext);
     return (
         <MenuItem
@@ -26,7 +31,7 @@ const Item = ({ title, to, icon, selected, setSelected }) => {
             <Typography
             style={{color:colors.grey[100]}}
             >{title}</Typography>
-            <Link to={to} />
+            <Link onClick={handleLogout} to={to} />
         </MenuItem>
     );
 };
@@ -38,6 +43,8 @@ const Sidebar = () => {
     const colorMode = useContext(ColorModeContext);
     const [isCollapsed, setIsCollapsed] = useState(false);
     const [selected, setSelected] = useState("Dashboard");
+
+    
 
     return (
         <Box
@@ -157,6 +164,7 @@ const Sidebar = () => {
                             setSelected={setSelected}
                         />
                     </Box>
+
                 </Menu>
             </ProSidebar>
         </Box>
