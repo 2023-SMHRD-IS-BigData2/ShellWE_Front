@@ -19,7 +19,7 @@ const App = () => {
     // console.log('useParams', num);
     const location = useLocation();
     const lists = location.state?.lists;
-    setPatientNum(lists.patinum);
+    // setPatientNum(lists.patinum);
     console.log("list여", lists);
 
     // const [data, setData] = useState(null); //스프링에서 받아온 값

@@ -135,6 +135,7 @@ const App = () => {
             try {
                 const response = await axios.get(`http://localhost:8088/boot/getComment?patinum=${patiIndex}`);
                 setComments(response.data.comments);
+                console.log("comment list",response.data.comments);
             } catch (error) {
                 console.log(error);
             }
