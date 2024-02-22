@@ -12,9 +12,15 @@ const App = () => {
     const { setPatientNum } = useContext(PatientContext);
 
     // 로그인한 사람의 id값 state로 가져오기
-    const location = useLocation();
-    const [id] = useState(location.state?.id);
-    console.log("id", id);
+    const [id, setId] = useState('');
+
+    useEffect(() => {
+        const storedUserId = localStorage.getItem('userId');
+        if (storedUserId) {
+            setId(storedUserId); // 로컬 스토리지에서 userId 값을 가져와 상태로 설정
+        }
+    }, []);
+    console.log("id",id);
 
     /** 환자 리스트 */
     const [lists, setList] = useState(null);
@@ -181,10 +187,10 @@ const App = () => {
                 m="20px"
                 marginTop="60px"
             >
-                <Card />
+                <Card id={id}/>
 
                 <Data />
-               
+
 
             </Box >
         </DashboardContext.Provider>
