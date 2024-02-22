@@ -24,7 +24,7 @@ const StatBox = ({ title, subtitle, icon }) => {
                 <Box>
                     <Typography
                         variant="h2"
-                        fontWeight="bold"
+                        // fontWeight="bold"
                         sx={{ color: colors.grey[100] }}
                     >
                         {title}

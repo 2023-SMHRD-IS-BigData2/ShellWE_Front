@@ -10,6 +10,7 @@ import EditStaff from "./EditStaff";
 import Design from "./DesignTable";
 import { useTheme } from "@emotion/react";
 import { Box } from "@mui/material";
+import Card from "./Card";
 
 const AdminData = () => {
     const {
@@ -71,8 +72,8 @@ const AdminData = () => {
             field: "ids",
             headerName: "번호",
             headerAlign: "center",
-            align :"center",
-            flex : 0.6
+            align: "center",
+            flex: 0.6
         },
         {
             field: "id",
@@ -94,35 +95,35 @@ const AdminData = () => {
             headerName: "로그인 시간",
             flex: 1,
             headerAlign: "center",
-            align :"center"
+            align: "center"
         },
         {
             field: "logoutTime",
             headerName: "로그아웃 시간",
             flex: 1,
             headerAlign: "center",
-            align :"center"
+            align: "center"
         },
         {
             field: "tell",
             headerName: "연락처",
             flex: 1,
             headerAlign: "center",
-            align :"center"
+            align: "center"
         },
         {
             field: "date",
             headerName: "날짜",
             flex: 1,
             headerAlign: "center",
-            align :"center"
+            align: "center"
         },
         {
             field: "update",
             headerName: "수정",
             flex: 0.5,
             headerAlign: "center",
-            align :"center",
+            align: "center",
             renderCell: (params) => {
                 return (
                     <EditOutlinedIcon onClick={() => handleEditIconClick(params.row)} />
@@ -148,13 +149,21 @@ const AdminData = () => {
         <div>
             <Box m="20px">
 
-                <button onClick={
-                    openModal
-                }>의료진 추가</button>
+                <Box onClick={openModal}
+                    width="20%"
+                    height="150px"
+                    backgroundColor={colors.primary[400]}
+                    boxShadow="0px 2px 4px rgba(0, 0, 0, 0.2);"
+                    display="flex"
+                    alignItems="center"
+                    justifyContent="center"
+                    borderRadius="30px">
+                    <Card />
+                </Box>
 
                 <Box
-                    m="25px 0 0 0"
-                    height="80vh"
+                    m="20px 0 0 0"
+                    height="75vh"
 
                     borderRadius="30px"
                     boxShadow="0px 2px 4px rgba(0, 0, 0, 0.2);"
@@ -164,7 +173,7 @@ const AdminData = () => {
                         },
                         "& .MuiDataGrid-cell": {
                             borderBottom: "none",
-                            color : colors.grey[100]
+                            color: colors.grey[100]
                         },
                         "& .name-column--cell": {
                             color: colors.greenAccent[300],

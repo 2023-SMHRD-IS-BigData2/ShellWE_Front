@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
-import { useNavigate } from 'react-router-dom';
-import { createTheme, useTheme } from "@mui/material"
+import { useLocation, useNavigate } from 'react-router-dom';
+import { Typography, createTheme, useTheme } from "@mui/material"
 import { Box, IconButton, Select, MenuItem } from "@mui/material";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import InputBase from "@mui/material/InputBase";
@@ -16,16 +16,20 @@ import './font.css';
 
 
 // 환자 데이터 컴포넌트
-const Data = ({ setPatientNum }) => {
+const Data = () => {
     const { lists, comments, isModalOpen, closeModal, openModal, setInputValue, inputValue,
         handleSubmit, handleOptionChange, setPatientEffect, handleSelectChange,
         handlePhysicianChange, } = useContext(DashboardContext);
     // const { colors } = useContext(ColorModeContext);
     const { setData } = useContext(PatientContext);
+    const { setPatientNum, patientNum } = useContext(PatientContext);
     /** 다크모드 */
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
     const [hoveredRowId, setHoveredRowId] = useState(null);
+
+    const [commentInfo, setCommentInfo] = useState({});
+
     // useNavigate 훅을 사용하여 navigate 함수를 가져오기
     const navigate = useNavigate();
 
@@ -37,10 +41,14 @@ const Data = ({ setPatientNum }) => {
             .then((res) => {
                 // nav(`/detail/${item.name}`, // 링크 맴핑
                 //     { state: res.data }); // state 변수에 데이터 담기
-                navigate(`/main/detail/${platinum}`, { state: { lists: lists[platinum] } });
+                navigate(`/main/detail/${platinum}`, { state: { lists: lists[platinum-1] } });
                 setData(res.data[0]);
                 // setPatientNum(platinum); // 오류 뜸
             })
+    };
+    const handleOpenComment = (patinum) => {
+        openModal(patinum);
+        console.log("test member info", commentInfo.name);
     };
 
     // lists 값이 null인 경우 로딩 상태를 표시하거나 다른 방식으로 처리
@@ -444,7 +452,7 @@ const Data = ({ setPatientNum }) => {
             align: "center",
             renderCell: (e) => {
                 return (
-                    <Box onClick={() => { openModal(e.row.id) }}>
+                    <Box onClick={() => { handleOpenComment(e.row.id) }}>
                         <MailOutlineIcon />
                     </Box>
                 );
@@ -563,6 +571,19 @@ const Data = ({ setPatientNum }) => {
             <Modal
                 isOpen={isModalOpen} closeModal={closeModal}>
                 <Box m="40px">
+                    <Box
+                        display="flex"
+                        justifyContent="space-between"
+                        margin="auto"
+                        width="200px"
+                    >
+                        <Typography variant='h4'>
+                            {"순번 : " + commentInfo.patinum}
+                        </Typography>
+                        <Typography variant='h4'>
+                            {"이름 : " + commentInfo.name}
+                        </Typography>
+                    </Box>
                     <Box
                         m="25px 0 0 0"
                         height="45vh"
