@@ -114,7 +114,7 @@ const Sidebar = () => {
                                 >
                                     SMART
                                 </Typography>
-                                <Typography variant="h5" color={colors.greenAccent[500]}>
+                                <Typography variant="h5" color={colors.primary[777]}>
                                     Sepsis Monitoring and Risk Tracking
                                 </Typography>
                             </Box>

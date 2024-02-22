@@ -1,10 +1,11 @@
 import React, { useContext } from "react";
-import { Box,useTheme } from "@mui/material";
+import { Box, useTheme } from "@mui/material";
 import { ColorModeContext, tokens } from "../../theme";
-import Data from "./Data";
+// import Data from "./Data";
+import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 
 
-const List = () => {
+const List = ({ children, columnslist, memberData }) => {
     // const {colors} = useContext(ColorModeContext);
     /** 다크모드 */
     const theme = useTheme();
@@ -14,7 +15,7 @@ const List = () => {
         <Box m="20px">
             <Box
                 m="25px 0 0 0"
-                height="85vh"
+                height="80vh"
                 sx={{
                     "& .MuiDataGrid-root": {
                         border: "none",
@@ -46,7 +47,13 @@ const List = () => {
                     overflow: "auto",
                 }}
             >
-                <Data />
+                <DataGrid
+                    rows={memberData}
+                    columns={columnslist}
+                    components={{ Toolbar: GridToolbar }}
+                // autoPageSize={[10]}
+                />
+                {/* {children} */}
             </Box>
         </Box>
     );

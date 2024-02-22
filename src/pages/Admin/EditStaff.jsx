@@ -8,7 +8,7 @@ import { ColorModeContext, tokens } from "../../theme";
 import Modal from '../DesktopOne/Modal'
 
 
-const StaffEdit = ({ closeModal, isOpen, selectedMemberName, selectedMemberId , selectedMemberPK, selectedMemberIds}) => {
+const StaffEdit = ({ closeModal, isOpen, selectedMemberName, selectedMemberId, selectedMemberPK, selectedMemberIds }) => {
     /** 다크모드 */
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
@@ -18,7 +18,7 @@ const StaffEdit = ({ closeModal, isOpen, selectedMemberName, selectedMemberId , 
     const [rank, setrank] = useState("");
     const [contactNumber, setContactNumber] = useState("");
     // const [id, setId] = useState("");
-    
+
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -30,13 +30,13 @@ const StaffEdit = ({ closeModal, isOpen, selectedMemberName, selectedMemberId , 
             name: name ? name : selectedMemberName,
             memberrank: rank,
             tell: contactNumber,
-            ids : selectedMemberIds,
-            membernum : selectedMemberPK
+            ids: selectedMemberIds,
+            membernum: selectedMemberPK
         };
 
         // POST 요청 보내기
         axios
-            .put(`http://localhost:8088/boot/updateMember`,updatedMember)
+            .put(`http://localhost:8088/boot/updateMember`, updatedMember)
             .then((response) => {
                 // 요청이 성공한 경우 처리할 로직 작성
                 console.log(response.data); // 서버에서 받은 응답 데이터 출력
@@ -72,8 +72,7 @@ const StaffEdit = ({ closeModal, isOpen, selectedMemberName, selectedMemberId , 
             <Modal isOpen={isOpen} closeModal={closeModal} colors={colors}>
                 <Box m="40px">
                     <Box
-                        // m="20px"
-                        display="flex" margin="auto" justifyContent="center"
+                        position="fixed" top="13%" left="12%"
                     >
 
                         <form onSubmit={handleSubmit}>
@@ -99,11 +98,11 @@ const StaffEdit = ({ closeModal, isOpen, selectedMemberName, selectedMemberId , 
                                         <TableRow>
                                             <TableCell>아이디</TableCell>
                                             <TableCell>
-                                                <InputBase type="text" sx={{ ml: 2, flex: 1 }} 
-                                                placeholder={selectedMemberId} 
-                                                value={selectedMemberId} 
-                                                // onChange={(e) => setId(e.target.value)}  
-                                                readOnly />
+                                                <InputBase type="text" sx={{ ml: 2, flex: 1 }}
+                                                    placeholder={selectedMemberId}
+                                                    value={selectedMemberId}
+                                                    // onChange={(e) => setId(e.target.value)}  
+                                                    readOnly />
                                             </TableCell>
                                         </TableRow>
                                         <TableRow>
@@ -119,27 +118,27 @@ const StaffEdit = ({ closeModal, isOpen, selectedMemberName, selectedMemberId , 
                                         <TableRow>
                                             <TableCell>이름</TableCell>
                                             <TableCell>
-                                                <InputBase 
-                                                type="text" 
-                                                value={selectedMemberName} 
-                                                onChange={(e) => changeName(e.target.value)} 
-                                                sx={{ ml: 2, flex: 1 }} 
-                                                placeholder={selectedMemberName} 
+                                                <InputBase
+                                                    type="text"
+                                                    value={selectedMemberName}
+                                                    onChange={(e) => changeName(e.target.value)}
+                                                    sx={{ ml: 2, flex: 1 }}
+                                                    placeholder={selectedMemberName}
                                                 />
                                             </TableCell>
                                         </TableRow>
                                         <TableRow>
                                             <TableCell>직급</TableCell>
                                             <TableCell>
-                                                <RadioGroup value={rank} 
-                                                onChange={handleRankChange}>
+                                                <RadioGroup value={rank}
+                                                    onChange={handleRankChange}>
                                                     <div style={{ display: 'flex', alignItems: 'center', height: "30px" }}>
                                                         <FormControlLabel
                                                             value="doctor"
                                                             control={<Radio style={{ color: colors.grey[400], }} />}
                                                             label="의사"
                                                             style={{ marginRight: '30px' }}
-                                                            />
+                                                        />
                                                         <FormControlLabel
                                                             value="nurse"
                                                             control={<Radio style={{ color: colors.grey[400] }} />}
@@ -157,8 +156,8 @@ const StaffEdit = ({ closeModal, isOpen, selectedMemberName, selectedMemberId , 
                                                     value={contactNumber}
                                                     sx={{ ml: 2, flex: 1 }}
                                                     onChange={(e) => setContactNumber(e.target.value)}
-                                                    placeholder="연락처 입력" 
-                                                    />
+                                                    placeholder="연락처 입력"
+                                                />
                                             </TableCell>
                                         </TableRow>
                                         <TableRow>
