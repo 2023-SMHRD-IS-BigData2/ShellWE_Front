@@ -51,7 +51,7 @@ export default function Example() {
     const colorsChart = {
         smart: "#EB9DA2",
         o2sat: "#F0B884",
-        map: "#E8E6A5",
+        dbp: "#E8E6A5",
         temp: "#BBE8B5",
         sbp: "#ACBBE8",
         hr: "#C5ACE8",
@@ -140,12 +140,12 @@ export default function Example() {
                         O2sat
                     </button>
                     <button
-                        onClick={() => handleButtonClick("map")}
+                        onClick={() => handleButtonClick("dbp")}
                         style={{
-                            background: selectedKeys.includes("map") ? "#E8E6A5" : "#fff",
+                            background: selectedKeys.includes("dbp") ? "#E8E6A5" : "#fff",
                         }}
                     >
-                        Map
+                        DBP
                     </button>
                     <button
                         onClick={() => handleButtonClick("temp")}
@@ -190,7 +190,7 @@ export default function Example() {
                         />
                         <YAxis yAxisId="smart" dataKey="smart" domain={[0, 100]} hide />
                         <YAxis yAxisId="o2sat" dataKey="o2sat" domain={[0, 100]} hide />
-                        <YAxis yAxisId="map" dataKey="map" domain={[0, 100]} hide />
+                        <YAxis yAxisId="dbp" dataKey="dbp" domain={[0, 100]} hide />
                         <YAxis yAxisId="temp" dataKey="temp" domain={[31, 90]} hide />
                         <YAxis yAxisId="sbp" dataKey="sbp" domain={[0, 80]} hide />
                         <YAxis yAxisId="hr" dataKey="hr" domain={[0, 100]} hide />
