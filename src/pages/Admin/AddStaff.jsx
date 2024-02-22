@@ -62,7 +62,9 @@ const DoctorForm = ({ closeModal, isOpen }) => {
         <Box m="40px">
           <Box
             // m="20px"
-            display="flex" margin="auto" justifyContent="center"
+            //display="flex" 
+            //margin="auto" //justifyContent="center" alignContent="center" alignItems="center"
+            position="fixed" top="13%" left="12%"
           >
 
             <form onSubmit={handleSubmit}>
