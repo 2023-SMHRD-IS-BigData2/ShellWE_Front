@@ -17,7 +17,7 @@ export default function Example() {
     // ChartContext에서 필요한 값 가져오기
     const { handleXAxisClick, data, StartDate, EndDate } = useContext(ChartContext)
 
-    console.log("data: ",data);
+    console.log("data: ", data);
 
     // 데이터와 날짜 값 확인
     console.log("datas", data[0].smart);
@@ -103,16 +103,16 @@ export default function Example() {
                         variant="h3"
                         fontWeight="600"
                         color={colors.grey[100]}
-                        marginTop="-30px"
+                    // marginTop="0px"
                     >
-                        smart                            {/* 패혈증 수치 */}
+                        SMART                            {/* 패혈증 수치 */}
                     </Typography>
                     {/* <Typography
                         variant="h4"
                         fontWeight="bold"
                         color={colors.greenAccent[500]}
                     >
-                        {""}
+                       {data[data.length - 1]} 
                     </Typography> */}
                 </Box>
                 {/* 버튼 */}
@@ -129,7 +129,7 @@ export default function Example() {
                             background: selectedKeys.includes("smart") ? "#EB9DA2" : "#fff",
                         }}
                     >
-                        smart
+                        SMART
                     </button>
                     <button
                         onClick={() => handleButtonClick("o2sat")}
