@@ -27,7 +27,7 @@ export const tokens = (mode) => ({
         700: "#0c101b",
         800: "#080b12",
         900: "#040509",
-        999: "#505054",
+        999: "#2e7c67", ///
       },
       greenAccent: {
         100: "#dbf5ee",
@@ -102,7 +102,7 @@ export const tokens = (mode) => ({
         700: "#727681",
         800: "#a1a4ab",
         900: "#d0d1d5",
-        999: "#94bffe",
+        999: "#94bffe",  //// 
         777: "#158BA9", // Sidebar logo underText
       },
       // primary: {
