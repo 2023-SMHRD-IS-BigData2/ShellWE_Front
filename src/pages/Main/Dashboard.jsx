@@ -165,7 +165,7 @@ const App = () => {
         // console.log("handleSubmit");
         event.preventDefault();
         try {
-            await axios.post(`http://localhost:8088/boot/insertComment?insertComment=${inputValue}&patinum=${patiIndex}&membernum=${id}`);
+            await axios.post(`http://localhost:8088/boot/insertComment?insertComment=${inputValue}&patinum=${patiIndex}&id=${id}`);
             setInputValue("")
         } catch (error) {
             console.log(error);
