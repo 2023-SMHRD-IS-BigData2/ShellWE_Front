@@ -48,7 +48,11 @@ const Data = () => {
     };
     const handleOpenComment = (patinum) => {
         openModal(patinum);
-        console.log("test member info", commentInfo.name);
+
+        /** 코멘트 위에 띄어질 환자 정보 */
+        setCommentInfo(lists[patinum]); 
+        // console.log("test member info", commentInfo.name);
+        
     };
 
     // lists 값이 null인 경우 로딩 상태를 표시하거나 다른 방식으로 처리
