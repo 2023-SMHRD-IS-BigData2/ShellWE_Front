@@ -8,7 +8,7 @@ const StatBox = ({ title, subtitle, icon }) => {
     // const {colors} = useContext(ColorModeContext);
     return (
         <Box width="100%" m="100px">
-            <Box display="flex" justifyContent="space-between" width="200px">
+            <Box display="flex" justifyContent="space-between" width="130px" mr="150px">
                 <Box>
                     <Typography
                         variant="h2"
@@ -30,6 +30,13 @@ const StatBox = ({ title, subtitle, icon }) => {
                         {title}
                     </Typography>
                 </Box>
+            </Box>
+            <Box
+                position="fixed" top="13%" left="27%"
+            >
+                <Typography sx={{ color: colors.grey[200] }} variant="h5">
+                    님 환영합니다
+                </Typography>
             </Box>
         </Box>
     );

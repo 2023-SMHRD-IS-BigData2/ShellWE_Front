@@ -64,7 +64,7 @@ const List = ({id}) => {
                             title={id}         // 값
                             icon={                    //  아이콘
                                 <PersonOutlineOutlinedIcon
-                                    sx={{ color: colors.greenAccent[600], fontSize: "26px" }}
+                                    sx={{ color: colors.grey[100], fontSize: "26px" }}
                                 />
                             }
                         />
