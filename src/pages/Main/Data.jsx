@@ -417,7 +417,7 @@ const Data = () => {
                                 paddingRight: "80px",
                                 border: 'none',
                                 backgroundColor: sepsisslevel === "Screening"
-                                    ? colors.blueAccent[700]
+                                    ? colors.greenAccent[600]
                                     : sepsisslevel === "Observing"
                                         ? ""
                                         : sepsisslevel == "In Action"
@@ -498,7 +498,8 @@ const Data = () => {
         },
         {
             field: "membername",
-            headerName: "작성자"
+            headerName: "작성자",
+
         }
     ]
 
@@ -535,7 +536,7 @@ const Data = () => {
                         // boxShadow:"0px 2px 4px rgba(0, 0, 0, 0.2);"
                     },
                     "& .MuiDataGrid-columnHeaders": {
-                        backgroundColor: colors.blueAccent[700],
+                        backgroundColor: colors.greenAccent[600],
                         borderBottom: "none",
                         borderTopLeftRadius: "30px",
                         borderTopRightRadius: "30px",
@@ -546,7 +547,7 @@ const Data = () => {
                     },
                     "& .MuiDataGrid-footerContainer": {
                         borderTop: "none",
-                        backgroundColor: colors.blueAccent[700],
+                        backgroundColor: colors.greenAccent[600],
                         borderBottomLeftRadius: "30px",
                         borderBottomRightRadius: "30px",
                         // boxShadow:"5px 10px 4px rgba(0, 0, 0, 0.2);"

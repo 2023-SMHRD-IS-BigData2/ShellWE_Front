@@ -133,7 +133,7 @@ const AdminData = () => {
         {
             field: "delete",
             headerName: "회원탈퇴",
-            flex: 0.5,
+            flex: 0.7,
             headerAlign: "center",
             align: "center",
             renderCell: (params) => {
@@ -179,7 +179,7 @@ const AdminData = () => {
                             color: colors.greenAccent[300],
                         },
                         "& .MuiDataGrid-columnHeaders": {
-                            backgroundColor: colors.blueAccent[700],
+                            backgroundColor: colors.greenAccent[600],
                             borderBottom: "none",
                             borderTopLeftRadius: "30px",
                             borderTopRightRadius: "30px",
@@ -190,7 +190,7 @@ const AdminData = () => {
                         },
                         "& .MuiDataGrid-footerContainer": {
                             borderTop: "none",
-                            backgroundColor: colors.blueAccent[700],
+                            backgroundColor: colors.greenAccent[600],
                             borderBottomLeftRadius: "30px",
                             borderBottomRightRadius: "30px",
                         },

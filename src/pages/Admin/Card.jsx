@@ -28,7 +28,7 @@ const StatBox = ({ title, subtitle, icon }) => {
                             variant="h2"
                             fontWeight="bold"
                             sx={{
-                                color: colors.grey[100],
+                                color: colors.greenAccent[500],
                                 scale: "1.6"
                             }}
                         >
@@ -38,7 +38,7 @@ const StatBox = ({ title, subtitle, icon }) => {
                     <Box>
                         <Typography
                             variant="h2"
-                            sx={{ color: colors.grey[100] }}
+                            sx={{ color: colors.greenAccent[500] }}
                         >
                             {MemberSum}
                         </Typography>
