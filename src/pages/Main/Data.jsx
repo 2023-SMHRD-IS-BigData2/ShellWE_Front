@@ -34,14 +34,14 @@ const Data = () => {
     const navigate = useNavigate();
 
     // navigate로 디테일 페이지로 이동
-    const handlePageNavigation = (platinum) => {
+    const handlePageNavigation = (patinum) => {
 
         axios
-            .get(`http://localhost:8088/boot/getList?patinum=${platinum}`)
+            .get(`http://localhost:8088/boot/getList?patinum=${patinum}`)
             .then((res) => {
                 // nav(`/detail/${item.name}`, // 링크 맴핑
                 //     { state: res.data }); // state 변수에 데이터 담기
-                navigate(`/main/detail/${platinum}`, { state: { lists: lists[platinum-1] } });
+                navigate(`/main/detail/${patinum}`, { state: { lists: lists[patinum-1] } });
                 setData(res.data[0]);
                 // setPatientNum(platinum); // 오류 뜸
             })

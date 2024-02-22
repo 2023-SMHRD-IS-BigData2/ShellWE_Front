@@ -166,14 +166,9 @@ const App = () => {
                         <Box display="flex" justifyContent="space-between" alignItems="center">
 
                             <DetailHeader title={lists.name} subtitle={lists.age + "세 / " + lists.gender + " / " + lists.bloodtype + "형 / "}
-                                comments={comments}
-                                setInputValue={setInputValue}
-                                handleSubmit={handleSubmit}
-                                inputValue={inputValue}
-                                isModalOpen={isModalOpen}
-                                closeModal={closeModal}
-                                openModal={openModal}
-                                num={num}
+                                comments={comments} handleSubmit={handleSubmit}
+                                num={num} setInputValue={setInputValue} inputValue={inputValue}
+                                isModalOpen={isModalOpen} closeModal={closeModal} openModal={openModal}
                             />
 
                             <Box>
