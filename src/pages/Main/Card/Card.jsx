@@ -6,22 +6,22 @@ import NewReleasesIcon from '@mui/icons-material/NewReleases';
 import { ColorModeContext, DashboardContext, tokens } from "../../../theme";
 import ScrnPatient from './ScrnPatient';
 import AllPatient from "./AllPatient";
-import TodayPatient from "./TodayPatient";
-import Logined from './Logined'
+import Logined from './Logined';
+import Smart from './Smart';
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-const List = ({id}) => {
+const List = ({ id }) => {
 
-    const { Allpatient, Screening, todayScreening, percent } = useContext(DashboardContext);
+    const { Allpatient, Screening, percent, smart } = useContext(DashboardContext);
     /** 다크모드 */
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
     // const {colors} = useContext(ColorModeContext);
 
     const notify = () => {
-        if (todayScreening > 0) {
-            toast(`스크리닝 환자가 ${todayScreening}명 추가 되었습니다`,
+        if (-1 > 0) {
+            toast(`스크리닝 환자가 명 추가 되었습니다`,
                 { autoClose: 3000 }
             );
         }
@@ -38,6 +38,7 @@ const List = ({id}) => {
         // 컴포넌트가 언마운트 될 때 타이머를 정리합니다.
         return () => clearInterval(interval);
     }, []); // []를 전달하여 한 번만 실행되도록 설정합니다.
+
 
     return (
         <>
@@ -120,9 +121,9 @@ const List = ({id}) => {
                         justifyContent="center"
                         borderRadius="30px"
                     >
-                        <TodayPatient
-                            title={todayScreening}                // 값
-                            subtitle="NEW"        // 제목
+                        <Smart
+                            title={smart}                // 값
+                            subtitle="SMART"        // 제목
                             icon={
                                 <NewReleasesIcon
                                     sx={{ color: colors.redAccent[500], fontSize: "26px" }}

@@ -104,7 +104,7 @@ const Data = () => {
                         justifyContent="center"
                         backgroundColor={
                             hoveredRowId === row.id
-                                ? colors.blueAccent[400]
+                                ? colors.greenAccent[500]
                                 : colors.transparent
                         }
                         borderRadius="4px"
