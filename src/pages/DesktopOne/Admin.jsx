@@ -3,7 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import axios from 'axios';
 import { CssBaseline, ThemeProvider } from '@mui/material';
 import { AdminContext, ColorModeContext, tokens, useMode } from '../../theme';
-import Dashboard from '../Admin/DesignTable'
+import Dashboard from '../Admin/Data'
 import Settings from '../Admin/Settings'
 import AdminSidebar from '../Bar/AdminSidebar';
 

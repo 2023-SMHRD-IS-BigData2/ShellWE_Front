@@ -44,7 +44,7 @@ const StatBox = ({ title, subtitle,  progress, increase }) => {
                         sx={{ color: colors.greenAccent[600] }}
                         position='absolute'
                         top='25%'
-                        left='15%'
+                        left='11%'
                         transform='translate(-50%, -50%)'
                     >
                         {increase}

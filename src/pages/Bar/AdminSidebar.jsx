@@ -101,7 +101,7 @@ const Sidebar = () => {
                             setSelected={setSelected}
                         />
                         <Item
-                            title="문의 사항"
+                            title="Configure"
                             to="/admin/settings"
                             icon={<SettingsIcon />}
                             selected={selected}

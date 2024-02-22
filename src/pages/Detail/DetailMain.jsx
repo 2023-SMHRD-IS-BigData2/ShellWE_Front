@@ -19,7 +19,7 @@ const App = () => {
     // console.log('useParams', num);
     const location = useLocation();
     const lists = location.state?.lists;
-    setPatientNum(lists.patinum);
+    // setPatientNum(lists.patinum);
     console.log("list여", lists);
 
     // const [data, setData] = useState(null); //스프링에서 받아온 값
@@ -166,14 +166,9 @@ const App = () => {
                         <Box display="flex" justifyContent="space-between" alignItems="center">
 
                             <DetailHeader title={lists.name} subtitle={lists.age + "세 / " + lists.gender + " / " + lists.bloodtype + "형 / "}
-                                comments={comments}
-                                setInputValue={setInputValue}
-                                handleSubmit={handleSubmit}
-                                inputValue={inputValue}
-                                isModalOpen={isModalOpen}
-                                closeModal={closeModal}
-                                openModal={openModal}
-                                num={num}
+                                comments={comments} handleSubmit={handleSubmit}
+                                num={num} setInputValue={setInputValue} inputValue={inputValue}
+                                isModalOpen={isModalOpen} closeModal={closeModal} openModal={openModal}
                             />
 
                             <Box>
