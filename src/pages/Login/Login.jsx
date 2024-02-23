@@ -46,8 +46,8 @@ const Login = () => {
           
           const userId = response.data.userId;
           console.log("사용자 ID:", userId);
-          localStorage.setItem('userId', userId); // userId 값을 로컬 스토리지에 저장
-          
+          sessionStorage.setItem('userId', userId); // userId 값을 세션 스토리지에 저장
+  
           navigate('/main');
         } else if (response.data.login === "admin") {
           navigate('/admin');

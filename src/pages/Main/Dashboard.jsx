@@ -15,12 +15,14 @@ const App = () => {
     const [id, setId] = useState('');
 
     useEffect(() => {
-        const storedUserId = localStorage.getItem('userId');
-        if (storedUserId) {
-            setId(storedUserId); // 로컬 스토리지에서 userId 값을 가져와 상태로 설정
+        const sessionUserId = sessionStorage.getItem('userId');
+        if (sessionUserId) {
+            setId(sessionUserId); // 세션 스토리지에서 userId 값을 가져와 상태로 설정
         }
     }, []);
-    console.log("id",id);
+
+    console.log("id", id);
+
 
     /** 환자 리스트 */
     const [lists, setList] = useState(null);
@@ -141,7 +143,7 @@ const App = () => {
             try {
                 const response = await axios.get(`http://localhost:8088/boot/getComment?patinum=${patiIndex}`);
                 setComments(response.data.comments);
-                console.log("comment list",response.data.comments);
+                console.log("comment list", response.data.comments);
             } catch (error) {
                 console.log(error);
             }
@@ -187,7 +189,7 @@ const App = () => {
                 m="20px"
                 marginTop="60px"
             >
-                <Card id={id}/>
+                <Card id={id} />
 
                 <Data />
 
