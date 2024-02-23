@@ -50,11 +50,11 @@ export default function Example() {
     // 각 키에 대한 색상 설정
     const colorsChart = {
         smart: "#EB9DA2",
-        o2sat: "#F0B884",
-        dbp: "#E8E6A5",
-        temp: "#BBE8B5",
-        sbp: "#ACBBE8",
-        hr: "#C5ACE8",
+        hr: "#F0B884",
+        o2sat: "#E8E6A5",
+        sbp: "#BBE8B5",
+        dbp: "#ACBBE8",
+        temp: "#C5ACE8",
     };
 
     // 데이터가 없을 때 화면 출력
@@ -134,7 +134,7 @@ export default function Example() {
                     <button
                         onClick={() => handleButtonClick("hr")}
                         style={{//
-                            background: selectedKeys.includes("hr") ? "#C5ACE8" : "#fff",
+                            background: selectedKeys.includes("hr") ? "#F0B884" : "#fff",
                         }}
                     >
                         HR
@@ -142,7 +142,7 @@ export default function Example() {
                     <button
                         onClick={() => handleButtonClick("o2sat")}
                         style={{
-                            background: selectedKeys.includes("o2sat") ? "#F0B884" : "#fff",
+                            background: selectedKeys.includes("o2sat") ? "#E8E6A5" : "#fff",
                         }}
                     >
                         O2sat
@@ -150,7 +150,7 @@ export default function Example() {
                     <button
                         onClick={() => handleButtonClick("sbp")}
                         style={{
-                            background: selectedKeys.includes("sbp") ? "#ACBBE8" : "#fff",
+                            background: selectedKeys.includes("sbp") ? "#BBE8B5" : "#fff",
                         }}
                     >
                         SBP
@@ -158,7 +158,7 @@ export default function Example() {
                     <button
                         onClick={() => handleButtonClick("dbp")}
                         style={{
-                            background: selectedKeys.includes("dbp") ? "#E8E6A5" : "#fff",
+                            background: selectedKeys.includes("dbp") ? "#ACBBE8" : "#fff",
                         }}
                     >
                         DBP
@@ -166,7 +166,7 @@ export default function Example() {
                     <button
                         onClick={() => handleButtonClick("temp")}
                         style={{
-                            background: selectedKeys.includes("temp") ? "#BBE8B5" : "#fff",
+                            background: selectedKeys.includes("temp") ? "#C5ACE8" : "#fff",
                         }}
                     >
                         Temp
@@ -180,11 +180,11 @@ export default function Example() {
                         data={filteredData}
                         margin={{ top: 43, bottom: 40, right: 80, left: 80 }}
                     >
-                        <CartesianGrid vertical={false} strokeOpacity={0.3} style={{backgroundColor:"red", width:"200px", height:"10px"}} />
+                        <CartesianGrid vertical={false} strokeOpacity={0.3} style={{ backgroundColor: "red", width: "200px", height: "10px" }} />
                         <XAxis
                             dataKey="time"
-                            
-                            style={{backgroundColor:"red", width:"100px", height:"10px"}}
+
+                            style={{ backgroundColor: "red", width: "100px", height: "10px" }}
                             tickFormatter={(value) => value.slice(0, 16)}
                             onClick={(event) => {
                                 handleXAxisClick(event.value);

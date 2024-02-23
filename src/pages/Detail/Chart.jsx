@@ -82,20 +82,15 @@ const Charts = () => {
                 }
               </Typography>
             </Box>
-            {/* <Box
-              backgroundColor={colors.greenAccent[500]}
-              p="5px 10px"
-              borderRadius="4px"
-              onClick={() => makechart(key)}>
-              보기
-            </Box> */}
           </Box>
         );
       });
   };
 
   return (
-    <Box gridColumn="span 4" gridRow="span 2"
+    <Box
+      gridColumn="span 4"
+      gridRow="span 2"
       borderRadius="30px"
       height="350px"
       marginTop="50px"
