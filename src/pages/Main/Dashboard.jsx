@@ -83,7 +83,7 @@ const App = () => {
 
     //한시간마다 api출력하기
     const toast = () => {
-        axios.post("http://localhost:8088/boot/getHourSepsis")
+        axios.post("http://localhost:8088/boot/getRandomInt")
             .then((response) => {
                 console.log('서버 응답:', response);
             })
@@ -106,7 +106,7 @@ const App = () => {
     // fetchData 함수 정의
     const fetchData = async () => {
         try {
-            const response = await axios.get("http://localhost:8088/boot/getHourSepsis");
+            const response = await axios.get("http://localhost:8088/boot/getRandomInt");
             setList(response.data.patientList);
             setAllpatient(response.data.Allpatient);
             settodayScreening(response.data.todayScreening);

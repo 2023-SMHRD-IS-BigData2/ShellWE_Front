@@ -35,7 +35,7 @@ const List = () => {
             notify();
 
         }, 
-        3600000
+        10000
         ); // 한 시간(밀리초 단위)
         // 컴포넌트가 언마운트 될 때 타이머를 정리합니다.
         return () => clearInterval(interval);
