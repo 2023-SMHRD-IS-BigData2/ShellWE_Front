@@ -466,12 +466,16 @@ const Data = () => {
     const commentColumns = [
         {
             field: "id",
-            headerName: "번호"
+            headerName: "번호",
+            headerAlign:"center",
+            align:"center",
+            flex:0.2
         },
         {
             field: "contents",
             headerName: "내용",
             flex: 1,
+            headerAlign:"center",
             renderCell: (params) => {
                 const content = params.value;
                 const hasArrow = content.includes("->");
@@ -498,11 +502,14 @@ const Data = () => {
         {
             field: "inputdate",
             headerName: "입력시간",
-            flex: 0.4
+            flex: 0.5,
+            headerAlign:"center"
         },
         {
             field: "membername",
             headerName: "작성자",
+            headerAlign:"center",
+            align:"center"
 
         }
     ]
