@@ -13,7 +13,7 @@ const DetailHeader = ({ title, subtitle,
 }) => {
     const location = useLocation();
     const lists = location.state?.lists;
-console.log("환자 정보",lists);
+    console.log("환자 정보", lists);
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
     // const {colors} = useContext(ColorModeContext);
@@ -49,19 +49,32 @@ console.log("환자 정보",lists);
     }));
 
     return (
-        <Box>
-            <Box mb="30px">
-                <Typography
-                    variant="h2"
-                    color={colors.grey[100]}
-                    fontWeight="bold"
-                    sx={{ m: "0 0 5px 0" }}
-                >
-                    {title}
-                </Typography>
-                <Typography variant="h5" color={colors.greenAccent[400]}>
-                    {subtitle}
-                </Typography>
+        <Box width="25%">
+            <Box mb="30px"
+                justifyContent="space-between"
+                display="flex"
+                alignContent="center"
+
+            >
+                <Box display="flex" justifyContent="space-between">
+
+                    <Typography
+                        variant="h2"
+                        color={colors.grey[100]}
+                        fontWeight="bold"
+                        sx={{ m: "0 0 5px 0" }}
+                    >
+                        {title}
+                    </Typography>
+
+                    <Typography variant="h5" color={colors.greenAccent[400]}
+                        mt="8px" 
+                        ml="18px"
+                        >
+                        {subtitle}
+                    </Typography>
+                </Box>
+
                 <Box onClick={() => {
                     openModal(num)
                 }}
@@ -82,17 +95,17 @@ console.log("환자 정보",lists);
                 isOpen={isModalOpen} closeModal={closeModal}>
                 <Box m="40px">
                     {/* 환자 정보 */}
-                    <Box 
-                    display="flex"
-                    justifyContent="space-between"
-                    margin="auto"
-                    width="200px"
+                    <Box
+                        display="flex"
+                        justifyContent="space-between"
+                        margin="auto"
+                        width="200px"
                     >
                         <Typography variant='h4'>
-                            {"순번 : "+lists.patinum}
+                            {"순번 : " + lists.patinum}
                         </Typography>
                         <Typography variant='h4'>
-                            {"이름 : "+ lists.name}
+                            {"이름 : " + lists.name}
                         </Typography>
                     </Box>
                     {/* 테이블 */}

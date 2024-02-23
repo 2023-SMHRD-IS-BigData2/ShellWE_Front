@@ -41,7 +41,7 @@ const Data = () => {
             .then((res) => {
                 // nav(`/detail/${item.name}`, // 링크 맴핑
                 //     { state: res.data }); // state 변수에 데이터 담기
-                navigate(`/main/detail/${patinum}`, { state: { lists: lists[patinum-1] } });
+                navigate(`/main/detail/${patinum}`, { state: { lists: lists[patinum - 1] } });
                 setData(res.data[0]);
                 // setPatientNum(platinum); // 오류 뜸
             })
@@ -50,9 +50,9 @@ const Data = () => {
         openModal(patinum);
 
         /** 코멘트 위에 띄어질 환자 정보 */
-        setCommentInfo(lists[patinum]); 
+        setCommentInfo(lists[patinum]);
         // console.log("test member info", commentInfo.name);
-        
+
     };
 
     // lists 값이 null인 경우 로딩 상태를 표시하거나 다른 방식으로 처리
@@ -533,43 +533,36 @@ const Data = () => {
                 height="72vh"
                 borderRadius="30px"
                 boxShadow="0px 2px 4px rgba(0, 0, 0, 0.2);"
-                // boxShadow="100px 100px 100px 100px rgba(0, 0, 0, 0.2);"
                 sx={{
+
                     "& .MuiDataGrid-root": {
                         border: "none",
+                        borderRadius: "30px",
+                        /* eslint-disable no-undef */ // 해당 줄을 추가하여 linear-gradient 함수 사용을 허용
+                        background: `linear-gradient(to bottom, ${colors.greenAccent[600]} 10%, ${colors.primary[400]} 10%)`,
+                        /* eslint-enable no-undef */ // 해당 줄을 추가하여 linear-gradient 함수 사용을 다시 제한
                     },
                     "& .MuiDataGrid-cell": {
-                        borderBottom: "none",
-                        color: colors.grey[100]
-                    },
-                    "& .name-column--cell": {
-                        color: colors.greenAccent[300],
-                        // boxShadow:"0px 2px 4px rgba(0, 0, 0, 0.2);"
+                        borderBottom: "1",
+                        strokeOpacity: 1,
+                        backgroundColor: "transparent",
                     },
                     "& .MuiDataGrid-columnHeaders": {
                         backgroundColor: colors.greenAccent[600],
                         borderBottom: "none",
-                        borderTopLeftRadius: "30px",
-                        borderTopRightRadius: "30px",
                         fontSize: "16px",
-                    },
-                    "& .MuiDataGrid-virtualScroller": {
-                        backgroundColor: colors.primary[400],
                     },
                     "& .MuiDataGrid-footerContainer": {
                         borderTop: "none",
                         backgroundColor: colors.greenAccent[600],
                         borderBottomLeftRadius: "30px",
                         borderBottomRightRadius: "30px",
-                        // boxShadow:"5px 10px 4px rgba(0, 0, 0, 0.2);"
                     },
                     "& .MuiDataGrid-toolbarContainer .MuiButton-text": {
-                        color: `${colors.blueAccent} !important`,
+                        color: `${colors.grey[100]} !important`,
                         minWidth: "10px",
                         fontSize: "15px"
                     },
-
-
                 }}>
                 <DataGrid
                     rows={listsWithId}                       /** 환자 데이터 */

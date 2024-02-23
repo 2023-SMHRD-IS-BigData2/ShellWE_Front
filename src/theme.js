@@ -27,15 +27,15 @@ export const tokens = (mode) => ({
         700: "#0c101b",
         800: "#080b12",
         900: "#040509",
-        999: "#2e7c67", ///
+        999: "#495259", // 로그인 카드
       },
       greenAccent: {
         100: "#dbf5ee",
         200: "#b7ebde",
         300: "#94e2cd",
         400: "#70d8bd",
-        500: "#4cceac",
-        600: "#3da58a",
+        500: "#28CC7C", // 변경
+        600: "#4DCDAB", // 진함
         700: "#2e7c67",
         800: "#1e5245",
         900: "#0f2922",
@@ -64,7 +64,8 @@ export const tokens = (mode) => ({
       },
       Made: {
         100: "#3e4396",
-        200: "#313b4f"
+        200: "#313b4f",
+        400: "#03181F"
       },
 
     }
@@ -177,7 +178,9 @@ export const tokens = (mode) => ({
       // },
       Made: {
         100: "#a4a9fc",
-        200: "#dfddde"
+        200: "#dfddde",
+        300: "#ffffff",// background
+        400: "#ffffff"
       },
     }),
 });
@@ -203,7 +206,7 @@ export const themeSettings = (mode) => {
             light: colors.grey[100],
           },
           background: {
-            default: colors.primary[500],
+            default: "#141B2D",
           },
         }
         : {

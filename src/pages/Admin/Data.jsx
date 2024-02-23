@@ -133,12 +133,14 @@ const AdminData = () => {
         {
             field: "delete",
             headerName: "회원탈퇴",
-            flex: 0.7,
-            headerAlign: "center",
-            align: "center",
+            flex: 0.5,
+            headerAlign: "left",
+            align: "left",
             renderCell: (params) => {
                 return (
-                    <ClearIcon onClick={() => handleClearIconClick(params.row.membernum)} />
+                    <Box display="flex" justifyContent="center" ml="15px">
+                        <ClearIcon onClick={() => handleClearIconClick(params.row.membernum)} />
+                    </Box>
                 );
             }
         }
@@ -150,8 +152,8 @@ const AdminData = () => {
             <Box m="20px">
 
                 <Box onClick={openModal}
-                    width="20%"
-                    height="150px"
+                    width="300px"
+                    height="100px"
                     backgroundColor={colors.primary[400]}
                     boxShadow="0px 2px 4px rgba(0, 0, 0, 0.2);"
                     display="flex"

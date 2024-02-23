@@ -50,7 +50,8 @@ const Charts = () => {
             borderRadius="20px"
             backgroundColor={value ? colors.primary[400] : colors.primary[999]}
             marginBottom="7px"
-            p="15px"
+            p="15px 0 15px 15px"
+            m="0 9px 9px 9px"
             sx={{
               transition: "all 0.3s ease",
               transform: isHovered === key ? "scale(1.05, 1.2)" : "scale(1, 1)",
@@ -93,7 +94,7 @@ const Charts = () => {
       gridRow="span 2"
       borderRadius="30px"
       height="350px"
-      marginTop="50px"
+      marginTop="70px"
     >
       <Box
         display="flex auto"
@@ -107,7 +108,8 @@ const Charts = () => {
           color={colors.grey[100]}
           variant="h5"
           fontWeight="600"
-          align="center">
+          align="center"
+        >
           {updatedValue}
         </Typography>
       </Box>

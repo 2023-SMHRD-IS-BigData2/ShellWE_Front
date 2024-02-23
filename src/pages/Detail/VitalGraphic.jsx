@@ -51,7 +51,7 @@ const Graph = () => {
             borderRadius="30px"
             height="350px"
             width="135vh"
-            marginTop="50px"
+            marginTop="70px"
         >
             <Box
                 mt="25px"
