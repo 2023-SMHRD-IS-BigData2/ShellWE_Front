@@ -11,7 +11,6 @@ const DateComponent = () => {
   const colors = tokens(theme.palette.mode);
   // const {colors} = useContext(ColorModeContext);
 
-
   const { setSDate, setEDate, StartDate } = useContext(ChartContext)
 
 
@@ -39,21 +38,21 @@ const DateComponent = () => {
   };
 
   return (
-    <Box>
 
-      <Box
-        backgroundColor={colors.primary[400]}
-        gridColumn="span 4"
-        gridRow="span 2"
-        borderRadius="20px"
-        height="350px"
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center", // 수직 가운데 정렬
-          alignItems: "center" // 수평 가운데 정렬
-        }}
-      >
+    <Box
+      backgroundColor={colors.primary[400]}
+      gridColumn="span 4"
+      gridRow="span 2"
+      borderRadius="20px"
+      height="350px"
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center", // 수직 가운데 정렬
+        alignItems: "center" // 수평 가운데 정렬
+      }}
+    >
+      <Box>
         {/* 달력 */}
         <DatePicker // 달력
           selected={startDate} // 선택된 시작 날짜
