@@ -27,8 +27,8 @@ const App = () => {
     /** 환자 리스트 */
     const [lists, setList] = useState(null);
     const [Allpatient, setAllpatient] = useState(null)
-    const [todayScreening, settodayScreening] = useState(null)
     const [Screening, setScreening] = useState(null)
+    const [smart, setSmart] = useState();
     /** 코멘트 */
     const [comments, setComments] = useState(null);
     /** 코멘트 인덱스 */
@@ -124,10 +124,10 @@ const App = () => {
             try {
                 const response = await axios.get("http://localhost:8088/boot/getPatient");
                 setList(response.data.patientList);
-                setAllpatient(response.data.Allpatient)
-                settodayScreening(response.data.todayScreening)
-                setScreening(response.data.Screening)
-                // console.log("lists", response.data);
+                setAllpatient(response.data.Allpatient);
+                setScreening(response.data.Screening);
+                console.log("lists", response.data);
+                setSmart(response.data.CriteriaSep);
             } catch (error) {
                 console.log(error);
             }
@@ -178,10 +178,10 @@ const App = () => {
         <DashboardContext.Provider
             value={{
                 lists, setList,
-                setAllpatient, settodayScreening, setScreening,
+                setAllpatient, setScreening,
                 comments, patiIndex, setInputValue, handleSubmit, inputValue,
                 isModalOpen, closeModal, openModal,
-                Allpatient, Screening, todayScreening, percent,
+                Allpatient, Screening, percent, smart,
                 handleOptionChange, setPatientEffect, handleSelectChange, handlePhysicianChange, sendDataToServer
             }}
         >

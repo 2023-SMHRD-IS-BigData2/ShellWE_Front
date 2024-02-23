@@ -17,8 +17,8 @@ const FAQ = () => {
   // const {colors} = useContext(ColorModeContext);
   const [number, setNumber] = useState();
   const [scoreEffect, setScoreEffect] = useState(null);
-  const [showConfirmation, setShowConfirmation] = useState()
-  const [sepsisScore, setSepsisScore] = useState()
+  const [showConfirmation, setShowConfirmation] = useState();
+  const [sepsisScore, setSepsisScore] = useState();
 
 
   const handleConfirmationConfirm = () => {
