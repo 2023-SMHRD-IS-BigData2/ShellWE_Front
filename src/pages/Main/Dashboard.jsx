@@ -1,10 +1,12 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useContext, useState } from 'react';
 import { Box } from "@mui/material";
 import { DashboardContext } from "../../theme";
 import Data from './Data';
 import axios from 'axios';
 import Card from './Card';
 import { useLocation } from 'react-router-dom';
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 // 대쉬보드
 const App = () => {
@@ -12,7 +14,8 @@ const App = () => {
     const location = useLocation();
     const id = location.state?.id;
     console.log("id", id);
-
+    // const { notify, notification, setNotification } = useContext(DashboardContext);
+    const [notification, setNotification] = useState();
     /** 환자 리스트 */
     const [lists, setList] = useState(null);
     const [Allpatient, setAllpatient] = useState(null)
@@ -81,43 +84,19 @@ const App = () => {
 
     const gridRef = useRef(null);
 
-    //한시간마다 api출력하기
-    const toast = () => {
+    // //한시간마다 api출력하기
+    useEffect(() => {
         axios.post("http://localhost:8088/boot/getRandomInt")
             .then((response) => {
-                console.log('서버 응답:', response);
+                console.log('randmint:', response.data.RandomInt);
+                setNotification(response.data.RandomInt);
             })
             .catch((error) => {
                 console.error('서버 요청 오류:', error);
             });
-    }
-    useEffect(() => {
-        const intervalId = setInterval(() => {
-            fetchData();
-        }, 15000); // 1시간은 밀리초 단위로 3600000입니다.
-
-        // 컴포넌트가 언마운트될 때 클린업
-    return () => {
-        clearInterval(intervalId);
-        // 클린업 코드 작성 (예: 타이머나 리소스 해제 등)
-    };
     }, []);
 
-    // fetchData 함수 정의
-    const fetchData = async () => {
-        try {
-            const response = await axios.get("http://localhost:8088/boot/getRandomInt");
-            setList(response.data.patientList);
-            setAllpatient(response.data.Allpatient);
-            settodayScreening(response.data.todayScreening);
-            setScreening(response.data.Screening);
-        } catch (error) {
-            console.log(error);
-        }
-    };
-    fetchData();
 
-    
     // 서버에 데이터를 보내는 POST 요청 예제
     const sendDataToServer = async (data) => {
         try {
@@ -130,9 +109,18 @@ const App = () => {
         }
     };
 
+    const notify = () => {
+        toast(`스크리닝 환자가 ${notification}명 추가 되었습니다`,
+          { autoClose: 3000 } //3초
+        );
+        console.log("test toasttttttttttttttttttttttttttttttttttt");
+      }
+
     /** 카드 값 */
     useEffect(() => {
         setPercent(Screening / Allpatient * 100)
+        console.log("percent");
+
     }, [Allpatient, Screening])
 
     // 환자 Back
@@ -144,7 +132,7 @@ const App = () => {
                 setAllpatient(response.data.Allpatient)
                 settodayScreening(response.data.todayScreening)
                 setScreening(response.data.Screening)
-                // console.log("lists", response.data);
+                console.log("lists", response.data);
             } catch (error) {
                 console.log(error);
             }
@@ -152,7 +140,6 @@ const App = () => {
         console.log("patient");
         fetchData();
     }, [patientEffect]);
-
 
     // 코멘트 내용 출력
     useEffect(() => {
@@ -201,15 +188,45 @@ const App = () => {
                 comments, patiIndex, setInputValue, handleSubmit, inputValue,
                 isModalOpen, closeModal, openModal,
                 Allpatient, Screening, todayScreening, percent,
-                handleOptionChange, setPatientEffect, handleSelectChange, handlePhysicianChange, sendDataToServer, toast
+                handleOptionChange, setPatientEffect, handleSelectChange, handlePhysicianChange, sendDataToServer, toast, notification
             }}
         >
+            <ToastContainer
+                position="top-right"
+                autoClose={30000}
+                hideProgressBar={false}
+                newestOnTop={true}
+                closeOnClick={true}
+                pauseOnHover={true}
+                draggable={true}
+                progressStyle={{ background: "#3e4396" }}
+                bodyStyle={{
+                    fontFamily: "Arial, sans-serif",
+                    fontSize: "14px",
+                    fontWeight: "bold",
+                    color: "#000000",
+                    backgroundColor: "#ffffff",
+                }}
+            />
             <Box
                 m="20px"
                 marginTop="60px"
             // width="97.5%"
 
             >
+                <button onClick={notify}
+                style={{
+                    // backgroundColor:"red",
+                    // background:"transparent",
+                    opacity:0,
+                    width:"100px",
+                    height:"100px",
+                    position:"absolute",
+                    top:"100px",
+                    left:"1000px",
+                    // display:"inline-block"
+                }}>
+                </button>
                 <Box
                 // display="grid"
                 // gridTemplateColumns="repeat(12, 1fr)"
