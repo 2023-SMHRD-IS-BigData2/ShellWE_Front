@@ -19,32 +19,10 @@ const List = ({ id }) => {
     const colors = tokens(theme.palette.mode);
     // const {colors} = useContext(ColorModeContext);
 
-    const notify = () => {
-        if (-1 > 0) {
-            toast(`스크리닝 환자가 명 추가 되었습니다`,
-                { autoClose: 3000 }
-            );
-        }
-    }
-
-    // toast 컴포넌트
-    useEffect(() => {
-        const interval = setInterval(() => {
-            notify();
-
-        },
-            10000
-        ); // 한 시간(밀리초 단위)
-        // 컴포넌트가 언마운트 될 때 타이머를 정리합니다.
-        return () => clearInterval(interval);
-    }, []); // []를 전달하여 한 번만 실행되도록 설정합니다.
-
 
     return (
         <>
             <div>
-                <ToastContainer />
-
                 <Box
                     display="grid"
                     gridTemplateColumns="repeat(12, 1fr)"
