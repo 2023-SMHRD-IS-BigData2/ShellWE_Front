@@ -5,6 +5,8 @@ import { Box } from "@mui/material";
 import { DashboardContext, PatientContext } from "../../theme";
 import Card from './Card/Card';
 import Data from './Data';
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 // 대쉬보드
 const App = () => {
@@ -13,13 +15,7 @@ const App = () => {
 
     // 로그인한 사람의 id값 state로 가져오기
     const [id, setId] = useState('');
-
-    useEffect(() => {
-        const sessionUserId = sessionStorage.getItem('userId');
-        if (sessionUserId) {
-            setId(sessionUserId); // 세션 스토리지에서 userId 값을 가져와 상태로 설정
-        }
-    }, []);
+    const [notification, setNotification] = useState();
 
     console.log("id", id);
 
@@ -54,6 +50,12 @@ const App = () => {
     const closeModal = () => {
         setIsModalOpen(false);
     }
+    useEffect(() => {
+        const sessionUserId = sessionStorage.getItem('userId');
+        if (sessionUserId) {
+            setId(sessionUserId); // 세션 스토리지에서 userId 값을 가져와 상태로 설정
+        }
+    }, []);
 
     const handleOptionChange = (value, patinum) => {
         // 서버에 데이터를 보내는 요청을 만듭니다.
@@ -112,6 +114,28 @@ const App = () => {
             // 요청이 실패했을 때의 오류 처리를 추가할 수 있습니다.
         }
     };
+
+
+    //  =========== TOAST =================================
+    useEffect(() => {
+        axios.post("http://localhost:8088/boot/getRandomInt")
+            .then((response) => {
+                console.log('randmint:', response.data.RandomInt);
+                setNotification(response.data.RandomInt);
+            })
+            .catch((error) => {
+                console.error('서버 요청 오류:', error);
+            });
+    }, []);
+
+    const notify = () => {
+        toast(`스크리닝 환자가 ${notification}명 추가 되었습니다`,
+            { autoClose: 3000 } //3초
+        );
+        console.log("test toasttttttttttttttttttttttttttttttttttt");
+    }
+    // ========= TOAST ============================
+
 
     /** 카드 값 */
     useEffect(() => {
@@ -185,10 +209,41 @@ const App = () => {
                 handleOptionChange, setPatientEffect, handleSelectChange, handlePhysicianChange, sendDataToServer
             }}
         >
+            {/* Toast 알림 기능 */}
+            <ToastContainer
+                position="top-right"
+                autoClose={30000}
+                hideProgressBar={false}
+                newestOnTop={true}
+                closeOnClick={true}
+                pauseOnHover={true}
+                draggable={true}
+                progressStyle={{ background: "#3e4396" }}
+                bodyStyle={{
+                    fontFamily: "Arial, sans-serif",
+                    fontSize: "14px",
+                    fontWeight: "bold",
+                    color: "#000000",
+                    backgroundColor: "#ffffff",
+                }}
+            />
             <Box
                 m="20px"
                 marginTop="60px"
             >
+                <button onClick={notify}
+                    style={{
+                        // backgroundColor:"red",
+                        // background:"transparent",
+                        opacity: 0,
+                        width: "100px",
+                        height: "100px",
+                        position: "absolute",
+                        top: "100px",
+                        left: "1000px",
+                        // display:"inline-block"
+                    }}>
+                </button>
                 <Card id={id} />
 
                 <Data />
