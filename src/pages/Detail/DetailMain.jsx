@@ -165,7 +165,7 @@ const App = () => {
                     >
                         <Box display="flex" justifyContent="space-between" alignItems="center">
 
-                            <DetailHeader title={lists.name} subtitle={lists.age + "세 / " + lists.gender + " / " + lists.bloodtype + "형 / "}
+                            <DetailHeader title={lists.name} subtitle={lists.age + "세 / " + lists.gender + " / " + lists.bloodtype + "형"}
                                 comments={comments} handleSubmit={handleSubmit}
                                 num={num} setInputValue={setInputValue} inputValue={inputValue}
                                 isModalOpen={isModalOpen} closeModal={closeModal} openModal={openModal}
