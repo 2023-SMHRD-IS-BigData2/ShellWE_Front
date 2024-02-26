@@ -450,7 +450,7 @@ const Data = () => {
         },
         {
             field: "comment",
-            headerName: "코멘트",
+            headerName: "진단 기록",
             flex: 0.8,
             headerAlign: "center",
             align: "center",
