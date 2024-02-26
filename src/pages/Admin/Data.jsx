@@ -210,14 +210,18 @@ const AdminData = () => {
                 </Box>
 
                 {showConfirmation && (
-                    <div className="modal">
+                    <div className="modal"
+                        style={{
+                            
+                            boxShadow: "20px 20px 40px rgba(0, 0, 0, 0.2);",
+                        }}>
                         <div className="modal-content" style={{
                             position: "fixed",
                             top: "50%",
                             left: "50%",
                             transform: "translate(-50%, -50%)",
-                            borderRadius: "3%",
-                            // backgroundColor: ,
+                            borderRadius: "30px",
+                            backgroundColor: colors.primary[999],
                             padding: "20px",
                             textAlign: "center",
                             color: "black"

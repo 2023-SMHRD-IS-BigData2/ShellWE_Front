@@ -90,8 +90,8 @@ const FAQ = () => {
             top: "50%",
             left: "50%",
             transform: "translate(-50%, -50%)",
-            borderRadius: "3%",
-            backgroundColor: colors.grey[300],
+            borderRadius: "30px",
+            backgroundColor: colors.primary[400],
             padding: "20px",
             textAlign: "center",
             color: "black"

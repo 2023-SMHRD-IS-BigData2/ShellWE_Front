@@ -26,7 +26,30 @@ const DetailHeader = ({ title, subtitle,
         {
             field: "contents",
             headerName: "내용",
-            flex: 1
+            flex: 1,
+            headerAlign: "center",
+            renderCell: (params) => {
+                const content = params.value;
+                const hasArrow = content.includes("->");
+
+                return (
+                    <div style={{
+                        backgroundColor: hasArrow ? colors.primary[999] : "inherit",
+                        width: "60%",
+                        display: hasArrow ? "flex" : "",
+                        justifyContent: hasArrow ? "center" : "none",
+                        height: "60%",
+                        borderRadius: "12px"
+                    }}>
+                        <Box display={hasArrow ? "flex" : ""}
+                            justifyContent={hasArrow ? "center" : "left"}
+                            margin="auto">
+                            {content}
+
+                        </Box>
+                    </div>
+                );
+            }
         },
         {
             field: "inputdate",
@@ -68,9 +91,9 @@ const DetailHeader = ({ title, subtitle,
                     </Typography>
 
                     <Typography variant="h5" color={colors.greenAccent[400]}
-                        mt="8px" 
+                        mt="8px"
                         ml="18px"
-                        >
+                    >
                         {subtitle}
                     </Typography>
                 </Box>
@@ -78,7 +101,7 @@ const DetailHeader = ({ title, subtitle,
                 <Box onClick={() => {
                     openModal(num)
                 }}
-                    backgroundColor={colors.greenAccent[500]}
+                    backgroundColor={colors.primary[999]}
                     p="5px 10px"
                     borderRadius="4px"
                     width="80px"
@@ -123,12 +146,12 @@ const DetailHeader = ({ title, subtitle,
                                 color: colors.greenAccent[300],
                             },
                             "& .MuiDataGrid-columnHeaders": {
-                                backgroundColor: colors.grey[700],
+                                backgroundColor: colors.primary[111],
                                 borderBottom: "none",
                             },
                             "& .MuiDataGrid-footerContainer": {
                                 borderTop: "none",
-                                backgroundColor: colors.grey[700],
+                                backgroundColor: colors.primary[111],
                             },
                         }}>
                         <DataGrid

@@ -171,7 +171,7 @@ const App = () => {
                                 isModalOpen={isModalOpen} closeModal={closeModal} openModal={openModal}
                             />
 
-                            <Box>
+                            {/* <Box>
                                 <Button
                                     sx={{
                                         backgroundColor: colors.blueAccent[700],
@@ -184,7 +184,7 @@ const App = () => {
                                     <DownloadOutlinedIcon sx={{ mr: "10px" }} />
                                     Download
                                 </Button>
-                            </Box>
+                            </Box> */}
                         </Box>
                         <Box
                             display="grid"
