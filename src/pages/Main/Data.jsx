@@ -97,14 +97,14 @@ const Data = () => {
                     <Box
                         onMouseEnter={() => setHoveredRowId(row.id)}
                         onMouseLeave={() => setHoveredRowId(null)}
-                        width="100%"
-                        m="0 auto"
-                        p="5px"
+                        width="230px"
+                        height="40px"
+                        p="10px"
                         display="flex"
                         justifyContent="center"
                         backgroundColor={
                             hoveredRowId === row.id
-                                ? colors.greenAccent[500]
+                                ? colors.greenAccent[600]
                                 : colors.transparent
                         }
                         borderRadius="4px"
@@ -467,15 +467,15 @@ const Data = () => {
         {
             field: "id",
             headerName: "번호",
-            headerAlign:"center",
-            align:"center",
-            flex:0.2
+            headerAlign: "center",
+            align: "center",
+            flex: 0.2
         },
         {
             field: "contents",
             headerName: "내용",
             flex: 1,
-            headerAlign:"center",
+            headerAlign: "center",
             renderCell: (params) => {
                 const content = params.value;
                 const hasArrow = content.includes("->");
@@ -503,13 +503,13 @@ const Data = () => {
             field: "inputdate",
             headerName: "입력시간",
             flex: 0.5,
-            headerAlign:"center"
+            headerAlign: "center"
         },
         {
             field: "membername",
             headerName: "작성자",
-            headerAlign:"center",
-            align:"center"
+            headerAlign: "center",
+            align: "center"
 
         }
     ]
@@ -582,10 +582,10 @@ const Data = () => {
                         margin="auto"
                         width="200px"
                     >
-                        <Typography variant='h4'>
+                        <Typography variant='h4' color={colors.grey[100]}>
                             {"순번 : " + commentInfo.patinum}
                         </Typography>
-                        <Typography variant='h4'>
+                        <Typography variant='h4' color={colors.grey[100]}>
                             {"이름 : " + commentInfo.name}
                         </Typography>
                     </Box>
