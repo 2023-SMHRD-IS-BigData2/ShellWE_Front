@@ -28,6 +28,7 @@ export const tokens = (mode) => ({
         800: "#080b12",
         900: "#040509",
         999: "#495259", // 로그인 카드
+        111: "#1e5245"
       },
       greenAccent: {
         100: "#dbf5ee",
@@ -105,6 +106,7 @@ export const tokens = (mode) => ({
         900: "#d0d1d5",
         999: "#94bffe",  //// 
         777: "#158BA9", // Sidebar logo underText
+        111: "#94bffe"
       },
       // primary: {
       //   100: "#040509",

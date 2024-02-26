@@ -8,7 +8,7 @@ const StatBox = ({ title, subtitle, icon }) => {
     // const {colors} = useContext(ColorModeContext);
     return (
         <Box width="100%" m="100px">
-            <Box display="flex" justifyContent="space-between" width="130px" mr="150px">
+            <Box display="flex" justifyContent="space-between" width="150px" mr="140px">
                 <Box>
                     <Typography
                         variant="h2"

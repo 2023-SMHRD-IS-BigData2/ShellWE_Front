@@ -603,12 +603,12 @@ const Data = () => {
                                 color: colors.greenAccent[300],
                             },
                             "& .MuiDataGrid-columnHeaders": {
-                                backgroundColor: colors.primary[999],
+                                backgroundColor: colors.primary[111],
                                 borderBottom: "none",
                             },
                             "& .MuiDataGrid-footerContainer": {
                                 borderTop: "none",
-                                backgroundColor: colors.primary[999],
+                                backgroundColor: colors.primary[111],
                             },
                         }}>
                         <DataGrid
