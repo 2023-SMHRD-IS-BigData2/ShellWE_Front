@@ -421,7 +421,7 @@ const Data = () => {
                                 paddingRight: "80px",
                                 border: 'none',
                                 backgroundColor: sepsisslevel === "Screening"
-                                    ? colors.greenAccent[600]
+                                    ? colors.redAccent[500]
                                     : sepsisslevel === "Observing"
                                         ? ""
                                         : sepsisslevel == "In Action"
