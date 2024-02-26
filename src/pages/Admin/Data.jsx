@@ -132,7 +132,7 @@ const AdminData = () => {
         },
         {
             field: "delete",
-            headerName: "회원탈퇴",
+            headerName: "회원 삭제",
             flex: 0.5,
             headerAlign: "left",
             align: "left",
