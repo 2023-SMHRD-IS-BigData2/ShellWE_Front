@@ -91,7 +91,7 @@ const Graph = () => {
                             height={21}
                             stroke="#EB9DA2"
                             startIndex={0}
-                            //endIndex={Math.min(5, data.length - 1)}
+                            endIndex={Math.min(5, data.length - 1)}
                             opacity="0.2"
                             fillOpacity={0.2}
                         />
