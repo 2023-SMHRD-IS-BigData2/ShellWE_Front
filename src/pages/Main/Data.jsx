@@ -526,18 +526,18 @@ const Data = () => {
     }));
     return (
         <Box
-            m="20px"
-            borderRadius="30px">
+            // m="20px"
+            borderRadius="20px">
             <Box
                 m="25px 0 0 0"
                 height="72vh"
-                borderRadius="30px"
+                borderRadius="20px"
                 boxShadow="0px 2px 4px rgba(0, 0, 0, 0.2);"
                 sx={{
 
                     "& .MuiDataGrid-root": {
                         border: "none",
-                        borderRadius: "30px",
+                        borderRadius: "20px",
                         /* eslint-disable no-undef */ // 해당 줄을 추가하여 linear-gradient 함수 사용을 허용
                         background: `linear-gradient(to bottom, ${colors.greenAccent[600]} 10%, ${colors.primary[400]} 10%)`,
                         /* eslint-enable no-undef */ // 해당 줄을 추가하여 linear-gradient 함수 사용을 다시 제한
@@ -555,8 +555,8 @@ const Data = () => {
                     "& .MuiDataGrid-footerContainer": {
                         borderTop: "none",
                         backgroundColor: colors.greenAccent[600],
-                        borderBottomLeftRadius: "30px",
-                        borderBottomRightRadius: "30px",
+                        borderBottomLeftRadius: "20px",
+                        borderBottomRightRadius: "20px",
                     },
                     "& .MuiDataGrid-toolbarContainer .MuiButton-text": {
                         color: `${colors.grey[100]} !important`,
@@ -623,7 +623,7 @@ const Data = () => {
                         m="20px"
                         display="flex"
                         backgroundColor={colors.primary[400]}
-                        borderRadius="30px"
+                        borderRadius="20px"
                     >
                         <InputBase sx={{ ml: 2, flex: 1 }}
                             placeholder="텍스트를 입력하시오"

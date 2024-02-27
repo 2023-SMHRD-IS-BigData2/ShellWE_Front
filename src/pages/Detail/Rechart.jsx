@@ -87,7 +87,7 @@ export default function Example() {
             gridColumn="span 8"
             gridRow="span 2"
             backgroundColor={colors.primary[400]}
-            borderRadius="30px"
+            borderRadius="20px"
             height="350px"
             width="135vh"
         >

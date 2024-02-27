@@ -4299,7 +4299,7 @@
     height: 100px;
     border: 1px solid var(--soft-steel-blue);
     background-color: var(--midnight-blue);
-    box-shadow: 0 0 0 10px var(--midnight-blue);
+    /* box-shadow: 0 0 0 10px var(--midnight-blue); */
     border-radius: 50%;
     justify-content: center;
     align-items: center;

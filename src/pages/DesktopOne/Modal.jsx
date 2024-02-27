@@ -16,7 +16,7 @@ const useModal = ({ isOpen, closeModal, children }) => {
                     maxWidth: "100%",
                     maxHeight: "90%",
                     overflowY: "auto",
-                    borderRadius:"30px",
+                    borderRadius:"20px",
                     // backgroundColor: "#94bffe",
                 }}>
                 {children}

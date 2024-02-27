@@ -164,7 +164,7 @@ const DetailHeader = ({ title, subtitle,
                         m="20px"
                         display="flex"
                         backgroundColor={colors.primary[400]}
-                        borderRadius="30px"
+                        borderRadius="20px"
                     >
                         <InputBase sx={{ ml: 2, flex: 1 }}
                             placeholder="텍스트를 입력하시오"

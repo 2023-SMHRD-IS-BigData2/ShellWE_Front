@@ -92,7 +92,7 @@ const Charts = () => {
     <Box
       gridColumn="span 4"
       gridRow="span 2"
-      borderRadius="30px"
+      borderRadius="20px"
       height="350px"
       marginTop="70px"
     >

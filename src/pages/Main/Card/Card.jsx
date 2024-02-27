@@ -37,7 +37,7 @@ const List = ({ id }) => {
                         display="flex"
                         alignItems="center"
                         justifyContent="center"
-                        borderRadius="30px"
+                        borderRadius="20px"
                     >
                         <Logined
                             title={id}         // 값
@@ -55,7 +55,7 @@ const List = ({ id }) => {
                         display="flex"
                         alignItems="center"
                         justifyContent="center"
-                        borderRadius="30px"
+                        borderRadius="20px"
                     >
                         <AllPatient
                             title={Allpatient}         // 값
@@ -78,7 +78,7 @@ const List = ({ id }) => {
                         display="flex"
                         alignItems="center"
                         justifyContent="space-between"
-                        borderRadius="30px"
+                        borderRadius="20px"
                     >
                         <ScrnPatient
                             title={Screening}         // 값
@@ -97,7 +97,7 @@ const List = ({ id }) => {
                         display="flex"
                         alignItems="center"
                         justifyContent="center"
-                        borderRadius="30px"
+                        borderRadius="20px"
                     >
                         <Smart
                             title={smart}                // 값

@@ -84,7 +84,7 @@ const Login = () => {
             <div className="user-page-title-wrap">
               <div className="user-page-icon-wrap">
                 {/* logo */}
-                {<img src="https://i.ibb.co/mqXF466/image.png"
+                {<img src="https://i.ibb.co/w0wS6NN/smart-last-removebg-preview.png"
                   loading="eager" alt="" className="user-page-icon" style={{ width: "90px", height: "90px" }} />}
               </div>
               <h1 className="user-page-title">Log in</h1>

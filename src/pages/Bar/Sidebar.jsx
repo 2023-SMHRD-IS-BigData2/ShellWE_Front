@@ -17,7 +17,7 @@ const Item = ({ title, to, icon, selected, setSelected }) => {
         console.log("로그아웃");
         localStorage.removeItem('userId'); // 로컬 스토리지에서 userId 값을 제거
 
-      };
+    };
     // const {colors} = useContext(ColorModeContext);
     return (
         <MenuItem
@@ -29,7 +29,7 @@ const Item = ({ title, to, icon, selected, setSelected }) => {
             icon={icon}
         >
             <Typography
-            style={{color:colors.grey[100]}}
+                style={{ color: colors.grey[100] }}
             >{title}</Typography>
             <Link onClick={handleLogout} to={to} />
         </MenuItem>
@@ -44,7 +44,7 @@ const Sidebar = () => {
     const [isCollapsed, setIsCollapsed] = useState(false);
     const [selected, setSelected] = useState("Dashboard");
 
-    
+
 
     return (
         <Box
@@ -65,12 +65,12 @@ const Sidebar = () => {
                     color: "#6870fa !important",
                 },
             }}
-            borderRadius="30px"
+            borderRadius="20px"
         >
-            <ProSidebar 
-            collapsed={isCollapsed} 
-            style={{ borderTopRightRadius: "30px" }}
-            borderRadius="30px">
+            <ProSidebar
+                collapsed={isCollapsed}
+                style={{ borderTopRightRadius: "30px" }}
+                borderRadius="20px">
                 <Menu iconShape="square" style={{ borderTopRightRadius: "30px" }}>
                     {/* LOGO AND MENU ICON */}
                     <MenuItem
@@ -98,19 +98,18 @@ const Sidebar = () => {
                         )}
                     </MenuItem>
                     {!isCollapsed && (
-                        <Box 
-                        mb="25px"
+                        <Box
+                            mb="25px"
                         >
                             <Box display="flex" justifyContent="center" alignItems="center">
                                 {
-                                <img
-                                    alt="profile-user"
-                                    width="70px"
-                                    height="70px"
-                                    src="https://i.ibb.co/mqXF466/image.png"
-                                    style={{ cursor: "pointer", borderRadius: "50%" }}
-                                />
-                            }
+                                    <img
+                                        alt="profile-user"
+                                        width="90px"
+                                        height="90px"
+                                        src="https://i.ibb.co/w0wS6NN/smart-last-removebg-preview.png"
+                                    />
+                                }
                             </Box>
                             <Box textAlign="center">
                                 <Typography
@@ -128,8 +127,8 @@ const Sidebar = () => {
                         </Box>
                     )}
 
-                    <Box 
-                    paddingLeft={isCollapsed ? undefined : "10%"}
+                    <Box
+                        paddingLeft={isCollapsed ? undefined : "10%"}
                     >
                         <Item
                             title="Dashboard"

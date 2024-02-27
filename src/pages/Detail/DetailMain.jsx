@@ -9,12 +9,33 @@ import Chart from "./Chart";
 import Graphic from "./VitalGraphic";
 import Date from "./DateComponent";
 import DetailHeader from "./DetailHeader";
+import html2canvas from 'html2canvas';
+import jsPDF from 'jspdf';
+import { useRef } from 'react';
 
 // 연동 및 데이터 집어넣기
 const App = () => {
 
     let { num } = useParams() //메인에서 디테일 번호 전하는 파람
     const { patientNum, setPatientNum, data, setData } = useContext(PatientContext);
+
+    const pdfRef = useRef();
+    const downloadPDF = () => {
+        const input = pdfRef.current;
+        html2canvas(input).then((canvas) => {
+            const imgData = canvas.toDataURL('image/png');
+            const pdf = new jsPDF('l', 'mm', 'a4', true);
+            const pdfWidth = pdf.internal.pageSize.getWidth();
+            const pdfHeigth = pdf.internal.pageSize.getHeight();
+            const imgWidth = canvas.width;
+            const imgHeigth = canvas.height;
+            const ratio = Math.min(pdfWidth / imgWidth, pdfHeigth / pdfWidth);
+            const imgX = (pdfWidth - imgWidth * ratio) / 2;
+            const imgY = 30;
+            pdf.addImage(imgData, 'PNG', imgX, imgY, imgWidth * ratio, imgHeigth * ratio);
+            pdf.save('invoice.pdf');
+        });
+    };
 
     // console.log('useParams', num);
     const location = useLocation();
@@ -155,7 +176,9 @@ const App = () => {
     // ===============================================
 
     return (
-        <div>
+        <div
+            ref={pdfRef}
+        >
             <div>
                 <ChartContext.Provider value={{
                     clickedXValue, handleXAxisClick, makechart, data, denger, graph, setSDate, setEDate, StartDate, EndDate, subtitle,
@@ -171,7 +194,7 @@ const App = () => {
                                 isModalOpen={isModalOpen} closeModal={closeModal} openModal={openModal}
                             />
 
-                            {/* <Box>
+                            <Box>
                                 <Button
                                     sx={{
                                         backgroundColor: colors.blueAccent[700],
@@ -180,11 +203,12 @@ const App = () => {
                                         fontWeight: "bold",
                                         padding: "10px 20px",
                                     }}
+                                    onClick={downloadPDF}
                                 >
                                     <DownloadOutlinedIcon sx={{ mr: "10px" }} />
                                     Download
                                 </Button>
-                            </Box> */}
+                            </Box>
                         </Box>
                         <Box
                             display="grid"

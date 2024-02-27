@@ -159,7 +159,7 @@ const AdminData = () => {
                     display="flex"
                     alignItems="center"
                     justifyContent="center"
-                    borderRadius="30px">
+                    borderRadius="20px">
                     <Card />
                 </Box>
 
@@ -167,7 +167,7 @@ const AdminData = () => {
                     m="20px 0 0 0"
                     height="75vh"
 
-                    borderRadius="30px"
+                    borderRadius="20px"
                     boxShadow="0px 2px 4px rgba(0, 0, 0, 0.2);"
                     sx={{
                         "& .MuiDataGrid-root": {
@@ -183,8 +183,8 @@ const AdminData = () => {
                         "& .MuiDataGrid-columnHeaders": {
                             backgroundColor: colors.greenAccent[600],
                             borderBottom: "none",
-                            borderTopLeftRadius: "30px",
-                            borderTopRightRadius: "30px",
+                            borderTopLeftRadius: "20px",
+                            borderTopRightRadius: "20px",
                             fontSize: "16px",
                         },
                         "& .MuiDataGrid-virtualScroller": {
@@ -193,8 +193,8 @@ const AdminData = () => {
                         "& .MuiDataGrid-footerContainer": {
                             borderTop: "none",
                             backgroundColor: colors.greenAccent[600],
-                            borderBottomLeftRadius: "30px",
-                            borderBottomRightRadius: "30px",
+                            borderBottomLeftRadius: "20px",
+                            borderBottomRightRadius: "20px",
                         },
                         "& .MuiDataGrid-toolbarContainer .MuiButton-text": {
                             color: `${colors.grey[100]} !important`,
@@ -220,7 +220,7 @@ const AdminData = () => {
                             top: "50%",
                             left: "50%",
                             transform: "translate(-50%, -50%)",
-                            borderRadius: "30px",
+                            borderRadius: "20px",
                             backgroundColor: colors.primary[999],
                             padding: "20px",
                             textAlign: "center",
